@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+title: "Active Geometry: The Intrinsic Hyperbolic Curvature of Evolution"
+message: "If you use this software, please cite both papers."
+type: software
+authors:
+  - family-names: "Fenn"
+    given-names: "Rohit"
+    orcid: ""
+  - family-names: "Fenn"
+    given-names: "Rohit"
+    orcid: ""
+repository-code: "https://github.com/sentry-bio/active-geometry"
+license: MIT
+version: "1.0.0"
+date-released: "2025-01-01"
+
+preferred-citation:
+  type: article
+  title: "Evolution as Active Geometry: A Universal Curvature Constant"
+  authors:
+    - family-names: "Fenn"
+      given-names: "Rohit"
+    - family-names: "Fenn"
+      given-names: "Rohit"
+  year: 2025
+  journal: ""
+
+references:
+  - type: article
+    title: "A Geometric State Equation for Evolutionary Dynamics"
+    authors:
+      - family-names: "Fenn"
+        given-names: "Rohit"
+      - family-names: "Fenn"
+        given-names: "Rohit"
+    year: 2025
+    journal: ""
