@@ -1,0 +1,91 @@
+name: Validate Scientific Consistency
+
+on:
+  push:
+    paths:
+      - 'constants.yaml'
+      - 'validation/**/results/*.yaml'
+  pull_request:
+    paths:
+      - 'constants.yaml'
+      - 'validation/**/results/*.yaml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Validate results match constants
+        run: |
+          python << 'EOF'
+          import yaml
+          import sys
+          from pathlib import Path
+
+          # Load canonical constants
+          with open('constants.yaml') as f:
+              C = yaml.safe_load(f)
+
+          kappa_canonical = C['curvature']['kappa_empirical']
+          kappa_std = C['curvature']['kappa_empirical_std']
+          tolerance = 3 * kappa_std  # 3-sigma tolerance
+
+          errors = []
+
+          # Check genomic results
+          genomic_path = Path('validation/genomic/results/five_seed_convergence.yaml')
+          if genomic_path.exists():
+              with open(genomic_path) as f:
+                  G = yaml.safe_load(f)
+              kappa_genomic = G['summary']['kappa_mean']
+              if abs(kappa_genomic - kappa_canonical) > tolerance:
+                  errors.append(f"Genomic κ={kappa_genomic} differs from canonical {kappa_canonical}")
+              else:
+                  print(f"✅ Genomic validation: κ = {kappa_genomic}")
+
+          # Check phylogenetic results
+          phylo_path = Path('validation/phylogenetic/results/tree_kappa_estimates.yaml')
+          if phylo_path.exists():
+              with open(phylo_path) as f:
+                  P = yaml.safe_load(f)
+              kappa_phylo = P['summary']['kappa_mean']
+              if abs(kappa_phylo - kappa_canonical) > 0.05:  # Wider tolerance for trees
+                  errors.append(f"Phylogenetic κ={kappa_phylo} differs from canonical {kappa_canonical}")
+              else:
+                  print(f"✅ Phylogenetic validation: κ = {kappa_phylo}")
+
+          if errors:
+              print("❌ Consistency errors:")
+              for e in errors:
+                  print(f"  - {e}")
+              sys.exit(1)
+
+          print("\n✅ All results consistent with constants.yaml")
+          EOF
+
+      - name: Check YAML syntax
+        run: |
+          python << 'EOF'
+          import yaml
+          from pathlib import Path
+
+          for f in Path('.').rglob('*.yaml'):
+              try:
+                  with open(f) as fp:
+                      yaml.safe_load(fp)
+                  print(f"✅ {f}")
+              except yaml.YAMLError as e:
+                  print(f"❌ {f}: {e}")
+                  exit(1)
+          EOF

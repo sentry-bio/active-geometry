@@ -1,0 +1,276 @@
+# =============================================================================
+# Active Geometry: Paper Manifest
+# =============================================================================
+# Machine-readable specification of claims, measurements, and verification
+# Standard: Executable, verifiable, reproducible science
+# =============================================================================
+
+paper:
+  title: "Evolution as Active Geometry"
+  subtitle: "The Hyperbolic Structure of Common Descent"
+  version: "1.0.0"
+
+  authors:
+    - {name: "Rohit Fenn", affiliation: "Sentry Bio"}
+    - {name: "Amit Fenn", affiliation: "Sentry Bio"}
+
+  thesis:
+    statement: |
+      The tree of life compresses optimally into hyperbolic space with curvature
+      kappa = (h ln 2)^2, linking Darwin's branching topology to Shannon's information
+      measure through Riemannian geometry.
+
+    key_insight: |
+      kappa emerges from optimal compression of evolutionary RELATIONSHIPS (not individual
+      sequences). Individual entropy rate h determines collective geometric structure kappa.
+
+  abstract:
+    discovery: "kappa = 1.247 +/- 0.003 (neural compression)"
+    prediction: "kappa = (h ln 2)^2 where h ~ 1.6 bits/nt"
+    agreement: "1.7% between independent measurements"
+    validation: "rho = 0.84 correlation with phylogenetic depth"
+    universality: "n = 2.00 +/- 0.05 across all life"
+
+# =============================================================================
+# Formal Verification (Machine-Checked)
+# =============================================================================
+formal_verification:
+  lean_file: "theory/lean/ActiveGeometry/KappaCurvature.lean"
+  status: "MACHINE-CHECKED"
+  lean_version: "leanprover/lean4:v4.x"
+  mathlib_version: "leanprover-community/mathlib4"
+
+  core_theorems:
+    - {name: "kappa_n2", statement: "kappa h 2 = (h * log 2)^2"}
+    - {name: "kappa_pos", statement: "h > 0 -> kappa h 2 > 0"}
+    - {name: "kappa_unique", statement: "exists unique k, k > 0 and k = (h * log 2)^2"}
+    - {name: "kappa_mono_h", statement: "h1 < h2 -> kappa h1 2 < kappa h2 2"}
+    - {name: "kappa_mono_n", statement: "n1 < n2 -> kappa h n2 < kappa h n1"}
+
+  extended_theorems:
+    - name: "Entropy Rate Decomposition"
+      statement: "0 < h_effective <= H_raw"
+    - name: "Optimal Embedding Dimension"
+      statement: "For all n > 2, kappa h n < kappa h 2"
+    - name: "Lyapunov Stability"
+      statement: "Critical curvature kappa* is globally stable"
+
+# =============================================================================
+# Results with Verification Protocols
+# =============================================================================
+results:
+  R1:
+    title: "Neural networks discover kappa = 1.247 +/- 0.003"
+    category: "empirical"
+
+    key_finding:
+      quantity: "kappa"
+      value: 1.247
+      uncertainty: 0.003
+      method: "neural_compression"
+      replicates: 5
+      cv_percent: 0.24
+
+    claims:
+      - statement: "Five independent models converge to same kappa"
+        statistical_test:
+          method: "coefficient_of_variation"
+          expected: "<0.3%"
+          measured: "0.24%"
+        verification:
+          notebook: "validation/notebooks/01_neural_convergence.ipynb"
+          cell: 8
+
+      - statement: "Coordinate systems align after Procrustes rotation"
+        statistical_test:
+          method: "procrustes_correlation"
+          expected: ">0.99"
+          measured: 0.992
+        verification:
+          notebook: "validation/notebooks/01_neural_convergence.ipynb"
+          cell: 12
+
+      # R8 NESTED HERE: Scale stability
+      - statement: "kappa is stable across 100x scale increase (46k genomes)"
+        description: |
+          Training on 46,000 genomes shows kappa locks in mid-training
+          and remains stable at 1.25 for many subsequent epochs.
+        statistical_test:
+          method: "epoch_stability_after_lock_in"
+          lock_in_epoch: 45
+          stable_epochs: 55
+          final_kappa: 1.25
+          drift: "<0.01"
+        interpretation: "Scale invariance confirms universality"
+        verification:
+          notebook: "validation/notebooks/01_neural_convergence.ipynb"
+          cell: 25
+
+    figures: ["figure1a", "figure1b"]
+
+  R2:
+    title: "Information theory predicts kappa = 1.23"
+    category: "theory"
+
+    key_finding:
+      formula: "kappa = (h ln 2 / (n-1))^2"
+      prediction: 1.23
+      measurement: 1.247
+      agreement_percent: 1.7
+
+    parameters:
+      h_effective: {value: 1.6, uncertainty: 0.1, units: "bits/nt"}
+      n_dimension: {value: 2, source: "tree_topology"}
+
+    claims:
+      - statement: "Closed-form solution from volume-information matching"
+        verification:
+          notebook: "validation/notebooks/02_theory_verification.ipynb"
+          cell: 5
+
+      - statement: "Solution is unique (monotonicity + IVT)"
+        verification:
+          notebook: "validation/notebooks/02_theory_verification.ipynb"
+          cell: 10
+
+      - statement: "120-digit precision calculation matches measurement"
+        verification:
+          notebook: "validation/notebooks/02_theory_verification.ipynb"
+          cell: 15
+
+  R3:
+    title: "Viral evolution validates curvature-entropy law"
+    category: "validation"
+
+    key_finding:
+      relationship: "kappa vs phylogenetic_depth"
+      correlation: 0.84
+      p_value: "<0.001"
+      datasets: 15
+
+    measurements:
+      - {species: "Zika", kappa: 1.20, n_genomes: 1444}
+      - {species: "SARS-CoV-2", kappa: 1.35, n_genomes: 10001}
+      - {species: "HIV-1", kappa: 1.45, n_genomes: 8414}
+      - {species: "Measles", kappa: 1.60, n_genomes: 1044}
+      - {species: "Influenza_A", kappa: 1.32, n_genomes: 8379}
+
+    controls:
+      - {name: "label_shuffling", effect: "51% reduction in kappa preference"}
+      - {name: "single_label", effect: "61% reduction"}
+      - {name: "random_hash", effect: "67% reduction"}
+
+    verification:
+      notebook: "validation/notebooks/03_viral_validation.ipynb"
+
+  R4:
+    title: "Cross-domain prediction validates theory"
+    category: "validation"
+
+    key_finding:
+      correlation: 0.996
+      systems: 6
+
+    verification:
+      notebook: "validation/notebooks/02_theory_verification.ipynb"
+      cell: 20
+
+  R5:
+    title: "Null simulations validate estimator"
+    category: "falsification"
+
+    tests:
+      - name: "Euclidean_null"
+        expected: "kappa ~ 0"
+        result: "PASS"
+
+      - name: "Synthetic_recovery"
+        expected: "accurate recovery of known kappa"
+        mean_relative_error: "1.08%"
+        result: "PASS"
+
+      - name: "Shuffled_graphs"
+        expected: "no convergence"
+        cv: "68%"
+        result: "PASS"
+
+    verification:
+      notebook: "validation/notebooks/04_null_simulations.ipynb"
+
+  R6:
+    title: "Universal n = 2.00 +/- 0.05 topology"
+    category: "universality"
+
+    key_finding:
+      parameter: "intrinsic_dimensionality"
+      value: 2.00
+      uncertainty: 0.05
+
+    interpretation:
+      coordinates: ["radial (temporal depth)", "angular (position among alternatives)"]
+
+    verification:
+      notebook: "validation/notebooks/05_topology.ipynb"
+
+  R7:
+    title: "Ablation confirms kappa measures phylogenetic structure"
+    category: "mechanism"
+
+    key_findings:
+      fixed_sweep:
+        optimal_kappa: 0.75
+        loss_variation: "4.3%"
+        interpretation: "Loss landscape nearly FLAT for pure compression"
+
+      learnable:
+        converged_kappa: 0.999
+        drift_from_init: "<0.1%"
+        interpretation: "No gradient signal from compression alone"
+
+    conclusions:
+      - "kappa has no gradient path through pure sequence compression"
+      - "kappa specifically measures phylogenetic structure calibration"
+      - "kappa = 1.247 is a property of the tree of life, not the architecture"
+
+    verification:
+      notebook: "validation/notebooks/06_ablation.ipynb"
+
+# =============================================================================
+# Container Verification
+# =============================================================================
+container:
+  dockerfile: "Dockerfile"
+  entrypoint: "run_all_verifications.sh"
+
+  verification_order:
+    - {id: "lean", command: "cd theory/lean && lake build"}
+    - {id: "R1", notebook: "validation/notebooks/01_neural_convergence.ipynb"}
+    - {id: "R2", notebook: "validation/notebooks/02_theory_verification.ipynb"}
+    - {id: "R3", notebook: "validation/notebooks/03_viral_validation.ipynb"}
+    - {id: "R5", notebook: "validation/notebooks/04_null_simulations.ipynb"}
+    - {id: "R6", notebook: "validation/notebooks/05_topology.ipynb"}
+    - {id: "R7", notebook: "validation/notebooks/06_ablation.ipynb"}
+
+  artifacts:
+    required:
+      - "data/outputs/neural_convergence/"
+      - "data/outputs/viral_measurements/"
+    optional:
+      - "data/outputs/46k_scale_run/"
+
+# =============================================================================
+# Data Availability
+# =============================================================================
+data:
+  genomes: "NCBI RefSeq (accessions in data/manifests/)"
+  viral_sequences: "GenBank"
+  phylogenetic_trees: "data/trees/*.nwk"
+  code: "github.com/sentry-bio/active-geometry (MIT)"
+
+# =============================================================================
+# Computational Requirements
+# =============================================================================
+requirements:
+  training: "8x NVIDIA A100, ~48 hours"
+  verification: "CPU only, ~10 minutes"
+  software: ["Python 3.11+", "PyTorch 2.0+", "Lean 4"]

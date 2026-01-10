@@ -1,0 +1,35 @@
+Biosphere Geometry Dataset Statistics
+============================================================
+
+Total genomes: 5626
+  NCBI-fetchable (public): 1540
+    - Supervised: 1520
+    - Unsupervised: 20
+  IMG/JGI MAGs (restricted): 4000
+  Named organisms: 86
+
+Domain Distribution:
+----------------------------------------
+
+Top 20 Phyla:
+----------------------------------------
+  Cyanobacteriota               :  648
+  Bacillota                     :  413
+  Pseudomonadota                :  219
+  Actinomycetota                :   65
+  Methanobacteriota             :   37
+  Bacteroidota                  :   34
+  Apicomplexa                   :   32
+  Thermoproteota                :   12
+  Mycoplasmatota                :   12
+  Basidiomycota                 :   11
+  Rhodophyta                    :    9
+  Campylobacterota              :    9
+  Fornicata                     :    7
+  Ascomycota                    :    6
+  Planctomycetota               :    5
+  Deinococcota                  :    5
+  Thermodesulfobacteriota       :    5
+  Chlorophyta                   :    4
+  Euglenozoa                    :    4
+  Verrucomicrobiota             :    3

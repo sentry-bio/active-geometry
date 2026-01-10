@@ -1,0 +1,123 @@
+# =============================================================================
+# Active Geometry: Canonical Constants
+# =============================================================================
+# This file is the SINGLE SOURCE OF TRUTH for all key values.
+# All scripts, figures, and validations read from this file.
+# If a value changes, update it HERE and nowhere else.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Curvature (κ) - The Central Result
+# -----------------------------------------------------------------------------
+curvature:
+  # Theoretical prediction (zero free parameters)
+  kappa_theory: 1.230
+  kappa_theory_uncertainty: 0.08  # From entropy measurement uncertainty
+
+  # Empirical measurement (5-seed average)
+  kappa_empirical: 1.247
+  kappa_empirical_std: 0.003
+  kappa_empirical_cv_percent: 0.24
+
+  # Agreement
+  theory_empirical_agreement_percent: 1.7
+
+  # Units and interpretation
+  units: "dimensionless (Gaussian curvature of Poincaré ball)"
+  interpretation: "Intrinsic curvature of evolutionary manifold"
+
+# -----------------------------------------------------------------------------
+# Entropy Rate (h) - Information Content
+# -----------------------------------------------------------------------------
+entropy:
+  # Effective entropy rate of genomic sequences
+  h_effective_bits: 1.61
+  h_effective_std: 0.10
+
+  # Theoretical bounds
+  h_max_bits: 2.0           # log2(4) for 4 nucleotides
+  h_min_bits: 0.0           # Perfect redundancy
+
+  # Measurement source
+  source: "Shannon entropy of aligned genomic sequences"
+  reference: "Empirical paper, Methods"
+
+# -----------------------------------------------------------------------------
+# Geometry - Manifold Properties
+# -----------------------------------------------------------------------------
+geometry:
+  # Intrinsic dimensionality
+  n_dimensions: 2
+  n_dimensions_fitted: 2.00
+  n_dimensions_fitted_std: 0.05
+
+  # Manifold type
+  manifold: "poincare_ball"
+  metric: "hyperbolic"
+
+  # State equation
+  state_equation: "kappa = (h * ln(2) / (n - 1))^2"
+  state_equation_latex: "\\kappa = \\left(\\frac{h \\ln 2}{n-1}\\right)^2"
+
+# -----------------------------------------------------------------------------
+# Validation - Experimental Parameters
+# -----------------------------------------------------------------------------
+validation:
+  genomic:
+    total_genomes: 5627
+    training_seeds: [0, 42, 123, 456, 789]
+    model_architecture: "BiosphereCodec 256x4"
+    latent_dim: 128
+
+  viral:
+    total_datasets: 15
+    total_genomes: 89247
+    seeds_per_dataset: 3
+    kappa_range: [1.32, 1.55]
+    phylogenetic_correlation: 0.84
+    phylogenetic_p_value: "<0.001"
+
+  phylogenetic:
+    tree_sources: ["TreeBASE", "OpenTree", "GTDB", "Ensembl"]
+    total_trees: 12
+    bootstrap_replicates: 30
+
+# -----------------------------------------------------------------------------
+# Model Architecture
+# -----------------------------------------------------------------------------
+model:
+  name: "BiosphereCodec"
+  version: "1.0"
+
+  architecture:
+    d_model: 256
+    n_layers: 4
+    latent_dim: 128
+    max_sequence_length: 8192
+    vocab_size: 5444
+
+  training:
+    batch_size: 2
+    gradient_accumulation: 8
+    learning_rate: 0.0002
+    phases: ["unsupervised", "supervised", "joint"]
+
+# -----------------------------------------------------------------------------
+# Mathematical Constants
+# -----------------------------------------------------------------------------
+math:
+  ln2: 0.6931471805599453
+  log2_e: 1.4426950408889634
+
+# -----------------------------------------------------------------------------
+# Metadata
+# -----------------------------------------------------------------------------
+metadata:
+  version: "1.0.0"
+  last_updated: "2025-01-01"
+  papers:
+    empirical: "Evolution as Active Geometry: A Universal Curvature Constant"
+    theory: "A Geometric State Equation for Evolutionary Dynamics"
+  authors: ["Fenn, R.", "Fenn, R."]
+  license: "MIT"
+  repository: "https://github.com/sentry-bio/active-geometry"

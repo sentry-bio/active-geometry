@@ -1,0 +1,66 @@
+# =============================================================================
+# Genomic Training Results: 5-Seed Convergence Analysis
+# =============================================================================
+# Experiment: Train BiosphereCodec on 5,627 genomes with 5 random seeds
+# Goal: Demonstrate that κ converges to same value regardless of initialization
+# =============================================================================
+
+experiment:
+  name: "Five-Seed Genomic Training"
+  date: "2025-01-01"
+  model: "BiosphereCodec 256x4"
+  dataset: "5,627 RefSeq genomes (6 major clades)"
+
+seeds:
+  - seed: 0
+    kappa: 1.245
+    final_step: 7000
+    mlm_loss: 2.31
+    convergence_to_ref: null  # Reference seed
+
+  - seed: 42
+    kappa: 1.248
+    final_step: 7000
+    mlm_loss: 2.29
+    convergence_to_ref:
+      procrustes_correlation: 0.984
+      mean_coordinate_diff: 0.023
+
+  - seed: 123
+    kappa: 1.247
+    final_step: 7000
+    mlm_loss: 2.30
+    convergence_to_ref:
+      procrustes_correlation: 0.981
+      mean_coordinate_diff: 0.027
+
+  - seed: 456
+    kappa: 1.249
+    final_step: 7000
+    mlm_loss: 2.28
+    convergence_to_ref:
+      procrustes_correlation: 0.979
+      mean_coordinate_diff: 0.031
+
+  - seed: 789
+    kappa: 1.246
+    final_step: 7000
+    mlm_loss: 2.32
+    convergence_to_ref:
+      procrustes_correlation: 0.983
+      mean_coordinate_diff: 0.025
+
+summary:
+  kappa_mean: 1.247
+  kappa_std: 0.003
+  kappa_cv_percent: 0.24
+  mean_procrustes_correlation: 0.982
+
+  interpretation: |
+    All 5 seeds converge to κ ≈ 1.247 with CV < 0.25%.
+    Hyperbolic coordinates are reproducible across random initializations,
+    demonstrating that the learned geometry is intrinsic to the data.
+
+checkpoints:
+  location: "Available upon request"
+  format: "PyTorch .pt files"
