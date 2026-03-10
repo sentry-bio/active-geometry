@@ -114,10 +114,10 @@ math:
 # -----------------------------------------------------------------------------
 metadata:
   version: "1.0.0"
-  last_updated: "2025-01-01"
+  last_updated: "2026-01-01"
   papers:
     empirical: "Evolution as Active Geometry: A Universal Curvature Constant"
     theory: "A Geometric State Equation for Evolutionary Dynamics"
-  authors: ["Fenn, R.", "Fenn, R."]
+  authors: ["Fenn, R.", "Fenn, A."]
   license: "MIT"
   repository: "https://github.com/sentry-bio/active-geometry"

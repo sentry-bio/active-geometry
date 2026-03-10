@@ -31,7 +31,7 @@ import torch.nn as nn
 from matplotlib.patches import Circle
 import matplotlib.patches as mpatches
 
-sys.path.append('/zfs_raid/SentryBio/5k_test_genomes')
+sys.path.append('.')
 from BiosphereCodec import BiosphereCodec
 
 def load_model_checkpoint(checkpoint_path):
@@ -315,15 +315,15 @@ def main():
     
     # Model paths with different checkpoint steps
     model_paths = [
-        '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_final/checkpoint_step_7000.pt',
-        '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_42/checkpoint_step_7000.pt',
-        '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_137/checkpoint_step_7000.pt',
-        '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_2024/checkpoint_step_7000.pt',
-        '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_888/checkpoint_step_2000.pt'
+        './results/seed_0/checkpoint_step_7000.pt',
+        './results/seed_42/checkpoint_step_7000.pt',
+        './results/seed_123/checkpoint_step_7000.pt',
+        './results/seed_456/checkpoint_step_7000.pt',
+        './results/seed_789/checkpoint_step_7000.pt'
     ]
     
     model_names = ['Original Model (7k)', 'Seed 42 Model (7k)', 'Seed 137 Model (7k)', 'Seed 2024 Model (7k)', 'Seed 888 Model (2k)']
-    data_path = '/zfs_raid/SentryBio/5k_test_genomes'
+    data_path = './data/genomes'
     
     # Verify files exist
     for name, path in zip(model_names, model_paths):

@@ -60,7 +60,7 @@ def filter_len(inp: Path, outp: Path, min_len: int, max_len: int, max_keep: int)
 
 
 def main() -> None:
-    base = Path("/home/rohit/public_viruses")
+    base = Path("./data/viruses")
     base.mkdir(parents=True, exist_ok=True)
     hcv_raw = base / "HCV_public_raw.fasta"
     denv_raw = base / "DENV_public_raw.fasta"
@@ -75,8 +75,8 @@ def main() -> None:
     print("Downloads complete")
 
     # Filter to plausible genome lengths (rough windows)
-    hcv_out = Path("/home/rohit/HCV_multi.fasta")
-    denv_out = Path("/home/rohit/DENV_multi.fasta")
+    hcv_out = Path("./data/viruses/HCV_multi.fasta")
+    denv_out = Path("./data/viruses/DENV_multi.fasta")
     hcv_n = filter_len(hcv_raw, hcv_out, min_len=9000, max_len=13000, max_keep=10000)
     denv_n = filter_len(denv_raw, denv_out, min_len=9000, max_len=13000, max_keep=10000)
     print(f"HCV written: {hcv_out} count={hcv_n}")

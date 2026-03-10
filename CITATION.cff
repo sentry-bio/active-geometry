@@ -7,12 +7,12 @@ authors:
     given-names: "Rohit"
     orcid: ""
   - family-names: "Fenn"
-    given-names: "Rohit"
+    given-names: "Amit"
     orcid: ""
 repository-code: "https://github.com/sentry-bio/active-geometry"
 license: MIT
 version: "1.0.0"
-date-released: "2025-01-01"
+date-released: "2026-01-01"
 
 preferred-citation:
   type: article
@@ -21,8 +21,8 @@ preferred-citation:
     - family-names: "Fenn"
       given-names: "Rohit"
     - family-names: "Fenn"
-      given-names: "Rohit"
-  year: 2025
+      given-names: "Amit"
+  year: 2026
   journal: ""
 
 references:
@@ -32,6 +32,6 @@ references:
       - family-names: "Fenn"
         given-names: "Rohit"
       - family-names: "Fenn"
-        given-names: "Rohit"
-    year: 2025
+        given-names: "Amit"
+    year: 2026
     journal: ""
