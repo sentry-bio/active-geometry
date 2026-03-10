@@ -256,18 +256,18 @@ make validate-all
 If you use this work, please cite both papers:
 
 ```bibtex
-@article{fenn2025empirical,
+@article{fenn2026empirical,
   title={Evolution as Active Geometry: A Universal Curvature Constant},
-  author={Fenn, Rohit and Fenn, Rohit},
+  author={Fenn, Rohit and Fenn, Amit},
   journal={},
-  year={2025}
+  year={2026}
 }
 
-@article{fenn2025theory,
+@article{fenn2026theory,
   title={A Geometric State Equation for Evolutionary Dynamics},
-  author={Fenn, Rohit and Fenn, Rohit},
+  author={Fenn, Rohit and Fenn, Amit},
   journal={},
-  year={2025}
+  year={2026}
 }
 ```
 

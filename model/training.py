@@ -96,8 +96,8 @@ class BiosphereConfig:
     gradient_checkpointing: bool = True
 
     # Paths & Logging
-    tokenizer_path: str = "/zfs_raid/SentryBio/5k_test_genomes/tokenizer_output_bulletproof/biosphere_tokenizer_bulletproof.pkl"
-    data_root: str = "/zfs_raid/SentryBio/5k_test_genomes"
+    tokenizer_path: str = "./data/tokenizer/biosphere_tokenizer.pkl"
+    data_root: str = "./data/genomes"
     output_dir: str = "./biosphere_run_final"
     log_every: int = 50
     save_every: int = 1000
@@ -261,13 +261,50 @@ class BiosphereLoss(nn.Module):
         self.mask_id = mask_id
         self.temp = temp
 
+    def _infonce_loss(self, z: Tensor) -> Tensor:
+        """InfoNCE contrastive loss on Poincaré embeddings.
+
+        Pulls together embeddings from the same batch position across
+        augmented views (odd/even split as proxy) while pushing apart
+        embeddings from different genomes.
+        """
+        if z.size(0) < 4:
+            return torch.tensor(0.0, device=z.device)
+        # Split batch into two views (proxy augmentation)
+        mid = z.size(0) // 2
+        z_a, z_b = F.normalize(z[:mid], dim=-1), F.normalize(z[mid:2*mid], dim=-1)
+        logits = z_a @ z_b.T / self.temp  # (mid, mid)
+        labels = torch.arange(mid, device=z.device)
+        return F.cross_entropy(logits, labels)
+
+    def _distance_loss(self, z: Tensor) -> Tensor:
+        """Poincaré distance margin loss.
+
+        Encourages a minimum hyperbolic separation between distinct
+        genome embeddings, preventing representational collapse.
+        """
+        if z.size(0) < 2:
+            return torch.tensor(0.0, device=z.device)
+        dist_mat = self.manifold.dist_mat(z)
+        # Margin loss: distances should be >= margin (0.5)
+        margin = 0.5
+        mask = ~torch.eye(z.size(0), dtype=torch.bool, device=z.device)
+        distances = dist_mat[mask]
+        loss = F.relu(margin - distances).mean()
+        return loss
+
     def forward(self, orig_tok: Tensor, mlm_labels: Tensor, enc_logits: Tensor, dec_logits: Tensor, z: Tensor) -> Tuple[Tensor, Dict[str, Any]]:
         vocab = enc_logits.size(-1)
         mlm_loss = F.cross_entropy(enc_logits.view(-1, vocab), mlm_labels.view(-1), ignore_index=-100)
         dec_loss = F.cross_entropy(dec_logits.view(-1, vocab), orig_tok.view(-1))
-        # InfoNCE and Distance losses omitted for this integration, can be added later
-        total = mlm_loss + dec_loss
-        return total, {"mlm": mlm_loss.item(), "dec": dec_loss.item(), "total": total.item()}
+        infonce = self._infonce_loss(z)
+        dist_loss = self._distance_loss(z)
+        total = mlm_loss + dec_loss + 0.1 * infonce + 0.5 * dist_loss
+        return total, {
+            "mlm": mlm_loss.item(), "dec": dec_loss.item(),
+            "infonce": infonce.item(), "dist": dist_loss.item(),
+            "total": total.item(),
+        }
 
 class BiosphereCodec(nn.Module):
     """Complete encoder-decoder model for genomic sequences."""

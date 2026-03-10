@@ -93,7 +93,7 @@ def extract_embeddings(model: torch.nn.Module, checkpoint_file: Path) -> Tuple[O
 def main():
     """Main execution function."""
     parser = argparse.ArgumentParser(description="Robust Unified Hyperbolic Embedding Extractor")
-    parser.add_argument("--base_dir", type=str, default="/zfs_raid/SentryBio/5k_test_genomes", help="Base directory of model runs.")
+    parser.add_argument("--base_dir", type=str, default="./data/genomes", help="Base directory of model runs.")
     parser.add_argument("--checkpoint_step", type=int, default=7000, help="Common checkpoint step to use.")
     parser.add_argument("--output_dir", type=str, default=".", help="Directory to save the output .npy files.")
     args = parser.parse_args()

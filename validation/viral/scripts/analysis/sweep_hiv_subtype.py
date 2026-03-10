@@ -28,7 +28,7 @@ def extract_subtype(header: str, seq: str) -> str:
 
 
 def run_sweep(
-    data_path: str = "/home/rohit/HIV1_multi.fasta",
+    data_path: str = "./data/viruses/HIV1_multi.fasta",
     max_seq: int = 12000,
     max_len: int = 4096,
     batch: int = 4,

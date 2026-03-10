@@ -90,7 +90,7 @@ def fetch_and_write(query: str, raw_out: Path) -> int:
 
 
 def main() -> None:
-    base = Path("/home/rohit/public_viruses")
+    base = Path("./data/viruses")
     base.mkdir(parents=True, exist_ok=True)
 
     # Queries tuned for complete genomes; broaden if needed
@@ -106,8 +106,8 @@ def main() -> None:
     print(f"HCV raw headers: {hcv_n}")
     print(f"DENV raw headers: {denv_n}")
 
-    hcv_out = Path("/home/rohit/HCV_multi.fasta")
-    denv_out = Path("/home/rohit/DENV_multi.fasta")
+    hcv_out = Path("./data/viruses/HCV_multi.fasta")
+    denv_out = Path("./data/viruses/DENV_multi.fasta")
     hcv_keep = filter_len(hcv_raw, hcv_out, 9000, 13000, 10000)
     denv_keep = filter_len(denv_raw, denv_out, 9000, 13000, 10000)
     print(f"HCV kept: {hcv_keep} -> {hcv_out}")

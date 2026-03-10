@@ -79,7 +79,7 @@ def main() -> None:
     fasta = efetch_fasta("nucleotide", ids)
     approx_headers = fasta.count("\n>") + (1 if fasta.startswith(">") else 0)
     print("Fetched records ~=", approx_headers)
-    out = Path("/home/rohit/INFA_multi.fasta")
+    out = Path("./data/viruses/INFA_multi.fasta")
     kept = write_capped_fasta_text(fasta, out, max_keep=10000)
     print(f"Wrote {out} kept {kept}")
 
