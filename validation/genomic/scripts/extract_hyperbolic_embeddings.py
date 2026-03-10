@@ -11,7 +11,7 @@ import zstandard as zstd
 import sys
 import os
 
-sys.path.append('/zfs_raid/SentryBio/5k_test_genomes')
+sys.path.append('.')
 from BiosphereCodec import BiosphereCodec
 
 def load_model_checkpoint(checkpoint_path):
@@ -66,13 +66,13 @@ def extract_embeddings(model, data_path, genome_ids_ref=None, max_samples=200):
     return np.array(coordinates), genome_ids
 
 def main():
-    data_path = '/zfs_raid/SentryBio/5k_test_genomes'
+    data_path = './data/genomes'
     model_ckpts = [
-        ('emb_original.npy', '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_final/checkpoint_step_7000.pt'),
-        ('emb_seed42.npy', '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_42/checkpoint_step_7000.pt'),
-        ('emb_seed137.npy', '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_137/checkpoint_step_7000.pt'),
-        ('emb_seed2024.npy', '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_2024/checkpoint_step_7000.pt'),
-        ('emb_seed888.npy', '/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_888/checkpoint_step_7000.pt'),
+        ('emb_original.npy', './results/seed_0/checkpoint_step_7000.pt'),
+        ('emb_seed42.npy', './results/seed_42/checkpoint_step_7000.pt'),
+        ('emb_seed137.npy', './results/seed_123/checkpoint_step_7000.pt'),
+        ('emb_seed2024.npy', './results/seed_456/checkpoint_step_7000.pt'),
+        ('emb_seed888.npy', './results/seed_789/checkpoint_step_7000.pt'),
     ]
     # Extract reference genome_ids from the first model
     print(f"Extracting reference embeddings and genome_ids from {model_ckpts[0][1]}")

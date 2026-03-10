@@ -1,0 +1,32 @@
+name: Verify All
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build verification container
+        run: docker build -t active-geometry:ci .
+
+      - name: Run all verifications
+        run: |
+          docker run --rm \
+            -e SKIP_LEAN=0 \
+            active-geometry:ci
+
+      - name: Upload verification report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-report
+          path: verification_report.json
+          if-no-files-found: ignore

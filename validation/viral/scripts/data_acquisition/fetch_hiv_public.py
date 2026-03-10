@@ -40,7 +40,7 @@ def efetch_fasta(db: str, ids, chunk: int = 200) -> str:
     return "".join(parts)
 
 
-def write_capped_fasta_text(fasta_text: str, out_path: Path, max_keep: int = 10000) -> int:
+def write_len_filtered_fasta_text(fasta_text: str, out_path: Path, min_len: int, max_len: int, max_keep: int) -> int:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     kept = 0
     with open(out_path, "w") as out:
@@ -49,13 +49,15 @@ def write_capped_fasta_text(fasta_text: str, out_path: Path, max_keep: int = 100
         for line in fasta_text.splitlines():
             if line.startswith(">"):
                 if h is not None and seq_parts:
-                    out.write(h + "\n")
                     seq = "".join(seq_parts).upper()
-                    for i in range(0, len(seq), 80):
-                        out.write(seq[i : i + 80] + "\n")
-                    kept += 1
-                    if kept >= max_keep:
-                        break
+                    L = len(seq)
+                    if min_len <= L <= max_len:
+                        out.write(h + "\n")
+                        for i in range(0, L, 80):
+                            out.write(seq[i : i + 80] + "\n")
+                        kept += 1
+                        if kept >= max_keep:
+                            break
                 h = line.strip()
                 seq_parts = []
             else:
@@ -63,24 +65,25 @@ def write_capped_fasta_text(fasta_text: str, out_path: Path, max_keep: int = 100
                 if t:
                     seq_parts.append(t)
         if kept < max_keep and h is not None and seq_parts:
-            out.write(h + "\n")
             seq = "".join(seq_parts).upper()
-            for i in range(0, len(seq), 80):
-                out.write(seq[i : i + 80] + "\n")
-            kept += 1
+            L = len(seq)
+            if min_len <= L <= max_len:
+                out.write(h + "\n")
+                for i in range(0, L, 80):
+                    out.write(seq[i : i + 80] + "\n")
+                kept += 1
     return kept
 
 
 def main() -> None:
-    # Capture both complete genomes and segments to ensure robust sample
-    query = "Influenza A virus[Organism] AND (complete genome OR segment)"
+    query = "Human immunodeficiency virus 1[Organism] AND (complete genome)"
     ids = esearch_ids("nucleotide", query, retmax=50000)
-    print("Influenza A: ids=", len(ids))
+    print("HIV-1: ids=", len(ids))
     fasta = efetch_fasta("nucleotide", ids)
     approx_headers = fasta.count("\n>") + (1 if fasta.startswith(">") else 0)
     print("Fetched records ~=", approx_headers)
-    out = Path("/home/rohit/INFA_multi.fasta")
-    kept = write_capped_fasta_text(fasta, out, max_keep=10000)
+    out = Path("./data/viruses/HIV1_multi.fasta")
+    kept = write_len_filtered_fasta_text(fasta, out, min_len=8000, max_len=12000, max_keep=10000)
     print(f"Wrote {out} kept {kept}")
 
 
