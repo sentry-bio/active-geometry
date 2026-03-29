@@ -1,0 +1,2106 @@
+{
+  "experiment": "eeg_volume_entropy",
+  "params": {
+    "window_s": 2.0,
+    "hop_s": 0.5,
+    "band": "alpha",
+    "band_hz": [
+      8,
+      13
+    ],
+    "resample_hz": 160,
+    "metric_primary": "log_euclidean",
+    "regularize": 1e-06
+  },
+  "formula": "h_vol = (n-1)*sqrt(kappa), n_implied = 1 + h_vol/sqrt(kappa)",
+  "eo_summary": {
+    "n": 20,
+    "kappa_loge_mean": 0.2840745,
+    "kappa_loge_std": 0.07258401655426627,
+    "kappa_airm_mean": null,
+    "h_vol_nats_mean": 4611.58434699336,
+    "h_vol_nats_std": 5004.662398866204,
+    "h_vol_bits_mean": 6653.109868048491,
+    "n_implied_loge_mean": 8375.7303,
+    "n_implied_loge_std": 8544.651875122036,
+    "n_implied_airm_mean": null,
+    "corr_dim_mean": 1.7662999999999998
+  },
+  "ec_summary": {
+    "n": 20,
+    "kappa_loge_mean": 0.281231,
+    "kappa_loge_std": 0.06016695654343836,
+    "kappa_airm_mean": null,
+    "h_vol_nats_mean": 4227.658836362306,
+    "h_vol_nats_std": 5614.113179484046,
+    "h_vol_bits_mean": 6099.222437790302,
+    "n_implied_loge_mean": 7442.0318,
+    "n_implied_loge_std": 9643.461832651108,
+    "n_implied_airm_mean": null,
+    "corr_dim_mean": 1.8063499999999997
+  },
+  "paired_contrast": [
+    {
+      "subject": "S001",
+      "h_vol_eo": 1444.5574118629806,
+      "h_vol_ec": 279.00171887741976,
+      "delta_h": -1165.5556929855609,
+      "kappa_eo": 0.284599,
+      "kappa_ec": 0.238522,
+      "delta_kappa": -0.04607699999999998,
+      "n_impl_eo": 2708.809,
+      "n_impl_ec": 572.271,
+      "delta_n": -2136.5380000000005
+    },
+    {
+      "subject": "S002",
+      "h_vol_eo": 1627.0763801356386,
+      "h_vol_ec": 343.49156545197263,
+      "delta_h": -1283.584814683666,
+      "kappa_eo": 0.237179,
+      "kappa_ec": 0.23474,
+      "delta_kappa": -0.0024389999999999967,
+      "n_impl_eo": 3341.947,
+      "n_impl_ec": 709.962,
+      "delta_n": -2631.985
+    },
+    {
+      "subject": "S003",
+      "h_vol_eo": 1094.45444659991,
+      "h_vol_ec": 148.2904318921649,
+      "delta_h": -946.1640147077451,
+      "kappa_eo": 0.240545,
+      "kappa_ec": 0.191271,
+      "delta_kappa": -0.04927400000000001,
+      "n_impl_eo": 2232.512,
+      "n_impl_ec": 340.069,
+      "delta_n": -1892.4430000000002
+    },
+    {
+      "subject": "S004",
+      "h_vol_eo": 2905.1142608821356,
+      "h_vol_ec": 3368.103348204645,
+      "delta_h": 462.9890873225095,
+      "kappa_eo": 0.107419,
+      "kappa_ec": 0.302085,
+      "delta_kappa": 0.194666,
+      "n_impl_eo": 8864.868,
+      "n_impl_ec": 6129.025,
+      "delta_n": -2735.8430000000008
+    },
+    {
+      "subject": "S005",
+      "h_vol_eo": 16533.197206187695,
+      "h_vol_ec": 12914.247892883257,
+      "delta_h": -3618.949313304438,
+      "kappa_eo": 0.430568,
+      "kappa_ec": 0.403273,
+      "delta_kappa": -0.027295000000000014,
+      "n_impl_eo": 25197.252,
+      "n_impl_ec": 20337.189,
+      "delta_n": -4860.063000000002
+    },
+    {
+      "subject": "S006",
+      "h_vol_eo": 8304.039739650445,
+      "h_vol_ec": 17537.30711244009,
+      "delta_h": 9233.267372789644,
+      "kappa_eo": 0.301303,
+      "kappa_ec": 0.336937,
+      "delta_kappa": 0.035634,
+      "n_impl_eo": 15129.203,
+      "n_impl_ec": 30213.628,
+      "delta_n": 15084.425000000001
+    },
+    {
+      "subject": "S007",
+      "h_vol_eo": 637.5139687449971,
+      "h_vol_ec": 1292.3235017569382,
+      "delta_h": 654.8095330119411,
+      "kappa_eo": 0.180215,
+      "kappa_ec": 0.319926,
+      "delta_kappa": 0.139711,
+      "n_impl_eo": 1502.739,
+      "n_impl_ec": 2285.791,
+      "delta_n": 783.0520000000001
+    },
+    {
+      "subject": "S008",
+      "h_vol_eo": 2766.5267550961257,
+      "h_vol_ec": 2391.6682311376094,
+      "delta_h": -374.85852395851634,
+      "kappa_eo": 0.289567,
+      "kappa_ec": 0.285338,
+      "delta_kappa": -0.004229000000000038,
+      "n_impl_eo": 5142.147,
+      "n_impl_ec": 4478.35,
+      "delta_n": -663.7969999999996
+    },
+    {
+      "subject": "S009",
+      "h_vol_eo": 5071.245902473698,
+      "h_vol_ec": 664.0172784050724,
+      "delta_h": -4407.228624068626,
+      "kappa_eo": 0.401832,
+      "kappa_ec": 0.326446,
+      "delta_kappa": -0.07538600000000001,
+      "n_impl_eo": 8001.041,
+      "n_impl_ec": 1163.182,
+      "delta_n": -6837.859
+    },
+    {
+      "subject": "S010",
+      "h_vol_eo": 1566.034902715509,
+      "h_vol_ec": 271.2727160698002,
+      "delta_h": -1294.7621866457087,
+      "kappa_eo": 0.355161,
+      "kappa_ec": 0.216843,
+      "delta_kappa": -0.138318,
+      "n_impl_eo": 2628.777,
+      "n_impl_ec": 583.55,
+      "delta_n": -2045.227
+    },
+    {
+      "subject": "S011",
+      "h_vol_eo": 3228.1230407617904,
+      "h_vol_ec": 1153.370402347567,
+      "delta_h": -2074.7526384142234,
+      "kappa_eo": 0.233236,
+      "kappa_ec": 0.202031,
+      "delta_kappa": -0.03120500000000001,
+      "n_impl_eo": 6685.249,
+      "n_impl_ec": 2567.018,
+      "delta_n": -4118.231
+    },
+    {
+      "subject": "S012",
+      "h_vol_eo": 13094.028627272697,
+      "h_vol_ec": 12060.417950395136,
+      "delta_h": -1033.6106768775608,
+      "kappa_eo": 0.345536,
+      "kappa_ec": 0.326872,
+      "delta_kappa": -0.018664000000000014,
+      "n_impl_eo": 22276.447,
+      "n_impl_ec": 21095.701,
+      "delta_n": -1180.7459999999992
+    },
+    {
+      "subject": "S013",
+      "h_vol_eo": 1002.4987509941914,
+      "h_vol_ec": 1123.8566680335132,
+      "delta_h": 121.35791703932182,
+      "kappa_eo": 0.258035,
+      "kappa_ec": 0.316637,
+      "delta_kappa": 0.05860199999999999,
+      "n_impl_eo": 1974.533,
+      "n_impl_ec": 1998.238,
+      "delta_n": 23.705000000000155
+    },
+    {
+      "subject": "S014",
+      "h_vol_eo": 1902.3926995372617,
+      "h_vol_ec": 611.6095911884157,
+      "delta_h": -1290.7831083488459,
+      "kappa_eo": 0.285839,
+      "kappa_ec": 0.292764,
+      "delta_kappa": 0.0069250000000000145,
+      "n_impl_eo": 3559.272,
+      "n_impl_ec": 1131.356,
+      "delta_n": -2427.916
+    },
+    {
+      "subject": "S015",
+      "h_vol_eo": 397.4567139236568,
+      "h_vol_ec": 148.80791018522547,
+      "delta_h": -248.64880373843135,
+      "kappa_eo": 0.216426,
+      "kappa_ec": 0.218539,
+      "delta_kappa": 0.0021130000000000038,
+      "n_impl_eo": 855.348,
+      "n_impl_ec": 319.318,
+      "delta_n": -536.03
+    },
+    {
+      "subject": "S016",
+      "h_vol_eo": 15929.031397805891,
+      "h_vol_ec": 12269.766317143069,
+      "delta_h": -3659.2650806628226,
+      "kappa_eo": 0.276656,
+      "kappa_ec": 0.299427,
+      "delta_kappa": 0.022770999999999986,
+      "n_impl_eo": 30285.421,
+      "n_impl_ec": 22423.863,
+      "delta_n": -7861.557999999997
+    },
+    {
+      "subject": "S017",
+      "h_vol_eo": 1478.9276671107111,
+      "h_vol_ec": 976.8611645131273,
+      "delta_h": -502.06650259758385,
+      "kappa_eo": 0.366251,
+      "kappa_ec": 0.336371,
+      "delta_kappa": -0.029880000000000018,
+      "n_impl_eo": 2444.754,
+      "n_impl_ec": 1685.316,
+      "delta_n": -759.4379999999999
+    },
+    {
+      "subject": "S018",
+      "h_vol_eo": 8846.456543820645,
+      "h_vol_ec": 13664.553243300761,
+      "delta_h": 4818.0966994801165,
+      "kappa_eo": 0.286213,
+      "kappa_ec": 0.318132,
+      "delta_kappa": 0.03191900000000003,
+      "n_impl_eo": 16536.776,
+      "n_impl_ec": 24227.571,
+      "delta_n": 7690.794999999998
+    },
+    {
+      "subject": "S019",
+      "h_vol_eo": 1011.7690378368097,
+      "h_vol_ec": 2616.48194762473,
+      "delta_h": 1604.7129097879201,
+      "kappa_eo": 0.292948,
+      "kappa_ec": 0.30125,
+      "delta_kappa": 0.008302000000000032,
+      "n_impl_eo": 1870.33,
+      "n_impl_ec": 4768.099,
+      "delta_n": 2897.7690000000002
+    },
+    {
+      "subject": "S020",
+      "h_vol_eo": 3391.2414864544144,
+      "h_vol_ec": 717.7277353955803,
+      "delta_h": -2673.513751058834,
+      "kappa_eo": 0.291962,
+      "kappa_ec": 0.157216,
+      "delta_kappa": -0.134746,
+      "n_impl_eo": 6277.181,
+      "n_impl_ec": 1811.139,
+      "delta_n": -4466.0419999999995
+    }
+  ],
+  "subjects": [
+    {
+      "subject": "S001",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.284599,
+          "kappa_loge_ci": [
+            0.278997,
+            0.289144
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1444.5574118629806,
+            "h_vol_nats_mean": 2279.571863811991,
+            "h_vol_nats_std": 1613.357157087915,
+            "h_vol_bits": 2084.055814374118,
+            "h_vol_bits_mean": 3288.727023271571,
+            "h_vol_bits_std": 2327.5823697134515,
+            "r2_median": 0.5084062685105206,
+            "r2_mean": 0.5587869062411843,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 2708.809,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.033,
+            "r2": 0.7241
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 1.93,
+            "n_90pct": 8,
+            "n_95pct": 16,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.5
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.238522,
+          "kappa_loge_ci": [
+            0.232054,
+            0.245532
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 279.00171887741976,
+            "h_vol_nats_mean": 325.0616041193742,
+            "h_vol_nats_std": 157.3033735147498,
+            "h_vol_bits": 402.5143962239502,
+            "h_vol_bits_mean": 468.9647642464326,
+            "h_vol_bits_std": 226.94079688483387,
+            "r2_median": 0.7011870821607875,
+            "r2_mean": 0.7404441083719597,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 572.271,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.891,
+            "r2": 0.9457
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 3.04,
+            "n_90pct": 10,
+            "n_95pct": 17,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.3
+        }
+      ]
+    },
+    {
+      "subject": "S002",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.237179,
+          "kappa_loge_ci": [
+            0.230188,
+            0.245067
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1627.0763801356386,
+            "h_vol_nats_mean": 2850.267892307082,
+            "h_vol_nats_std": 2202.3353184725747,
+            "h_vol_bits": 2347.375024769252,
+            "h_vol_bits_mean": 4112.067353436465,
+            "h_vol_bits_std": 3177.2982423349995,
+            "r2_median": 0.5258267171379658,
+            "r2_mean": 0.5867766277989952,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 3341.947,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.405,
+            "r2": 0.9158
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 3.9,
+            "n_90pct": 12,
+            "n_95pct": 21,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.0
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.23474,
+          "kappa_loge_ci": [
+            0.22765,
+            0.24168
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 343.49156545197263,
+            "h_vol_nats_mean": 478.62263311844526,
+            "h_vol_nats_std": 288.2236147171228,
+            "h_vol_bits": 495.55357806474774,
+            "h_vol_bits_mean": 690.5064992571987,
+            "h_vol_bits_std": 415.81877961948436,
+            "r2_median": 0.6093607604159983,
+            "r2_mean": 0.6570510855500636,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 709.962,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.469,
+            "r2": 0.9141
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.19,
+            "n_90pct": 8,
+            "n_95pct": 14,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.1
+        }
+      ]
+    },
+    {
+      "subject": "S003",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.240545,
+          "kappa_loge_ci": [
+            0.23567,
+            0.24531
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1094.45444659991,
+            "h_vol_nats_mean": 1126.8151653703376,
+            "h_vol_nats_std": 418.5667857319255,
+            "h_vol_bits": 1578.9640025885649,
+            "h_vol_bits_mean": 1625.6506510782633,
+            "h_vol_bits_std": 603.8642260562823,
+            "r2_median": 0.7921194726331482,
+            "r2_mean": 0.7719029439558674,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 2232.512,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 2.172,
+            "r2": 0.9268
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.32,
+            "n_90pct": 10,
+            "n_95pct": 17,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.7
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.191271,
+          "kappa_loge_ci": [
+            0.185493,
+            0.197246
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 148.2904318921649,
+            "h_vol_nats_mean": 203.45981935716512,
+            "h_vol_nats_std": 112.04460290912063,
+            "h_vol_bits": 213.93787070210888,
+            "h_vol_bits_mean": 293.53047240674647,
+            "h_vol_bits_std": 161.64619297536146,
+            "r2_median": 0.7079212212365542,
+            "r2_mean": 0.6902693755271687,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 340.069,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.508,
+            "r2": 0.8958
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 1.87,
+            "n_90pct": 7,
+            "n_95pct": 12,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.6
+        }
+      ]
+    },
+    {
+      "subject": "S004",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.107419,
+          "kappa_loge_ci": [
+            0.103872,
+            0.110748
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 2905.1142608821356,
+            "h_vol_nats_mean": 3236.204628047869,
+            "h_vol_nats_std": 1306.137118347264,
+            "h_vol_bits": 4191.193937390463,
+            "h_vol_bits_mean": 4668.8563681865735,
+            "h_vol_bits_std": 1884.357543360599,
+            "r2_median": 0.7445751088595973,
+            "r2_mean": 0.7435150917731663,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 8864.868,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.324,
+            "r2": 0.9473
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 1.16,
+            "n_90pct": 1,
+            "n_95pct": 3,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 2.9
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.302085,
+          "kappa_loge_ci": [
+            0.295891,
+            0.307623
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 3368.103348204645,
+            "h_vol_nats_mean": 3560.8590540788996,
+            "h_vol_nats_std": 1190.535078757879,
+            "h_vol_bits": 4859.145997656355,
+            "h_vol_bits_mean": 5137.2336986241935,
+            "h_vol_bits_std": 1717.5790541283436,
+            "r2_median": 0.6429572756883919,
+            "r2_mean": 0.6904277614970186,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 6129.025,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 2.007,
+            "r2": 0.8568
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.8,
+            "n_90pct": 11,
+            "n_95pct": 20,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.6
+        }
+      ]
+    },
+    {
+      "subject": "S005",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.430568,
+          "kappa_loge_ci": [
+            0.428156,
+            0.432857
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 16533.197206187695,
+            "h_vol_nats_mean": 20461.1661685607,
+            "h_vol_nats_std": 11152.229999993737,
+            "h_vol_bits": 23852.361619406252,
+            "h_vol_bits_mean": 29519.222962187556,
+            "h_vol_bits_std": 16089.26691584409,
+            "r2_median": 0.613626036336681,
+            "r2_mean": 0.6262108019150103,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 25197.252,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 4.124,
+            "r2": 0.7736
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 21.1,
+            "n_90pct": 38,
+            "n_95pct": 52,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.7
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.403273,
+          "kappa_loge_ci": [
+            0.399663,
+            0.407049
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 12914.247892883257,
+            "h_vol_nats_mean": 15701.531343693601,
+            "h_vol_nats_std": 7061.866980825815,
+            "h_vol_bits": 18631.32139187342,
+            "h_vol_bits_mean": 22652.52140390938,
+            "h_vol_bits_std": 10188.12047265492,
+            "r2_median": 0.6533948233325362,
+            "r2_mean": 0.6659513844092676,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 20337.189,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 2.83,
+            "r2": 0.7746
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 16.84,
+            "n_90pct": 35,
+            "n_95pct": 49,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.3
+        }
+      ]
+    },
+    {
+      "subject": "S006",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.301303,
+          "kappa_loge_ci": [
+            0.296241,
+            0.307277
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 8304.039739650445,
+            "h_vol_nats_mean": 11246.42060015234,
+            "h_vol_nats_std": 9905.42845384657,
+            "h_vol_bits": 11980.196951738577,
+            "h_vol_bits_mean": 16225.15522759126,
+            "h_vol_bits_std": 14290.512508244881,
+            "r2_median": 0.5976279638585997,
+            "r2_mean": 0.5991394771828747,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 15129.203,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.757,
+            "r2": 0.8354
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 4.85,
+            "n_90pct": 15,
+            "n_95pct": 26,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.7
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.336937,
+          "kappa_loge_ci": [
+            0.333234,
+            0.341567
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 17537.30711244009,
+            "h_vol_nats_mean": 27113.74421786857,
+            "h_vol_nats_std": 18512.934645011937,
+            "h_vol_bits": 25300.986001664063,
+            "h_vol_bits_mean": 39116.864323050795,
+            "h_vol_bits_std": 26708.519004660204,
+            "r2_median": 0.5435748350134063,
+            "r2_mean": 0.5904270501855712,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 30213.628,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.284,
+            "r2": 0.7158
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 3.63,
+            "n_90pct": 20,
+            "n_95pct": 31,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.1
+        }
+      ]
+    },
+    {
+      "subject": "S007",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.180215,
+          "kappa_loge_ci": [
+            0.173025,
+            0.18756
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 637.5139687449971,
+            "h_vol_nats_mean": 1019.8875004135667,
+            "h_vol_nats_std": 695.1035308580464,
+            "h_vol_bits": 919.7382412058489,
+            "h_vol_bits_mean": 1471.3866391112933,
+            "h_vol_bits_std": 1002.8224168733121,
+            "r2_median": 0.6065033974584823,
+            "r2_mean": 0.6710415569793531,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 1502.739,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.322,
+            "r2": 0.9569
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.63,
+            "n_90pct": 9,
+            "n_95pct": 15,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.2
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.319926,
+          "kappa_loge_ci": [
+            0.314409,
+            0.324878
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1292.3235017569382,
+            "h_vol_nats_mean": 1360.838437531109,
+            "h_vol_nats_std": 498.52697738213175,
+            "h_vol_bits": 1864.4287072089944,
+            "h_vol_bits_mean": 1963.2748652772166,
+            "h_vol_bits_std": 719.222398018566,
+            "r2_median": 0.7895525030503766,
+            "r2_mean": 0.7889496358658766,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 2285.791,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 2.857,
+            "r2": 0.9081
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 5.0,
+            "n_90pct": 18,
+            "n_95pct": 28,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.2
+        }
+      ]
+    },
+    {
+      "subject": "S008",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.289567,
+          "kappa_loge_ci": [
+            0.282688,
+            0.29548
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 2766.5267550961257,
+            "h_vol_nats_mean": 4161.783587156887,
+            "h_vol_nats_std": 2713.1556539861463,
+            "h_vol_bits": 3991.2544300638165,
+            "h_vol_bits_mean": 6004.184542444322,
+            "h_vol_bits_std": 3914.2562071656657,
+            "r2_median": 0.4068523025405455,
+            "r2_mean": 0.44785651734643445,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 5142.147,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.385,
+            "r2": 0.8171
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.33,
+            "n_90pct": 12,
+            "n_95pct": 21,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 2.9
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.285338,
+          "kappa_loge_ci": [
+            0.276597,
+            0.296502
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 2391.6682311376094,
+            "h_vol_nats_mean": 3308.4991737285536,
+            "h_vol_nats_std": 1774.763795825118,
+            "h_vol_bits": 3450.4478965139083,
+            "h_vol_bits_mean": 4773.1553507234175,
+            "h_vol_bits_std": 2560.4429269861707,
+            "r2_median": 0.742951242928138,
+            "r2_mean": 0.7209324617816666,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 4478.35,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.707,
+            "r2": 0.9891
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 6.2,
+            "n_90pct": 16,
+            "n_95pct": 25,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.0
+        }
+      ]
+    },
+    {
+      "subject": "S009",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.401832,
+          "kappa_loge_ci": [
+            0.398162,
+            0.405559
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 5071.245902473698,
+            "h_vol_nats_mean": 5750.618619162127,
+            "h_vol_nats_std": 2228.806607002032,
+            "h_vol_bits": 7316.261314627281,
+            "h_vol_bits_mean": 8296.38896390894,
+            "h_vol_bits_std": 3215.4882390223884,
+            "r2_median": 0.7761334965997628,
+            "r2_mean": 0.7851055065286823,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 8001.041,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 4.374,
+            "r2": 0.9017
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 22.26,
+            "n_90pct": 35,
+            "n_95pct": 50,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.1
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.326446,
+          "kappa_loge_ci": [
+            0.322546,
+            0.329892
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 664.0172784050724,
+            "h_vol_nats_mean": 1100.7739578005378,
+            "h_vol_nats_std": 854.7606479957188,
+            "h_vol_bits": 957.9744346195841,
+            "h_vol_bits_mean": 1588.081130058553,
+            "h_vol_bits_std": 1233.1589480104606,
+            "r2_median": 0.4664740755451484,
+            "r2_mean": 0.5373793323729307,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 1163.182,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.585,
+            "r2": 0.7696
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 3.52,
+            "n_90pct": 23,
+            "n_95pct": 35,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.7
+        }
+      ]
+    },
+    {
+      "subject": "S010",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.355161,
+          "kappa_loge_ci": [
+            0.349328,
+            0.360707
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1566.034902715509,
+            "h_vol_nats_mean": 2214.1788456786708,
+            "h_vol_nats_std": 1644.2528645154428,
+            "h_vol_bits": 2259.310788006695,
+            "h_vol_bits_mean": 3194.384840301868,
+            "h_vol_bits_std": 2372.155453603902,
+            "r2_median": 0.456005444591717,
+            "r2_mean": 0.4895246736147284,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 2628.777,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.124,
+            "r2": 0.6684
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.88,
+            "n_90pct": 17,
+            "n_95pct": 29,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.8
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.216843,
+          "kappa_loge_ci": [
+            0.20994,
+            0.224158
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 271.2727160698002,
+            "h_vol_nats_mean": 344.69790939119684,
+            "h_vol_nats_std": 179.18792206743805,
+            "h_vol_bits": 391.36380220238055,
+            "h_vol_bits_mean": 497.29396448347296,
+            "h_vol_bits_std": 258.5135265538909,
+            "r2_median": 0.773581741628761,
+            "r2_mean": 0.7552219356399238,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 583.55,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.561,
+            "r2": 0.9826
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.76,
+            "n_90pct": 9,
+            "n_95pct": 16,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.2
+        }
+      ]
+    },
+    {
+      "subject": "S011",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.233236,
+          "kappa_loge_ci": [
+            0.229484,
+            0.237664
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 3228.1230407617904,
+            "h_vol_nats_mean": 5948.360767312631,
+            "h_vol_nats_std": 6428.238325005582,
+            "h_vol_bits": 4657.197102286436,
+            "h_vol_bits_mean": 8581.670580420401,
+            "h_vol_bits_std": 9273.98755313793,
+            "r2_median": 0.32579245378686983,
+            "r2_mean": 0.393976434544126,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 6685.249,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.0,
+            "r2": 0.776
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.76,
+            "n_90pct": 9,
+            "n_95pct": 18,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.5
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.202031,
+          "kappa_loge_ci": [
+            0.194206,
+            0.210198
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1153.370402347567,
+            "h_vol_nats_mean": 1655.5220044578527,
+            "h_vol_nats_std": 1070.246036040128,
+            "h_vol_bits": 1663.9617597749434,
+            "h_vol_bits_mean": 2388.4133859139006,
+            "h_vol_bits_std": 1544.0386487261635,
+            "r2_median": 0.6633781244241652,
+            "r2_mean": 0.7033387437465662,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 2567.018,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.362,
+            "r2": 0.9669
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.57,
+            "n_90pct": 7,
+            "n_95pct": 13,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.1
+        }
+      ]
+    },
+    {
+      "subject": "S012",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.345536,
+          "kappa_loge_ci": [
+            0.340521,
+            0.350206
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 13094.028627272697,
+            "h_vol_nats_mean": 17648.054268603737,
+            "h_vol_nats_std": 9920.194715611942,
+            "h_vol_bits": 18890.690165824442,
+            "h_vol_bits_mean": 25460.760374653913,
+            "h_vol_bits_std": 14311.81572086625,
+            "r2_median": 0.5660440732299241,
+            "r2_mean": 0.6133336596757316,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 22276.447,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 2.109,
+            "r2": 0.8331
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 6.95,
+            "n_90pct": 22,
+            "n_95pct": 33,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.3
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.326872,
+          "kappa_loge_ci": [
+            0.320391,
+            0.332676
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 12060.417950395136,
+            "h_vol_nats_mean": 17888.895913779026,
+            "h_vol_nats_std": 11593.352540836977,
+            "h_vol_bits": 17399.5051680833,
+            "h_vol_bits_mean": 25808.221421787843,
+            "h_vol_bits_std": 16725.67221794297,
+            "r2_median": 0.5663312416665618,
+            "r2_mean": 0.6078147433600563,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 21095.701,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 2.045,
+            "r2": 0.8905
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 8.09,
+            "n_90pct": 21,
+            "n_95pct": 32,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.4
+        }
+      ]
+    },
+    {
+      "subject": "S013",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.258035,
+          "kappa_loge_ci": [
+            0.252475,
+            0.262937
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1002.4987509941914,
+            "h_vol_nats_mean": 1728.5043073751858,
+            "h_vol_nats_std": 1215.606623082569,
+            "h_vol_bits": 1446.2999765566997,
+            "h_vol_bits_mean": 2493.704592405393,
+            "h_vol_bits_std": 1753.7496467930018,
+            "r2_median": 0.5243491371195476,
+            "r2_mean": 0.6076960481825717,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 1974.533,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.63,
+            "r2": 0.8973
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 3.7,
+            "n_90pct": 14,
+            "n_95pct": 23,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 2.8
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.316637,
+          "kappa_loge_ci": [
+            0.310665,
+            0.322655
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1123.8566680335132,
+            "h_vol_nats_mean": 1932.8524558477993,
+            "h_vol_nats_std": 1570.6027718328103,
+            "h_vol_bits": 1621.3824416419436,
+            "h_vol_bits_mean": 2788.516652821674,
+            "h_vol_bits_std": 2265.900830129656,
+            "r2_median": 0.5775718819805855,
+            "r2_mean": 0.6298098147340487,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 1998.238,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.942,
+            "r2": 0.8899
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 6.43,
+            "n_90pct": 18,
+            "n_95pct": 28,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.3
+        }
+      ]
+    },
+    {
+      "subject": "S014",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 117,
+          "duration_s": 60.0,
+          "kappa_loge": 0.285839,
+          "kappa_loge_ci": [
+            0.27856,
+            0.294383
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1902.3926995372617,
+            "h_vol_nats_mean": 3016.324833239758,
+            "h_vol_nats_std": 2075.2611440891155,
+            "h_vol_bits": 2744.5725134457753,
+            "h_vol_bits_mean": 4351.636878625229,
+            "h_vol_bits_std": 2993.9689611269237,
+            "r2_median": 0.561608674484845,
+            "r2_mean": 0.5931627304387008,
+            "n_centers": 117,
+            "n_points": 117
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 3559.272,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.523,
+            "r2": 0.8994
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 4.59,
+            "n_90pct": 15,
+            "n_95pct": 24,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.2
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.292764,
+          "kappa_loge_ci": [
+            0.287461,
+            0.297882
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 611.6095911884157,
+            "h_vol_nats_mean": 810.1095039385114,
+            "h_vol_nats_std": 420.6240059594864,
+            "h_vol_bits": 882.3661241676537,
+            "h_vol_bits_mean": 1168.7409639091086,
+            "h_vol_bits_std": 606.8321674766008,
+            "r2_median": 0.5766207988107435,
+            "r2_mean": 0.656956317171116,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 1131.356,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.65,
+            "r2": 0.8044
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 3.08,
+            "n_90pct": 10,
+            "n_95pct": 19,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.5
+        }
+      ]
+    },
+    {
+      "subject": "S015",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.216426,
+          "kappa_loge_ci": [
+            0.20669,
+            0.224749
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 397.4567139236568,
+            "h_vol_nats_mean": 607.4792282273562,
+            "h_vol_nats_std": 382.9700630022607,
+            "h_vol_bits": 573.4088301456832,
+            "h_vol_bits_mean": 876.4072700066616,
+            "h_vol_bits_std": 552.5090107022954,
+            "r2_median": 0.5906917158873217,
+            "r2_mean": 0.6367845705002021,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 855.348,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.349,
+            "r2": 0.962
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.37,
+            "n_90pct": 10,
+            "n_95pct": 16,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.7
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.218539,
+          "kappa_loge_ci": [
+            0.213048,
+            0.22374
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 148.80791018522547,
+            "h_vol_nats_mean": 254.50825054443047,
+            "h_vol_nats_std": 168.98738143498235,
+            "h_vol_bits": 214.68443406927506,
+            "h_vol_bits_mean": 367.1777909257757,
+            "h_vol_bits_std": 243.79725716906074,
+            "r2_median": 0.5406713221687706,
+            "r2_mean": 0.5984613460794302,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 319.318,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.37,
+            "r2": 0.912
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.17,
+            "n_90pct": 7,
+            "n_95pct": 14,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.2
+        }
+      ]
+    },
+    {
+      "subject": "S016",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.276656,
+          "kappa_loge_ci": [
+            0.270228,
+            0.281656
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 15929.031397805891,
+            "h_vol_nats_mean": 21256.270039777817,
+            "h_vol_nats_std": 13130.628895969096,
+            "h_vol_bits": 22980.734603779154,
+            "h_vol_bits_mean": 30666.315374184105,
+            "h_vol_bits_std": 18943.49319196794,
+            "r2_median": 0.642458776258704,
+            "r2_mean": 0.6671413159796241,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 30285.421,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.946,
+            "r2": 0.8814
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 4.25,
+            "n_90pct": 13,
+            "n_95pct": 21,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.1
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.299427,
+          "kappa_loge_ci": [
+            0.293639,
+            0.305057
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 12269.766317143069,
+            "h_vol_nats_mean": 18007.448265674193,
+            "h_vol_nats_std": 10012.83804767969,
+            "h_vol_bits": 17701.531018608744,
+            "h_vol_bits_mean": 25979.256311952722,
+            "h_vol_bits_std": 14445.471796611819,
+            "r2_median": 0.5723228228535757,
+            "r2_mean": 0.639636622576224,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 22423.863,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.186,
+            "r2": 0.7469
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.25,
+            "n_90pct": 10,
+            "n_95pct": 18,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.5
+        }
+      ]
+    },
+    {
+      "subject": "S017",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.366251,
+          "kappa_loge_ci": [
+            0.36257,
+            0.370201
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1478.9276671107111,
+            "h_vol_nats_mean": 2816.0151561716934,
+            "h_vol_nats_std": 4418.268121182183,
+            "h_vol_bits": 2133.641611174107,
+            "h_vol_bits_mean": 4062.651100877062,
+            "h_vol_bits_std": 6374.213507747333,
+            "r2_median": 0.3751658766548902,
+            "r2_mean": 0.4155611277825762,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 2444.754,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 0.921,
+            "r2": 0.5952
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.96,
+            "n_90pct": 14,
+            "n_95pct": 26,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.5
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.336371,
+          "kappa_loge_ci": [
+            0.331736,
+            0.340964
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 976.8611645131273,
+            "h_vol_nats_mean": 1188.875929893413,
+            "h_vol_nats_std": 559.071919707639,
+            "h_vol_bits": 1409.3127576801066,
+            "h_vol_bits_mean": 1715.185408289482,
+            "h_vol_bits_std": 806.5702860624835,
+            "r2_median": 0.6649156057239641,
+            "r2_mean": 0.7124179044732294,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 1685.316,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 2.567,
+            "r2": 0.8769
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 8.78,
+            "n_90pct": 21,
+            "n_95pct": 31,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.4
+        }
+      ]
+    },
+    {
+      "subject": "S018",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.286213,
+          "kappa_loge_ci": [
+            0.281437,
+            0.291629
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 8846.456543820645,
+            "h_vol_nats_mean": 9322.699174380463,
+            "h_vol_nats_std": 3291.51862165847,
+            "h_vol_bits": 12762.738985209764,
+            "h_vol_bits_mean": 13449.811866578328,
+            "h_vol_bits_std": 4748.65759246035,
+            "r2_median": 0.7982984192351273,
+            "r2_mean": 0.8126624520708197,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 16536.776,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 2.617,
+            "r2": 0.9299
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 4.3,
+            "n_90pct": 12,
+            "n_95pct": 20,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.5
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.318132,
+          "kappa_loge_ci": [
+            0.312251,
+            0.324063
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 13664.553243300761,
+            "h_vol_nats_mean": 14129.057446758507,
+            "h_vol_nats_std": 5197.312191904236,
+            "h_vol_bits": 19713.78320007321,
+            "h_vol_bits_mean": 20383.921110873776,
+            "h_vol_bits_std": 7498.13652521199,
+            "r2_median": 0.7506648949266983,
+            "r2_mean": 0.7828998008565022,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 24227.571,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 2.585,
+            "r2": 0.9169
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 5.91,
+            "n_90pct": 19,
+            "n_95pct": 29,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.4
+        }
+      ]
+    },
+    {
+      "subject": "S019",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.292948,
+          "kappa_loge_ci": [
+            0.288771,
+            0.298519
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 1011.7690378368097,
+            "h_vol_nats_mean": 1863.6751726564314,
+            "h_vol_nats_std": 1743.6839597546734,
+            "h_vol_bits": 1459.6741734121633,
+            "h_vol_bits_mean": 2688.7149294193164,
+            "h_vol_bits_std": 2515.6042016156985,
+            "r2_median": 0.36256300632750027,
+            "r2_mean": 0.4407812677915388,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 1870.33,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 0.974,
+            "r2": 0.7311
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.34,
+            "n_90pct": 8,
+            "n_95pct": 16,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.4
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.30125,
+          "kappa_loge_ci": [
+            0.296499,
+            0.306956
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 2616.48194762473,
+            "h_vol_nats_mean": 4518.637033263841,
+            "h_vol_nats_std": 4176.58219866304,
+            "h_vol_bits": 3774.7855304136942,
+            "h_vol_bits_mean": 6519.015239466961,
+            "h_vol_bits_std": 6025.534425876292,
+            "r2_median": 0.48138771649803025,
+            "r2_mean": 0.5324473032567738,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 4768.099,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.665,
+            "r2": 0.8225
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 5.97,
+            "n_90pct": 20,
+            "n_95pct": 32,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.1
+        }
+      ]
+    },
+    {
+      "subject": "S020",
+      "conditions": [
+        {
+          "label": "EO",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.291962,
+          "kappa_loge_ci": [
+            0.287531,
+            0.295901
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 3391.2414864544144,
+            "h_vol_nats_mean": 7247.311961603307,
+            "h_vol_nats_std": 8514.265533236383,
+            "h_vol_bits": 4892.5272749647,
+            "h_vol_bits_mean": 10455.661026780357,
+            "h_vol_bits_std": 12283.488661611957,
+            "r2_median": 0.3649843412507513,
+            "r2_mean": 0.43470384601315093,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 6277.181,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.237,
+            "r2": 0.7765
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 4.97,
+            "n_90pct": 14,
+            "n_95pct": 25,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.6
+        },
+        {
+          "label": "EC",
+          "n_channels": 64,
+          "n_windows": 119,
+          "duration_s": 61.0,
+          "kappa_loge": 0.157216,
+          "kappa_loge_ci": [
+            0.149777,
+            0.167076
+          ],
+          "kappa_airm": NaN,
+          "kappa_airm_ci": [
+            NaN,
+            NaN
+          ],
+          "volume_entropy_loge": {
+            "h_vol_nats": 717.7277353955803,
+            "h_vol_nats_mean": 1266.2887301233873,
+            "h_vol_nats_std": 841.2338197830268,
+            "h_vol_bits": 1035.4622445636699,
+            "h_vol_bits_mean": 1826.8684712825939,
+            "h_vol_bits_std": 1213.6438600290528,
+            "r2_median": 0.5423091862788445,
+            "r2_mean": 0.6241272993137078,
+            "n_centers": 119,
+            "n_points": 119
+          },
+          "volume_entropy_airm": null,
+          "n_implied_loge": 1811.139,
+          "n_implied_airm": NaN,
+          "correlation_dim_loge": {
+            "d_corr": 1.056,
+            "r2": 0.9577
+          },
+          "correlation_dim_airm": null,
+          "trajectory_dim": {
+            "n_pr": 2.07,
+            "n_90pct": 6,
+            "n_95pct": 10,
+            "ambient_dim": 2080
+          },
+          "elapsed_s": 3.8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,804 @@
+{
+  "experiment": "fmri_cortical_vs_all_volume_entropy",
+  "hypothesis": "Subcortical/thalamic ROIs introduce recurrence pushing n > 2. Cortical-only should yield n closer to 2.",
+  "config": {
+    "window_s": 20.0,
+    "hop_s": 4.0,
+    "roi_cap": 60,
+    "shrinkage": 0.01,
+    "n_cortical_rois": 160
+  },
+  "n_subjects_total": 20,
+  "all_rois": {
+    "aggregate": {
+      "n_valid": 20,
+      "kappa_median": 0.4692,
+      "kappa_mean": 0.4689,
+      "kappa_std": 0.0049,
+      "h_vol_nats_median": 1.2021,
+      "h_vol_nats_mean": 1.1753,
+      "h_vol_nats_std": 0.1573,
+      "n_implied_median": 2.753,
+      "n_implied_mean": 2.715,
+      "n_implied_std": 0.223
+    },
+    "results": [
+      {
+        "subject": "Pitt_0050003_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4577,
+        "kappa_ci": [
+          0.4556,
+          0.4602
+        ],
+        "h_vol_nats": 0.8472,
+        "h_vol_bits": 1.2223,
+        "h_vol_nats_std": 0.3601,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6765,
+        "n_implied": 2.252,
+        "d_corr": 12.995,
+        "elapsed_s": 1.8
+      },
+      {
+        "subject": "Pitt_0050004_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4739,
+        "kappa_ci": [
+          0.4727,
+          0.475
+        ],
+        "h_vol_nats": 1.3917,
+        "h_vol_bits": 2.0079,
+        "h_vol_nats_std": 0.2046,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6884,
+        "n_implied": 3.022,
+        "d_corr": 24.07,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050005_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4631,
+        "kappa_ci": [
+          0.461,
+          0.465
+        ],
+        "h_vol_nats": 0.9048,
+        "h_vol_bits": 1.3054,
+        "h_vol_nats_std": 0.2598,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6805,
+        "n_implied": 2.33,
+        "d_corr": 16.038,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050006_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4741,
+        "kappa_ci": [
+          0.4729,
+          0.4755
+        ],
+        "h_vol_nats": 1.2454,
+        "h_vol_bits": 1.7967,
+        "h_vol_nats_std": 0.2453,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6886,
+        "n_implied": 2.809,
+        "d_corr": 24.097,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050007_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4663,
+        "kappa_ci": [
+          0.4645,
+          0.4678
+        ],
+        "h_vol_nats": 1.0675,
+        "h_vol_bits": 1.5401,
+        "h_vol_nats_std": 0.1496,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6828,
+        "n_implied": 2.563,
+        "d_corr": 17.048,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050008_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4639,
+        "kappa_ci": [
+          0.4621,
+          0.4656
+        ],
+        "h_vol_nats": 0.8448,
+        "h_vol_bits": 1.2188,
+        "h_vol_nats_std": 0.2804,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6811,
+        "n_implied": 2.24,
+        "d_corr": 16.575,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050010_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4734,
+        "kappa_ci": [
+          0.4718,
+          0.475
+        ],
+        "h_vol_nats": 1.3172,
+        "h_vol_bits": 1.9003,
+        "h_vol_nats_std": 0.2731,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.688,
+        "n_implied": 2.914,
+        "d_corr": 21.907,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050011_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4694,
+        "kappa_ci": [
+          0.4682,
+          0.4709
+        ],
+        "h_vol_nats": 1.2111,
+        "h_vol_bits": 1.7473,
+        "h_vol_nats_std": 0.2189,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6852,
+        "n_implied": 2.768,
+        "d_corr": 20.359,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050012_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.469,
+        "kappa_ci": [
+          0.4673,
+          0.4712
+        ],
+        "h_vol_nats": 1.1932,
+        "h_vol_bits": 1.7214,
+        "h_vol_nats_std": 0.1825,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6849,
+        "n_implied": 2.742,
+        "d_corr": 19.553,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050013_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4684,
+        "kappa_ci": [
+          0.4667,
+          0.4699
+        ],
+        "h_vol_nats": 1.1791,
+        "h_vol_bits": 1.701,
+        "h_vol_nats_std": 0.278,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6844,
+        "n_implied": 2.723,
+        "d_corr": 18.546,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050014_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4744,
+        "kappa_ci": [
+          0.473,
+          0.4754
+        ],
+        "h_vol_nats": 1.3355,
+        "h_vol_bits": 1.9267,
+        "h_vol_nats_std": 0.2034,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6887,
+        "n_implied": 2.939,
+        "d_corr": 23.619,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050015_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.476,
+        "kappa_ci": [
+          0.4748,
+          0.4771
+        ],
+        "h_vol_nats": 1.3386,
+        "h_vol_bits": 1.9312,
+        "h_vol_nats_std": 0.2795,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6899,
+        "n_implied": 2.94,
+        "d_corr": 24.676,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050016_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4727,
+        "kappa_ci": [
+          0.4713,
+          0.474
+        ],
+        "h_vol_nats": 1.3323,
+        "h_vol_bits": 1.9221,
+        "h_vol_nats_std": 0.2742,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6875,
+        "n_implied": 2.938,
+        "d_corr": 22.262,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050020_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4703,
+        "kappa_ci": [
+          0.4692,
+          0.4715
+        ],
+        "h_vol_nats": 1.2652,
+        "h_vol_bits": 1.8253,
+        "h_vol_nats_std": 0.2471,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6858,
+        "n_implied": 2.845,
+        "d_corr": 18.819,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050022_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4639,
+        "kappa_ci": [
+          0.4625,
+          0.4654
+        ],
+        "h_vol_nats": 1.1096,
+        "h_vol_bits": 1.6007,
+        "h_vol_nats_std": 0.3102,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6811,
+        "n_implied": 2.629,
+        "d_corr": 15.79,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050023_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.465,
+        "kappa_ci": [
+          0.4635,
+          0.4664
+        ],
+        "h_vol_nats": 1.1242,
+        "h_vol_bits": 1.6219,
+        "h_vol_nats_std": 0.2053,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6819,
+        "n_implied": 2.649,
+        "d_corr": 16.29,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050024_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4752,
+        "kappa_ci": [
+          0.4738,
+          0.4765
+        ],
+        "h_vol_nats": 1.3147,
+        "h_vol_bits": 1.8967,
+        "h_vol_nats_std": 0.3244,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6893,
+        "n_implied": 2.907,
+        "d_corr": 24.069,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050025_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4705,
+        "kappa_ci": [
+          0.4688,
+          0.4718
+        ],
+        "h_vol_nats": 1.2109,
+        "h_vol_bits": 1.7469,
+        "h_vol_nats_std": 0.2938,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6859,
+        "n_implied": 2.765,
+        "d_corr": 20.525,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050026_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4633,
+        "kappa_ci": [
+          0.4613,
+          0.4648
+        ],
+        "h_vol_nats": 1.1815,
+        "h_vol_bits": 1.7045,
+        "h_vol_nats_std": 0.3358,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6807,
+        "n_implied": 2.736,
+        "d_corr": 12.945,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050027_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4673,
+        "kappa_ci": [
+          0.4657,
+          0.4688
+        ],
+        "h_vol_nats": 1.0923,
+        "h_vol_bits": 1.5758,
+        "h_vol_nats_std": 0.2256,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6836,
+        "n_implied": 2.598,
+        "d_corr": 18.574,
+        "elapsed_s": 1.7
+      }
+    ]
+  },
+  "cortical_only": {
+    "aggregate": {
+      "n_valid": 20,
+      "kappa_median": 0.471,
+      "kappa_mean": 0.4698,
+      "kappa_std": 0.0048,
+      "h_vol_nats_median": 1.2401,
+      "h_vol_nats_mean": 1.2035,
+      "h_vol_nats_std": 0.1749,
+      "n_implied_median": 2.811,
+      "n_implied_mean": 2.755,
+      "n_implied_std": 0.249
+    },
+    "results": [
+      {
+        "subject": "Pitt_0050003_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4569,
+        "kappa_ci": [
+          0.4548,
+          0.4587
+        ],
+        "h_vol_nats": 0.7701,
+        "h_vol_bits": 1.111,
+        "h_vol_nats_std": 0.3309,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6759,
+        "n_implied": 2.139,
+        "d_corr": 13.066,
+        "elapsed_s": 1.8
+      },
+      {
+        "subject": "Pitt_0050004_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4749,
+        "kappa_ci": [
+          0.4736,
+          0.4761
+        ],
+        "h_vol_nats": 1.5089,
+        "h_vol_bits": 2.1769,
+        "h_vol_nats_std": 0.304,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6891,
+        "n_implied": 3.19,
+        "d_corr": 25.205,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050005_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4631,
+        "kappa_ci": [
+          0.4615,
+          0.4648
+        ],
+        "h_vol_nats": 0.8773,
+        "h_vol_bits": 1.2656,
+        "h_vol_nats_std": 0.2513,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6805,
+        "n_implied": 2.289,
+        "d_corr": 15.761,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050006_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4751,
+        "kappa_ci": [
+          0.4739,
+          0.4763
+        ],
+        "h_vol_nats": 1.3307,
+        "h_vol_bits": 1.9197,
+        "h_vol_nats_std": 0.3557,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6892,
+        "n_implied": 2.931,
+        "d_corr": 24.565,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050007_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4678,
+        "kappa_ci": [
+          0.4663,
+          0.4693
+        ],
+        "h_vol_nats": 1.0738,
+        "h_vol_bits": 1.5492,
+        "h_vol_nats_std": 0.2058,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.684,
+        "n_implied": 2.57,
+        "d_corr": 18.002,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050008_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4666,
+        "kappa_ci": [
+          0.465,
+          0.4681
+        ],
+        "h_vol_nats": 0.9342,
+        "h_vol_bits": 1.3478,
+        "h_vol_nats_std": 0.2998,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6831,
+        "n_implied": 2.368,
+        "d_corr": 17.236,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050010_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4734,
+        "kappa_ci": [
+          0.4719,
+          0.4747
+        ],
+        "h_vol_nats": 1.3451,
+        "h_vol_bits": 1.9405,
+        "h_vol_nats_std": 0.239,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.688,
+        "n_implied": 2.955,
+        "d_corr": 21.559,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050011_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4723,
+        "kappa_ci": [
+          0.4709,
+          0.4738
+        ],
+        "h_vol_nats": 1.3031,
+        "h_vol_bits": 1.88,
+        "h_vol_nats_std": 0.2317,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6873,
+        "n_implied": 2.896,
+        "d_corr": 22.565,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050012_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4695,
+        "kappa_ci": [
+          0.4677,
+          0.4711
+        ],
+        "h_vol_nats": 1.174,
+        "h_vol_bits": 1.6937,
+        "h_vol_nats_std": 0.1893,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6852,
+        "n_implied": 2.713,
+        "d_corr": 19.241,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050013_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4681,
+        "kappa_ci": [
+          0.4666,
+          0.47
+        ],
+        "h_vol_nats": 1.2088,
+        "h_vol_bits": 1.7439,
+        "h_vol_nats_std": 0.2567,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6842,
+        "n_implied": 2.767,
+        "d_corr": 18.479,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050014_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4745,
+        "kappa_ci": [
+          0.4732,
+          0.4756
+        ],
+        "h_vol_nats": 1.2914,
+        "h_vol_bits": 1.8631,
+        "h_vol_nats_std": 0.2305,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6889,
+        "n_implied": 2.875,
+        "d_corr": 23.463,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050015_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4745,
+        "kappa_ci": [
+          0.4733,
+          0.4759
+        ],
+        "h_vol_nats": 1.2547,
+        "h_vol_bits": 1.8101,
+        "h_vol_nats_std": 0.2795,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6888,
+        "n_implied": 2.821,
+        "d_corr": 24.066,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050016_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.472,
+        "kappa_ci": [
+          0.4708,
+          0.4733
+        ],
+        "h_vol_nats": 1.3722,
+        "h_vol_bits": 1.9797,
+        "h_vol_nats_std": 0.2865,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.687,
+        "n_implied": 2.997,
+        "d_corr": 21.316,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050020_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4718,
+        "kappa_ci": [
+          0.4703,
+          0.4729
+        ],
+        "h_vol_nats": 1.2984,
+        "h_vol_bits": 1.8732,
+        "h_vol_nats_std": 0.3103,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6869,
+        "n_implied": 2.89,
+        "d_corr": 20.418,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050022_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4651,
+        "kappa_ci": [
+          0.4634,
+          0.4665
+        ],
+        "h_vol_nats": 1.1581,
+        "h_vol_bits": 1.6708,
+        "h_vol_nats_std": 0.3695,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6819,
+        "n_implied": 2.698,
+        "d_corr": 16.614,
+        "elapsed_s": 1.7
+      },
+      {
+        "subject": "Pitt_0050023_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4663,
+        "kappa_ci": [
+          0.4649,
+          0.4674
+        ],
+        "h_vol_nats": 1.1335,
+        "h_vol_bits": 1.6352,
+        "h_vol_nats_std": 0.2192,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6828,
+        "n_implied": 2.66,
+        "d_corr": 16.617,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050024_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4765,
+        "kappa_ci": [
+          0.4754,
+          0.4776
+        ],
+        "h_vol_nats": 1.3761,
+        "h_vol_bits": 1.9852,
+        "h_vol_nats_std": 0.2494,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6903,
+        "n_implied": 2.993,
+        "d_corr": 25.669,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050025_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4716,
+        "kappa_ci": [
+          0.4701,
+          0.4729
+        ],
+        "h_vol_nats": 1.2363,
+        "h_vol_bits": 1.7837,
+        "h_vol_nats_std": 0.2841,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6867,
+        "n_implied": 2.8,
+        "d_corr": 20.131,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050026_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4648,
+        "kappa_ci": [
+          0.4632,
+          0.4664
+        ],
+        "h_vol_nats": 1.2438,
+        "h_vol_bits": 1.7945,
+        "h_vol_nats_std": 0.3488,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6818,
+        "n_implied": 2.824,
+        "d_corr": 13.534,
+        "elapsed_s": 1.6
+      },
+      {
+        "subject": "Pitt_0050027_rois_cc200",
+        "T_volumes": 196,
+        "n_rois_used": 60,
+        "n_windows": 94,
+        "kappa": 0.4705,
+        "kappa_ci": [
+          0.4689,
+          0.4718
+        ],
+        "h_vol_nats": 1.1785,
+        "h_vol_bits": 1.7002,
+        "h_vol_nats_std": 0.2175,
+        "n_good_fits": 60,
+        "h_predicted_n2": 0.6859,
+        "n_implied": 2.718,
+        "d_corr": 20.577,
+        "elapsed_s": 1.7
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "experiment": "Coordinate Convergence \u2014 Real Procrustes Analysis",
+  "date": "2026-03-11 14:39:53",
+  "n_sequences": 200,
+  "n_models": 5,
+  "seeds": {
+    "original": "/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_final/checkpoint_step_7000.pt",
+    "seed_42": "/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_42/checkpoint_step_7000.pt",
+    "seed_137": "/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_137/checkpoint_step_7000.pt",
+    "seed_2024": "/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_2024/checkpoint_step_7000.pt",
+    "seed_888": "/zfs_raid/SentryBio/5k_test_genomes/biosphere_run_seed_888/checkpoint_step_7000.pt"
+  },
+  "kappa_values": {
+    "original": 1.0,
+    "seed_42": 1.0,
+    "seed_137": 1.0,
+    "seed_2024": 1.0,
+    "seed_888": 1.0
+  },
+  "pairwise_procrustes": {
+    "original_vs_seed_42": 0.9372961521148682,
+    "original_vs_seed_137": 0.9378536343574524,
+    "original_vs_seed_2024": 0.9642007946968079,
+    "original_vs_seed_888": 0.9769164323806763,
+    "seed_42_vs_seed_137": 0.9338471293449402,
+    "seed_42_vs_seed_2024": 0.9213952422142029,
+    "seed_42_vs_seed_888": 0.9439704418182373,
+    "seed_137_vs_seed_2024": 0.9579113125801086,
+    "seed_137_vs_seed_888": 0.9433190226554871,
+    "seed_2024_vs_seed_888": 0.9648429155349731
+  },
+  "summary": {
+    "mean_correlation": 0.9481552839279175,
+    "std_correlation": 0.016260655596852303,
+    "min_correlation": 0.9213952422142029,
+    "max_correlation": 0.9769164323806763,
+    "all_above_099": false,
+    "all_above_095": false,
+    "all_above_090": true
+  },
+  "genome_ids": [
+    "Tabrizicola_sp._a-proteobacteria_GCF_965284335.1",
+    "GCF_000214015.3_version_140606_genomic",
+    "Beijerinckiaceae_bacterium_a-proteobacteria_GCA_965284415.1",
+    "Escherichia_coli_E._coli_GCA_050516385.1",
+    "Providencia_huaxiensis_enterobacteria_GCF_050507125.1",
+    "Enterobacter_hormaechei_CDC_Enteric_Group_75_GCA_047327165.2",
+    "GCF_000328475.2_Umaydis521_2.0_genomic",
+    "Klebsiella_pneumoniae_enterobacteria_GCF_050507665.1",
+    "Paraburkholderia_tropica_b-proteobacteria_GCF_050500075.1",
+    "Micromonospora_echinospora_high_G+C_Gram-positive_bacteria_GCA_050507505.1",
+    "GCF_002078855.1_ASM207885v1_genomic",
+    "Faecalibacterium_prausnitzii_firmicutes_GCF_050502955.1",
+    "Escherichia_coli_E._coli_GCA_047852785.2",
+    "Pseudomonadaceae_bacterium_g-proteobacteria_GCA_965284505.1",
+    "Cyclobacteriaceae_bacterium_CFB_group_bacteria_GCA_965284605.1",
+    "Sphingomonadaceae_bacterium_a-proteobacteria_GCA_965284665.1",
+    "GCF_000151665.1_ASM15166v1_genomic",
+    "Micromonospora_trifolii_high_G+C_Gram-positive_bacteria_GCA_050516465.1",
+    "Xanthomonas_sacchari_g-proteobacteria_GCA_050408125.1",
+    "Myroides_odoratimimus_CFB_group_bacteria_GCA_050517405.1"
+  ],
+  "note": "All 5 checkpoints have kappa=1.0 (fixed). This measures COORDINATE convergence, not curvature convergence."
+}

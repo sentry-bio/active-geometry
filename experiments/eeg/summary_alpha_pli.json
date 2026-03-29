@@ -1,0 +1,593 @@
+{
+  "subjects": [
+    {
+      "subject": "S001",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.09392402283016801,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.11346729748818163,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S002",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.06258651898964102,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.05707915363897753,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S003",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.1328411632241878,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.06384667268601293,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S004",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.10751094598837407,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.11360241327366649,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S005",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.13087766540849954,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.11815665542665732,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S006",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.14216803231631003,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.12891250716146646,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S007",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.08069050433683223,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.0853014050397255,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S008",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 28,
+          "isolates": 1,
+          "kappa": 0.10303355841986622,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.0716100085860942,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S009",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.08902416854888817,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.044959154046310235,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S010",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.08055301247039462,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.06249230566193113,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S011",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.109416314845808,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 28,
+          "isolates": 1,
+          "kappa": 0.118699409248186,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S012",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.09744434803138802,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.13115819595272232,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S013",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.07303112287563834,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.08210303896114568,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S015",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.11399490811829455,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.06698039554433266,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S016",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.09842713949026535,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.07589986288857622,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S017",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.12915196743345775,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 28,
+          "isolates": 1,
+          "kappa": 0.06011755581279693,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S018",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.12588207925728268,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 28,
+          "isolates": 1,
+          "kappa": 0.10712660769507043,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S019",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.10228956072973538,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.1076386402271916,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    },
+    {
+      "subject": "S020",
+      "pairs": [
+        {
+          "state": "EO",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.11560413615787825,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        },
+        {
+          "state": "EC",
+          "n_windows": 29,
+          "n_windows_clean": 29,
+          "isolates": 0,
+          "kappa": 0.0942590048633597,
+          "alpha_band": [
+            8,
+            13
+          ],
+          "metric": "PLI_JS-warp",
+          "graph": "mutual_knn_10"
+        }
+      ]
+    }
+  ]
+}

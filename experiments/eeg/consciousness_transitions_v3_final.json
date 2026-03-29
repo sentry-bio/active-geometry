@@ -1,0 +1,1772 @@
+{
+  "parameters": {
+    "n_pca": 12,
+    "window_s": 2.0,
+    "hop_s": 0.5,
+    "band": [
+      8,
+      13
+    ],
+    "resample_hz": 160,
+    "traj_window": 15,
+    "traj_hop": 3
+  },
+  "subjects": [
+    {
+      "subject": "S001",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.863,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.261405,
+        "kappa_ci": [
+          0.255564,
+          0.266879
+        ],
+        "d_corr_airm": 2.4241,
+        "d_corr_airm_r2": 0.9389,
+        "d_corr_tangent3": 1.1688,
+        "d_corr_tangent3_r2": 0.9438,
+        "tangent_pr": 1.44,
+        "logdet_trajectory": -49.77,
+        "mean_airm_step": 0.000351,
+        "mean_airm_spread": 0.000866,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.237667,
+        "Phi_std": 0.03086,
+        "novelty_coherence": {
+          "r_J_kappa": -0.4929,
+          "p_J_kappa": 0.0026268682763755267,
+          "r_Phi_kappa": -0.264,
+          "p_Phi_kappa": 0.12546872791249236,
+          "r_B_kappa": 0.4975,
+          "p_B_kappa": 0.0023587637796522406,
+          "beta_J": -0.4625,
+          "delta_Phi": 0.0741,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2189,
+          "kappa_std": 0.0713
+        },
+        "elapsed_s": 6.1
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9597,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.228263,
+        "kappa_ci": [
+          0.221891,
+          0.235679
+        ],
+        "d_corr_airm": 2.3969,
+        "d_corr_airm_r2": 0.9878,
+        "d_corr_tangent3": 1.6456,
+        "d_corr_tangent3_r2": 0.9946,
+        "tangent_pr": 1.98,
+        "logdet_trajectory": -37.59,
+        "mean_airm_step": 0.002913,
+        "mean_airm_spread": 0.00695,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.288192,
+        "Phi_std": 0.030498,
+        "novelty_coherence": {
+          "r_J_kappa": -0.1598,
+          "p_J_kappa": 0.3591289488324644,
+          "r_Phi_kappa": -0.2825,
+          "p_Phi_kappa": 0.10011882435979473,
+          "r_B_kappa": 0.3541,
+          "p_B_kappa": 0.03689863364572298,
+          "beta_J": -0.2169,
+          "delta_Phi": 0.3211,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2157,
+          "kappa_std": 0.0369
+        },
+        "elapsed_s": 5.8
+      }
+    },
+    {
+      "subject": "S002",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8722,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.207419,
+        "kappa_ci": [
+          0.200712,
+          0.214029
+        ],
+        "d_corr_airm": 1.7566,
+        "d_corr_airm_r2": 0.9643,
+        "d_corr_tangent3": 1.0574,
+        "d_corr_tangent3_r2": 0.9717,
+        "tangent_pr": 2.29,
+        "logdet_trajectory": -51.79,
+        "mean_airm_step": 0.000248,
+        "mean_airm_spread": 0.000593,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.271901,
+        "Phi_std": 0.036492,
+        "novelty_coherence": {
+          "r_J_kappa": -0.1895,
+          "p_J_kappa": 0.2756920660731681,
+          "r_Phi_kappa": -0.0192,
+          "p_Phi_kappa": 0.9129655985771149,
+          "r_B_kappa": 0.1948,
+          "p_B_kappa": 0.26219805278708835,
+          "beta_J": -0.1956,
+          "delta_Phi": 0.0456,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2152,
+          "kappa_std": 0.0448
+        },
+        "elapsed_s": 5.9
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9589,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.217797,
+        "kappa_ci": [
+          0.211743,
+          0.224553
+        ],
+        "d_corr_airm": 2.1437,
+        "d_corr_airm_r2": 0.9907,
+        "d_corr_tangent3": 1.4297,
+        "d_corr_tangent3_r2": 0.9909,
+        "tangent_pr": 1.56,
+        "logdet_trajectory": -41.69,
+        "mean_airm_step": 0.001682,
+        "mean_airm_spread": 0.003642,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.288984,
+        "Phi_std": 0.04687,
+        "novelty_coherence": {
+          "r_J_kappa": 0.0157,
+          "p_J_kappa": 0.9288395065472402,
+          "r_Phi_kappa": -0.084,
+          "p_Phi_kappa": 0.6312911788278006,
+          "r_B_kappa": 0.0852,
+          "p_B_kappa": 0.626492097823958,
+          "beta_J": 0.0141,
+          "delta_Phi": 0.0838,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1867,
+          "kappa_std": 0.0658
+        },
+        "elapsed_s": 5.9
+      }
+    },
+    {
+      "subject": "S003",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9354,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.218045,
+        "kappa_ci": [
+          0.213559,
+          0.223269
+        ],
+        "d_corr_airm": 2.8677,
+        "d_corr_airm_r2": 0.9825,
+        "d_corr_tangent3": 1.4524,
+        "d_corr_tangent3_r2": 0.9943,
+        "tangent_pr": 1.56,
+        "logdet_trajectory": -46.22,
+        "mean_airm_step": 0.000916,
+        "mean_airm_spread": 0.002011,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.256741,
+        "Phi_std": 0.030704,
+        "novelty_coherence": {
+          "r_J_kappa": -0.0071,
+          "p_J_kappa": 0.9679015111525239,
+          "r_Phi_kappa": -0.1225,
+          "p_Phi_kappa": 0.4833384567202144,
+          "r_B_kappa": 0.1258,
+          "p_B_kappa": 0.4713401027015663,
+          "beta_J": -0.0293,
+          "delta_Phi": 0.1276,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1775,
+          "kappa_std": 0.0369
+        },
+        "elapsed_s": 6.0
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9722,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.177112,
+        "kappa_ci": [
+          0.171819,
+          0.182991
+        ],
+        "d_corr_airm": 2.1347,
+        "d_corr_airm_r2": 0.9521,
+        "d_corr_tangent3": 1.2025,
+        "d_corr_tangent3_r2": 0.9842,
+        "tangent_pr": 1.41,
+        "logdet_trajectory": -37.53,
+        "mean_airm_step": 0.00321,
+        "mean_airm_spread": 0.007899,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.291733,
+        "Phi_std": 0.037355,
+        "novelty_coherence": {
+          "r_J_kappa": -0.3622,
+          "p_J_kappa": 0.03247773214078358,
+          "r_Phi_kappa": 0.3333,
+          "p_Phi_kappa": 0.05042082171552817,
+          "r_B_kappa": 0.4363,
+          "p_B_kappa": 0.008794870541982653,
+          "beta_J": -0.2928,
+          "delta_Phi": -0.2528,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1837,
+          "kappa_std": 0.0591
+        },
+        "elapsed_s": 6.1
+      }
+    },
+    {
+      "subject": "S004",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9218,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.073924,
+        "kappa_ci": [
+          0.071017,
+          0.077096
+        ],
+        "d_corr_airm": 1.4697,
+        "d_corr_airm_r2": 0.9828,
+        "d_corr_tangent3": 1.0989,
+        "d_corr_tangent3_r2": 0.9972,
+        "tangent_pr": 1.13,
+        "logdet_trajectory": -55.61,
+        "mean_airm_step": 0.000159,
+        "mean_airm_spread": 0.000458,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.232203,
+        "Phi_std": 0.026141,
+        "novelty_coherence": {
+          "r_J_kappa": 0.0671,
+          "p_J_kappa": 0.7016758532768498,
+          "r_Phi_kappa": -0.1862,
+          "p_Phi_kappa": 0.28429706722400544,
+          "r_B_kappa": 0.1887,
+          "p_B_kappa": 0.2776849374130042,
+          "beta_J": 0.0314,
+          "delta_Phi": 0.1799,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1157,
+          "kappa_std": 0.045
+        },
+        "elapsed_s": 5.9
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.911,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.270223,
+        "kappa_ci": [
+          0.263445,
+          0.275132
+        ],
+        "d_corr_airm": 3.0583,
+        "d_corr_airm_r2": 0.9653,
+        "d_corr_tangent3": 1.353,
+        "d_corr_tangent3_r2": 0.9824,
+        "tangent_pr": 1.72,
+        "logdet_trajectory": -51.87,
+        "mean_airm_step": 0.000294,
+        "mean_airm_spread": 0.000634,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.282948,
+        "Phi_std": 0.029045,
+        "novelty_coherence": {
+          "r_J_kappa": -0.5241,
+          "p_J_kappa": 0.0012313352430131327,
+          "r_Phi_kappa": -0.0485,
+          "p_Phi_kappa": 0.7820635974811785,
+          "r_B_kappa": 0.5262,
+          "p_B_kappa": 0.0011667980720681413,
+          "beta_J": -0.524,
+          "delta_Phi": 0.0471,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2393,
+          "kappa_std": 0.0373
+        },
+        "elapsed_s": 5.8
+      }
+    },
+    {
+      "subject": "S005",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.603,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.389077,
+        "kappa_ci": [
+          0.385112,
+          0.393349
+        ],
+        "d_corr_airm": 6.0358,
+        "d_corr_airm_r2": 0.9836,
+        "d_corr_tangent3": 1.64,
+        "d_corr_tangent3_r2": 0.9639,
+        "tangent_pr": 6.8,
+        "logdet_trajectory": -61.27,
+        "mean_airm_step": 8.1e-05,
+        "mean_airm_spread": 0.000165,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.236137,
+        "Phi_std": 0.030276,
+        "novelty_coherence": {
+          "r_J_kappa": -0.0057,
+          "p_J_kappa": 0.9739922587574532,
+          "r_Phi_kappa": -0.3259,
+          "p_Phi_kappa": 0.05607257077748088,
+          "r_B_kappa": 0.3489,
+          "p_B_kappa": 0.03994241052706239,
+          "beta_J": 0.1343,
+          "delta_Phi": 0.3759,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.3111,
+          "kappa_std": 0.0221
+        },
+        "elapsed_s": 5.9
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.6279,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.363819,
+        "kappa_ci": [
+          0.360239,
+          0.368258
+        ],
+        "d_corr_airm": 4.7376,
+        "d_corr_airm_r2": 0.9676,
+        "d_corr_tangent3": 1.3424,
+        "d_corr_tangent3_r2": 0.9614,
+        "tangent_pr": 4.66,
+        "logdet_trajectory": -59.73,
+        "mean_airm_step": 9.1e-05,
+        "mean_airm_spread": 0.000195,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.230505,
+        "Phi_std": 0.027094,
+        "novelty_coherence": {
+          "r_J_kappa": -0.4864,
+          "p_J_kappa": 0.0030513962474363427,
+          "r_Phi_kappa": -0.3703,
+          "p_Phi_kappa": 0.02854781389469708,
+          "r_B_kappa": 0.54,
+          "p_B_kappa": 0.0008125049534315277,
+          "beta_J": -0.4122,
+          "delta_Phi": 0.2461,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2992,
+          "kappa_std": 0.0362
+        },
+        "elapsed_s": 6.2
+      }
+    },
+    {
+      "subject": "S006",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.7811,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.244491,
+        "kappa_ci": [
+          0.238027,
+          0.250274
+        ],
+        "d_corr_airm": 2.6258,
+        "d_corr_airm_r2": 0.9868,
+        "d_corr_tangent3": 1.2925,
+        "d_corr_tangent3_r2": 0.994,
+        "tangent_pr": 3.13,
+        "logdet_trajectory": -60.18,
+        "mean_airm_step": 5.8e-05,
+        "mean_airm_spread": 0.000143,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.253754,
+        "Phi_std": 0.03319,
+        "novelty_coherence": {
+          "r_J_kappa": -0.189,
+          "p_J_kappa": 0.27682031603287854,
+          "r_Phi_kappa": 0.0653,
+          "p_Phi_kappa": 0.709428838542395,
+          "r_B_kappa": 0.2265,
+          "p_B_kappa": 0.19066433923857384,
+          "beta_J": -0.2265,
+          "delta_Phi": -0.1304,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2056,
+          "kappa_std": 0.0486
+        },
+        "elapsed_s": 6.0
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.719,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.279444,
+        "kappa_ci": [
+          0.275179,
+          0.283977
+        ],
+        "d_corr_airm": 2.6457,
+        "d_corr_airm_r2": 0.9082,
+        "d_corr_tangent3": 1.3031,
+        "d_corr_tangent3_r2": 0.9463,
+        "tangent_pr": 1.86,
+        "logdet_trajectory": -63.61,
+        "mean_airm_step": 3.6e-05,
+        "mean_airm_spread": 8.8e-05,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.246912,
+        "Phi_std": 0.031472,
+        "novelty_coherence": {
+          "r_J_kappa": -0.318,
+          "p_J_kappa": 0.06269469630885066,
+          "r_Phi_kappa": -0.3553,
+          "p_Phi_kappa": 0.03623591159672701,
+          "r_B_kappa": 0.3822,
+          "p_B_kappa": 0.023474962739784774,
+          "beta_J": -0.1713,
+          "delta_Phi": 0.2578,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2395,
+          "kappa_std": 0.0528
+        },
+        "elapsed_s": 5.9
+      }
+    },
+    {
+      "subject": "S007",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9302,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.160756,
+        "kappa_ci": [
+          0.15306,
+          0.168791
+        ],
+        "d_corr_airm": 1.4589,
+        "d_corr_airm_r2": 0.9709,
+        "d_corr_tangent3": 1.0572,
+        "d_corr_tangent3_r2": 0.993,
+        "tangent_pr": 1.79,
+        "logdet_trajectory": -45.15,
+        "mean_airm_step": 0.000686,
+        "mean_airm_spread": 0.001931,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.266542,
+        "Phi_std": 0.035843,
+        "novelty_coherence": {
+          "r_J_kappa": 0.107,
+          "p_J_kappa": 0.5407599272842416,
+          "r_Phi_kappa": -0.1691,
+          "p_Phi_kappa": 0.33149431549489505,
+          "r_B_kappa": 0.2182,
+          "p_B_kappa": 0.20795524723510278,
+          "beta_J": 0.1399,
+          "delta_Phi": 0.193,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2055,
+          "kappa_std": 0.0577
+        },
+        "elapsed_s": 6.1
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9313,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.299491,
+        "kappa_ci": [
+          0.292955,
+          0.303965
+        ],
+        "d_corr_airm": 3.9512,
+        "d_corr_airm_r2": 0.9849,
+        "d_corr_tangent3": 1.8735,
+        "d_corr_tangent3_r2": 0.9866,
+        "tangent_pr": 2.6,
+        "logdet_trajectory": -45.09,
+        "mean_airm_step": 0.001164,
+        "mean_airm_spread": 0.002351,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.239222,
+        "Phi_std": 0.025433,
+        "novelty_coherence": {
+          "r_J_kappa": 0.0856,
+          "p_J_kappa": 0.6248389706585994,
+          "r_Phi_kappa": -0.0602,
+          "p_Phi_kappa": 0.7310162800326305,
+          "r_B_kappa": 0.1132,
+          "p_B_kappa": 0.5174669091408801,
+          "beta_J": 0.0969,
+          "delta_Phi": 0.0749,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2495,
+          "kappa_std": 0.0403
+        },
+        "elapsed_s": 6.0
+      }
+    },
+    {
+      "subject": "S008",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8166,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.251203,
+        "kappa_ci": [
+          0.244215,
+          0.256927
+        ],
+        "d_corr_airm": 2.3129,
+        "d_corr_airm_r2": 0.969,
+        "d_corr_tangent3": 1.256,
+        "d_corr_tangent3_r2": 0.9841,
+        "tangent_pr": 1.51,
+        "logdet_trajectory": -57.8,
+        "mean_airm_step": 0.000101,
+        "mean_airm_spread": 0.000245,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.25767,
+        "Phi_std": 0.034157,
+        "novelty_coherence": {
+          "r_J_kappa": -0.3181,
+          "p_J_kappa": 0.06259448266259807,
+          "r_Phi_kappa": -0.0071,
+          "p_Phi_kappa": 0.9674857350963443,
+          "r_B_kappa": 0.3181,
+          "p_B_kappa": 0.06257783670082173,
+          "beta_J": -0.3182,
+          "delta_Phi": -0.0035,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2002,
+          "kappa_std": 0.0637
+        },
+        "elapsed_s": 6.0
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9325,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.261387,
+        "kappa_ci": [
+          0.253274,
+          0.274634
+        ],
+        "d_corr_airm": 1.6976,
+        "d_corr_airm_r2": 0.995,
+        "d_corr_tangent3": 1.0426,
+        "d_corr_tangent3_r2": 0.9966,
+        "tangent_pr": 3.78,
+        "logdet_trajectory": -50.24,
+        "mean_airm_step": 0.000347,
+        "mean_airm_spread": 0.000768,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.30039,
+        "Phi_std": 0.041956,
+        "novelty_coherence": {
+          "r_J_kappa": -0.2282,
+          "p_J_kappa": 0.18738683032461317,
+          "r_Phi_kappa": -0.2324,
+          "p_Phi_kappa": 0.17903441634773706,
+          "r_B_kappa": 0.316,
+          "p_B_kappa": 0.06442724379296083,
+          "beta_J": -0.2145,
+          "delta_Phi": 0.219,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2361,
+          "kappa_std": 0.0486
+        },
+        "elapsed_s": 6.2
+      }
+    },
+    {
+      "subject": "S009",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.7034,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.363359,
+        "kappa_ci": [
+          0.359007,
+          0.367655
+        ],
+        "d_corr_airm": 5.0034,
+        "d_corr_airm_r2": 0.9887,
+        "d_corr_tangent3": 1.852,
+        "d_corr_tangent3_r2": 0.9877,
+        "tangent_pr": 8.3,
+        "logdet_trajectory": -52.51,
+        "mean_airm_step": 0.00036,
+        "mean_airm_spread": 0.000736,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.23965,
+        "Phi_std": 0.026917,
+        "novelty_coherence": {
+          "r_J_kappa": 0.1949,
+          "p_J_kappa": 0.2619071264182533,
+          "r_Phi_kappa": 0.1454,
+          "p_Phi_kappa": 0.40449312021848854,
+          "r_B_kappa": 0.2569,
+          "p_B_kappa": 0.13633182930120305,
+          "beta_J": 0.213,
+          "delta_Phi": -0.1683,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2914,
+          "kappa_std": 0.0245
+        },
+        "elapsed_s": 5.9
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.7656,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.272945,
+        "kappa_ci": [
+          0.268631,
+          0.277737
+        ],
+        "d_corr_airm": 2.7994,
+        "d_corr_airm_r2": 0.9333,
+        "d_corr_tangent3": 1.35,
+        "d_corr_tangent3_r2": 0.9777,
+        "tangent_pr": 1.71,
+        "logdet_trajectory": -47.56,
+        "mean_airm_step": 0.00066,
+        "mean_airm_spread": 0.001494,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.239496,
+        "Phi_std": 0.028149,
+        "novelty_coherence": {
+          "r_J_kappa": -0.2097,
+          "p_J_kappa": 0.22654560817898933,
+          "r_Phi_kappa": -0.0526,
+          "p_Phi_kappa": 0.7640941288736425,
+          "r_B_kappa": 0.2113,
+          "p_B_kappa": 0.2230059600057257,
+          "beta_J": -0.2198,
+          "delta_Phi": -0.0276,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.256,
+          "kappa_std": 0.0463
+        },
+        "elapsed_s": 6.0
+      }
+    },
+    {
+      "subject": "S010",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.691,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.296257,
+        "kappa_ci": [
+          0.287281,
+          0.303914
+        ],
+        "d_corr_airm": 2.5435,
+        "d_corr_airm_r2": 0.9846,
+        "d_corr_tangent3": 1.2563,
+        "d_corr_tangent3_r2": 0.988,
+        "tangent_pr": 1.85,
+        "logdet_trajectory": -50.28,
+        "mean_airm_step": 0.000296,
+        "mean_airm_spread": 0.000747,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.251692,
+        "Phi_std": 0.037593,
+        "novelty_coherence": {
+          "r_J_kappa": -0.2601,
+          "p_J_kappa": 0.13132011407902516,
+          "r_Phi_kappa": -0.2487,
+          "p_Phi_kappa": 0.14961619258297032,
+          "r_B_kappa": 0.339,
+          "p_B_kappa": 0.04637752008526414,
+          "beta_J": -0.2322,
+          "delta_Phi": 0.2192,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2419,
+          "kappa_std": 0.049
+        },
+        "elapsed_s": 6.0
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9543,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.198527,
+        "kappa_ci": [
+          0.189853,
+          0.205843
+        ],
+        "d_corr_airm": 1.6607,
+        "d_corr_airm_r2": 0.9936,
+        "d_corr_tangent3": 1.1818,
+        "d_corr_tangent3_r2": 0.9942,
+        "tangent_pr": 1.87,
+        "logdet_trajectory": -37.9,
+        "mean_airm_step": 0.002754,
+        "mean_airm_spread": 0.006514,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.277918,
+        "Phi_std": 0.032996,
+        "novelty_coherence": {
+          "r_J_kappa": 0.2723,
+          "p_J_kappa": 0.11357055698194944,
+          "r_Phi_kappa": 0.0852,
+          "p_Phi_kappa": 0.6265015808767417,
+          "r_B_kappa": 0.2909,
+          "p_B_kappa": 0.09001436488369677,
+          "beta_J": 0.2787,
+          "delta_Phi": -0.1026,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2043,
+          "kappa_std": 0.0677
+        },
+        "elapsed_s": 5.9
+      }
+    },
+    {
+      "subject": "S011",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.7863,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.185032,
+        "kappa_ci": [
+          0.180994,
+          0.189503
+        ],
+        "d_corr_airm": 1.4957,
+        "d_corr_airm_r2": 0.8533,
+        "d_corr_tangent3": 0.9506,
+        "d_corr_tangent3_r2": 0.9407,
+        "tangent_pr": 1.68,
+        "logdet_trajectory": -60.01,
+        "mean_airm_step": 5.4e-05,
+        "mean_airm_spread": 0.000141,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.254044,
+        "Phi_std": 0.03924,
+        "novelty_coherence": {
+          "r_J_kappa": -0.4664,
+          "p_J_kappa": 0.004744179213233443,
+          "r_Phi_kappa": -0.0831,
+          "p_Phi_kappa": 0.6352403271092975,
+          "r_B_kappa": 0.4664,
+          "p_B_kappa": 0.004744004689845436,
+          "beta_J": -0.4666,
+          "delta_Phi": -0.0013,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1994,
+          "kappa_std": 0.0826
+        },
+        "elapsed_s": 6.1
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9621,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.189549,
+        "kappa_ci": [
+          0.181867,
+          0.197973
+        ],
+        "d_corr_airm": 1.5767,
+        "d_corr_airm_r2": 0.9903,
+        "d_corr_tangent3": 1.139,
+        "d_corr_tangent3_r2": 0.9865,
+        "tangent_pr": 1.75,
+        "logdet_trajectory": -47.83,
+        "mean_airm_step": 0.000515,
+        "mean_airm_spread": 0.001237,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.283411,
+        "Phi_std": 0.038765,
+        "novelty_coherence": {
+          "r_J_kappa": 0.0186,
+          "p_J_kappa": 0.915316381459134,
+          "r_Phi_kappa": 0.041,
+          "p_Phi_kappa": 0.8150098477933373,
+          "r_B_kappa": 0.0425,
+          "p_B_kappa": 0.8084136771005139,
+          "beta_J": 0.0114,
+          "delta_Phi": -0.0389,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2083,
+          "kappa_std": 0.0491
+        },
+        "elapsed_s": 6.2
+      }
+    },
+    {
+      "subject": "S012",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8398,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.312191,
+        "kappa_ci": [
+          0.306377,
+          0.317713
+        ],
+        "d_corr_airm": 3.2876,
+        "d_corr_airm_r2": 0.9599,
+        "d_corr_tangent3": 1.4948,
+        "d_corr_tangent3_r2": 0.9841,
+        "tangent_pr": 3.95,
+        "logdet_trajectory": -61.74,
+        "mean_airm_step": 5.4e-05,
+        "mean_airm_spread": 0.000123,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.235095,
+        "Phi_std": 0.023094,
+        "novelty_coherence": {
+          "r_J_kappa": -0.4714,
+          "p_J_kappa": 0.00425312905040046,
+          "r_Phi_kappa": -0.22,
+          "p_Phi_kappa": 0.20422387932185268,
+          "r_B_kappa": 0.4924,
+          "p_B_kappa": 0.002654824810418062,
+          "beta_J": -0.447,
+          "delta_Phi": 0.1444,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2654,
+          "kappa_std": 0.0333
+        },
+        "elapsed_s": 6.0
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8342,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.298639,
+        "kappa_ci": [
+          0.291927,
+          0.305722
+        ],
+        "d_corr_airm": 2.7267,
+        "d_corr_airm_r2": 0.9758,
+        "d_corr_tangent3": 1.3267,
+        "d_corr_tangent3_r2": 0.9878,
+        "tangent_pr": 4.63,
+        "logdet_trajectory": -62.25,
+        "mean_airm_step": 5.4e-05,
+        "mean_airm_spread": 0.000116,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.243789,
+        "Phi_std": 0.02934,
+        "novelty_coherence": {
+          "r_J_kappa": 0.0951,
+          "p_J_kappa": 0.5869250411077659,
+          "r_Phi_kappa": 0.2845,
+          "p_Phi_kappa": 0.09766132502610485,
+          "r_B_kappa": 0.2845,
+          "p_B_kappa": 0.09760995021618711,
+          "beta_J": -0.0052,
+          "delta_Phi": -0.2863,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2418,
+          "kappa_std": 0.0337
+        },
+        "elapsed_s": 6.0
+      }
+    },
+    {
+      "subject": "S013",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8181,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.217622,
+        "kappa_ci": [
+          0.212843,
+          0.223031
+        ],
+        "d_corr_airm": 1.8714,
+        "d_corr_airm_r2": 0.9298,
+        "d_corr_tangent3": 0.9928,
+        "d_corr_tangent3_r2": 0.945,
+        "tangent_pr": 2.13,
+        "logdet_trajectory": -49.12,
+        "mean_airm_step": 0.000436,
+        "mean_airm_spread": 0.001028,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.255572,
+        "Phi_std": 0.02683,
+        "novelty_coherence": {
+          "r_J_kappa": -0.28,
+          "p_J_kappa": 0.10331743315413772,
+          "r_Phi_kappa": 0.1519,
+          "p_Phi_kappa": 0.3837355676945678,
+          "r_B_kappa": 0.4082,
+          "p_B_kappa": 0.014917590263299819,
+          "beta_J": -0.4176,
+          "delta_Phi": -0.3274,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1927,
+          "kappa_std": 0.0546
+        },
+        "elapsed_s": 6.1
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8652,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.28906,
+        "kappa_ci": [
+          0.283041,
+          0.295296
+        ],
+        "d_corr_airm": 2.6139,
+        "d_corr_airm_r2": 0.9432,
+        "d_corr_tangent3": 1.447,
+        "d_corr_tangent3_r2": 0.9778,
+        "tangent_pr": 3.46,
+        "logdet_trajectory": -47.72,
+        "mean_airm_step": 0.000634,
+        "mean_airm_spread": 0.001332,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.263123,
+        "Phi_std": 0.029704,
+        "novelty_coherence": {
+          "r_J_kappa": -0.2598,
+          "p_J_kappa": 0.13169613931639984,
+          "r_Phi_kappa": -0.1048,
+          "p_Phi_kappa": 0.5489442926713491,
+          "r_B_kappa": 0.2751,
+          "p_B_kappa": 0.10976789242271374,
+          "beta_J": -0.2547,
+          "delta_Phi": 0.0904,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.222,
+          "kappa_std": 0.0514
+        },
+        "elapsed_s": 6.1
+      }
+    },
+    {
+      "subject": "S014",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8167,
+        "n_windows": 117,
+        "duration_s": 60.0,
+        "kappa": 0.247496,
+        "kappa_ci": [
+          0.2403,
+          0.256507
+        ],
+        "d_corr_airm": 1.9962,
+        "d_corr_airm_r2": 0.9843,
+        "d_corr_tangent3": 1.1484,
+        "d_corr_tangent3_r2": 0.9829,
+        "tangent_pr": 2.51,
+        "logdet_trajectory": -51.97,
+        "mean_airm_step": 0.000247,
+        "mean_airm_spread": 0.000598,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.254456,
+        "Phi_std": 0.033262,
+        "novelty_coherence": {
+          "r_J_kappa": -0.0583,
+          "p_J_kappa": 0.7392357717477973,
+          "r_Phi_kappa": -0.3272,
+          "p_Phi_kappa": 0.055039910630546286,
+          "r_B_kappa": 0.3397,
+          "p_B_kappa": 0.0458439991991115,
+          "beta_J": 0.1014,
+          "delta_Phi": 0.3709,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2105,
+          "kappa_std": 0.0531
+        },
+        "elapsed_s": 6.1
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9269,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.274023,
+        "kappa_ci": [
+          0.268032,
+          0.279445
+        ],
+        "d_corr_airm": 3.2483,
+        "d_corr_airm_r2": 0.9602,
+        "d_corr_tangent3": 1.729,
+        "d_corr_tangent3_r2": 0.9839,
+        "tangent_pr": 1.99,
+        "logdet_trajectory": -43.16,
+        "mean_airm_step": 0.001197,
+        "mean_airm_spread": 0.002509,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.271949,
+        "Phi_std": 0.031221,
+        "novelty_coherence": {
+          "r_J_kappa": -0.1535,
+          "p_J_kappa": 0.3785844473631271,
+          "r_Phi_kappa": -0.2697,
+          "p_Phi_kappa": 0.11722599754551355,
+          "r_B_kappa": 0.302,
+          "p_B_kappa": 0.07789683906211757,
+          "beta_J": -0.1362,
+          "delta_Phi": 0.2606,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2158,
+          "kappa_std": 0.0474
+        },
+        "elapsed_s": 6.1
+      }
+    },
+    {
+      "subject": "S015",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8857,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.186884,
+        "kappa_ci": [
+          0.179511,
+          0.195687
+        ],
+        "d_corr_airm": 1.4602,
+        "d_corr_airm_r2": 0.9804,
+        "d_corr_tangent3": 0.9668,
+        "d_corr_tangent3_r2": 0.9931,
+        "tangent_pr": 1.55,
+        "logdet_trajectory": -43.68,
+        "mean_airm_step": 0.000984,
+        "mean_airm_spread": 0.002682,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.277995,
+        "Phi_std": 0.041295,
+        "novelty_coherence": {
+          "r_J_kappa": 0.0739,
+          "p_J_kappa": 0.6733081378350381,
+          "r_Phi_kappa": -0.1692,
+          "p_Phi_kappa": 0.3312115551410545,
+          "r_B_kappa": 0.1894,
+          "p_B_kappa": 0.27587308738033073,
+          "beta_J": 0.0853,
+          "delta_Phi": 0.1748,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1616,
+          "kappa_std": 0.0557
+        },
+        "elapsed_s": 6.0
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9323,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.193356,
+        "kappa_ci": [
+          0.188458,
+          0.199475
+        ],
+        "d_corr_airm": 1.8886,
+        "d_corr_airm_r2": 0.9874,
+        "d_corr_tangent3": 1.2469,
+        "d_corr_tangent3_r2": 0.9786,
+        "tangent_pr": 1.54,
+        "logdet_trajectory": -39.05,
+        "mean_airm_step": 0.002386,
+        "mean_airm_spread": 0.005553,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.263885,
+        "Phi_std": 0.0387,
+        "novelty_coherence": {
+          "r_J_kappa": -0.0505,
+          "p_J_kappa": 0.7732564070705904,
+          "r_Phi_kappa": -0.0517,
+          "p_Phi_kappa": 0.7678490611009129,
+          "r_B_kappa": 0.066,
+          "p_B_kappa": 0.7063694680039572,
+          "beta_J": -0.0418,
+          "delta_Phi": 0.0434,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1804,
+          "kappa_std": 0.0497
+        },
+        "elapsed_s": 5.9
+      }
+    },
+    {
+      "subject": "S016",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8779,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.243394,
+        "kappa_ci": [
+          0.236585,
+          0.248888
+        ],
+        "d_corr_airm": 2.6726,
+        "d_corr_airm_r2": 0.958,
+        "d_corr_tangent3": 1.4409,
+        "d_corr_tangent3_r2": 0.9819,
+        "tangent_pr": 2.52,
+        "logdet_trajectory": -62.95,
+        "mean_airm_step": 4.3e-05,
+        "mean_airm_spread": 9.5e-05,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.269653,
+        "Phi_std": 0.037726,
+        "novelty_coherence": {
+          "r_J_kappa": 0.0282,
+          "p_J_kappa": 0.8722987235146015,
+          "r_Phi_kappa": 0.0184,
+          "p_Phi_kappa": 0.9162327390691184,
+          "r_B_kappa": 0.0349,
+          "p_B_kappa": 0.8421225357450558,
+          "beta_J": 0.0297,
+          "delta_Phi": -0.0207,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1886,
+          "kappa_std": 0.0512
+        },
+        "elapsed_s": 5.9
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8999,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.276971,
+        "kappa_ci": [
+          0.269908,
+          0.283943
+        ],
+        "d_corr_airm": 2.8921,
+        "d_corr_airm_r2": 0.973,
+        "d_corr_tangent3": 1.4664,
+        "d_corr_tangent3_r2": 0.9853,
+        "tangent_pr": 1.52,
+        "logdet_trajectory": -61.97,
+        "mean_airm_step": 4.8e-05,
+        "mean_airm_spread": 0.000123,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.238898,
+        "Phi_std": 0.029681,
+        "novelty_coherence": {
+          "r_J_kappa": -0.4852,
+          "p_J_kappa": 0.003136228146306313,
+          "r_Phi_kappa": -0.0307,
+          "p_Phi_kappa": 0.8610805990108119,
+          "r_B_kappa": 0.4861,
+          "p_B_kappa": 0.003071177144673553,
+          "beta_J": -0.4889,
+          "delta_Phi": -0.0302,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2342,
+          "kappa_std": 0.0677
+        },
+        "elapsed_s": 5.9
+      }
+    },
+    {
+      "subject": "S017",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.691,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.313965,
+        "kappa_ci": [
+          0.308176,
+          0.319921
+        ],
+        "d_corr_airm": 2.8692,
+        "d_corr_airm_r2": 0.9241,
+        "d_corr_tangent3": 1.2804,
+        "d_corr_tangent3_r2": 0.9439,
+        "tangent_pr": 1.69,
+        "logdet_trajectory": -51.77,
+        "mean_airm_step": 0.00021,
+        "mean_airm_spread": 0.000552,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.255698,
+        "Phi_std": 0.04159,
+        "novelty_coherence": {
+          "r_J_kappa": -0.243,
+          "p_J_kappa": 0.15956036640912263,
+          "r_Phi_kappa": -0.1738,
+          "p_Phi_kappa": 0.31807842480481796,
+          "r_B_kappa": 0.2581,
+          "p_B_kappa": 0.13437645859064087,
+          "beta_J": -0.2067,
+          "delta_Phi": 0.0943,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2621,
+          "kappa_std": 0.0485
+        },
+        "elapsed_s": 6.0
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8932,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.314846,
+        "kappa_ci": [
+          0.30976,
+          0.320618
+        ],
+        "d_corr_airm": 3.6477,
+        "d_corr_airm_r2": 0.9637,
+        "d_corr_tangent3": 1.6965,
+        "d_corr_tangent3_r2": 0.9857,
+        "tangent_pr": 4.65,
+        "logdet_trajectory": -44.29,
+        "mean_airm_step": 0.001149,
+        "mean_airm_spread": 0.002473,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.271855,
+        "Phi_std": 0.032306,
+        "novelty_coherence": {
+          "r_J_kappa": -0.1425,
+          "p_J_kappa": 0.41410760229529564,
+          "r_Phi_kappa": 0.3322,
+          "p_Phi_kappa": 0.051175065362344445,
+          "r_B_kappa": 0.3913,
+          "p_B_kappa": 0.02011185396746003,
+          "beta_J": -0.2102,
+          "delta_Phi": -0.3706,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2634,
+          "kappa_std": 0.0368
+        },
+        "elapsed_s": 6.0
+      }
+    },
+    {
+      "subject": "S018",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9119,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.260955,
+        "kappa_ci": [
+          0.254494,
+          0.267381
+        ],
+        "d_corr_airm": 3.1967,
+        "d_corr_airm_r2": 0.9839,
+        "d_corr_tangent3": 1.6836,
+        "d_corr_tangent3_r2": 0.9876,
+        "tangent_pr": 2.35,
+        "logdet_trajectory": -56.62,
+        "mean_airm_step": 0.00014,
+        "mean_airm_spread": 0.000305,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.268891,
+        "Phi_std": 0.041124,
+        "novelty_coherence": {
+          "r_J_kappa": 0.4073,
+          "p_J_kappa": 0.015168962503350111,
+          "r_Phi_kappa": -0.1044,
+          "p_Phi_kappa": 0.5505780183220809,
+          "r_B_kappa": 0.4161,
+          "p_B_kappa": 0.012907389582148052,
+          "beta_J": 0.4033,
+          "delta_Phi": 0.0854,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2073,
+          "kappa_std": 0.0423
+        },
+        "elapsed_s": 6.2
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9064,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.295052,
+        "kappa_ci": [
+          0.288198,
+          0.30069
+        ],
+        "d_corr_airm": 3.4014,
+        "d_corr_airm_r2": 0.9866,
+        "d_corr_tangent3": 1.6433,
+        "d_corr_tangent3_r2": 0.9848,
+        "tangent_pr": 3.26,
+        "logdet_trajectory": -58.64,
+        "mean_airm_step": 0.000103,
+        "mean_airm_spread": 0.000225,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.262466,
+        "Phi_std": 0.03543,
+        "novelty_coherence": {
+          "r_J_kappa": -0.0609,
+          "p_J_kappa": 0.7281298974722357,
+          "r_Phi_kappa": -0.2304,
+          "p_Phi_kappa": 0.18292498617572245,
+          "r_B_kappa": 0.2308,
+          "p_B_kappa": 0.18216690132506527,
+          "beta_J": -0.0137,
+          "delta_Phi": 0.2276,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2543,
+          "kappa_std": 0.0312
+        },
+        "elapsed_s": 6.1
+      }
+    },
+    {
+      "subject": "S019",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8254,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.258393,
+        "kappa_ci": [
+          0.253293,
+          0.264534
+        ],
+        "d_corr_airm": 2.1602,
+        "d_corr_airm_r2": 0.9327,
+        "d_corr_tangent3": 1.063,
+        "d_corr_tangent3_r2": 0.9636,
+        "tangent_pr": 1.84,
+        "logdet_trajectory": -51.39,
+        "mean_airm_step": 0.000223,
+        "mean_airm_spread": 0.00058,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.267588,
+        "Phi_std": 0.037156,
+        "novelty_coherence": {
+          "r_J_kappa": -0.123,
+          "p_J_kappa": 0.4814975690129679,
+          "r_Phi_kappa": 0.0039,
+          "p_Phi_kappa": 0.9821986140665692,
+          "r_B_kappa": 0.1447,
+          "p_B_kappa": 0.40676149814489476,
+          "beta_J": -0.1675,
+          "delta_Phi": -0.0884,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2049,
+          "kappa_std": 0.0502
+        },
+        "elapsed_s": 6.0
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.8489,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.267978,
+        "kappa_ci": [
+          0.262412,
+          0.274088
+        ],
+        "d_corr_airm": 2.4534,
+        "d_corr_airm_r2": 0.9162,
+        "d_corr_tangent3": 1.3238,
+        "d_corr_tangent3_r2": 0.9773,
+        "tangent_pr": 3.19,
+        "logdet_trajectory": -55.05,
+        "mean_airm_step": 0.000172,
+        "mean_airm_spread": 0.000393,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.249067,
+        "Phi_std": 0.026313,
+        "novelty_coherence": {
+          "r_J_kappa": -0.3452,
+          "p_J_kappa": 0.042265654493269994,
+          "r_Phi_kappa": -0.1164,
+          "p_Phi_kappa": 0.505447620770945,
+          "r_B_kappa": 0.3475,
+          "p_B_kappa": 0.040787838957298685,
+          "beta_J": -0.3651,
+          "delta_Phi": -0.045,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2732,
+          "kappa_std": 0.0425
+        },
+        "elapsed_s": 5.9
+      }
+    },
+    {
+      "subject": "S020",
+      "EO": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.7212,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.23211,
+        "kappa_ci": [
+          0.228096,
+          0.237309
+        ],
+        "d_corr_airm": 1.7214,
+        "d_corr_airm_r2": 0.8292,
+        "d_corr_tangent3": 0.9442,
+        "d_corr_tangent3_r2": 0.9004,
+        "tangent_pr": 2.84,
+        "logdet_trajectory": -58.82,
+        "mean_airm_step": 6.4e-05,
+        "mean_airm_spread": 0.000164,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.264695,
+        "Phi_std": 0.034747,
+        "novelty_coherence": {
+          "r_J_kappa": -0.3336,
+          "p_J_kappa": 0.050158360915333884,
+          "r_Phi_kappa": -0.3279,
+          "p_Phi_kappa": 0.05451324122314718,
+          "r_B_kappa": 0.3827,
+          "p_B_kappa": 0.02326918667139305,
+          "beta_J": -0.2271,
+          "delta_Phi": 0.2157,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.2333,
+          "kappa_std": 0.0685
+        },
+        "elapsed_s": 5.9
+      },
+      "EC": {
+        "n_chan_original": 64,
+        "n_pca": 12,
+        "var_explained": 0.9369,
+        "n_windows": 119,
+        "duration_s": 61.0,
+        "kappa": 0.142145,
+        "kappa_ci": [
+          0.134004,
+          0.151671
+        ],
+        "d_corr_airm": 1.0666,
+        "d_corr_airm_r2": 0.9429,
+        "d_corr_tangent3": 0.7959,
+        "d_corr_tangent3_r2": 0.9749,
+        "tangent_pr": 1.5,
+        "logdet_trajectory": -48.03,
+        "mean_airm_step": 0.000507,
+        "mean_airm_spread": 0.001218,
+        "J_mean": 0.0,
+        "J_std": 0.0,
+        "Phi_mean": 0.283212,
+        "Phi_std": 0.039761,
+        "novelty_coherence": {
+          "r_J_kappa": -0.2517,
+          "p_J_kappa": 0.14473857562506073,
+          "r_Phi_kappa": -0.215,
+          "p_Phi_kappa": 0.21488355436523865,
+          "r_B_kappa": 0.2792,
+          "p_B_kappa": 0.1043220192925919,
+          "beta_J": -0.1961,
+          "delta_Phi": 0.1331,
+          "n_points": 35
+        },
+        "sliding": {
+          "kappa_mean": 0.1919,
+          "kappa_std": 0.0749
+        },
+        "elapsed_s": 6.0
+      }
+    }
+  ],
+  "cohort_summary": {
+    "kappa": {
+      "EO_mean": 0.246199,
+      "EO_std": 0.068476,
+      "EC_mean": 0.255531,
+      "EC_std": 0.053125,
+      "diff_mean": -0.009332,
+      "p_value": 0.409356,
+      "direction": "EC > EO",
+      "sig": "ns",
+      "n_subjects": 20
+    },
+    "d_corr_airm": {
+      "EO_mean": 2.56148,
+      "EO_std": 1.147111,
+      "EC_mean": 2.63706,
+      "EC_std": 0.865156,
+      "diff_mean": -0.07558,
+      "p_value": 0.424883,
+      "direction": "EC > EO",
+      "sig": "ns",
+      "n_subjects": 20
+    },
+    "d_corr_tangent3": {
+      "EO_mean": 1.25485,
+      "EO_std": 0.25697,
+      "EC_mean": 1.376935,
+      "EC_std": 0.248614,
+      "diff_mean": -0.122085,
+      "p_value": 0.081032,
+      "direction": "EC > EO",
+      "sig": "ns",
+      "n_subjects": 20
+    },
+    "tangent_pr": {
+      "EO_mean": 2.643,
+      "EO_std": 1.774788,
+      "EC_mean": 2.532,
+      "EC_std": 1.129467,
+      "diff_mean": 0.111,
+      "p_value": 0.766035,
+      "direction": "EO > EC",
+      "sig": "ns",
+      "n_subjects": 20
+    },
+    "logdet_trajectory": {
+      "EO_mean": -53.9325,
+      "EO_std": 5.64855,
+      "EC_mean": -49.04,
+      "EC_std": 8.445828,
+      "diff_mean": -4.8925,
+      "p_value": 0.046792,
+      "direction": "EC > EO",
+      "sig": "*",
+      "n_subjects": 20
+    },
+    "mean_airm_step": {
+      "EO_mean": 0.000286,
+      "EO_std": 0.000271,
+      "EC_mean": 0.000996,
+      "EC_std": 0.00102,
+      "diff_mean": -0.00071,
+      "p_value": 0.031485,
+      "direction": "EC > EO",
+      "sig": "*",
+      "n_subjects": 20
+    },
+    "mean_airm_spread": {
+      "EO_mean": 0.000708,
+      "EO_std": 0.000696,
+      "EC_mean": 0.002286,
+      "EC_std": 0.002439,
+      "diff_mean": -0.001578,
+      "p_value": 0.042473,
+      "direction": "EC > EO",
+      "sig": "*",
+      "n_subjects": 20
+    },
+    "Phi_mean": {
+      "EO_mean": 0.255382,
+      "EO_std": 0.01311,
+      "EC_mean": 0.265898,
+      "EC_std": 0.020673,
+      "diff_mean": -0.010516,
+      "p_value": 0.096196,
+      "direction": "EC > EO",
+      "sig": "ns",
+      "n_subjects": 20
+    },
+    "nc_decomposition": {
+      "r_B_kappa_mean": 0.2952,
+      "r_B_kappa_median": 0.2964,
+      "n_sig_005": 17,
+      "n_total": 40
+    }
+  }
+}
