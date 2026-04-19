@@ -1,99 +1,142 @@
 # =============================================================================
-# Phylogenetic Tree Validation Results
+# Phylogenetic Tree Curvature — Direct H^2 Embedding (Encoder-Free)
 # =============================================================================
-# Experiment: Estimate κ directly from tree geometry (no neural network)
-# Goal: Validate that κ ≈ 1.25 emerges from patristic distance optimization
+# Paper reference: Fenn & Fenn 2026, §4.2, Table 3, Figure 1, SI §13
+#
+# Method: Given a phylogenetic tree with N leaves and pairwise branch-length
+# distances, optimize 2D Poincare-ball coordinates to minimize normalized
+# stress S(kappa, {x_i}). Use a kappa-sweep over 80 log-spaced values from
+# 0.1 to 30, initialized from classical MDS, with L-BFGS for coordinate
+# optimization at each kappa. Golden-section refinement sharpens the grid
+# minimum. No neural network, no training, no learned parameters.
+#
+# This is the ENCODER-FREE validation of the state equation: the same
+# geometric law that the neural encoder satisfies is independently
+# recovered by direct tree embedding. The convergence of both methods on
+# n = 2 is the paper's strongest claim.
 # =============================================================================
 
 experiment:
-  name: "Phylogenetic Tree κ Estimation"
-  date: "2025-01-01"
-  method: "Poincaré ball MDS with curvature sweep"
-  dimensions_tested: [2, 3, 4]
-  kappa_range: [0.8, 1.7]
+  name: "Direct H^2 tree embedding via kappa-sweep"
+  date_measured: "2026-03"
+  paper_section: "§4.2, Table 3, SI §13"
+  method: "MDS init -> L-BFGS coordinate optimization -> kappa-sweep over stress"
+  kappa_search_range: [0.1, 30.0]
+  kappa_grid_points: 80
+  subsamples_per_domain: 3
+  subsample_size: 1000
+  bootstrap_replicates: 10
+  notebook: "validation/notebooks/05_topology.ipynb"
 
-trees:
-  - source: "TreeBASE"
-    name: "Solanaceae"
-    taxa: 156
-    kappa_optimal: 1.24
-    kappa_std: 0.05
-    best_dimension: 2
-    stress: 0.023
+# -----------------------------------------------------------------------------
+# Domain-level trees (paper Table 3)
+# -----------------------------------------------------------------------------
+# Curvature spans 5.5x across domains, yet all three back-solve to n = 2
+# when the scale-appropriate entropy rate is used. The 2D projection penalty
+# (ratio of measured kappa to state-equation saturation prediction) scales
+# linearly with log2(N_tips), reflecting the cost of forcing higher-dimensional
+# tree structure into 2D (paper §7.4).
+# -----------------------------------------------------------------------------
+domain_trees:
+  - domain: "Fungi"
+    source: "Li et al. 2021, 290-gene IQ-TREE"
+    tips: 1610
+    kappa: 3.0
+    kappa_std: 0.1
+    stress_normalized: 0.083
+    projection_penalty_factor: 1.0
+    n_backsolved: 2.00
+    h_effective_bits: 2.50
+    scale_level: "intra-domain"
 
-  - source: "TreeBASE"
-    name: "Lepidoptera"
-    taxa: 234
-    kappa_optimal: 1.26
-    kappa_std: 0.04
-    best_dimension: 2
-    stress: 0.019
+  - domain: "Archaea"
+    source: "GTDB r220 archaeal species tree"
+    tips: 5932
+    kappa: 12.7
+    kappa_std: 0.6
+    stress_normalized: 0.088
+    projection_penalty_factor: 1.5
+    n_backsolved: 1.99
+    h_effective_bits: 5.00
+    scale_level: "intra-domain"
 
-  - source: "OpenTree"
-    name: "Chordata"
-    taxa: 412
-    kappa_optimal: 1.23
-    kappa_std: 0.06
-    best_dimension: 2
-    stress: 0.031
+  - domain: "Bacteria"
+    source: "GTDB r220 bacterial species tree"
+    tips: 107340
+    kappa: 16.4
+    kappa_std: 0.5
+    stress_normalized: 0.070
+    projection_penalty_factor: 1.9
+    n_backsolved: 1.99
+    h_effective_bits: 5.80
+    scale_level: "intra-domain"
 
-  - source: "OpenTree"
-    name: "Embryophyta"
-    taxa: 389
-    kappa_optimal: 1.25
-    kappa_std: 0.05
-    best_dimension: 2
-    stress: 0.027
+# -----------------------------------------------------------------------------
+# Telescope experiments — kappa-sweep on encoder embeddings
+# -----------------------------------------------------------------------------
+# These apply the same stress-minimization methodology but use the neural
+# encoder's embeddings instead of tree coordinates. They provide the
+# inter-domain curvature measurement consistent with the state equation
+# prediction kappa in [1.20, 1.31] for h in [1.58, 1.65] bits.
+# -----------------------------------------------------------------------------
+telescope_experiments:
+  prokaryote:
+    date: "2026-03-12"
+    encoder: "BiosphereCodec reference (kappa = 1.0 fixed)"
+    reference: "GTDB r220 bac120 + ar53 marker-gene ML distances"
+    n_genomes: 250
+    composition: {bacteria: 150, archaea: 100}
+    kappa_peak: 1.30
+    pearson_log_r: 0.360
+    interpretation: "Peak near state equation prediction; consistent with h ~ 1.64 bits"
 
-  - source: "OpenTree"
-    name: "Basidiomycota"
-    taxa: 287
-    kappa_optimal: 1.24
-    kappa_std: 0.05
-    best_dimension: 2
-    stress: 0.024
+  fungal:
+    date: "2026-03-13"
+    encoder: "BiosphereCodec reference (kappa = 1.0 fixed)"
+    reference: "Li et al. 2021, 290-gene IQ-TREE, ML branch lengths"
+    n_genomes: 975
+    composition: {ascomycota: 753, basidiomycota: 180, mucoromycota: 21, microsporidia: 21}
+    kappa_peak: 1.29
+    pearson_log_r: 0.851
+    interpretation: "Strongest single phylogenetic validation; r = 0.851 against gold-standard ML branch lengths"
 
-  - source: "GTDB"
-    name: "Bacteria (subset)"
-    taxa: 400
-    kappa_optimal: 1.27
-    kappa_std: 0.07
-    best_dimension: 2
-    stress: 0.035
+  cross_domain_convergence:
+    range: [1.28, 1.34]
+    interpretation: |
+      Both telescopes peak in the same narrow kappa range, consistent
+      with the state equation's predicted interval [1.20, 1.31] for
+      inter-domain h in [1.58, 1.65] bits. The spread reflects the
+      compositional diversity of each evaluation: prokaryote-heavy
+      pushes toward kappa ~ 1.34 (higher effective h), eukaryote-enriched
+      pulls toward kappa ~ 1.28. This is the Kolmogorov complexity
+      profile of the biosphere projected onto a single manifold.
 
-  - source: "GTDB"
-    name: "Archaea"
-    taxa: 312
-    kappa_optimal: 1.22
-    kappa_std: 0.06
-    best_dimension: 2
-    stress: 0.029
+# -----------------------------------------------------------------------------
+# Scale-dependence summary
+# -----------------------------------------------------------------------------
+scale_dependence_summary:
+  message: |
+    Curvature spans 13-fold across scales (kappa: 1.29 inter-domain ->
+    16.4 intra-domain bacteria). Dimension is invariant: n = 2.00 +/-
+    0.05 everywhere. The state equation kappa = (h * ln 2)^2 holds at
+    every scale tested when the scale-appropriate entropy rate is used:
+    - Inter-domain (3 domains): h = 1.58 bits -> kappa = 1.20 predicted
+    - Fungi intra-domain: h = 2.5 bits -> kappa = 3.00 predicted
+    - Archaea intra-domain: h = 5.0 bits -> kappa = 12.0 predicted
+    - Bacteria intra-domain: h = 5.8 bits -> kappa = 16.1 predicted
+  state_equation_validated: true
+  universal_invariant: "n = 2"
+  scale_dependent_quantity: "kappa"
 
-  - source: "Ensembl"
-    name: "Gene tree (BRCA1)"
-    taxa: 89
-    kappa_optimal: 1.25
-    kappa_std: 0.08
-    best_dimension: 2
-    stress: 0.018
-
-summary:
-  kappa_mean: 1.245
-  kappa_std: 0.015
-  kappa_range: [1.22, 1.27]
-
-  dimension_analysis:
-    best_fit_n: 2.00
-    n_std: 0.05
-    n_range: [1.95, 2.05]
-
-  bootstrap:
-    replicates: 30
-    ci_95: [1.21, 1.28]
-
-  interpretation: |
-    Phylogenetic trees from diverse sources (plants, animals, bacteria,
-    archaea, fungi) all yield κ ≈ 1.25 when embedded in H².
-
-    This provides model-independent validation: the curvature is a property
-    of evolutionary trees themselves, not an artifact of neural network training.
+historical_note:
+  superseded_entries: |
+    An earlier version of this file (dated 2026-01-01) contained an
+    "aspirational" trees section claiming 8 independent phylogenetic
+    trees (Solanaceae, Lepidoptera, Chordata, etc.) all yielded
+    kappa ~ 1.25. Those values were predictions constructed before
+    the experiments ran. The v2 preprint correctly reports the
+    intra-domain trees as spanning kappa = 3-16 with n = 2 invariant,
+    NOT as all converging to 1.25. The converging-to-1.25 pattern
+    holds at the inter-domain scale (via telescope sweeps) where h
+    is ~ 1.6 bits. The above table reflects the measurements actually
+    used in the v2 preprint Table 3.
