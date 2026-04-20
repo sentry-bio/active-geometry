@@ -1,84 +1,120 @@
 # Active Geometry
 
-**The Intrinsic Hyperbolic Curvature of Evolution**
+**The Geometric State Equation of the Tree of Life**
 
 [![Lean 4](https://img.shields.io/badge/Lean-4-blue)](theory/lean/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
+[![Preprint](https://img.shields.io/badge/bioRxiv-2026.03.09.710612-red.svg)](https://www.biorxiv.org/content/10.64898/2026.03.09.710612v2)
 
-> Evolution organizes genomic sequences on a hyperbolic manifold with universal curvature **κ = 1.247 ± 0.003**, matching the theoretical prediction **κ = 1.23** with 1.7% agreement and zero free parameters.
+> Evolution is two-dimensional. Across every system tested — from
+> decade-old viral outbreaks to 3.8-billion-year cellular lineages,
+> across DNA, RNA, and protein alphabets — the intrinsic embedding
+> dimension is **n = 2.00 ± 0.05**. Curvature is scale-dependent and
+> predicted from the entropy rate of the generating code by the state
+> equation **κ = (h · ln 2 / (n−1))²**, with zero adjustable parameters.
+> The universal invariant is the dimension, not the curvature.
 
 ---
 
-## Overview
+## What This Repository Contains
 
-This repository provides complete, reproducible materials for two companion papers:
+Reproducible materials for Fenn & Fenn (2026), [*Evolution as Active
+Geometry: The Geometric State Equation of the Tree of Life*](https://www.biorxiv.org/content/10.64898/2026.03.09.710612v2).
 
-| Paper | Focus | Key Result |
-|-------|-------|------------|
-| **Empirical** | Measurement & Validation | κ = 1.247 ± 0.003 from 5,627 genomes |
-| **Theory** | First-Principles Derivation | κ = (h ln 2)² ≈ 1.23 with n=2 |
+- **Lean 4 proofs** of the state equation's mathematical consequences
+  (existence, uniqueness, monotonicity, maximization at n=2, Lyapunov
+  stability). Machine-checked, zero sorries.
+- **BiosphereCodec reference encoder**: a minimal open-source Poincaré-ball
+  encoder that reproduces the paper's Procrustes coordinate convergence
+  on 5,550 genomes. (The production-scale encoder, Biosphere Atlas v8.4
+  with 125K species coverage, is described in a forthcoming applications
+  paper; this is the reproducibility kernel.)
+- **Six validation notebooks** covering neural convergence, theory
+  verification, viral families, null simulations, topology sweep,
+  and ablation.
+- **Encoder-free methods**: §4.2 κ-sweep tree embedding has no neural
+  network — any reviewer can reproduce κ = 3–16 on GTDB/Li2021 trees
+  with standard MDS + L-BFGS.
 
-Both papers share:
-- Formal proofs in [Lean 4](theory/lean/)
-- Canonical constants in [`constants.yaml`](constants.yaml)
-- The BiosphereCodec model in [`model/`](model/)
+---
+
+## The Two Findings
+
+The paper reports two results of different character:
+
+**1. Topological invariant — robust across everything tested.**
+
+Back-solving `n = 1 + h·ln 2/√κ` from independently measured (h, κ)
+pairs returns n = 2 at every scale, for every alphabet, across 10⁶-fold
+variation in timescale and 10⁴-fold variation in mutation rate. This
+is the deepest result.
+
+| System | Substrate | κ | n |
+|---|---|---|---|
+| Multi-domain cellular life | DNA | 1.28–1.34 | 2.01 |
+| Viral families (15) | RNA/DNA | 1.32–1.55 | 2.00 ± 0.05 |
+| Fungi (Li 2021) | DNA | 3.0 ± 0.1 | 2.00 |
+| Archaea (GTDB r220) | DNA | 12.7 ± 0.6 | 1.99 |
+| Bacteria (GTDB r220) | DNA | 16.4 ± 0.5 | 1.99 |
+| Protein families (15 Pfam) | Amino acid | 3.80 ± 0.60 | 2.03 ± 0.10 |
+
+**2. Metric law — scale-dependent, predicted by entropy.**
+
+The state equation `κ = (h·ln 2/(n−1))²` applied at the scale-appropriate
+h predicts κ across a 13-fold range, with no parameters fit. Cross-alphabet
+validation: h_protein = 2.85 bits predicts κ_protein = 3.90, measured
+3.80 ± 0.60 — a 3.1× jump from the DNA value, confirmed at 2.6% agreement.
+
+Viral curvature-entropy correlation: **Pearson r = 0.996**, explaining
+99.3% of variance with zero free parameters.
 
 ---
 
 ## Quick Start
 
-### One-Command Verification (Docker)
+### Encoder-free verification (30 minutes, CPU only)
+
+The single strongest empirical result in the paper — §4.2 domain-level
+tree embedding — uses no neural network:
 
 ```bash
-# Build and run all verifications
+make tree-validation
+```
+
+This reproduces Table 3: fungi κ = 3.0, archaea κ = 12.7, bacteria
+κ = 16.4, all with n = 2.
+
+### Lean proofs (5 minutes)
+
+```bash
+cd theory/lean && lake build
+```
+
+Compiles all theorems including `kappa_n2`, `kappa_max_at_n2`,
+`kappa_bounded_by_alphabet`, `lyapunov_zero_iff`, and the rest. Zero
+sorries. See [theory/lean/README.md](theory/lean/README.md) for the full
+theorem inventory.
+
+### Docker (one-command, reproducible)
+
+```bash
 docker build -t active-geometry .
 docker run --rm active-geometry
 ```
 
-This executes:
-1. Lean 4 formal proofs (machine-checked)
-2. All 6 validation notebooks (numerical)
-3. Constants consistency check
+Runs Lean proofs + all 6 validation notebooks + constants consistency check.
 
-### Manual Verification
-
-#### 1. Verify Lean Proofs (5 minutes)
+### Five-seed Procrustes convergence (6–10 hours GPU)
 
 ```bash
-cd theory/lean
-lake build
-```
-
-#### 2. Reproduce κ Measurement (6-10 hours GPU)
-
-```bash
-# Train 5 independent models
 make train-all-seeds
-
-# Analyze coordinate convergence
 make analyze-convergence
 ```
 
-### 3. Validate on RNA Viruses (2-4 hours GPU)
-
-```bash
-# Run 15-dataset validation sweep
-make viral-validation
-```
-
-### 4. Validate on Phylogenetic Trees (30 minutes CPU)
-
-```bash
-# κ estimation from tree geometry
-make tree-validation
-```
-
-### 5. Generate All Figures
-
-```bash
-make figures
-```
+Trains five independent BiosphereCodec instances with κ fixed at 1.0,
+measures Procrustes alignment across all 10 seed pairs. Expected result:
+mean r = 0.94 ± 0.02 (paper §4.1, SI §3).
 
 ---
 
@@ -86,188 +122,67 @@ make figures
 
 ```
 active-geometry/
+├── manifest.yaml              # Machine-readable claims & verification map
+├── constants.yaml             # Single source of truth (scale-stratified κ, h, n)
+├── Dockerfile                 # One-command reproducibility
+├── run_all_verifications.sh   # Verification orchestrator
 │
-├── manifest.yaml               # Machine-readable claims & verification map
-├── constants.yaml              # Single source of truth for all values
-├── Dockerfile                  # One-command reproducibility
-├── run_all_verifications.sh    # Verification orchestrator
+├── theory/lean/               # Lean 4 formalization
+│   └── ActiveGeometry/KappaCurvature.lean
 │
-├── theory/
-│   └── lean/                   # Formal proofs (Lean 4, machine-checked)
-│       ├── ActiveGeometry/
-│       │   └── KappaCurvature.lean  # 577 lines of proofs
-│       └── lakefile.lean
-│
-├── model/                      # BiosphereCodec implementation
-│   ├── biosphere_codec.py      # Core encoder-decoder
-│   ├── training.py             # Training pipeline
-│   └── hyperbolic.py           # Poincaré geometry utilities
+├── model/                     # BiosphereCodec reference encoder
+│   ├── biosphere_codec.py
+│   ├── training.py
+│   └── hyperbolic.py
 │
 ├── validation/
-│   ├── notebooks/              # 6 canonical verification notebooks
-│   │   ├── 01_neural_convergence.ipynb
-│   │   ├── 02_theory_verification.ipynb
-│   │   ├── 03_viral_validation.ipynb
-│   │   ├── 04_null_simulations.ipynb
-│   │   ├── 05_topology.ipynb
-│   │   └── 06_ablation.ipynb
-│   ├── genomic/                # DNA training (5,627 genomes)
-│   ├── viral/                  # RNA validation (15 viruses)
-│   └── phylogenetic/           # Tree κ estimation
+│   ├── notebooks/             # Six canonical notebooks
+│   ├── genomic/               # 5,550-genome training + Procrustes
+│   ├── viral/                 # 15-family curvature-entropy sweep
+│   └── phylogenetic/          # Domain-level tree embedding + telescopes
 │
-├── supplementary/
-│   └── wolfram/                # CAS verification (optional, commercial)
-│
-├── data/
-│   └── manifests/              # Data acquisition specs
-│
-└── figures/
-    └── fig*.py                 # Reproducible figure generation
+├── supplementary/wolfram/     # Optional CAS cross-verification
+├── data/manifests/            # Public genome accessions (RefSeq subset)
+└── figures/                   # Reproducible figure generation
 ```
 
 ---
 
-## The Geometric State Equation
+## What Is and Isn't Claimed
 
-The central theoretical result is a **parameter-free prediction** of evolutionary curvature:
+**Is claimed.** The state equation is a parameter-free law that holds
+across biological systems tested. Dimension is the universal invariant.
+The neural encoder's coordinate system is intrinsic to the data up to
+global SO(2) rotation.
 
-$$\kappa = \left(\frac{h \ln 2}{n-1}\right)^2$$
+**Is not claimed.** Curvature does not emerge from training by gradient
+descent on sequence data — the paper explicitly states (§7.5) that
+curvature is set as a design parameter from theory, not discovered.
+In the reference five-seed experiment (§4.1, SI §3), κ is fixed at
+1.0 and what converges is coordinate geometry, measured by Procrustes
+alignment (r = 0.94 ± 0.02). The curvature value κ ≈ 1.25 comes from
+theory (state equation at h = 1.61) and from post-hoc telescope sweeps
+on frozen embeddings (κ ≈ 1.28–1.34).
 
-Where:
-- **κ** = Gaussian curvature of the Poincaré ball
-- **h** = Entropy rate of genomic sequences (~1.6 bits/nucleotide)
-- **n** = Intrinsic dimensionality (empirically n = 2)
-
-Substituting measured values:
-$$\kappa = \left(\frac{1.61 \times 0.693}{2-1}\right)^2 = 1.23$$
-
-This matches the empirical measurement **κ = 1.247 ± 0.003** within 1.7%.
-
----
-
-## Key Results
-
-### Empirical (5-seed training)
-
-| Seed | κ | Convergence |
-|------|---|-------------|
-| 0 | 1.245 | Reference |
-| 42 | 1.248 | r = 0.984 |
-| 123 | 1.247 | r = 0.981 |
-| 456 | 1.249 | r = 0.979 |
-| 789 | 1.246 | r = 0.983 |
-| **Mean** | **1.247 ± 0.003** | **CV = 0.24%** |
-
-### Viral Validation (15 datasets)
-
-- κ correlates with phylogenetic depth: **ρ = 0.84, p < 0.001**
-- Young viruses (SARS-CoV-2, Influenza): κ ≈ 1.32-1.35
-- Ancient viruses (HCV, DENV): κ ≈ 1.35-1.55
-- Validates substrate-independence (RNA vs DNA)
-
-### Formal Verification
-
-All theoretical claims verified in **Lean 4**:
-- State equation derivation
-- Dimensional analysis
-- Uniqueness of n = 2 solution
-
----
-
-## Installation
-
-### Requirements
-
-- Python 3.10+
-- PyTorch 2.0+
-- CUDA 11.8+ (for GPU training)
-- Lean 4 (for proof verification)
-
-### Setup
-
-```bash
-# Clone repository
-git clone https://github.com/sentry-bio/active-geometry.git
-cd active-geometry
-
-# Create environment
-python -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Verify installation
-make test
-```
-
-### Optional: Lean 4
-
-```bash
-# Install elan (Lean version manager)
-curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
-
-# Build proofs
-cd theory/lean && lake build
-```
-
----
-
-## Reproducibility
-
-### Data Access
-
-Raw genomic data is not included due to size. To replicate:
-
-```bash
-# Download 1,540 public NCBI genomes (Tier 1)
-make fetch-data
-
-# Or use provided manifests to fetch specific accessions
-python data/scripts/fetch_from_manifest.py --manifest data/manifests/public_refseq.tsv
-```
-
-### Checkpoints
-
-Pre-trained checkpoints for verification:
-
-```bash
-# Download reference checkpoint (seed 42)
-make download-checkpoint
-```
-
-### Validation
-
-```bash
-# Run all validation checks
-make validate-all
-
-# This runs:
-# 1. Lean proof compilation
-# 2. Python unit tests
-# 3. Results consistency check (vs constants.yaml)
-# 4. Figure regeneration
-```
+**Falsification criteria.** §7.5 names four conditions under which the
+framework is refuted. Three negative controls have been run — Euclidean
+null (κ = 0), synthetic recovery (1.08% MRE), destroyed structure
+(Procrustes r < 0.3). All pass. The fourth — independent replication
+on different architectures — is partially supported by Pearce et al.
+2025 (Evo 2 DNA LM with sparse autoencoder analysis independently finds
+phylogenetic geometry as a curved manifold).
 
 ---
 
 ## Citation
 
-If you use this work, please cite both papers:
-
 ```bibtex
-@article{fenn2026empirical,
-  title={Evolution as Active Geometry: A Universal Curvature Constant},
+@article{fenn2026evolution,
+  title={Evolution as Active Geometry: The Geometric State Equation of the Tree of Life},
   author={Fenn, Rohit and Fenn, Amit},
-  journal={},
-  year={2026}
-}
-
-@article{fenn2026theory,
-  title={A Geometric State Equation for Evolutionary Dynamics},
-  author={Fenn, Rohit and Fenn, Amit},
-  journal={},
-  year={2026}
+  journal={bioRxiv},
+  year={2026},
+  doi={10.64898/2026.03.09.710612}
 }
 ```
 
@@ -275,11 +190,10 @@ If you use this work, please cite both papers:
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
-
----
+MIT. See [LICENSE](LICENSE).
 
 ## Contact
 
-- Repository: [github.com/sentry-bio/active-geometry](https://github.com/sentry-bio/active-geometry)
+- Preprint: [bioRxiv 2026.03.09.710612](https://www.biorxiv.org/content/10.64898/2026.03.09.710612v2)
+- Correspondence: research@sentry.bio
 - Issues: [GitHub Issues](https://github.com/sentry-bio/active-geometry/issues)

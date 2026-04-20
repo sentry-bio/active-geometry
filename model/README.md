@@ -26,7 +26,12 @@ BiosphereCodec (256×4)
 
 1. **Hyena Operator**: Linear-time sequence mixing (no quadratic attention)
 2. **Hierarchical Pooling**: Gene-aware aggregation
-3. **Learnable Curvature**: The model discovers κ ≈ 1.247 during training
+3. **Poincaré Curvature**: Set as a design parameter from the state equation
+   κ = (h · ln 2)² (Paper I §7.5: curvature is degenerate with InfoNCE
+   temperature in contrastive learning, so it cannot be discovered by
+   gradient descent). The reference encoder trains at κ = 1.0 fixed; what
+   is measured is coordinate-system stability via Procrustes alignment
+   across seeds (Paper I §4.1, r = 0.94 ± 0.02).
 4. **Multi-task Loss**: MLM + CLM + InfoNCE + Distance Regression
 
 ## Files
@@ -54,9 +59,9 @@ model = BiosphereCodec(
 tokens = torch.randint(0, 5444, (batch, seq_len))
 loss, logs = model(tokens)
 
-# Access learned curvature
+# Access the curvature parameter (fixed at training, not learned)
 kappa = model.hyper.c.item()
-print(f"Learned curvature: κ = {kappa:.3f}")
+print(f"Curvature: κ = {kappa:.3f}")
 ```
 
 ## Training

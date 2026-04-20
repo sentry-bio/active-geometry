@@ -1,123 +1,264 @@
 # =============================================================================
 # Active Geometry: Canonical Constants
 # =============================================================================
-# This file is the SINGLE SOURCE OF TRUTH for all key values.
-# All scripts, figures, and validations read from this file.
-# If a value changes, update it HERE and nowhere else.
+# Single source of truth for the values reported in the paper
+# (Fenn & Fenn 2026, bioRxiv 10.64898/2026.03.09.710612v2).
+# All scripts, figures, and validation notebooks read from this file.
+# Update values here and nowhere else.
 # =============================================================================
 
-# -----------------------------------------------------------------------------
-# Curvature (κ) - The Central Result
-# -----------------------------------------------------------------------------
-curvature:
-  # Theoretical prediction (zero free parameters)
-  kappa_theory: 1.230
-  kappa_theory_uncertainty: 0.08  # From entropy measurement uncertainty
-
-  # Empirical measurement (5-seed average)
-  kappa_empirical: 1.247
-  kappa_empirical_std: 0.003
-  kappa_empirical_cv_percent: 0.24
-
-  # Agreement
-  theory_empirical_agreement_percent: 1.7
-
-  # Units and interpretation
-  units: "dimensionless (Gaussian curvature of Poincaré ball)"
-  interpretation: "Intrinsic curvature of evolutionary manifold"
+metadata:
+  paper_doi: "10.64898/2026.03.09.710612v2"
+  repo: "https://github.com/sentry-bio/active-geometry"
+  version: "2.0.0"
+  last_updated: "2026-04-17"
+  license: "MIT"
+  authors: ["Fenn, R.", "Fenn, A."]
 
 # -----------------------------------------------------------------------------
-# Entropy Rate (h) - Information Content
+# The Hyperbolic Trilogy
+# -----------------------------------------------------------------------------
+# This repository is Paper I (genomic substrate) of a three-paper program.
+# Paper II is the theoretical core with Lean 4 proofs; Paper III is the
+# linguistic substrate validation. All three share the state equation and
+# the universal invariant n = 2.
+# -----------------------------------------------------------------------------
+trilogy:
+  paper_i:
+    title: "Evolution as Active Geometry: The Geometric State Equation of the Tree of Life"
+    venue: "bioRxiv"
+    doi: "10.64898/2026.03.09.710612"
+    substrate: "genomic (DNA, RNA, protein)"
+    repo: "github.com/sentry-bio/active-geometry"
+    role: "this repository"
+  paper_ii:
+    title: "A Geometric State Equation for Information-Generating Hierarchies"
+    venue: "Zenodo"
+    doi: "10.5281/zenodo.19381558"
+    substrate: "theoretical core (cross-substrate derivation + Lean 4 proofs)"
+    role: "companion — proves existence, uniqueness, monotonicity, Lyapunov stability"
+  paper_iii:
+    title: "Convergent Alphabets: Why Every Information Hierarchy Looks the Same"
+    venue: "in preparation"
+    substrate: "linguistic (phonemes, sound change)"
+    repo: "github.com/sentry-bio/convergent-alphabets"
+    role: "companion — independent substrate validation"
+
+trilogy_crossrefs:
+  shared_formula:
+    value: "kappa = (h * ln2 / (n - 1))^2"
+    authoritative: "theory/lean/ActiveGeometry/KappaCurvature.lean, theorem kappa_n2"
+  shared_invariant:
+    value: "n = 2"
+    authoritative: "empirical across all three papers; Lean theorem kappa_max_at_n2 proves optimality given h"
+  shared_lower_anchor:
+    value: "h_three_letter = log2(3) ≈ 1.585 bits"
+    authoritative: "theory/lean/ActiveGeometry/KappaCurvature.lean, theorem h_three_letter_bounds"
+    note: "Same number measured independently in DNA (this repo) and in phonemes (convergent-alphabets)"
+
+# -----------------------------------------------------------------------------
+# Universal invariant: n = 2
+# -----------------------------------------------------------------------------
+# The deepest result of the paper: across 13-fold variation in curvature,
+# 10^6 variation in timescale, 10^4 variation in mutation rate, and two
+# molecular alphabets (4-letter DNA/RNA, 20-letter protein), the back-solved
+# embedding dimension is invariant. Two coordinates exhaust descent with
+# modification: temporal depth (radius) and phenotypic direction (angle).
+# -----------------------------------------------------------------------------
+dimension:
+  n_universal: 2.00
+  n_universal_std: 0.05
+  interpretation: >
+    Topological invariant of trees (descent with modification). A tree is
+    a 1-complex whose metric completion in hyperbolic space requires
+    exactly two dimensions for faithful embedding. Independent of
+    alphabet, substrate, or timescale. The one tested exception (RecA,
+    n = 3.02) is the single most horizontally-transferred gene in the
+    bacterial genome — a non-tree topology, diagnosed by the state
+    equation as requiring n > 2.
+  tested_systems:
+    cellular_life: 2.01
+    viral_families_mean: 2.00
+    fungal_tree: 2.00
+    archaeal_tree: 1.99
+    bacterial_tree: 1.99
+    protein_families_mean: 2.03
+
+# -----------------------------------------------------------------------------
+# Geometric state equation (zero free parameters)
+# -----------------------------------------------------------------------------
+state_equation:
+  formula: "kappa = (h * ln(2) / (n - 1))^2"
+  formula_latex: "\\kappa = \\left(\\frac{h \\ln 2}{n-1}\\right)^2"
+  at_n2: "kappa = (h * ln(2))^2"
+  derivation: "Self-consistency between topological entropy of geodesic flow and Shannon entropy of the code"
+  source: "Manning's theorem (1979) applied to the genetic code"
+  free_parameters: 0
+  lean_verification: "theory/lean/ActiveGeometry/KappaCurvature.lean"
+
+# -----------------------------------------------------------------------------
+# Entropy rate h (bits per substitution event)
+# -----------------------------------------------------------------------------
+# The paper uses H_raw = log2(4) = 2 as the four-letter channel capacity.
+# Three biochemical reductions bring h into [1.58, 1.65] bits.
+# The lower bound log2(3) corresponds to the information-theoretic minimum
+# for a code that must distinguish three domains of life.
 # -----------------------------------------------------------------------------
 entropy:
-  # Effective entropy rate of genomic sequences
-  h_effective_bits: 1.61
-  h_effective_std: 0.10
-
-  # Theoretical bounds
-  h_max_bits: 2.0           # log2(4) for 4 nucleotides
-  h_min_bits: 0.0           # Perfect redundancy
-
-  # Measurement source
-  source: "Shannon entropy of aligned genomic sequences"
-  reference: "Empirical paper, Methods"
-
-# -----------------------------------------------------------------------------
-# Geometry - Manifold Properties
-# -----------------------------------------------------------------------------
-geometry:
-  # Intrinsic dimensionality
-  n_dimensions: 2
-  n_dimensions_fitted: 2.00
-  n_dimensions_fitted_std: 0.05
-
-  # Manifold type
-  manifold: "poincare_ball"
-  metric: "hyperbolic"
-
-  # State equation
-  state_equation: "kappa = (h * ln(2) / (n - 1))^2"
-  state_equation_latex: "\\kappa = \\left(\\frac{h \\ln 2}{n-1}\\right)^2"
+  # Four-letter channel capacity (paper §3.2)
+  H_raw_bits: 2.0           # log2(4), DNA alphabet ceiling
+  # Three-alternative lower bound
+  h_three_letter_bits: 1.585 # log2(3), effective lower bound
+  # Central estimate used throughout the paper
+  h_dna_central_bits: 1.61
+  h_dna_std_bits: 0.10
+  h_dna_range: [1.58, 1.65]
+  # Protein (20-letter) entropy rate from LG substitution model
+  h_protein_bits: 2.85
+  # Reductions from raw
+  reductions:
+    transition_transversion_ratio: "~2:1 (Kimura 1980)"
+    context_cpg_dependence: "context-dependent mutation (Bird 1980)"
+    purifying_selection: "5-8% of substitutions removed (Kimura 1968)"
 
 # -----------------------------------------------------------------------------
-# Validation - Experimental Parameters
+# Curvature (kappa) — scale-dependent, predicted from entropy
 # -----------------------------------------------------------------------------
-validation:
-  genomic:
-    total_genomes: 5627
-    training_seeds: [0, 42, 123, 456, 789]
-    model_architecture: "BiosphereCodec 256x4"
-    latent_dim: 128
-
-  viral:
-    total_datasets: 15
-    total_genomes: 89247
-    seeds_per_dataset: 3
-    kappa_range: [1.32, 1.55]
-    phylogenetic_correlation: 0.84
-    phylogenetic_p_value: "<0.001"
-
-  phylogenetic:
-    tree_sources: ["TreeBASE", "OpenTree", "GTDB", "Ensembl"]
-    total_trees: 12
-    bootstrap_replicates: 30
+# The paper makes a key conceptual pivot relative to earlier drafts:
+# kappa is NOT a single universal constant of life. It is a scale-dependent
+# quantity predicted by the state equation at the scale-appropriate h.
+# The invariant is n = 2; the curvature varies across 13-fold as h varies
+# across scales.
+# -----------------------------------------------------------------------------
+curvature:
+  # State-equation prediction at inter-domain scale (h ∈ [1.58, 1.65])
+  kappa_predicted_range: [1.20, 1.31]
+  kappa_predicted_central: 1.25  # h = 1.61
+  # Upper bound from four-letter alphabet ceiling (Lean: kappa_bounded_by_alphabet)
+  kappa_alphabet_ceiling: 1.921  # 4 * (ln 2)^2
+  # Training value used for the five-seed reference encoder (fixed, not learned)
+  kappa_trained_encoder: 1.0
+  # Post-hoc telescope peak on frozen encoder embeddings, inter-domain scale
+  kappa_telescope_range: [1.28, 1.34]
+  kappa_telescope_prokaryote: 1.30   # GTDB bac120 + ar53, Pearson-log r=0.360
+  kappa_telescope_fungal: 1.29       # Li 2021 ML tree, Pearson-log r=0.851
+  # Intra-domain measurements (direct H^2 tree embedding, §4.2)
+  # No encoder used; kappa optimized against ML branch lengths.
+  intra_domain:
+    fungi:
+      kappa: 3.0
+      kappa_std: 0.1
+      n_backsolved: 2.00
+      stress: 0.083
+      tips: 1610
+      source: "Li et al. 2021, 290-gene IQ-TREE"
+      projection_penalty: 1.0   # No inflation; reference
+    archaea:
+      kappa: 12.7
+      kappa_std: 0.6
+      n_backsolved: 1.99
+      stress: 0.088
+      tips: 5932
+      source: "GTDB r220 archaeal species tree"
+      projection_penalty: 1.5
+    bacteria:
+      kappa: 16.4
+      kappa_std: 0.5
+      n_backsolved: 1.99
+      stress: 0.070
+      tips: 107340
+      source: "GTDB r220 bacterial species tree"
+      projection_penalty: 1.9
+  # Cross-alphabet validation: protein curvature predicted from h_protein = 2.85
+  protein:
+    kappa_predicted: 3.90
+    kappa_measured_mean: 3.80
+    kappa_measured_std: 0.60
+    n_backsolved_mean: 2.03
+    n_backsolved_std: 0.10
+    families_tested: 15
+    agreement_percent: 2.6
+    recA_exception:
+      kappa: 0.89
+      n_backsolved: 3.02
+      interpretation: "Most horizontally-transferred gene; non-tree topology diagnosed by n > 2"
 
 # -----------------------------------------------------------------------------
-# Model Architecture
+# Neural encoder (BiosphereCodec reference)
 # -----------------------------------------------------------------------------
-model:
+# The minimal reference implementation is in this repository. It provides
+# coordinates for verification of the paper's §4.1 Procrustes convergence.
+# The full-scale production encoder (Biosphere Atlas v8.4) is described
+# separately in a forthcoming applications paper.
+# -----------------------------------------------------------------------------
+encoder:
   name: "BiosphereCodec"
-  version: "1.0"
-
-  architecture:
-    d_model: 256
-    n_layers: 4
-    latent_dim: 128
-    max_sequence_length: 8192
-    vocab_size: 5444
-
-  training:
-    batch_size: 2
-    gradient_accumulation: 8
-    learning_rate: 0.0002
-    phases: ["unsupervised", "supervised", "joint"]
+  architecture: "4-layer Hyena encoder-decoder, Poincaré ball output"
+  latent_dim: 129    # 128 + 1 depth coordinate
+  embedding_dim: 2   # Intrinsic (Poincaré disk)
+  kappa_training: 1.0   # Fixed (not learned); the paper explicitly does NOT
+                        # claim κ emerges from training. Training produces
+                        # coordinate stability; κ comes from theory and
+                        # post-hoc telescope measurement.
+  dataset_size: 5550
+  dataset_domains: ["Bacteria (65%)", "Archaea (20%)", "Eukarya (15%)"]
+  seeds: [0, 42, 137, 2024, 888]
+  procrustes_r_mean: 0.94
+  procrustes_r_std: 0.02
+  training_steps: 7000
+  training_time_hours: 48
+  training_gpu: "NVIDIA RTX 4070 Ti"
 
 # -----------------------------------------------------------------------------
-# Mathematical Constants
+# Falsification tests (paper §5.3)
+# -----------------------------------------------------------------------------
+# The paper states four conditions under which the framework would be
+# falsified. None have been observed. Three negative controls have been run.
+# -----------------------------------------------------------------------------
+falsification:
+  euclidean_null:
+    description: "Random polynomial-growth trees; estimator must return kappa = 0"
+    kappa_measured: 0.0000
+    kappa_std: 0.0000
+    replicates: 5
+    result: "PASS"
+  synthetic_recovery:
+    description: "Binary trees with known kappa_true = (ln b)^2 for b in {2,3,4,5}"
+    mean_relative_error_percent: 1.08
+    result: "PASS"
+  destroyed_structure:
+    description: "Shuffled phylogenetic edges; coordinate convergence must collapse"
+    kappa_measured: 0.0013
+    kappa_std: 0.0009
+    procrustes_r: "<0.3"
+    result: "PASS"
+  criteria_for_refutation:
+    - "Independently measured h fails to predict kappa within stated error bounds"
+    - "Strict bifurcating hierarchies consistently yield n != 2 +/- 0.1"
+    - "Euclidean embeddings outperform hyperbolic at matched capacity (Delta AIC < -10)"
+    - "State equation h = (n-1) sqrt(kappa) / ln 2 violated at p < 0.01"
+
+# -----------------------------------------------------------------------------
+# Viral validation (paper §5)
+# -----------------------------------------------------------------------------
+viral:
+  datasets: 15
+  genomes: 89247
+  alignment_tool: "MAFFT v7.490"
+  pearson_r: 0.996
+  pearson_p: "<1e-6"
+  variance_explained_percent: 99.3
+  kappa_range: [1.32, 1.55]
+  depth_correlation_rho: 0.84
+  depth_correlation_p: "<0.001"
+  rate_correlation_rho: 0.12
+  rate_correlation_p: 0.68
+  interpretation: "Curvature tracks phylogenetic depth, not mutation rate"
+
+# -----------------------------------------------------------------------------
+# Mathematical constants
 # -----------------------------------------------------------------------------
 math:
   ln2: 0.6931471805599453
   log2_e: 1.4426950408889634
-
-# -----------------------------------------------------------------------------
-# Metadata
-# -----------------------------------------------------------------------------
-metadata:
-  version: "1.0.0"
-  last_updated: "2026-01-01"
-  papers:
-    empirical: "Evolution as Active Geometry: A Universal Curvature Constant"
-    theory: "A Geometric State Equation for Evolutionary Dynamics"
-  authors: ["Fenn, R.", "Fenn, A."]
-  license: "MIT"
-  repository: "https://github.com/sentry-bio/active-geometry"
+  ln2_squared: 0.4804530139182014

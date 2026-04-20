@@ -3,8 +3,8 @@
 #   - Installs deps
 #   - Uploads phylogenetic trees (Newick/Nexus)
 #   - Auto-detects schema per file
-#   - Profiles κ around 1.2475 for d in {2,3,4}
-#   - Plots stress vs κ and prints Δstress at κ=1.2475
+#   - Profiles κ around 1.25 for d in {2,3,4}
+#   - Plots stress vs κ and prints Δstress at κ=1.25
 #   - Optional mini-bootstrap (B=30) for quick CI (set MINI_BOOTSTRAP=True)
 
 # --------- Install deps (Colab-safe) ----------
@@ -44,7 +44,7 @@ parser.add_argument('--no_refine', action='store_true', help='Skip local κ refi
 parser.add_argument('--scale', type=str, default='median', choices=['none','median','mean','max'], help='Normalize patristic distances')
 args, _ = parser.parse_known_args()
 
-TARGET_K = 1.2475
+TARGET_K = 1.25
 K_GRID   = np.linspace(args.kmin, args.kmax, args.ksteps)
 DIMS     = args.dims
 MINI_BOOTSTRAP = not args.no_bootstrap
@@ -334,11 +334,11 @@ for t in trees:
     print(f"Saved plot → {out_png}")
 
     print(f"κ̂ = {k_hat:.4f} (best d={d_hat}) | Stress@κ̂ = {L_hat:.3e}")
-    print(f"Stress@κ=1.2475 = {L_target:.3e} | Δstress(1.2475 − κ̂) = {delta:.3e}")
+    print(f"Stress@κ=1.25 = {L_target:.3e} | Δstress(1.25 − κ̂) = {delta:.3e}")
 
     if do_bootstrap:
         print(f"[Bootstrap] {name} — running quick B=30 (≈ few minutes)...")
         ks, (lo, hi, se) = bootstrap_kappa_fast(D, B=30)
         print(f"κ̂ bootstrap: mean={ks.mean():.4f}, SE={se:.4f}, 95% CI=[{lo:.4f}, {hi:.4f}]")
 
-print("\nDone. If most trees have Δstress near 0 and κ̂ within ~±0.02 of 1.2475 (with CI overlap), you have a solid lightweight invariance signal.")
+print("\nDone. If most trees have Δstress near 0 and κ̂ within ~±0.02 of 1.25 (with CI overlap), you have a solid lightweight invariance signal.")
