@@ -98,10 +98,10 @@ families:
     n_std: 0.10
     note: "Pooling all 8 segments yields n > 2 due to reassortment (HGT signature). Per-segment gives n = 2.01."
 
-  # Remaining 7 families reported in SI §6 Table 4. Representative summary:
-  _remainder_in_si:
-    location: "SI §6 Table 4"
-    n_additional_families: 7
+# Remaining 7 families reported in SI §6 Table 4. Representative summary:
+remainder_in_si:
+  location: "SI §6 Table 4"
+  n_additional_families: 7
 
 summary:
   kappa_range: [1.32, 1.55]
