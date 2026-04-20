@@ -7,12 +7,16 @@ on:
       - 'validation/**'
       - 'figures/**'
       - '*.py'
+      - 'constants.yaml'
+      - '.github/workflows/test-python.yml'
   pull_request:
     paths:
       - 'model/**'
       - 'validation/**'
       - 'figures/**'
       - '*.py'
+      - 'constants.yaml'
+      - '.github/workflows/test-python.yml'
 
 jobs:
   test:
@@ -39,12 +43,12 @@ jobs:
           from model import BiosphereCodec
           import torch
 
-          # Test model instantiation
+          # Test model instantiation (reference BiosphereCodec, Paper I §9.2)
           model = BiosphereCodec(vocab=100, d_model=64, n_layers=1, latent_dim=16)
           x = torch.randint(0, 99, (2, 32))
           loss, logs = model(x)
           assert loss.item() > 0, 'Loss should be positive'
-          print('✅ Model smoke test passed')
+          print('OK Model smoke test passed')
           "
 
       - name: Validate constants.yaml
@@ -55,19 +59,41 @@ jobs:
           with open('constants.yaml') as f:
               C = yaml.safe_load(f)
 
-          # Check required keys exist
-          assert 'curvature' in C
-          assert 'entropy' in C
-          assert 'geometry' in C
+          # Top-level sections required by Paper I v2
+          for key in ('state_equation', 'dimension', 'entropy', 'curvature',
+                     'encoder', 'falsification', 'viral', 'math'):
+              assert key in C, f'missing top-level key: {key}'
 
-          # Check values are in expected ranges
-          kappa = C['curvature']['kappa_empirical']
-          assert 1.0 < kappa < 2.0, f'κ={kappa} out of range'
+          # Universal invariant n = 2
+          n = C['dimension']['n_universal']
+          n_std = C['dimension']['n_universal_std']
+          assert abs(n - 2.0) < 0.1, f'n={n} should be ~ 2.0'
+          assert n_std < 0.2, f'n_std={n_std} unexpectedly large'
 
-          h = C['entropy']['h_effective_bits']
-          assert 1.0 < h < 2.0, f'h={h} out of range'
+          # State-equation predicted curvature at inter-domain scale
+          kappa_pred = C['curvature']['kappa_predicted_central']
+          kappa_range = C['curvature']['kappa_predicted_range']
+          assert 1.0 < kappa_pred < 2.0, f'predicted kappa={kappa_pred} out of range'
+          assert kappa_range[0] <= kappa_pred <= kappa_range[1], (
+              f'central {kappa_pred} outside range {kappa_range}')
 
-          print('✅ Constants validation passed')
+          # Entropy rate central + bounds
+          h = C['entropy']['h_dna_central_bits']
+          H_raw = C['entropy']['H_raw_bits']
+          h_three = C['entropy']['h_three_letter_bits']
+          assert 1.0 < h < 2.0, f'h_dna_central={h} out of range'
+          assert H_raw == 2.0, f'H_raw should be log2(4)=2, got {H_raw}'
+          assert abs(h_three - 1.585) < 0.01, 'h_three_letter should be log2(3) ~ 1.585'
+
+          # Training kappa is fixed at 1.0 in the reference encoder (§4.1)
+          assert C['curvature']['kappa_trained_encoder'] == 1.0, (
+              'Reference encoder must train at fixed kappa=1.0 per §4.1')
+
+          # Viral Pearson r from §5
+          r = C['viral']['pearson_r']
+          assert r > 0.99, f'viral Pearson r={r} must be > 0.99 per §5.1'
+
+          print('OK Constants validation passed')
           "
 
       - name: Check code style

@@ -209,8 +209,10 @@ theorem kappa_bounded_by_alphabet (phi psi omega : ℝ)
     (hphi : 0 < phi ∧ phi ≤ 1) (hpsi : 0 < psi ∧ psi ≤ 1) (homega : 0 < omega ∧ omega ≤ 1) :
     κ (h_effective phi psi omega) 2 ≤ 4 * (log 2) ^ 2 := by
   have hb := kappa_bounded_by_raw phi psi omega hphi hpsi homega
-  rw [kappa_n2, H_raw_eq_two] at hb
-  calc κ (h_effective phi psi omega) 2
+  simp only [kappa_n2, H_raw_eq_two] at hb
+  -- hb : (h_effective phi psi omega * log 2) ^ 2 ≤ (2 * log 2) ^ 2
+  rw [kappa_n2]
+  calc (h_effective phi psi omega * log 2) ^ 2
       ≤ (2 * log 2) ^ 2 := hb
     _ = 4 * (log 2) ^ 2 := by ring
 

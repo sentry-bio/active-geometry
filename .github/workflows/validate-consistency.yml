@@ -4,11 +4,15 @@ on:
   push:
     paths:
       - 'constants.yaml'
+      - 'manifest.yaml'
       - 'validation/**/results/*.yaml'
+      - '.github/workflows/validate-consistency.yml'
   pull_request:
     paths:
       - 'constants.yaml'
+      - 'manifest.yaml'
       - 'validation/**/results/*.yaml'
+      - '.github/workflows/validate-consistency.yml'
 
 jobs:
   validate:
@@ -37,55 +41,112 @@ jobs:
           with open('constants.yaml') as f:
               C = yaml.safe_load(f)
 
-          kappa_canonical = C['curvature']['kappa_empirical']
-          kappa_std = C['curvature']['kappa_empirical_std']
-          tolerance = 3 * kappa_std  # 3-sigma tolerance
-
           errors = []
 
-          # Check genomic results
+          # --- Paper I §4.1: Neural encoder coordinate convergence ----------
           genomic_path = Path('validation/genomic/results/five_seed_convergence.yaml')
           if genomic_path.exists():
               with open(genomic_path) as f:
                   G = yaml.safe_load(f)
-              kappa_genomic = G['summary']['kappa_mean']
-              if abs(kappa_genomic - kappa_canonical) > tolerance:
-                  errors.append(f"Genomic κ={kappa_genomic} differs from canonical {kappa_canonical}")
-              else:
-                  print(f"✅ Genomic validation: κ = {kappa_genomic}")
 
-          # Check phylogenetic results
+              # Reference encoder trains at kappa = 1.0 (fixed)
+              trained_kappa_canonical = C['encoder']['kappa_training']
+              for seed, kappa in G['kappa_per_seed'].items():
+                  if abs(kappa - trained_kappa_canonical) > 1e-6:
+                      errors.append(
+                          f"Seed {seed} has kappa={kappa}, expected {trained_kappa_canonical}"
+                      )
+
+              # What converges is Procrustes r, not kappa (paper §4.1)
+              r_mean = G['summary']['mean_procrustes_r']
+              r_canonical = C['encoder']['procrustes_r_mean']
+              if abs(r_mean - r_canonical) > 0.01:
+                  errors.append(
+                      f"Procrustes r_mean={r_mean} disagrees with constants "
+                      f"({r_canonical})"
+                  )
+              else:
+                  print(f"OK §4.1 Procrustes convergence: r = {r_mean}")
+
+          # --- Paper I §4.2: Direct H^2 tree embedding ----------------------
           phylo_path = Path('validation/phylogenetic/results/tree_kappa_estimates.yaml')
           if phylo_path.exists():
               with open(phylo_path) as f:
                   P = yaml.safe_load(f)
-              kappa_phylo = P['summary']['kappa_mean']
-              if abs(kappa_phylo - kappa_canonical) > 0.05:  # Wider tolerance for trees
-                  errors.append(f"Phylogenetic κ={kappa_phylo} differs from canonical {kappa_canonical}")
+
+              intra_canonical = C['curvature']['intra_domain']
+              for tree in P.get('domain_trees', []):
+                  name = tree['domain'].lower()
+                  if name not in intra_canonical:
+                      continue
+                  kappa_meas = tree['kappa']
+                  kappa_canon = intra_canonical[name]['kappa']
+                  tol = 3 * tree.get('kappa_std', 0.1)
+                  if abs(kappa_meas - kappa_canon) > tol:
+                      errors.append(
+                          f"{tree['domain']} kappa={kappa_meas} outside "
+                          f"3-sigma of canonical {kappa_canon}"
+                      )
+                  else:
+                      n_back = tree.get('n_backsolved', None)
+                      print(f"OK §4.2 {tree['domain']}: kappa = {kappa_meas}, "
+                            f"n_back = {n_back}")
+
+              # Telescope cross-domain convergence
+              telescope = P.get('telescope_experiments', {}).get(
+                  'cross_domain_convergence', {})
+              if telescope:
+                  tel_range = telescope['range']
+                  canon_range = C['curvature']['kappa_telescope_range']
+                  if tel_range != canon_range:
+                      errors.append(
+                          f"Telescope range {tel_range} disagrees with canonical "
+                          f"{canon_range}"
+                      )
+                  else:
+                      print(f"OK Telescope cross-domain range: {tel_range}")
+
+          # --- Paper I §5: Viral validation ---------------------------------
+          viral_path = Path('validation/viral/results/fifteen_virus_sweeps.yaml')
+          if viral_path.exists():
+              with open(viral_path) as f:
+                  V = yaml.safe_load(f)
+              r_viral = V['summary']['pearson_r']
+              r_canon = C['viral']['pearson_r']
+              if abs(r_viral - r_canon) > 1e-3:
+                  errors.append(
+                      f"Viral Pearson r={r_viral} disagrees with canonical {r_canon}"
+                  )
               else:
-                  print(f"✅ Phylogenetic validation: κ = {kappa_phylo}")
+                  print(f"OK §5 viral Pearson r = {r_viral}")
 
           if errors:
-              print("❌ Consistency errors:")
+              print("\nConsistency errors:")
               for e in errors:
                   print(f"  - {e}")
               sys.exit(1)
 
-          print("\n✅ All results consistent with constants.yaml")
+          print("\nOK All results consistent with constants.yaml")
           EOF
 
       - name: Check YAML syntax
         run: |
           python << 'EOF'
           import yaml
+          import sys
           from pathlib import Path
 
+          failed = False
           for f in Path('.').rglob('*.yaml'):
+              # skip dependency caches
+              if '.lake' in f.parts or 'node_modules' in f.parts:
+                  continue
               try:
                   with open(f) as fp:
                       yaml.safe_load(fp)
-                  print(f"✅ {f}")
+                  print(f"OK {f}")
               except yaml.YAMLError as e:
-                  print(f"❌ {f}: {e}")
-                  exit(1)
+                  print(f"FAIL {f}: {e}")
+                  failed = True
+          sys.exit(1 if failed else 0)
           EOF
