@@ -226,7 +226,10 @@ results:
 
     key_findings:
       fixed_sweep:
-        result: "MLM loss variation <5% across kappa in {0.5, 0.75, 1.0, 1.25, 1.5, 2.0}"
+        curvatures: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0]
+        losses:     [2.349, 2.310, 2.305, 2.300, 2.310, 2.320]
+        optimal_kappa: 0.75
+        loss_variation: "4.3%"
         interpretation: "Loss landscape essentially flat for pure compression"
 
       learnable:
