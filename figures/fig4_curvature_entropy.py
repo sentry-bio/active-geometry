@@ -2,21 +2,24 @@
 """
 Generate Figure 4: Curvature-Entropy Law Validation
 
-Demonstrates that empirical κ values from genomic and viral experiments
-follow the theoretical relationship κ = (h ln 2)² for dimensionality n=2.
+Demonstrates that measured κ values from multiple evolutionary systems
+follow the theoretical relationship κ = (h ln 2)² at n=2.
 
-Data sources:
-- Genomic κ = 1.247±0.003: Main training runs (5 seeds)
-- Viral κ values: viral_validation/docs/complete_validation_results.md
-  (15 datasets with 3-seed averaging)
+Data sources (Paper I v2, Fenn & Fenn 2026, bioRxiv 10.64898/2026.03.09.710612):
+- Multi-domain cellular life (telescope on 3-domain encoder): κ ≈ 1.29
+  at h ≈ 1.64 bits/nt (paper §4 + Table 1)
+- 15 RNA viral families: κ ∈ [1.32, 1.55], Pearson r = 0.996 with theory
+- 15 Pfam protein families: κ ≈ 3.80 at h ≈ 2.85 bits/residue
+- Intra-domain trees (encoder-free): κ = 3.0 (fungi), 12.7 (archaea),
+  16.4 (bacteria), all n ≈ 2
 
 Method:
-1. Collect all empirical κ measurements
-2. Back-solve entropy rates: h = √κ / ln(2)
-3. Plot on theory curve κ = (h ln 2)² for n=2
-4. Verify best-fit dimensionality n ≈ 2.00
+1. Collect κ measurements from across substrates and scales
+2. Back-solve entropy rates: h = √κ / ln(2)  [for n=2]
+3. Plot on theory curve κ = (h ln 2)² at n=2
+4. Verify back-solved n = 2.00 ± 0.05 invariant across all systems
 
-Author: Fenn & Fenn (2025)
+Author: Fenn & Fenn (2026)
 License: MIT
 """
 
@@ -32,15 +35,16 @@ print("=" * 70)
 
 # Empirical κ values from experiments
 empirical_data = {
-    # Genomic (Fig 1) - DNA multi-clade baseline
+    # Multi-domain cellular life — telescope peak on frozen encoder embeddings
+    # (paper §4, Table 1 "Multi-domain cellular life")
     'DNA\n(multi-clade)': {
-        'kappa': 1.247,
-        'kappa_std': 0.003,
+        'kappa': 1.29,
+        'kappa_std': 0.03,
         'marker': 's',
         'color': '#4472C4',
         'size': 140,
         'zorder': 6,
-        'source': 'Genomic training (5,627 genomes, 5 seeds)'
+        'source': 'Inter-domain telescope (§4.1): fungi 1.29, prokaryote 1.30'
     },
     
     # Young/Recent RNA viruses (low κ)

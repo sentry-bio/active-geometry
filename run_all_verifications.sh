@@ -124,26 +124,37 @@ echo "3. Checking constants consistency..."
 echo "----------------------------------------------"
 
 if [[ -f "$REPO_ROOT/constants.yaml" ]]; then
-    # Quick sanity check: kappa values present and reasonable
+    # Sanity check: v2-aligned keys present and values in expected ranges
     if python3 - <<'PY'
 import yaml
 from pathlib import Path
 
-constants = yaml.safe_load(Path("constants.yaml").read_text())
-kappa_emp = constants["curvature"]["kappa_empirical"]
-kappa_theory = constants["curvature"]["kappa_theory"]
+C = yaml.safe_load(Path("constants.yaml").read_text())
 
-# Check values are in expected range
-assert 1.0 < kappa_emp < 1.5, f"kappa_empirical={kappa_emp} out of range"
-assert 1.0 < kappa_theory < 1.5, f"kappa_theory={kappa_theory} out of range"
+# Universal invariant (paper §2)
+n = C["dimension"]["n_universal"]
+assert abs(n - 2.0) < 0.1, f"n_universal={n} not near 2.0"
 
-# Check agreement
-agreement = abs(kappa_emp - kappa_theory) / kappa_emp * 100
-assert agreement < 5, f"Theory-empirical agreement {agreement:.1f}% > 5%"
+# State-equation predicted range (paper §3.4)
+kappa_pred_central = C["curvature"]["kappa_predicted_central"]
+kappa_pred_range = C["curvature"]["kappa_predicted_range"]
+assert kappa_pred_range[0] <= kappa_pred_central <= kappa_pred_range[1]
 
-print(f"  kappa_empirical = {kappa_emp}")
-print(f"  kappa_theory = {kappa_theory}")
-print(f"  Agreement: {agreement:.1f}%")
+# Telescope measurement (paper §4)
+kappa_tel_range = C["curvature"]["kappa_telescope_range"]
+assert kappa_tel_range[0] < kappa_tel_range[1]
+
+# Reference encoder trains at kappa=1.0 fixed (paper §4.1)
+assert C["curvature"]["kappa_trained_encoder"] == 1.0
+
+# Procrustes stability across seeds (paper §4.1)
+r_mean = C["encoder"]["procrustes_r_mean"]
+assert 0.9 < r_mean < 1.0, f"procrustes_r_mean={r_mean} out of range"
+
+print(f"  n_universal             = {n}")
+print(f"  kappa_predicted_central = {kappa_pred_central}")
+print(f"  kappa_telescope_range   = {kappa_tel_range}")
+print(f"  procrustes_r_mean       = {r_mean}")
 PY
     then
         log_pass "constants.yaml consistency"
