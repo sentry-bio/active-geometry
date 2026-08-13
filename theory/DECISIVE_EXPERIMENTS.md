@@ -15,272 +15,378 @@ them. Experiments decide the two questions mathematics cannot:
 Decisiveness is ranked: **interventions** (turn a knob the theory names,
 predict the response function) beat **pre-registered predictions** (state the
 number before measuring) beat **calibrated observations** (fit after the
-fact). Each experiment below names its layer, its independence firewall, its
-predicted outcome, and its kill line. A protocol without a kill line is not an
-experiment.
+fact).
 
-Every experiment reports the full vector of
-[`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md) §11:
+This document is written to be executed. Every experiment states its inputs,
+a numbered procedure, the estimator it calls (from the shared library below),
+and a **decision rule** with explicit numeric thresholds — a predicted outcome
+and a kill line. A protocol without a kill line is not an experiment.
+
+The set is eight experiments: E1 (instrument), E2 (open theorem), E3–E4 and
+E7–E8 (biology, mostly interventions), E5 (cross-domain), E6 (the \(c\)-axis).
+
+---
+
+## Shared conventions
+
+**Pre-registration.** Before any field data is touched, write the predicted
+number, the kill threshold, the random seeds, and the estimator version to a
+frozen `preregistration.json`. Results computed by code that postdates that
+file are calibrated observations, not predictions, and are labelled as such.
+
+**The report vector.** Every run emits the
+[`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md) §11 vector
 
 \[
 (\beta,\ c,\ h_{\mathrm{pack}},\ \eta,\ \delta,\ n,\ \bar\kappa)
 \]
 
-with per-quantity estimator provenance. No quantity may appear on both sides
-of a comparison through a shared input. Violations reclassify the result as
-CIRCULAR regardless of numerical agreement.
+with a bootstrap confidence interval and a provenance tag per quantity naming
+the object it was computed from (`clock`, `phenotype_metric`, `barcode_tree`,
+`generator`, …).
 
-The core set is five experiments. Two more (E6, E7) close remaining
-identifications. Together they cover the instrument, the open theorem, the
-independence firewall, saturation under intervention, and the cross-domain
-bet.
+**The independence firewall (the one hard rule).** No two quantities in a
+comparison may share a provenance tag. \(\beta\) and \(h_{\mathrm{pack}}\)
+compared through the same distance matrix is CIRCULAR and is reported as such
+regardless of numeric agreement. Every experiment below is designed around
+this rule; the agent enforces it mechanically by refusing to compute \(\eta\)
+when the numerator and denominator tags collide (the meter already refuses
+this).
+
+**Resolution.** Fix \(\varepsilon\) once per system and hold it across all
+conditions. If distinguishability sharpens with depth, model
+\(\varepsilon(R)\) explicitly (spine §1); do not let it float silently.
+
+---
+
+## Shared measurement procedures
+
+These are the only estimators the experiments call. Each is certified once in
+E1 and then reused. "Certified" means it passed E1's recovery and orthogonality
+tests at its stated error.
+
+- **M1 — \(\beta\) (retained-history rate).** From a *process clock that is not
+  the representation*: barcode edits per division, assayed substitutions per
+  generation, generating-process branch count, sound-change transitions. Fit
+  \(\log N(R)\) vs depth \(R\); \(\beta\) is the slope. Provenance tag: `clock`.
+
+- **M2 — \(c\) (radial rate).** Slope of representation radius \(r(R)\) from a
+  fixed origin vs process depth \(R\). Origin is a declared anchor. Provenance
+  tag: `embedding_radius`.
+
+- **M3 — \(h_{\mathrm{pack}}\) (host capacity).** Ball-occupancy slope: for the
+  representation distance matrix, count \(\varepsilon\)-separated points inside
+  radius \(\rho\), regress \(\log P(\rho,\varepsilon)\) on \(\rho\). This is the
+  meter's certified occupancy-slope mode, **not** a hyperbolic-stress fit.
+  Provenance tag: `phenotype_metric` (or `representation_metric`).
+
+- **M4 — \(\delta\) (tree defect).** Buneman four-point / Gromov defect over
+  sampled quartets of the representation metric. Reported as the fraction of
+  quartets with normalized slack above threshold. Provenance tag: same metric
+  as M3 (so \(\delta\) and \(h_{\mathrm{pack}}\) are two readings of one matrix
+  — that is allowed; they are never divided into each other).
+
+- **M5 — \(\eta\) and \(\bar\kappa\).** \(\eta = \beta / (c\,h_{\mathrm{pack}})\),
+  computed only when M1 and M3 carry different provenance tags. \(\bar\kappa\)
+  and \(n\) only when an isotropic-hyperbolic fit is independently justified
+  (spine §7); otherwise report \(h_{\mathrm{pack}}\) as the state variable and
+  leave \(\bar\kappa\) blank.
+
+The meter (`tools/addressability_meter.py`) already implements M3–M5 with the
+refusal rule. M1 and M2 are supplied per system by the experiments below.
 
 ---
 
 ## E1 — Meter certification on synthetic ground truth
 
-**Layer.** Instrument validity. Precondition for everything below.
+**Question.** Are the instruments legal? Precondition for everything else.
 
-**System.** Generated processes on a lattice of known
-\((\beta, c, h_{\mathrm{pack}}, \delta)\): \(b\)-ary trees in
-\(\mathbb H^2_\kappa\) across \(\kappa\); reticulated variants at controlled
-transfer fraction; Euclidean and product-space nulls; non-stationary rate
-schedules.
+**Inputs.** A generator producing labelled distance matrices with known
+\((\beta, c, h_{\mathrm{pack}}, \delta)\).
 
-**Independent estimators.** Each field estimator is scored only against the
-axis it claims to read. Capacity estimators must be blind to reticulation;
-defect estimators must be zero on pure trees of every curvature; Euclidean
-nulls must yield \(\hat h_{\mathrm{pack}}\) at polynomial (zero exponential)
-rate.
+**Procedure.**
+1. Generate a lattice: \(b\)-ary trees (\(b\in\{2,3,4,5\}\)) embedded in
+   \(\mathbb H^2_\kappa\) across \(\kappa\in\{0.5,1,2,4\}\); reticulated
+   variants at transfer fraction \(f\in\{0,0.01,0.05,0.25\}\); Euclidean and
+   product-space nulls; two non-stationary rate schedules (rate step, rate
+   ramp).
+2. Subsample every matrix to a fixed leaf count (remove leaf-count confounds,
+   as in `kernel_orthogonality.py`).
+3. Run M2, M3, M4 on every matrix. Run M1 on the generator.
+4. Regress each estimator against every ground-truth axis.
 
-**Prediction.** Every field estimator recovers its own axis within stated
-error and reads null on the others.
+**Decision rule.**
+- *Pass:* M3 correlates with true \(h_{\mathrm{pack}}\) at \(r>0.95\) and with
+  reticulation \(|r|<0.1\); M4 is \(0\pm\) error on every pure tree
+  irrespective of \(\kappa\) and tracks \(f\); Euclidean nulls give M3
+  exponential rate consistent with zero.
+- *Kill:* any estimator that misses its own axis beyond stated error, or moves
+  with the orthogonal axis, is **disqualified from field use**, and any
+  published number produced by it is withdrawn.
 
-**Kill line.** Any estimator that misses synthetic truth beyond its stated
-error, or responds to the orthogonal axis, is disqualified from field use.
-Published numbers produced by a disqualified estimator are withdrawn, not
-defended.
-
-**Why decisive.** The prior failure mode of the program — an \(\mathbb H^2\)
-stress estimator that missed synthetic targets by 34–109% while producing the
-published biological curvatures — is exactly what E1 exists to catch before
-the field. An uncertified meter cannot confirm anything.
-
-**Status.** Partially done (`kernel_orthogonality`-class runs; ball-counting
-estimator validated on \(b\)-ary trees). The full lattice, including
-non-stationary schedules and the \(c\)-estimator, is open.
+**Status.** Partially done (occupancy-slope M3 and defect M4 validated on
+\(b\)-ary and reticulated grids). Open: non-stationary schedules and the M2
+\(c\)-estimator.
 
 ---
 
 ## E2 — Numerical achievability at fixed host geometry
 
-**Layer.** The relational capacity conjecture
-([`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md) Conjecture 4.4).
+**Question.** Which half of Conjecture 4.4 deserves proof effort?
 
-**System.** At fixed \((\kappa, n=2, \varepsilon, c)\), explicit relational
-codes of \(b\)-ary trees at increasing depth \(R\): Sarkar-type constructions
-and learned embeddings. Record realized rate \(\hat\beta(R)\) and the smallest
-distortion \((D,K)\) at which the code remains admissible.
+**Inputs.** Fixed \((\kappa, n=2, \varepsilon, c)\); a tree family of growing
+depth \(R\).
 
-**Prediction if the conjecture is true.** \(\hat\beta \to c(n-1)\sqrt\kappa\)
-with \(D, K\) bounded in \(R\).
+**Procedure.**
+1. For each depth \(R\), construct relational codes of a \(b\)-ary tree into
+   \(\mathbb H^2_\kappa\): (a) a Sarkar-type deterministic embedding, (b) a
+   gradient-trained embedding minimizing distortion at fixed radius budget
+   \(cR\).
+2. Record realized growth \(\hat\beta(R)\) and the smallest \((D,K)\) for which
+   conditions 1–4 of Conjecture 4.4 still hold.
+3. Plot \(\hat\beta(R)\) against the bound \(c(n-1)\sqrt\kappa\), and
+   \((D,K)\) against \(R\).
 
-**Prediction if false.** Holding \(\hat\beta\) above some
-\(\beta_0 < c(n-1)\sqrt\kappa\) forces \(D(R)\to\infty\); the plateau
-\(\beta_0\) estimates the relational capacity and the gap becomes a measured
-host invariant.
-
-**Kill line.** None. Both outcomes are informative. This experiment cannot
-prove the conjecture; it tells us which half to spend proof effort on.
-
-**Why decisive.** It is the cheapest probe of the one open mathematical
-problem. A bounded-distortion approach to the packing bound would license a
-serious attempt at the coding theorem; a forced-distortion plateau would
-reframe the program around a new host invariant.
+**Decision rule.**
+- *Conjecture-true signature:* \(\hat\beta(R)\to c(n-1)\sqrt\kappa\) with
+  \((D,K)\) bounded in \(R\) → attempt the coding theorem.
+- *Conjecture-false signature:* maintaining \(\hat\beta\ge\beta_0\) forces
+  \(D(R)\to\infty\); \(\beta_0\) estimates \(C_{\rm rel}\) and
+  \(c(n-1)\sqrt\kappa-\beta_0\) is a new host invariant → redirect proof effort
+  to the gap.
+- *No kill line:* both outcomes are informative; this is reconnaissance for a
+  proof, not a test of nature.
 
 ---
 
 ## E3 — Ground-truth genealogy: barcoded lineages
 
-**Layer.** Saturation, with the inference circularity removed entirely.
+**Question.** Is \(\eta\) real when the tree is given rather than inferred?
 
-**System.** CRISPR lineage-recording systems (GESTALT-class barcode arrays and
-expressed-barcode variants). The true genealogy is *written into* the cells
-as an accumulating barcode, independently of any sequence-inferred tree.
-Single-cell transcriptomes or other phenotypes supply the representation
-metric. Organoid or embryo reconstructions give a known process clock.
+**Inputs.** A CRISPR lineage-recording dataset (GESTALT / scGESTALT /
+expressed-barcode; zebrafish, mouse, or organoid) with (a) an accumulating
+barcode per cell and (b) a single-cell phenotype (transcriptome) per cell.
 
-**Independent estimators.**
+**Procedure.**
+1. Reconstruct the **barcode tree** from the recording array alone. This is the
+   ground-truth genealogy; tag `barcode_tree`.
+2. Build the **phenotype metric** from transcriptomes alone; tag
+   `phenotype_metric`. These two objects share no features.
+3. M1: \(\beta\) = distinguishable-lineage growth per division from the barcode
+   tree.
+4. M2, M3: \(c\) and \(h_{\mathrm{pack}}\) from the phenotype embedding.
+5. M4: \(\delta\) of the phenotype metric scored against the barcode tree.
+6. M5: \(\eta\) (tags differ, so the meter computes it).
+7. Repeat on \(\ge 3\) independent reconstructions (individuals / organoids).
 
-- \(\beta\): barcode-edit rate per cell division (the recording array is the
-  clock; it is not the phenotype).
-- \(c\): radial growth of the phenotype embedding per division.
-- \(h_{\mathrm{pack}}\): packing growth of the phenotype distance matrix.
-- \(\delta\): quartet defect of the phenotype metric, scored against the
-  *barcode* tree.
+**Decision rule.**
+- *Predict:* \(\eta\le 1\) at every depth; if description length is under
+  selection, \(\eta\) is high (\(\ge 0.8\)) and stable (across-reconstruction
+  SD \(< 0.1\)).
+- *Kill (bound):* independently measured \(\beta > c\,h_{\mathrm{pack}}\) at
+  fixed \(\varepsilon\) → challenges the bound, so re-run E1 first; if the meter
+  is certified, this is a genuine anomaly.
+- *Kill (saturation):* \(\eta\ll 1\) systematically → saturation fails for this
+  class; the bound stands.
 
-No quantity is inferred from the same object as any other.
-
-**Prediction.** \(\eta \le 1\) at every depth (the bound). If description
-length is under selection in the reconstruction, \(\eta\) is high and stable
-across independent reconstructions. \(\delta\) of the phenotype metric
-against the barcode tree is the HGT/homoplasy reading with a ground-truth
-reference.
-
-**Kill line.** A reconstruction with independently measured
-\(\beta > c\,h_{\mathrm{pack}}\) at fixed resolution would challenge the
-bound itself (and therefore the instrument, first). Systematic
-\(\eta \ll 1\) in systems claimed to be under description-length pressure
-kills saturation for this class without touching the bound.
-
-**Why decisive.** It is the phylogenetic program with the tree given, not
-inferred. Every prior circularity diagnostic in this program traces to
-shared-input trees. E3 deletes that input.
+**Why it matters.** Every prior circularity diagnostic in this program traces
+to a sequence-inferred tree used on both sides. E3 deletes that shared input.
 
 ---
 
-## E4 — Mutation-rate intervention
+## E4 — Mutation-rate intervention (confound-isolated)
 
-**Layer.** Saturation as a *response*, not a correlation.
+**Question.** Is saturation a *response* to a named knob, not a correlation?
+Highest-ranked experiment.
 
-**System.** A serial-passage microbial or viral population with a controllable
-mutation rate: mutator strains, mutagens at titrated dose, or a directed-
-evolution setup with an adjustable polymerase error rate. Sample at matched
-generation counts across mutation-rate conditions. The representation is a
-phenotype or k-mer metric that does not take mutation rate as an input.
+**Inputs.** A serial-passage population with a titratable mutation rate:
+mutator alleles (e.g. *mutT/mutS*), a mutagen dose series, or an
+error-tunable polymerase in directed evolution. A phenotype or k-mer metric
+that does not take mutation rate as input.
 
-**Independent estimators.** \(\beta\) from the imposed (or independently
-assayed) substitution rate per generation. \(c\) and \(h_{\mathrm{pack}}\)
-from the representation metric only. \(\delta\) from the same metric, as a
-negative control: mutation rate is not reticulation.
+**The confound problem (this is the load-bearing addition).** A mutation-rate
+knob does not move only \(\beta\). It also shifts the mutational *spectrum*
+(transition/transversion bias), drags effective population size \(N_e\), and
+changes selection efficiency. A null result is only interpretable if these are
+separated from \(\beta\).
 
-**Prediction.**
+**Procedure.**
+1. **Assay, don't assume, \(\beta\).** Measure realized substitution rate per
+   generation directly (mutation-accumulation lines or deep sequencing), not
+   the nominal knob setting. Tag `clock`.
+2. **Spectrum control.** Record the transition/transversion and base-composition
+   spectrum per condition. Include at least one pair of conditions with
+   *matched spectrum but different \(\beta\)* (e.g. two mutagen doses of the
+   same agent) and one pair with *matched \(\beta\) but different spectrum*
+   (different agents titrated to equal rate).
+3. **\(N_e\) control.** Hold census population size and bottleneck schedule
+   fixed across conditions; report an \(N_e\) estimate (e.g. from neutral-marker
+   variance) and include it as a covariate.
+4. Sample at matched generation counts across \(\ge 4\) mutation-rate levels
+   spanning \(\ge\)4-fold in \(\beta\).
+5. M2, M3, M4 from the representation metric; M5 for \(\eta\).
+6. Regress \(c\,h_{\mathrm{pack}}\) on assayed \(\beta\), with spectrum and
+   \(N_e\) as covariates.
 
-\[
-\frac{\partial(c\,h_{\mathrm{pack}})}{\partial\beta}
-\;\approx\;
-1
-\quad\text{in the saturated regime,}
-\]
-
-with \(\eta\) remaining high as \(\beta\) is moved. The bound
-\(\eta\le 1\) is never violated. \(\delta\) is approximately invariant under
-the mutation-rate knob (orthogonality).
-
-**Kill line.** Capacity that does not track \(\beta\) (flat
-\(c\,h_{\mathrm{pack}}\) under a several-fold change in mutation rate) kills
-the claim that the system is driven toward saturation. \(\eta>1\) at
-certified estimators kills the instrument or the bound. A \(\delta\) that
-tracks mutation rate kills the orthogonality reading of the four-point
-object.
-
-**Why decisive.** This is the highest-ranked experiment in the set. The theory
-names a knob (\(\beta\)) and a response (\(c\,h_{\mathrm{pack}}\)). Turning
-the knob and watching the response is what distinguishes a law from a fit.
-Observational \(\eta\approx 1\) across clades can always be a shared-input
-artifact; a dose-response cannot.
+**Decision rule.**
+- *Predict:* \(\partial(c\,h_{\mathrm{pack}})/\partial\beta \approx 1\) in the
+  saturated regime, holding spectrum and \(N_e\) fixed; \(\eta\le 1\) always;
+  \(\delta\) invariant under the knob (orthogonality control).
+- *Kill (saturation-drive):* \(c\,h_{\mathrm{pack}}\) flat under a \(\ge\)4-fold
+  \(\beta\) change *with spectrum and \(N_e\) controlled* → the system is not
+  driven toward saturation.
+- *Confounded, not killed:* if the response appears only when spectrum or
+  \(N_e\) also move, the result is inconclusive and the isolation must be
+  tightened before any claim.
+- *Kill (instrument/bound):* \(\eta>1\) at certified estimators.
+- *Kill (orthogonality):* \(\delta\) tracks \(\beta\).
 
 **Near-term proxy.** Time-stamped serially sampled viruses (influenza,
-SARS-CoV-2) give \(\beta\) and \(c\) in the same physical clock without
-fossils. They are not an intervention, but they are the cleanest
-observational version of the same identification and should be run first as
-a protocol rehearsal.
+SARS-CoV-2) give \(\beta\) and \(c\) in one physical clock without fossils.
+Not an intervention and not spectrum-controlled — run it first as a
+**rehearsal of the pipeline**, not as evidence for saturation-drive.
 
 ---
 
-## E5 — Description-length pressure in a trained hierarchy
+## E5 — Description-length pressure in a trained hierarchy (adversarial)
 
-**Layer.** The cross-domain saturation bet, with every variable under
-experimental control.
+**Question.** Is saturation cross-domain — does a knob that *is* description
+length, in a non-biological host, drive \(\eta\to 1\)?
 
-**System.** A generative model trained on synthetic hierarchical data whose
-alphabet entropy \(h\) is an experimental parameter. The learned
-representation is the host. Training is explicit description-length pressure
-(a rate-distortion, \(\beta\)-VAE, or hierarchical contrastive objective).
-Measure \(\eta\) across epochs.
+**The false-positive problem (this is the load-bearing addition).** If the same
+hand designs a hierarchical generator and a hierarchical loss, high \(\eta\) can
+be baked in — you would measure that generator and loss agree, not that the law
+holds. E5 is decisive only with an adversarial design and a real negative
+control, promoted here to co-equal arms.
 
-**Independent estimators.** \(\beta\) from the known generating process (not
-from the network). \(c\) and \(h_{\mathrm{pack}}\) from the representation
-geometry. The loss family is a third experimental axis.
+**Inputs.** A synthetic generator with tunable alphabet entropy \(h\); a family
+of training objectives; a representation whose geometry is measured by M2–M3.
 
-**Prediction.** Under a lossless or near-lossless objective, \(\eta(t)\)
-rises and plateaus near 1. Under a lossy objective, \(\eta\) plateaus below 1
-at a value ordered by the rate-distortion parameter. Euclidean-constrained
-architectures cannot host retained exponential novelty at finite radial rate
-(Corollary 4.3): either \(\beta\to 0\), \(c\to\infty\), or collapse.
+**Arms (all run, pre-registered together).**
+1. **Positive arm.** Hierarchical data + a lossless/near-lossless objective
+   (rate-distortion, \(\beta\)-VAE, hierarchical contrastive).
+2. **Loss-strength sweep.** The same, across rate-distortion parameter values,
+   predicting an *ordered* \(\eta\) plateau (monotone in the rate knob).
+3. **Negative control — no pressure.** The same data + an objective with **no
+   description-length term** (pure reconstruction at unconstrained capacity, or
+   a shuffled-target loss). Must **fail** to saturate.
+4. **Negative control — no hierarchy.** Non-hierarchical (flat / cyclic) data +
+   the lossless objective. Must **fail** to produce exponential retained
+   novelty at finite \(c\).
+5. **Firewall.** \(\beta\) is read from the *generator* (tag `generator`), never
+   from the network; M2–M3 from the representation (tag `representation_metric`).
 
-**Kill line.** A lossless objective whose \(\eta\) plateaus well below 1 after
-capacity and finite-size effects are controlled kills the claim that
-description-length pressure drives saturation. Successful Euclidean hosting
-of retained exponential novelty at finite \(c\) kills the polynomial-
-exclusion corollary in this operationalization.
+**Procedure.** Train each arm to convergence across \(\ge 3\) seeds; record
+\(\eta(t)\) per epoch; compare plateaus across arms.
 
-**Why decisive.** It is the eka-silicon row of the substrate table, run as an
-experiment rather than an observation. No GTDB, no shared tree, no biology.
-If \(\eta\) does not respond to a knob that *is* description length, the
-cross-domain saturation claim is not a law of information-generating
-hierarchies; it is at best a fact about some evolved lineages.
+**Decision rule.**
+- *Predict:* arm 1 \(\eta\to\) near 1; arm 2 plateaus ordered by the rate knob;
+  arm 3 and arm 4 plateau well below 1 (the controls fail, as required);
+  Euclidean-constrained architectures cannot host arm-1 novelty at finite \(c\)
+  (Corollary 4.3: \(\beta\to0\), \(c\to\infty\), or collapse).
+- *Kill (saturation-drive):* arm 1 lossless \(\eta\) well below 1 after
+  finite-size control.
+- *Kill (baked-in artifact):* the negative controls (arms 3–4) also saturate —
+  then arm 1's high \(\eta\) is an artifact of the design, not evidence, and the
+  experiment proves nothing until the controls are made to fail.
+- *Kill (polynomial exclusion):* a Euclidean host successfully carries retained
+  exponential novelty at finite \(c\).
 
 ---
 
 ## E6 — Radius identification (the \(c\)-axis)
 
-**Layer.** The remaining identification in the CCS stack: whether radius is
-accumulated information.
+**Question.** Is radius accumulated information rather than elapsed time?
 
-**System.** Lineages in which time, sequence divergence, and functional
-complexity come apart. Bradytelic ("living fossil") clades, with deep
-divergence from a sister group but low morphological and genomic change;
-equivalently, bursts of functional innovation at modest elapsed time.
+**Inputs.** A clade sample where process time, sequence divergence, and
+functional complexity are known to disagree: bradytelic ("living fossil")
+lineages (deep time, low change) and rapid-innovation lineages (modest time,
+high functional gain).
 
-**Independent estimators.** Process time from fossils or a molecular clock
-that is *not* the embedding radius. Sequence divergence from an alignment
-that is *not* the embedding. Functional complexity from an independent
-phenotype or gene-content measure. Embedded radius from a representation
-that takes none of these as input.
+**Procedure.**
+1. Process time from fossils or a clock that is **not** the embedding radius.
+2. Sequence divergence from an alignment that is **not** the embedding.
+3. Functional complexity from an independent measure (gene-content, proteome
+   functional-category count, morphological character count).
+4. Embedded radius \(r\) via M2 from a representation taking none of the above
+   as input.
+5. Partial correlations of \(r\) with each of time, divergence, complexity,
+   controlling for the other two.
 
-**Prediction.** If radius is information, embedded \(r\) tracks functional
-complexity when the three clocks disagree, and does not track elapsed time.
-MDL already predicts this (the E10 remark); E6 is that prediction, tested.
-
-**Kill line.** Embedded radius that tracks elapsed time rather than
-complexity, in a sample where the two are known to disagree, kills the
-identification of \(c\) with an information rate. The bound is untouched;
-the CCS advisory axis remains advisory.
-
-**Why decisive.** The kernel treats \(c\) as logically independent. CCS
-currently certifies \(\theta\) and leaves \(r\) advisory (cross-instrument
-Spearman \(0.46\)). Until E6, the instrument grounds *which* history, not
-*how much room per step*.
+**Decision rule.**
+- *Predict:* \(r\) tracks functional complexity (partial \(r>0.5\)) and does
+  **not** track elapsed time (partial \(r\approx 0\)) when the three disagree.
+- *Kill:* \(r\) tracks elapsed time rather than complexity → the identification
+  of \(c\) with an information rate fails; the bound is untouched and the CCS
+  radial axis stays advisory.
 
 ---
 
-## E7 — Reticulation intervention (\(\delta\perp h_{\mathrm{pack}}\))
+## E7 — Reticulation intervention (\(\delta\perp h_{\mathrm{pack}}\) in vivo)
 
-**Layer.** The Buneman–Gromov orthogonality, in vivo.
+**Question.** Do volume and thinness stay orthogonal on living cells?
 
-**System.** A microbial population with a controllable horizontal-transfer
-rate: conjugative plasmids at titrated donor density, or a phage-mediated
-transduction gradient. The substitution process is held as constant as the
-apparatus allows.
+**Inputs.** A microbial population with titratable horizontal transfer:
+conjugative plasmids at donor-density series, or a phage-transduction gradient.
+A marked mobile element for an independent transfer count.
 
-**Independent estimators.** Transfer rate from a marked mobile element
-(counts of acquired markers, not from the phenotype metric).
-\(h_{\mathrm{pack}}\) from the chromosome k-mer or phenotype metric.
-\(\delta\) from the same metric.
+**Procedure.**
+1. Titrate transfer rate across \(\ge 4\) levels; hold the substitution process
+   as fixed as the apparatus allows (report it).
+2. Transfer rate from marker-acquisition counts (tag `transfer_marker`), not
+   from the phenotype metric.
+3. M3 (\(h_{\mathrm{pack}}\)) and M4 (\(\delta\)) from the chromosome k-mer /
+   phenotype metric.
+4. Regress each on transfer rate.
 
-**Prediction.** \(\delta\) tracks transfer rate. \(h_{\mathrm{pack}}\) is
-approximately invariant. The four-point object splits on living cells the
-way `kernel_orthogonality.py` splits on synthetic grids.
+**Decision rule.**
+- *Predict:* \(\delta\) increases with transfer rate; \(h_{\mathrm{pack}}\)
+  approximately invariant (the synthetic split of `kernel_orthogonality.py`,
+  reproduced in vivo).
+- *Kill:* \(\delta\) blind to a \(\ge\)4-fold transfer change, or
+  \(h_{\mathrm{pack}}\) tracking transfer as if it were branching → operational
+  orthogonality fails for this class.
 
-**Kill line.** A \(\delta\) that is blind to a several-fold change in transfer
-rate, or an \(h_{\mathrm{pack}}\) that tracks transfer as if it were
-branching, kills the operational orthogonality claim for this class.
+---
 
-**Why decisive.** It is E1's orthogonality test with the lattice replaced by
-an organism. A theory that says volume and thinness are independent
-coordinates of any distance matrix is required to survive a knob that moves
-only one of them.
+## E8 — Boundary mapping (where the law stops)
+
+**Question.** Do the premises do real work — is there a hierarchy that creates
+and retains yet provably falls outside the theory?
+
+**Rationale.** The strongest evidence for a tier-1 law is a clean boundary:
+finding *where* it stops applying shows the premises are load-bearing rather
+than always-satisfiable. Every other experiment probes systems assumed inside
+the theory; E8 hunts the edge.
+
+**Candidate boundary systems.**
+1. **Overwriting memory.** A process that changes state fast but does **not**
+   retain history (a well-mixed chemostat at equilibrium, a Markov chain with
+   short mixing time). Premise 1 (retention) fails → \(\beta\) should be \(\sim
+   0\) despite rapid instantaneous change.
+2. **Collapsing resolution.** A hierarchy whose distinguishability
+   \(\varepsilon(R)\) shrinks with depth (measurement noise growing with time).
+   Premise 2 fails → the naive bound should appear violated until
+   \(\varepsilon(R)\) is modelled, then restored.
+3. **Euclidean-hostable hierarchy.** A genuinely branching but *shallow* or
+   *path-like* process whose tree embeds in low-dimensional Euclidean space
+   (Corollary 4.3 boundary). \(h_{\mathrm{pack}}\) should be polynomial, and
+   \(\beta\) forced to \(0\) at finite \(c\).
+
+**Procedure.** For each candidate, measure the full vector and locate which
+premise fails. Show that the theory's *predicted* behavior at that boundary
+(zero \(\beta\), or restored bound after modelling \(\varepsilon(R)\), or
+polynomial \(h_{\mathrm{pack}}\)) is what occurs.
+
+**Decision rule.**
+- *Predict:* at each boundary the named premise fails and the theory's
+  degenerate prediction holds (e.g. overwriting → \(\beta\approx0\); resolution
+  collapse → apparent violation that the \(\varepsilon(R)\) correction removes).
+- *Kill (scope inflation):* a system that satisfies all premises yet violates
+  \(\beta\le c\,h_{\mathrm{pack}}\) at certified estimators → challenges the
+  bound. A system that fails a premise yet the naive \(\eta\) still behaves as
+  if saturated → the premises are not doing the work the theory claims, and the
+  applicability story needs revision.
 
 ---
 
@@ -289,12 +395,13 @@ only one of them.
 | Rank | Experiment | What it decides | Class |
 |---|---|---|---|
 | 1 | E4 mutation-rate intervention | Is saturation a response? | intervention |
-| 2 | E5 trained hierarchy | Is saturation cross-domain? | intervention |
-| 3 | E3 barcoded lineages | Is \(\eta\) real when the tree is given? | ground-truth observation |
+| 2 | E5 trained hierarchy (adversarial) | Is saturation cross-domain? | intervention |
+| 3 | E3 barcoded lineages | Is \(\eta\) real with a given tree? | ground-truth observation |
 | 4 | E7 reticulation intervention | Is \(\delta\perp h_{\mathrm{pack}}\) in vivo? | intervention |
-| 5 | E6 radius identification | Is \(c\) information? | pre-registered prediction |
-| 6 | E2 numerical achievability | Which half of Conjecture 4.4 to prove? | numerical |
-| 7 | E1 meter certification | Are the instruments legal? | calibration |
+| 5 | E8 boundary mapping | Do the premises do real work? | intervention / observation |
+| 6 | E6 radius identification | Is \(c\) information? | pre-registered prediction |
+| 7 | E2 numerical achievability | Which half of Conjecture 4.4 to prove? | numerical |
+| 8 | E1 meter certification | Are the instruments legal? | calibration |
 
 E1 is last in the table and first in time. Nothing above it is interpretable
 until the meter recovers synthetic truth.
@@ -306,15 +413,21 @@ Not any one of these. The bound is already firm. Firm *applicability* is:
 - E1 passed (legal instruments);
 - E3 showing \(\eta\le 1\) with a given tree (premises instantiated, bound
   respected in a living hierarchy);
-- E4 showing capacity tracking \(\beta\) (saturation as a response, not a
-  correlation).
+- E4 showing capacity tracking \(\beta\) with spectrum and \(N_e\) controlled
+  (saturation as a response, not a correlation);
+- E8 showing a clean boundary (the premises are load-bearing).
 
-Firm *generality* is E5 in addition: the same response under a knob that is
-description length and is not biology.
+Firm *generality* is E5 in addition, with its negative controls failing as
+required: the same response under a knob that is description length and is not
+biology.
 
 Firm *relational geometry* is a proof or a clean numerical settlement of
 Conjecture 4.4 (E2 as reconnaissance).
 
 A single failed intervention does not unwind the theorems. It reclassifies
-saturation from a law-like regularity to a domain fact, which is a legitimate
-and fully specified outcome of this protocol.
+saturation from a law-like regularity to a domain fact — a legitimate and
+fully specified outcome of this protocol. The ceiling is explicit: even a clean
+sweep yields "the bound holds, the premises are broadly instantiated, and
+selected or trained systems fill the budget in the measured classes." That is
+second-law-firm — a statement about a class of systems, never a universal
+theorem about nature.
