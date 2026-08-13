@@ -16,11 +16,12 @@
 > smooth hyperbolic embedding class, the minimal ambient dimension is
 > **n = 2**; path trees remain one-dimensional.
 
-The rigorous statement, units, proof, equality conditions, and falsification
-criteria are in [`theory/MATHEMATICAL_SPINE.md`](theory/MATHEMATICAL_SPINE.md).
-The inequality is the general limit. The state equation is its optimal,
-isotropic equality case; raw curvature follows only after a radial gauge is
-fixed.
+The minimal dependency structure is in
+[`theory/ADDRESSABILITY_KERNEL.md`](theory/ADDRESSABILITY_KERNEL.md); the full
+proof, units, scope, and falsification criteria are in
+[`theory/MATHEMATICAL_SPINE.md`](theory/MATHEMATICAL_SPINE.md). The inequality
+is the general limit. The state equation is its capacity-saturating, isotropic
+equality case; raw curvature follows only after a radial gauge is fixed.
 
 ---
 
@@ -141,6 +142,7 @@ active-geometry/
 ├── run_all_verifications.sh   # Verification orchestrator
 │
 ├── theory/
+│   ├── ADDRESSABILITY_KERNEL.md # compact theorem/assumption boundary
 │   ├── MATHEMATICAL_SPINE.md  # Definitions, packing proof, equality conditions
 │   └── lean/                  # Lean 4 algebraic formalization
 │       └── ActiveGeometry/

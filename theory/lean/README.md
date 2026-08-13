@@ -1,8 +1,10 @@
 # Formal proofs in Lean 4
 
 This directory machine-checks the algebraic spine of Active Geometry. The
-authoritative mathematical treatment, including the metric packing argument
-and its hypotheses, is [`../MATHEMATICAL_SPINE.md`](../MATHEMATICAL_SPINE.md).
+compact dependency structure is
+[`../ADDRESSABILITY_KERNEL.md`](../ADDRESSABILITY_KERNEL.md); the complete
+metric packing argument and its hypotheses are in
+[`../MATHEMATICAL_SPINE.md`](../MATHEMATICAL_SPINE.md).
 
 ## Mathematical hierarchy
 
@@ -36,7 +38,16 @@ Capacity saturation gives equality. If
 \]
 
 The familiar formula without \(c\) is raw curvature only in the
-process-time gauge \(c=1\).
+process-time gauge \(c=1\). In Lean, the logical separation is explicit:
+
+```text
+Addressable β c hcap
+  + CapacitySaturated β c hcap
+  + IsotropicHyperbolic hcap n κ
+  → normalized state equation
+```
+
+Neither saturation nor isotropy is part of `Addressable`.
 
 ## Files
 
@@ -52,23 +63,27 @@ Formalized results include:
 
 | Declaration | Meaning |
 |---|---|
-| `addressability_forces_positive_entropy` | \(\beta>0\), \(c>0\), and \(\beta\le c h_{\rm vol}\) imply \(h_{\rm vol}>0\) |
-| `efficiency_le_one` | \(\eta=\beta/(c h_{\rm vol})\le1\) |
-| `curvature_at_least_floor` | isotropic addressability gives a curvature lower bound |
+| `addressability_forces_positive_entropy` | \(\beta>0\), \(c>0\), and \(\beta\le c h_{\rm cap}\) imply \(h_{\rm cap}>0\) |
+| `efficiency_le_one` | \(\eta=\beta/(c h_{\rm cap})\le1\) |
+| `curvature_at_least_floor` | direct isotropic capacity inequality gives a curvature lower bound |
+| `isotropic_curvature_at_least_floor` | composes `Addressable` with `IsotropicHyperbolic` |
 | `saturated_curvature_eq_floor` | saturation fixes raw curvature once \(c,n\) are fixed |
+| `isotropic_saturation_curvature_eq_floor` | composes saturation with isotropic realization |
 | `floor_saturates_capacity` | the curvature floor realizes equality |
 | `normalized_floor_eq_ideal` | multiplying by \(c^2\) removes radial-unit dependence |
+| `normalized_state_equation` | derives equality only from explicit saturation and isotropy |
 | `process_time_gauge` | \(c=1\) recovers the familiar formula |
 | `normalized_curvature_scale_invariant` | \(c^2\kappa\) is invariant under radial rescaling |
 
 ### `KappaCurvature.lean`
 
-This file retains the normalized algebra:
+This file imports the addressability kernel and retains derived algebraic
+corollaries:
 
 - positivity and uniqueness of the equality value;
 - monotonicity in transmitted rate and ambient dimension;
 - alphabet-capacity ceilings;
-- non-negative rate-matching potentials and their unique zero.
+- non-negative rate-matching diagnostics and their unique zero.
 
 Its declaration `κ h n` now denotes ideal **normalized** curvature
 \(\bar\kappa\), not unit-independent raw sectional curvature.

@@ -4,12 +4,13 @@
 
   The coordinate-free mathematical claim is the addressability bound
 
-    β ≤ c · h_vol,
+    β ≤ c · h_cap,
 
   where β is retained-information growth in nats per generative step,
-  c converts generative steps to radial distance, and h_vol is host
-  volume entropy. For β > 0, c > 0, n > 1, and κ ≥ 0, an isotropic
-  hyperbolic host implies
+  c converts generative steps to radial distance, and h_cap is host packing
+  entropy (or volume entropy under additional hypotheses). Capacity saturation
+  and isotropic realization are separate predicates. For β > 0, c > 0, n > 1,
+  and κ ≥ 0, an isotropic hyperbolic host implies
 
     κ ≥ (β / (c · (n - 1)))².
 

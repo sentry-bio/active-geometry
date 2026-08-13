@@ -15,6 +15,9 @@
   isotropic consequences are treated in Addressability.lean. This file does
   not establish the metric packing theorem or physical capacity saturation.
 
+  The addressability kernel is the sole logical root. This file contains
+  derived algebraic corollaries and optional diagnostics:
+
   Contents:
     Part I  — Core theorems (kappa_n2, kappa_pos, kappa_unique, kappa_mono_h,
               kappa_mono_n, kappa_max_at_n2, kappa_scaling, growth_rate_match).
@@ -37,26 +40,27 @@
                 github.com/sentry-bio/convergent-alphabets; phoneme substrate)
 -/
 
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+import ActiveGeometry.Addressability
 import Mathlib.Analysis.SpecialFunctions.Pow.Continuity
-import Mathlib.Tactic
 
 namespace BiosphereCurvature
 
 open Real
 
-/-- Ideal normalized sectional-curvature magnitude κ̄ = c²κ. It is a raw
-    sectional-curvature magnitude only after the process-time gauge c = 1
-    is chosen. -/
+/-- Ideal normalized sectional-curvature magnitude κ̄ = c²κ, delegated to the
+    addressability kernel on the physical domain n > 1. It is a raw
+    sectional-curvature magnitude only after the process-time gauge c = 1 is
+    chosen. -/
 noncomputable def κ (h : ℝ) (n : ℝ) : ℝ :=
   if n ≤ 1 then 0
-  else (h * log 2 / (n - 1)) ^ 2
+  else ActiveGeometry.Addressability.idealNormalizedCurvature h n
 
 private lemma log2_pos : log 2 > 0 := log_pos (by norm_num : (1 : ℝ) < 2)
 
 theorem kappa_n2 (h : ℝ) : κ h 2 = (h * log 2) ^ 2 := by
-  simp [κ, show ¬(2 : ℝ) ≤ 1 by norm_num]; ring
+  simp [κ, ActiveGeometry.Addressability.idealNormalizedCurvature,
+    ActiveGeometry.Addressability.bitsToNats,
+    show ¬(2 : ℝ) ≤ 1 by norm_num]
 
 theorem kappa_pos (h : ℝ) (hpos : h > 0) : κ h 2 > 0 := by
   rw [kappa_n2]; exact sq_pos_of_pos (mul_pos hpos log2_pos)
@@ -74,6 +78,8 @@ theorem kappa_mono_n (h : ℝ) (n₁ n₂ : ℝ) (hpos : h > 0)
     (hn1 : n₁ > 1) (hn2 : n₂ > 1) (hlt : n₁ < n₂) :
     κ h n₂ < κ h n₁ := by
   unfold κ; simp only [not_le.mpr hn1, not_le.mpr hn2, ↓reduceIte]
+  unfold ActiveGeometry.Addressability.idealNormalizedCurvature
+    ActiveGeometry.Addressability.bitsToNats
   have hnum := mul_pos hpos log2_pos
   have hd1 : n₁ - 1 > 0 := by linarith
   have hd2 : n₂ - 1 > 0 := by linarith
@@ -278,29 +284,12 @@ theorem kappa_bounded_by_alphabet_general
 
 /-
   ═══════════════════════════════════════════════════════════════════════════════
-  PART III: TREE DIMENSIONALITY AND RATE-MATCHING POTENTIAL
+  PART III: RATE-MATCHING DIAGNOSTICS
   ═══════════════════════════════════════════════════════════════════════════════
+
+  These functions diagnose deviation from the conditional equality value.
+  They define neither a tree embedding nor an evolution law.
 -/
-
-def tree_dimension : ℕ := 2
-
-structure MetricTree where
-  V : Type*
-  d : V → V → ℝ
-  d_nonneg : ∀ u v, d u v ≥ 0
-  d_symm : ∀ u v, d u v = d v u
-  d_triangle : ∀ u v w, d u w ≤ d u v + d v w
-  four_point : ∀ u v w x,
-    d u v + d w x ≤ max (d u w + d v x) (d u x + d v w)
-
-/-- Algebraic monotonicity only: at fixed h, ideal normalized curvature
-    decreases as n increases. Minimal dimension comes from embeddability,
-    not from optimization of this expression. -/
-theorem embedding_dimension_optimal (n : ℝ) (hn : n > 2) (h : ℝ) (hpos : h > 0) :
-    κ h n < κ h 2 := kappa_max_at_n2 h n hpos hn
-
-theorem dimension_two_maximizes_curvature (h : ℝ) (hpos : h > 0) :
-    ∀ n : ℝ, n > 2 → κ h n < κ h 2 := fun _ hn => kappa_max_at_n2 h _ hpos hn
 
 /-- Information production rate in nats per symbol: I(h) = h · ln 2. -/
 noncomputable def I (h : ℝ) : ℝ := h * log 2
@@ -325,6 +314,8 @@ theorem potential_zero_iff (h : ℝ) (κ_val : ℝ) (n : ℝ)
     U h κ_val n = 0 ↔ κ_val = κ_critical h n := by
   unfold U ε I C κ_critical κ
   simp only [show ¬κ_val ≤ 0 by linarith, show ¬n ≤ 1 by linarith, ↓reduceIte]
+  unfold ActiveGeometry.Addressability.idealNormalizedCurvature
+    ActiveGeometry.Addressability.bitsToNats
   have hn1 : n - 1 > 0 := by linarith
   constructor
   · intro hU
@@ -357,10 +348,13 @@ theorem mismatch_zero_iff (κ_val κ_star : ℝ)
 theorem residual_zero_at_critical (h n : ℝ) (hpos : h > 0) (hn : n > 1) :
     ε h (κ_critical h n) n = 0 := by
   unfold ε I C κ_critical κ
+  simp only [show ¬n ≤ 1 by linarith, ↓reduceIte]
+  unfold ActiveGeometry.Addressability.idealNormalizedCurvature
+    ActiveGeometry.Addressability.bitsToNats
   have hn1 : n - 1 > 0 := by linarith
   have hnum := div_pos (mul_pos hpos log2_pos) hn1
   have hnsq : ¬(h * log 2 / (n - 1)) ^ 2 ≤ 0 := not_le.mpr (sq_pos_of_pos hnum)
-  simp only [show ¬n ≤ 1 by linarith, hnsq, ↓reduceIte, sqrt_sq hnum.le]
+  simp only [hnsq, ↓reduceIte, sqrt_sq hnum.le]
   field_simp; ring
 
 end BiosphereCurvature

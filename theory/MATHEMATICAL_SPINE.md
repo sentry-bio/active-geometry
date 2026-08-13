@@ -2,20 +2,21 @@
 
 ## Status and purpose
 
-This document is the mathematical spine of Active Geometry. It separates four
-claims that must not be conflated:
+The compact dependency structure is stated in
+[`ADDRESSABILITY_KERNEL.md`](ADDRESSABILITY_KERNEL.md). This document supplies
+the full definitions, proof, scope, and measurement consequences.
 
-1. a **packing theorem** that forces exponential host growth;
-2. a **tree-classification theorem** supplied by quartet geometry;
-3. a **capacity-saturation hypothesis** motivated by economical description;
-4. an **isotropic realization** in which volume entropy is represented by one
-   curvature scalar.
+The core has three levels that must not be conflated:
 
-Only the first two are unconditional consequences of their stated hypotheses.
-The state equation is the equality case of the packing bound after the final two
-assumptions are added. This distinction makes the theory a limit theory: the
-inequality is the prohibition, while equality is the ideal, capacity-achieving
-case.
+1. a **packing theorem** that forces the capacity inequality;
+2. a separate **capacity-saturation hypothesis**;
+3. a separate **isotropic realization** in which host capacity is represented
+   by one curvature scalar.
+
+Only the first is the general limit. The state equation follows after both
+additional conditions are supplied. The four-point tree theorem is an
+independent classifier: it can motivate a host class or minimal embedding
+dimension, but it does not calibrate capacity or curvature.
 
 All logarithms in this document are natural unless explicitly written
 `log₂`.
@@ -584,8 +585,19 @@ address radius is allowed to grow superlinearly without cost.
 \boxed{
 \text{retained exponential novelty}
 \Longrightarrow
-\beta\le c\,h_{\mathrm{vol}}
-\xrightarrow[\text{isotropy}]{\text{capacity saturation}}
+\beta\le c\,h_{\mathrm{cap}}
+}
+\]
+
+with \(h_{\mathrm{cap}}=h_{\mathrm{pack}}\) at the fixed operational
+resolution. Separately imposing
+
+\[
+\boxed{
+\beta=c\,h_{\mathrm{cap}}
+\quad\text{and}\quad
+h_{\mathrm{cap}}=(n-1)\sqrt\kappa
+\Longrightarrow
 c^2\kappa=
 \left(
 \frac{h_{\mathrm{eff}}\ln2}{n-1}

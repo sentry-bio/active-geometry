@@ -47,6 +47,7 @@ paper:
 # Formal Verification (Machine-Checked)
 # =============================================================================
 formal_verification:
+  theoretical_kernel: "theory/ADDRESSABILITY_KERNEL.md"
   mathematical_spine: "theory/MATHEMATICAL_SPINE.md"
   lean_files:
     - "theory/lean/ActiveGeometry/Addressability.lean"
@@ -56,17 +57,21 @@ formal_verification:
   axioms_used: ["propext", "Classical.choice", "Quot.sound"]
 
   scope_note: |
-    Lean checks the algebraic consequences of the addressability bound,
-    the scale-aware isotropic curvature floor, normalized scale invariance,
-    and equality-value properties. It does not formalize the metric packing
-    theorem, classical space-form/tree-embedding theorems, capacity saturation
-    as a physical law, or a dynamics toward equality.
+    Lean keeps the three logical levels explicit: Addressable is the supplied
+    capacity inequality; CapacitySaturated is a separate hypothesis; and
+    IsotropicHyperbolic is a separate realization. It checks their algebraic
+    consequences, including the curvature floor, normalized scale invariance,
+    and conditional equality. It does not formalize the metric packing theorem,
+    classical space-form/tree-embedding theorems, capacity saturation as a
+    physical law, or a dynamics toward equality.
 
   core_theorems:
-    - {name: "addressability_forces_positive_entropy", statement: "beta > 0, c > 0, and beta <= c*h_vol imply h_vol > 0"}
-    - {name: "efficiency_le_one", statement: "for c,h_vol > 0 and beta <= c*h_vol, eta = beta/(c*h_vol) <= 1"}
+    - {name: "addressability_forces_positive_entropy", statement: "beta > 0, c > 0, and beta <= c*h_cap imply h_cap > 0"}
+    - {name: "efficiency_le_one", statement: "for c,h_cap > 0 and beta <= c*h_cap, eta = beta/(c*h_cap) <= 1"}
     - {name: "curvature_at_least_floor", statement: "for beta,c > 0, n > 1, kappa >= 0, isotropic addressability implies kappa >= (beta/(c(n-1)))^2"}
+    - {name: "isotropic_curvature_at_least_floor", statement: "Addressable plus IsotropicHyperbolic implies the curvature floor"}
     - {name: "saturated_curvature_eq_floor", statement: "for c > 0, n > 1, and kappa >= 0, capacity saturation fixes raw curvature magnitude once c and n are fixed"}
+    - {name: "normalized_state_equation", statement: "CapacitySaturated plus IsotropicHyperbolic implies the normalized state equation"}
     - {name: "normalized_floor_eq_ideal", statement: "c^2*kappa_floor = (h*ln2/(n-1))^2"}
     - {name: "normalized_curvature_scale_invariant", statement: "c^2*kappa is invariant under radial rescaling"}
     - {name: "kappa_n2", statement: "normalized kappa_bar(h, 2) = (h * log 2)^2"}
