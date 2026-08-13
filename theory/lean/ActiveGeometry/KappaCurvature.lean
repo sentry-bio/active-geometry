@@ -61,6 +61,7 @@ theorem kappa_n2 (h : ℝ) : κ h 2 = (h * log 2) ^ 2 := by
   simp [κ, ActiveGeometry.Addressability.idealNormalizedCurvature,
     ActiveGeometry.Addressability.bitsToNats,
     show ¬(2 : ℝ) ≤ 1 by norm_num]
+  <;> ring
 
 theorem kappa_pos (h : ℝ) (hpos : h > 0) : κ h 2 > 0 := by
   rw [kappa_n2]; exact sq_pos_of_pos (mul_pos hpos log2_pos)
