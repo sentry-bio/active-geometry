@@ -30,10 +30,11 @@ equality case; raw curvature follows only after a radial gauge is fixed.
 Reproducible materials for Fenn & Fenn (2026), [*Evolution as Active
 Geometry: The Geometric State Equation of the Tree of Life*](https://www.biorxiv.org/content/10.64898/2026.03.09.710612v2).
 
-- **Lean 4 proofs** of the scale-aware curvature floor, normalized
-  scale-invariance, equality case, positivity, uniqueness, monotonicity, and
-  alphabet-capacity bounds. Machine-checked, zero sorries. The Lean files do
-  not claim to formalize the metric packing theorem or a physical dynamics.
+- **Lean 4 proofs** of the finite-depth metric packing count, the
+  convergent-rate addressability theorem, scale-aware curvature floor,
+  normalized scale-invariance, and conditional equality. Machine-checked,
+  zero sorries. The Lean files do not claim the full limsup extension,
+  space-form classification, or a physical dynamics.
 - **BiosphereCodec reference encoder**: a minimal open-source Poincaré-ball
   encoder that reproduces the paper's Procrustes coordinate convergence
   on 5,550 genomes. (The production-scale encoder, Biosphere Atlas v8.4
@@ -104,10 +105,11 @@ This reproduces Table 3: fungi κ = 3.0, archaea κ = 12.7, bacteria
 cd theory/lean && lake build
 ```
 
-Compiles the scale-aware addressability algebra, including
-`curvature_at_least_floor`, `saturated_curvature_eq_floor`,
-`normalized_floor_eq_ideal`, `normalized_curvature_scale_invariant`, and the
-existing alphabet-capacity bounds. Zero sorries. See
+Compiles the metric packing theorem and scale-aware addressability algebra,
+including `faithful_representation_addressable`,
+`curvature_at_least_floor`, `normalized_state_equation`,
+`normalized_curvature_scale_invariant`, and the existing alphabet-capacity
+bounds. Zero sorries. See
 [theory/lean/README.md](theory/lean/README.md) for scope and inventory.
 
 ### Docker (one-command, reproducible)
@@ -146,6 +148,7 @@ active-geometry/
 │   ├── MATHEMATICAL_SPINE.md  # Definitions, packing proof, equality conditions
 │   └── lean/                  # Lean 4 algebraic formalization
 │       └── ActiveGeometry/
+│           ├── Packing.lean
 │           ├── Addressability.lean
 │           └── KappaCurvature.lean
 │

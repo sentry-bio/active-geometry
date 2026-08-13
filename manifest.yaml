@@ -50,6 +50,7 @@ formal_verification:
   theoretical_kernel: "theory/ADDRESSABILITY_KERNEL.md"
   mathematical_spine: "theory/MATHEMATICAL_SPINE.md"
   lean_files:
+    - "theory/lean/ActiveGeometry/Packing.lean"
     - "theory/lean/ActiveGeometry/Addressability.lean"
     - "theory/lean/ActiveGeometry/KappaCurvature.lean"
   status: "MACHINE-CHECKED"
@@ -57,15 +58,17 @@ formal_verification:
   axioms_used: ["propext", "Classical.choice", "Quot.sound"]
 
   scope_note: |
-    Lean keeps the three logical levels explicit: Addressable is the supplied
-    capacity inequality; CapacitySaturated is a separate hypothesis; and
-    IsotropicHyperbolic is a separate realization. It checks their algebraic
-    consequences, including the curvature floor, normalized scale invariance,
-    and conditional equality. It does not formalize the metric packing theorem,
-    classical space-form/tree-embedding theorems, capacity saturation as a
-    physical law, or a dynamics toward equality.
+    Lean proves the finite-depth metric packing count and the convergent-rate
+    addressability theorem using Mathlib's exact Metric.packingNumber. It keeps
+    the next logical levels explicit: CapacitySaturated is a separate
+    hypothesis, and IsotropicHyperbolic is a separate realization. It checks
+    their algebraic consequences, including the curvature floor, normalized
+    scale invariance, and conditional equality. It does not formalize the full
+    limsup extension, classical space-form/tree-embedding theorems, capacity
+    saturation as a physical law, or a dynamics toward equality.
 
   core_theorems:
+    - {name: "faithful_representation_addressable", statement: "independent represented-growth, radial-rate, and exact packing-rate limits imply beta <= c*h_pack"}
     - {name: "addressability_forces_positive_entropy", statement: "beta > 0, c > 0, and beta <= c*h_cap imply h_cap > 0"}
     - {name: "efficiency_le_one", statement: "for c,h_cap > 0 and beta <= c*h_cap, eta = beta/(c*h_cap) <= 1"}
     - {name: "curvature_at_least_floor", statement: "for beta,c > 0, n > 1, kappa >= 0, isotropic addressability implies kappa >= (beta/(c(n-1)))^2"}

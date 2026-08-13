@@ -187,6 +187,12 @@ radii
 
 Take the upper limit and then let \(\delta\downarrow0\). \(\square\)
 
+The finite-depth packing count and the convergent finite-rate case are
+machine-checked in
+[`lean/ActiveGeometry/Packing.lean`](lean/ActiveGeometry/Packing.lean), using
+Mathlib's exact `Metric.packingNumber`. The limsup statement above is retained
+as the more general paper theorem.
+
 ### Corollary 4.2 — Polynomial-growth exclusion
 
 If \(\beta>0\) and \(c<\infty\), then \(h_{\mathrm{pack}}>0\). Consequently, no

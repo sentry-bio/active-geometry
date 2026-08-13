@@ -1,6 +1,7 @@
 # Formal proofs in Lean 4
 
-This directory machine-checks the algebraic spine of Active Geometry. The
+This directory machine-checks the metric packing count, its convergent-rate
+addressability theorem, and the downstream algebraic spine of Active Geometry. The
 compact dependency structure is
 [`../ADDRESSABILITY_KERNEL.md`](../ADDRESSABILITY_KERNEL.md); the complete
 metric packing argument and its hypotheses are in
@@ -53,9 +54,27 @@ Neither saturation nor isotropy is part of `Addressable`.
 
 ```text
 ActiveGeometry/
+├── Packing.lean           # metric packing count and asymptotic limit
 ├── Addressability.lean    # scale-aware bound and normalized equality
-└── KappaCurvature.lean    # normalized state-equation algebra and ceilings
+└── KappaCurvature.lean    # derived normalized algebra and ceilings
 ```
+
+### `Packing.lean`
+
+This file uses Mathlib's canonical `Metric.packingNumber`; it does not
+axiomatize a capacity envelope. Formalized results include:
+
+| Declaration | Meaning |
+|---|---|
+| `card_le_packingCount` | every finite separated subset of a ball is bounded by its exact packing number |
+| `represented_card_le_packingCount` | retained represented histories obey that bound at every depth |
+| `representedRate_le_capacity_eventually` | finite counts induce the normalized rate inequality |
+| `faithful_representation_addressable` | convergence of the three independent rates proves `Addressable β c hpack` |
+| `no_positive_growth_at_zero_capacity` | zero packing capacity excludes positive retained growth |
+
+The formal theorem uses ordinary finite limits for represented growth, radial
+rate, and packing growth. The full spine's limsup version is a more general
+paper theorem.
 
 ### `Addressability.lean`
 
@@ -92,8 +111,7 @@ Its declaration `κ h n` now denotes ideal **normalized** curvature
 
 The formalization intentionally does not claim to machine-check:
 
-1. the metric packing theorem that derives
-   \(\beta\le c h_{\mathrm{vol}}\);
+1. the full limsup generalization of the convergent-rate packing theorem;
 2. equivalence of packing and volume entropy under bounded geometry;
 3. the space-form classification or the hyperbolic volume formula;
 4. the Buneman/Gromov tree-classification theorems;

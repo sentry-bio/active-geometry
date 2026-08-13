@@ -47,7 +47,7 @@ trilogy:
 trilogy_crossrefs:
   shared_formula:
     value: "kappa_bar = c^2 * kappa = (h * ln2 / (n - 1))^2"
-    authoritative: "theory/ADDRESSABILITY_KERNEL.md; theory/MATHEMATICAL_SPINE.md; theory/lean/ActiveGeometry/Addressability.lean"
+    authoritative: "theory/ADDRESSABILITY_KERNEL.md; theory/MATHEMATICAL_SPINE.md; theory/lean/ActiveGeometry/Packing.lean; theory/lean/ActiveGeometry/Addressability.lean"
   shared_invariant:
     value: "n = 2 for genuinely branching tree metrics in the chosen smooth hyperbolic embedding class"
     authoritative: "tree embeddability and empirical quartet/dimension tests; path trees remain one-dimensional"
@@ -102,6 +102,7 @@ state_equation:
   adjustable_parameters: 0
   calibration_quantities: ["c (radial units per generative step)", "n (ambient dimension from embeddability)"]
   lean_verification:
+    - "theory/lean/ActiveGeometry/Packing.lean"
     - "theory/lean/ActiveGeometry/Addressability.lean"
     - "theory/lean/ActiveGeometry/KappaCurvature.lean"
 

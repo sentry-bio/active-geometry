@@ -24,8 +24,9 @@
 
   The predicates Addressable, CapacitySaturated, and IsotropicHyperbolic keep
   these levels explicit. This file formalizes the algebra after the capacity
-  bound is supplied as a hypothesis. It does not formalize the metric packing
-  theorem, the space-form classification, or a dynamics toward saturation.
+  bound is supplied as a hypothesis. `Packing.lean` proves that hypothesis from
+  metric packing in the convergent-rate case. Neither file formalizes the
+  space-form classification or a dynamics toward saturation.
 -/
 
 import Mathlib.Analysis.SpecialFunctions.Log.Basic

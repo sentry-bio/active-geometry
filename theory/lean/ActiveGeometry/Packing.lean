@@ -63,6 +63,7 @@ noncomputable def packingRate (o : M) (ε : ℝ≥0) (ρ : ℝ) : ℝ :=
 structure RetainedRepresentation (o : M) (ε : ℝ≥0) where
   points : ℕ → Finset M
   radius : ℕ → ℝ
+  resolution_pos : 0 < ε
   points_nonempty : ∀ R, (points R).Nonempty
   separated : ∀ R, Metric.IsSeparated ε (points R : Set M)
   contained : ∀ R, (points R : Set M) ⊆ Metric.closedBall o (radius R)

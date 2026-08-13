@@ -240,9 +240,22 @@ the curvature scale.
 
 ## 8. Formal boundary
 
-`lean/ActiveGeometry/Addressability.lean` formalizes the algebra after
-\(\beta\le c\,h_{\mathrm{cap}}\) is supplied as a hypothesis. Its central
-predicates mirror the dependency structure:
+`lean/ActiveGeometry/Packing.lean` formalizes the finite-depth metric packing
+count using Mathlib's canonical `Metric.packingNumber`. In the convergent-rate
+case it proves
+
+```text
+faithful_representation_addressable :
+  Addressable β c hpack
+```
+
+from independent limits for represented-history growth, radial rate, and exact
+ball-packing growth. The limsup formulation in the full spine is the more
+general paper theorem; the Lean theorem deliberately uses ordinary finite
+limits to keep the formal kernel minimal.
+
+`lean/ActiveGeometry/Addressability.lean` then formalizes the algebra
+downstream. Its central predicates mirror the dependency structure:
 
 - `Addressable β c hcap`;
 - `CapacitySaturated β c hcap`;
