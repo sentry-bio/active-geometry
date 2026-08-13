@@ -13,6 +13,9 @@
   Mathlib's `Metric.packingNumber` is the maximal cardinality, in extended
   naturals, of a separated subset of a metric set. Hence the represented count
   is bounded by the packing number of its containing ball at every depth.
+  Conversely, when that number is finite, an exact finite block code attaining
+  it exists. Thus operational finite-block address capacity and metric packing
+  capacity are identical in every proper metric host.
 
   If the following three finite rates exist:
 
@@ -26,7 +29,9 @@
 
   The conclusion is exactly `Addressable β c h_pack` from
   `Addressability.lean`. No curvature, isotropy, saturation, dimension, or
-  physical dynamics enters this proof.
+  physical dynamics enters this proof. The block-achievability theorem does not
+  claim that optimal codebooks across depths are nested, causal, or preserve a
+  source hierarchy's relational metric.
 -/
 
 import ActiveGeometry.Addressability
@@ -101,6 +106,32 @@ theorem card_le_packingCount
       Metric.packingNumber ε (Metric.closedBall o ρ) ≠ ⊤ :=
     hfinite hρ
   simpa [packingCount] using ENat.toNat_le_toNat henat htop
+
+/-- Finite-block achievability: whenever the ball has finite packing number,
+    there is an actual finite codebook whose cardinality equals it. Together
+    with `card_le_packingCount`, this identifies operational block-address
+    capacity exactly with metric packing capacity. No tree, hyperbolicity, or
+    saturation hypothesis is involved.
+
+    This is deliberately a block result: codebooks at different radii need not
+    be nested, causal, or preserve a source's relational metric. -/
+theorem exists_optimal_blockCode
+    (o : M) (ε : ℝ≥0) (ρ : ℝ)
+    (hρ : 0 ≤ ρ) (hfinite : HasFinitePacking o ε) :
+    ∃ s : Finset M,
+      Metric.IsSeparated ε (s : Set M) ∧
+      (s : Set M) ⊆ Metric.closedBall o ρ ∧
+      s.card = packingCount o ε ρ := by
+  have htop :
+      Metric.packingNumber ε (Metric.closedBall o ρ) ≠ ⊤ :=
+    hfinite hρ
+  obtain ⟨C, hcontained, hCfinite, hsep, hcard⟩ :=
+    Metric.exists_set_encard_eq_packingNumber htop
+  refine ⟨hCfinite.toFinset, ?_, ?_, ?_⟩
+  · simpa only [hCfinite.coe_toFinset] using hsep
+  · simpa only [hCfinite.coe_toFinset] using hcontained
+  · rw [← Set.ncard_eq_toFinset_card C hCfinite]
+    simpa only [Set.ncard_def, packingCount] using congrArg ENat.toNat hcard
 
 /-- Finite-depth addressability: represented histories cannot outnumber the
     exact packing count of their containing ball. -/
@@ -194,6 +225,18 @@ theorem hasFinitePacking_of_properSpace [ProperSpace M] (o : M) {ε : ℝ≥0}
       Metric.externalCoveringNumber (ε / 2) (Metric.closedBall o ρ) ≤ N.encard :=
     hNcov.externalCoveringNumber_le_encard
   exact (lt_of_le_of_lt (hpack_le.trans hcov_le) hNfin.encard_lt_top).ne
+
+/-- The finite-block capacity identity with local finiteness discharged for a
+    proper metric host. -/
+theorem exists_optimal_blockCode_of_properSpace
+    [ProperSpace M] (o : M) {ε : ℝ≥0} (ρ : ℝ)
+    (hε : ε ≠ 0) (hρ : 0 ≤ ρ) :
+    ∃ s : Finset M,
+      Metric.IsSeparated ε (s : Set M) ∧
+      (s : Set M) ⊆ Metric.closedBall o ρ ∧
+      s.card = packingCount o ε ρ :=
+  exists_optimal_blockCode o ε ρ hρ
+    (hasFinitePacking_of_properSpace o hε)
 
 /-- The packing theorem in a proper metric space, with the finiteness
     hypothesis discharged. The positive resolution field of the representation

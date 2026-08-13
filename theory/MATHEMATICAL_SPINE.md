@@ -193,7 +193,105 @@ machine-checked in
 Mathlib's exact `Metric.packingNumber`. The limsup statement above is retained
 as the more general paper theorem.
 
-### Corollary 4.2 — Polynomial-growth exclusion
+### Theorem 4.2 — General block-addressability identity
+
+The converse closes to an identity in full generality when the operational
+task is matched exactly to metric packing. Define
+
+\[
+A_{\rm block}(\rho,\varepsilon)
+:=
+\max\left\{
+|C|:\ C\subseteq B(o,\rho),\
+d(x,y)\ge\varepsilon\ \text{for }x\ne y
+\right\}.
+\]
+
+For every proper metric host, closed balls are compact and their
+fixed-resolution packing numbers are finite and attained. Therefore
+
+\[
+\boxed{
+A_{\rm block}(\rho,\varepsilon)
+=P(B(o,\rho),\varepsilon).
+}
+\]
+
+The left side is operational: the largest noiseless message set that can be
+assigned distinguishable addresses within budget \(\rho\). The right side is
+geometric. They are one quantity.
+
+At a linear radial budget \(\rho=cR\), \(c>0\), define
+
+\[
+C_{\rm block}(c,\varepsilon)
+:=
+\limsup_{R\to\infty}
+\frac{\log A_{\rm block}(cR,\varepsilon)}R.
+\]
+
+Because ball-packing counts are monotone in radius, sampling them at the
+linearly spaced radii \(cR\) preserves their radial limsup. Hence
+
+\[
+\boxed{
+C_{\rm block}(c,\varepsilon)
+=c\,h_{\rm pack}(M,o;\varepsilon).
+}
+\]
+
+This is a genuine operational-geometric capacity identity for arbitrary
+proper metric spaces. It requires no tree, hyperbolicity, isotropy,
+stationarity, or curvature. The finite-radius existence half is
+machine-checked as `exists_optimal_blockCode`; combined with
+`card_le_packingCount`, it establishes exact finite-block achievability.
+
+#### Why this does not make every hierarchy capacity-achieving
+
+A block code may be redesigned at every depth and must preserve only terminal
+distinguishability. Stronger meanings of “represent a hierarchy” form an
+admissibility ladder:
+
+1. **Block:** terminal messages are \(\varepsilon\)-separated.
+2. **Persistent:** one nested address family retains prior messages.
+3. **Causal:** parent-child addresses also obey a per-step motion or locality
+   bound.
+4. **Relational:** the representation preserves the hierarchy's pairwise
+   metric or topology up to a stated distortion, for example by a uniform
+   quasi-isometric embedding.
+
+The corresponding constrained capacities cannot exceed \(C_{\rm block}\).
+Packing alone proves achievability only at level 1. Extension theorems,
+online-coding arguments, or geometric embedding theorems are needed at the
+stronger levels.
+
+Positive packing entropy is insufficient for relational achievability. For a
+concrete counterexample, take a ray of hubs and attach to the hub at radius
+\(R\) a clique of \(\lceil e^{hR}\rceil\) vertices. With the graph metric this
+is a proper space with packing entropy \(h\): exponentially many distinguishable
+addresses occur in each bounded-diameter “balloon.” But it cannot contain a
+uniform quasi-isometric image of a regular branching tree. Up to radius \(R\)
+there are only \(O(R)\) bounded-diameter shells, while a tree level has
+exponentially many mutually tree-distant vertices; a quasi-isometric lower
+bound permits only a uniformly bounded number of them in each shell.
+
+This example locates the missing hypothesis precisely. Ordinary packing
+capacity counts addresses; it does not certify that their mutual geometry
+realizes the source's genealogy.
+
+Sarkar-type hyperbolic tree embeddings address the stronger relational task,
+but a finite-tree low-distortion result is not by itself an asymptotic
+capacity theorem. Closing that theorem requires a uniform family at fixed host
+geometry, fixed resolution, controlled radial rate, and distortion that does
+not degrade with depth.
+
+Finally, quartet defect \(\delta\) is not the capacity slack
+\(\Delta=c\,h_{\rm pack}-\beta\). It classifies deviation from tree geometry.
+A reticulate source can use every available address, and a perfect tree can
+use very few. Any theorem turning \(\delta\) into a quantitative capacity gap
+must add a particular source class, host class, and distortion criterion.
+
+### Corollary 4.3 — Polynomial-growth exclusion
 
 If \(\beta>0\) and \(c<\infty\), then \(h_{\mathrm{pack}}>0\). Consequently, no
 polynomial-growth host can represent retained exponential novelty faithfully
@@ -209,7 +307,7 @@ canonical realization only after additional symmetry assumptions are imposed.
 
 ---
 
-## 5. Slack, efficiency, and sharpness
+## 5. Slack, efficiency, and process saturation
 
 Define the non-negative addressability slack
 

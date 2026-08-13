@@ -95,7 +95,60 @@ Hence \(\beta\le c\,h_{\mathrm{cap}}\).
 This is the kernel's only prohibition. In particular, positive retained growth
 at finite radial rate requires positive exponential host capacity.
 
-## 3. Saturation is an additional condition
+## 3. The general block-capacity identity
+
+The converse has a fully general achievability partner when the operational
+task is stated at the same level of structure. Define the finite-block
+addressing number
+
+\[
+A_{\mathrm{block}}(\rho,\varepsilon)
+:=
+\max\left\{
+|C|:\ C\subseteq B(o,\rho),\
+C\text{ is }\varepsilon\text{-separated}
+\right\}.
+\]
+
+In a proper metric space the maximum exists, and by the definition of metric
+packing,
+
+\[
+\boxed{
+A_{\mathrm{block}}(\rho,\varepsilon)
+=P(\rho,\varepsilon).
+}
+\]
+
+Thus the operational capacity to assign distinguishable addresses is exactly
+the geometric packing capacity, for every finite radius and every proper
+metric host. At a linear radial budget \(\rho=cR\), \(c>0\), monotonicity of
+packing counts gives the asymptotic identity
+
+\[
+\boxed{
+C_{\mathrm{block}}(c,\varepsilon)
+:=
+\limsup_{R\to\infty}
+\frac{\log A_{\mathrm{block}}(cR,\varepsilon)}{R}
+=c\,h_{\mathrm{cap}}.
+}
+\]
+
+No tree, hyperbolicity, stationarity, isotropy, or curvature is needed. This is
+the exact operational-geometric unification available in full generality.
+
+Its scope is also exact: a block code may be redesigned at each depth and is
+required only to distinguish its terminal messages. It need not form one
+nested retained codebook, obey a parent-child motion bound, or preserve a
+source hierarchy's pairwise relational metric. Those stronger tasks define
+constrained capacities no larger than \(C_{\mathrm{block}}\). Their
+achievability requires extension, causal, or embedding hypotheses.
+
+The identity concerns the host's *best possible* code. It does not say that a
+given physical hierarchy uses that code or fills it.
+
+## 4. Saturation of a given hierarchy is an additional condition
 
 Define
 
@@ -123,7 +176,7 @@ together with convergence of the three relevant rates. It can also be selected
 by an optimization problem that minimizes attainable host capacity subject to
 lossless addressability. Neither mechanism follows from the inequality alone.
 
-## 4. Isotropic hyperbolic realization
+## 5. Isotropic hyperbolic realization
 
 The capacity rate need not be curvature. Add the independent modeling
 assumption that the host is the constant-curvature space
@@ -154,7 +207,7 @@ If capacity is also saturated, and only then,
 
 Writing \(\beta=h_{\mathrm{eff}}\ln2\) merely converts bits to nats.
 
-## 5. Unit-invariant equality
+## 6. Unit-invariant equality
 
 Under a radial rescaling \(d\mapsto a d\),
 
@@ -191,7 +244,7 @@ At \(n=2\),
 The unnormalized formula is valid only after the radial gauge \(c=1\) has been
 chosen.
 
-## 6. Logical dependency
+## 7. Logical dependency
 
 \[
 \begin{array}{c}
@@ -221,7 +274,7 @@ chosen.
 The lower statement is not equivalent to the upper statement. It requires both
 additional branches.
 
-## 7. What is not in the kernel
+## 8. What is not in the kernel
 
 The kernel does not prove:
 
@@ -238,7 +291,7 @@ but logically independent of it. It can motivate a hyperbolic host class or a
 minimal embedding dimension; it cannot supply \(\beta\), \(c\), saturation, or
 the curvature scale.
 
-## 8. Formal boundary
+## 9. Formal boundary
 
 `lean/ActiveGeometry/Packing.lean` formalizes the finite-depth metric packing
 count using Mathlib's canonical `Metric.packingNumber`. In the convergent-rate
@@ -253,6 +306,15 @@ from independent limits for represented-history growth, radial rate, and exact
 ball-packing growth. The limsup formulation in the full spine is the more
 general paper theorem; the Lean theorem deliberately uses ordinary finite
 limits to keep the formal kernel minimal.
+
+The same file now proves finite-block achievability:
+`exists_optimal_blockCode` constructs a separated finite codebook whose
+cardinality equals the exact packing count, and
+`exists_optimal_blockCode_of_properSpace` discharges local finiteness. Together
+with `card_le_packingCount`, these declarations machine-check the finite-radius
+operational-geometric identity. Lean does not yet formalize its asymptotic
+limsup corollary or achievability for nested, causal, or relation-preserving
+code families.
 
 The finiteness side condition `HasFinitePacking` is not an extra assumption for
 the intended host class: `hasFinitePacking_of_properSpace` proves it for every

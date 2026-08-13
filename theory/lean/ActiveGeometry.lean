@@ -8,7 +8,10 @@
 
   where β is retained-information growth in nats per generative step,
   c converts generative steps to radial distance, and h_cap is host packing
-  entropy (or volume entropy under additional hypotheses). Capacity saturation
+  entropy (or volume entropy under additional hypotheses). At finite block
+  length, operational address capacity equals the exact metric packing number
+  in every proper metric host; nested, causal, and relation-preserving
+  achievability are stronger problems. Capacity saturation by a given process
   and isotropic realization are separate predicates. For β > 0, c > 0, n > 1,
   and κ ≥ 0, an isotropic hyperbolic host implies
 
