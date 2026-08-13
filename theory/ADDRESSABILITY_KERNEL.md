@@ -160,6 +160,10 @@ theorem for genealogy; its refutation would make the gap below
 \(c(n-1)\sqrt\kappa\) a new host invariant. Neither outcome disturbs the
 inequality or the block identity.
 
+The theorems do not decide whether nature instantiates the premises or fills
+the budget. The ranked experimental protocol is
+[`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md).
+
 ## 4. Saturation of a given hierarchy is an additional condition
 
 Define

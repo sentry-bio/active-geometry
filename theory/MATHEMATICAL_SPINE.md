@@ -738,6 +738,10 @@ anisotropy effects are controlled.
 This would not refute the addressability bound. It would refute or restrict the
 physical saturation hypothesis.
 
+The ranked experimental protocol — interventions first, then pre-registered
+predictions, with named kill lines — is
+[`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md).
+
 ### The pure-tree model would be challenged by
 
 Persistent quartet violations, \(\delta>0\), or superior non-tree
