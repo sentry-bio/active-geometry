@@ -2,21 +2,27 @@
   Active Geometry: Main Entry Point
   ==================================
 
-  Machine-checked proofs of the geometric state equation for the
-  tree of life (Fenn & Fenn 2026, bioRxiv 10.64898/2026.03.09.710612):
+  The coordinate-free mathematical claim is the addressability bound
 
-    κ = (h · ln 2 / (n - 1))²
+    β ≤ c · h_vol,
 
-  where:
-    κ = sectional curvature of the embedding hyperbolic manifold
-    h = Shannon entropy rate of the generating code (bits/symbol)
-    n = embedding dimension
+  where β is retained-information growth in nats per generative step,
+  c converts generative steps to radial distance, and h_vol is host
+  volume entropy. For β > 0, c > 0, n > 1, and κ ≥ 0, an isotropic
+  hyperbolic host implies
 
-  At n = 2 (the empirical invariant across DNA, RNA, and protein
-  alphabets per paper §2), this reduces to κ = (h · ln 2)². For DNA
-  with h ∈ [1.58, 1.65] bits/nt, the predicted κ ∈ [1.20, 1.31]
-  (paper §3.4). Encoder-free post-hoc telescope sweeps (§4.2) land
-  at κ ≈ 1.28–1.34, within the predicted interval.
+    κ ≥ (β / (c · (n - 1)))².
+
+  Capacity saturation gives equality. For β = h · ln 2 and normalized
+  sectional-curvature magnitude κ̄ = c²κ:
+
+    κ̄ = (h · ln 2 / (n - 1))².
+
+  The familiar raw-curvature-magnitude formula uses the process-time gauge
+  c = 1.
+  See theory/MATHEMATICAL_SPINE.md for hypotheses, proofs, scope, and
+  the independent role of the four-point tree condition.
 -/
 
+import ActiveGeometry.Addressability
 import ActiveGeometry.KappaCurvature

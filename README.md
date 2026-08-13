@@ -7,13 +7,20 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![Preprint](https://img.shields.io/badge/bioRxiv-2026.03.09.710612-red.svg)](https://www.biorxiv.org/content/10.64898/2026.03.09.710612v2)
 
-> Evolution is two-dimensional. Across every system tested — from
-> decade-old viral outbreaks to 3.8-billion-year cellular lineages,
-> across DNA, RNA, and protein alphabets — the intrinsic embedding
-> dimension is **n = 2.00 ± 0.05**. Curvature is scale-dependent and
-> predicted from the entropy rate of the generating code by the state
-> equation **κ = (h · ln 2 / (n−1))²**, with zero adjustable parameters.
-> The universal invariant is the dimension, not the curvature.
+> A process that retains exponentially many distinguishable histories cannot
+> represent them faithfully at finite address rate in a polynomial-growth
+> host. Its information-growth rate obeys the coordinate-free limit
+> **β ≤ c·h_vol**. Under capacity saturation and an isotropic hyperbolic
+> realization, normalized curvature **κ̄ = c²κ** satisfies
+> **κ̄ = (h·ln 2/(n−1))²**. For a genuinely branching tree in the chosen
+> smooth hyperbolic embedding class, the minimal ambient dimension is
+> **n = 2**; path trees remain one-dimensional.
+
+The rigorous statement, units, proof, equality conditions, and falsification
+criteria are in [`theory/MATHEMATICAL_SPINE.md`](theory/MATHEMATICAL_SPINE.md).
+The inequality is the general limit. The state equation is its optimal,
+isotropic equality case; raw curvature follows only after a radial gauge is
+fixed.
 
 ---
 
@@ -22,9 +29,10 @@
 Reproducible materials for Fenn & Fenn (2026), [*Evolution as Active
 Geometry: The Geometric State Equation of the Tree of Life*](https://www.biorxiv.org/content/10.64898/2026.03.09.710612v2).
 
-- **Lean 4 proofs** of the state equation's mathematical consequences
-  (existence, uniqueness, monotonicity, maximization at n=2, Lyapunov
-  stability). Machine-checked, zero sorries.
+- **Lean 4 proofs** of the scale-aware curvature floor, normalized
+  scale-invariance, equality case, positivity, uniqueness, monotonicity, and
+  alphabet-capacity bounds. Machine-checked, zero sorries. The Lean files do
+  not claim to formalize the metric packing theorem or a physical dynamics.
 - **BiosphereCodec reference encoder**: a minimal open-source Poincaré-ball
   encoder that reproduces the paper's Procrustes coordinate convergence
   on 5,550 genomes. (The production-scale encoder, Biosphere Atlas v8.4
@@ -43,12 +51,14 @@ Geometry: The Geometric State Equation of the Tree of Life*](https://www.biorxiv
 
 The paper reports two results of different character:
 
-**1. Topological invariant — robust across everything tested.**
+**1. Topological classification — tree-like descent has minimal ambient n=2.**
 
-Back-solving `n = 1 + h·ln 2/√κ` from independently measured (h, κ)
-pairs returns n = 2 at every scale, for every alphabet, across 10⁶-fold
-variation in timescale and 10⁴-fold variation in mutation rate. This
-is the deepest result.
+The four-point condition classifies exact tree metrics, and finite trees admit
+low-distortion embeddings in `H²`. Back-solving
+`n = 1 + h·ln 2/(c√κ)` from independently measured quantities is a consistency
+check, not an independent derivation of `n = 2`. Empirically, the reported
+systems return values near two across 10⁶-fold variation in timescale and
+10⁴-fold variation in mutation rate.
 
 | System | Substrate | κ | n |
 |---|---|---|---|
@@ -59,12 +69,14 @@ is the deepest result.
 | Bacteria (GTDB r220) | DNA | 16.4 ± 0.5 | 1.99 |
 | Protein families (15 Pfam) | Amino acid | 3.80 ± 0.60 | 2.03 ± 0.10 |
 
-**2. Metric law — scale-dependent, predicted by entropy.**
+**2. Metric limit — host capacity is bounded below by retained-information growth.**
 
-The state equation `κ = (h·ln 2/(n−1))²` applied at the scale-appropriate
-h predicts κ across a 13-fold range, with no parameters fit. Cross-alphabet
-validation: h_protein = 2.85 bits predicts κ_protein = 3.90, measured
-3.80 ± 0.60 — a 3.1× jump from the DNA value, confirmed at 2.6% agreement.
+The general statement is `β ≤ c·h_vol`. For an isotropic hyperbolic host this
+becomes the curvature floor
+`κ ≥ (h·ln 2/(c(n−1)))²`; an economical, capacity-saturating representation
+achieves equality. Cross-alphabet measurements reported by the paper include
+`h_protein = 2.85` bits predicting normalized `κ̄_protein = 3.90`, with measured
+raw `κ_protein = 3.80 ± 0.60` under the paper's radial convention.
 
 Viral curvature-entropy correlation: **Pearson r = 0.996**, explaining
 99.3% of variance with zero free parameters.
@@ -91,10 +103,11 @@ This reproduces Table 3: fungi κ = 3.0, archaea κ = 12.7, bacteria
 cd theory/lean && lake build
 ```
 
-Compiles all theorems including `kappa_n2`, `kappa_max_at_n2`,
-`kappa_bounded_by_alphabet`, `lyapunov_zero_iff`, and the rest. Zero
-sorries. See [theory/lean/README.md](theory/lean/README.md) for the full
-theorem inventory.
+Compiles the scale-aware addressability algebra, including
+`curvature_at_least_floor`, `saturated_curvature_eq_floor`,
+`normalized_floor_eq_ideal`, `normalized_curvature_scale_invariant`, and the
+existing alphabet-capacity bounds. Zero sorries. See
+[theory/lean/README.md](theory/lean/README.md) for scope and inventory.
 
 ### Docker (one-command, reproducible)
 
@@ -127,8 +140,12 @@ active-geometry/
 ├── Dockerfile                 # One-command reproducibility
 ├── run_all_verifications.sh   # Verification orchestrator
 │
-├── theory/lean/               # Lean 4 formalization
-│   └── ActiveGeometry/KappaCurvature.lean
+├── theory/
+│   ├── MATHEMATICAL_SPINE.md  # Definitions, packing proof, equality conditions
+│   └── lean/                  # Lean 4 algebraic formalization
+│       └── ActiveGeometry/
+│           ├── Addressability.lean
+│           └── KappaCurvature.lean
 │
 ├── model/                     # BiosphereCodec reference encoder
 │   ├── biosphere_codec.py
@@ -150,19 +167,25 @@ active-geometry/
 
 ## What Is and Isn't Claimed
 
-**Is claimed.** The state equation is a parameter-free law that holds
-across biological systems tested. Dimension is the universal invariant.
-The neural encoder's coordinate system is intrinsic to the data up to
-global SO(2) rotation.
+**Is claimed mathematically.** Retained exponential novelty obeys
+`β ≤ c·h_pack`; for Riemannian hosts with uniform fixed-ball volume bounds,
+`h_pack = h_vol`. Polynomial-growth hosts cannot support positive retained-
+information growth at finite radial rate. Exact tree metrics satisfy the
+four-point condition; genuinely branching examples in the chosen smooth
+hyperbolic embedding class have minimal ambient dimension two.
+
+**Is tested empirically.** Biological tree metrics prefer hyperbolic
+representations; reported independently estimated rates and curvatures are
+compared with the capacity-saturating equality case. The neural encoder's
+coordinate system is reproducible across seeds up to global rotation.
 
 **Is not claimed.** Curvature does not emerge from training by gradient
 descent on sequence data — the paper explicitly states (§7.5) that
 curvature is set as a design parameter from theory, not discovered.
 In the reference five-seed experiment (§4.1, SI §3), κ is fixed at
 1.0 and what converges is coordinate geometry, measured by Procrustes
-alignment (r = 0.94 ± 0.02). The curvature value κ ≈ 1.25 comes from
-theory (state equation at h = 1.61) and from post-hoc telescope sweeps
-on frozen embeddings (κ ≈ 1.28–1.34).
+alignment (r = 0.94 ± 0.02). A positive mismatch potential alone does not
+establish a physical dynamics or Lyapunov attraction toward equality.
 
 **Falsification criteria.** §7.5 names four conditions under which the
 framework is refuted. Three negative controls have been run — Euclidean

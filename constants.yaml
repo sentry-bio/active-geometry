@@ -36,7 +36,7 @@ trilogy:
     venue: "Zenodo"
     doi: "10.5281/zenodo.19381558"
     substrate: "theoretical core (cross-substrate derivation + Lean 4 proofs)"
-    role: "companion — proves existence, uniqueness, monotonicity, Lyapunov stability"
+    role: "companion — derives the addressability bound and its optimal isotropic equality case"
   paper_iii:
     title: "Convergent Alphabets: Why Every Information Hierarchy Looks the Same"
     venue: "in preparation"
@@ -46,11 +46,11 @@ trilogy:
 
 trilogy_crossrefs:
   shared_formula:
-    value: "kappa = (h * ln2 / (n - 1))^2"
-    authoritative: "theory/lean/ActiveGeometry/KappaCurvature.lean, theorem kappa_n2"
+    value: "kappa_bar = c^2 * kappa = (h * ln2 / (n - 1))^2"
+    authoritative: "theory/MATHEMATICAL_SPINE.md; theory/lean/ActiveGeometry/Addressability.lean"
   shared_invariant:
-    value: "n = 2"
-    authoritative: "empirical across all three papers; Lean theorem kappa_max_at_n2 proves optimality given h"
+    value: "n = 2 for genuinely branching tree metrics in the chosen smooth hyperbolic embedding class"
+    authoritative: "tree embeddability and empirical quartet/dimension tests; path trees remain one-dimensional"
   shared_lower_anchor:
     value: "h_three_letter = log2(3) ≈ 1.585 bits"
     authoritative: "theory/lean/ActiveGeometry/KappaCurvature.lean, theorem h_three_letter_bounds"
@@ -69,13 +69,13 @@ dimension:
   n_universal: 2.00
   n_universal_std: 0.05
   interpretation: >
-    Topological invariant of trees (descent with modification). A tree is
-    a 1-complex whose metric completion in hyperbolic space requires
-    exactly two dimensions for faithful embedding. Independent of
-    alphabet, substrate, or timescale. The one tested exception (RecA,
-    n = 3.02) is the single most horizontally-transferred gene in the
-    bacterial genome — a non-tree topology, diagnosed by the state
-    equation as requiring n > 2.
+    Minimal smooth hyperbolic ambient dimension for genuinely branching tree
+    metrics in the embedding class used here. The four-point condition
+    classifies tree metrics; it does not itself imply n = 2, and path trees
+    remain one-dimensional. RecA (reported n = 3.02) is an empirical departure
+    associated with horizontal transfer, but reticulation must be established
+    independently through quartet or topology measurements rather than inferred
+    solely by back-solving the saturation equation.
   tested_systems:
     cellular_life: 2.01
     viral_families_mean: 2.00
@@ -85,16 +85,24 @@ dimension:
     protein_families_mean: 2.03
 
 # -----------------------------------------------------------------------------
-# Geometric state equation (zero free parameters)
+# Addressability limit and normalized geometric state equation
 # -----------------------------------------------------------------------------
 state_equation:
-  formula: "kappa = (h * ln(2) / (n - 1))^2"
-  formula_latex: "\\kappa = \\left(\\frac{h \\ln 2}{n-1}\\right)^2"
-  at_n2: "kappa = (h * ln(2))^2"
-  derivation: "Self-consistency between topological entropy of geodesic flow and Shannon entropy of the code"
-  source: "Manning's theorem (1979) applied to the genetic code"
-  free_parameters: 0
-  lean_verification: "theory/lean/ActiveGeometry/KappaCurvature.lean"
+  coordinate_free_bound: "beta <= c * h_pack"
+  riemannian_specialization: "h_pack = h_vol under uniform fixed-ball volume bounds"
+  isotropic_curvature_floor: "kappa >= (h * ln(2) / (c * (n - 1)))^2"
+  normalized_formula: "kappa_bar = c^2 * kappa = (h * ln(2) / (n - 1))^2"
+  normalized_formula_latex: "\\bar{\\kappa}=c^2\\kappa=\\left(\\frac{h\\ln 2}{n-1}\\right)^2"
+  at_n2: "kappa_bar = (h * ln(2))^2"
+  equality_condition: "capacity saturation: beta = c * h_vol"
+  radial_gauge: "c = radial distance per generative step; raw-kappa formula assumes c = 1"
+  derivation: "Metric packing bound; capacity saturation; isotropic space-form realization"
+  source: "theory/MATHEMATICAL_SPINE.md"
+  adjustable_parameters: 0
+  calibration_quantities: ["c (radial units per generative step)", "n (ambient dimension from embeddability)"]
+  lean_verification:
+    - "theory/lean/ActiveGeometry/Addressability.lean"
+    - "theory/lean/ActiveGeometry/KappaCurvature.lean"
 
 # -----------------------------------------------------------------------------
 # Entropy rate h (bits per substitution event)

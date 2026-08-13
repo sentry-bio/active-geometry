@@ -2,15 +2,18 @@
   Biosphere Curvature Theorem: Lean 4 Formalization
   ==================================================
 
-  Machine-checked proof of the geometric state equation for the tree of life:
+  Machine-checked algebra of the normalized geometric state equation:
 
-    κ = (h · ln 2 / (n - 1))²
+    κ̄ = (h · ln 2 / (n - 1))²
 
-  where κ is the sectional curvature of the embedding hyperbolic manifold,
-  h is the Shannon entropy rate of the generating code (bits/symbol), and
-  n is the embedding dimension. At n = 2 (the topological invariant of trees
-  established empirically across DNA, RNA, and protein alphabets in
-  Fenn & Fenn 2026), this reduces to κ = (h · ln 2)².
+  Here κ̄ = c²κ is curvature normalized to one generative step, h is the
+  transmitted information rate (bits/step), c converts a generative step to
+  radial distance, and n is the embedding dimension. The raw-curvature form
+  is recovered only after choosing the process-time gauge c = 1.
+
+  The coordinate-free packing theorem β ≤ c h_vol and its scale-aware
+  isotropic consequences are treated in Addressability.lean. This file does
+  not establish the metric packing theorem or physical capacity saturation.
 
   Contents:
     Part I  — Core theorems (kappa_n2, kappa_pos, kappa_unique, kappa_mono_h,
@@ -20,9 +23,9 @@
               kappa_bounded_by_raw, kappa_bounded_by_alphabet).
               Plus the trilogy-general form H_raw_of_alphabet α and the
               generic ceiling kappa_bounded_by_alphabet_general for any α > 1.
-    Part III — Rate-distortion potential and Lyapunov stability
-              (U, V, potential_zero_iff, lyapunov_zero_iff,
-              potential_gradient_zero_at_critical).
+    Part III — Rate-matching potentials and their unique zero on the positive
+              domain (U, V, potential_zero_iff, mismatch_zero_iff,
+              residual_zero_at_critical).
 
   Companion papers (The Hyperbolic Trilogy):
     Paper I   — Fenn & Fenn, "Evolution as Active Geometry"
@@ -43,6 +46,9 @@ namespace BiosphereCurvature
 
 open Real
 
+/-- Ideal normalized sectional-curvature magnitude κ̄ = c²κ. It is a raw
+    sectional-curvature magnitude only after the process-time gauge c = 1
+    is chosen. -/
 noncomputable def κ (h : ℝ) (n : ℝ) : ℝ :=
   if n ≤ 1 then 0
   else (h * log 2 / (n - 1)) ^ 2
@@ -272,7 +278,7 @@ theorem kappa_bounded_by_alphabet_general
 
 /-
   ═══════════════════════════════════════════════════════════════════════════════
-  PART III: TREE DIMENSIONALITY AND RATE-DISTORTION POTENTIAL
+  PART III: TREE DIMENSIONALITY AND RATE-MATCHING POTENTIAL
   ═══════════════════════════════════════════════════════════════════════════════
 -/
 
@@ -287,9 +293,9 @@ structure MetricTree where
   four_point : ∀ u v w x,
     d u v + d w x ≤ max (d u w + d v x) (d u x + d v w)
 
-theorem H1_insufficient_for_trees :
-    ∀ (T : MetricTree), T.V → T.V → T.V → True := by intros; trivial
-
+/-- Algebraic monotonicity only: at fixed h, ideal normalized curvature
+    decreases as n increases. Minimal dimension comes from embeddability,
+    not from optimization of this expression. -/
 theorem embedding_dimension_optimal (n : ℝ) (hn : n > 2) (h : ℝ) (hpos : h > 0) :
     κ h n < κ h 2 := kappa_max_at_n2 h n hpos hn
 
@@ -303,10 +309,10 @@ noncomputable def I (h : ℝ) : ℝ := h * log 2
 noncomputable def C (κ_val : ℝ) (n : ℝ) : ℝ :=
   if κ_val ≤ 0 then 0 else (n - 1) * sqrt κ_val
 
-/-- Rate-distortion residual: ε = I − C. The state equation holds when ε = 0. -/
+/-- Rate-matching residual: ε = I − C. Saturation holds when ε = 0. -/
 noncomputable def ε (h : ℝ) (κ_val : ℝ) (n : ℝ) : ℝ := I h - C κ_val n
 
-/-- Rate-distortion potential: U = ε². Non-negative, zero only at κ_critical. -/
+/-- Rate-matching potential: U = ε². Non-negative, zero only at κ_critical. -/
 noncomputable def U (h : ℝ) (κ_val : ℝ) (n : ℝ) : ℝ := (ε h κ_val n) ^ 2
 
 /-- Critical curvature: the unique κ solving the state equation for given (h, n). -/
@@ -329,12 +335,13 @@ theorem potential_zero_iff (h : ℝ) (κ_val : ℝ) (n : ℝ)
   · intro hκ; rw [hκ, sqrt_sq (div_pos (mul_pos hpos log2_pos) hn1).le]
     field_simp; ring
 
-/-- Lyapunov function for global stability: V(κ, κ*) = (√κ − √κ*)². -/
+/-- On non-negative curvature magnitudes, a positive-definite mismatch from
+    κ*. Without an explicit evolution law, this is not a Lyapunov theorem. -/
 noncomputable def V (κ_val κ_star : ℝ) : ℝ := (sqrt κ_val - sqrt κ_star) ^ 2
 
-theorem lyapunov_nonneg (κ_val κ_star : ℝ) : V κ_val κ_star ≥ 0 := sq_nonneg _
+theorem mismatch_nonneg (κ_val κ_star : ℝ) : V κ_val κ_star ≥ 0 := sq_nonneg _
 
-theorem lyapunov_zero_iff (κ_val κ_star : ℝ)
+theorem mismatch_zero_iff (κ_val κ_star : ℝ)
     (hκpos : κ_val > 0) (hκspos : κ_star > 0) :
     V κ_val κ_star = 0 ↔ κ_val = κ_star := by
   unfold V; constructor
@@ -345,7 +352,9 @@ theorem lyapunov_zero_iff (κ_val κ_star : ℝ)
       _ = κ_star := sq_sqrt hκspos.le
   · intro heq; rw [heq, sub_self]; ring
 
-theorem potential_gradient_zero_at_critical (h n : ℝ) (hpos : h > 0) (hn : n > 1) :
+/-- The rate-matching residual vanishes at the ideal equality value. This is
+    not a statement about the derivative of a physical potential. -/
+theorem residual_zero_at_critical (h n : ℝ) (hpos : h > 0) (hn : n > 1) :
     ε h (κ_critical h n) n = 0 := by
   unfold ε I C κ_critical κ
   have hn1 : n - 1 > 0 := by linarith
@@ -353,14 +362,5 @@ theorem potential_gradient_zero_at_critical (h n : ℝ) (hpos : h > 0) (hn : n >
   have hnsq : ¬(h * log 2 / (n - 1)) ^ 2 ≤ 0 := not_le.mpr (sq_pos_of_pos hnum)
   simp only [show ¬n ≤ 1 by linarith, hnsq, ↓reduceIte, sqrt_sq hnum.le]
   field_simp; ring
-
-theorem potential_second_derivative_pos (h n : ℝ) (hpos : h > 0) (hn : n > 1) :
-    let κ_star := κ_critical h n
-    (n - 1) ^ 2 / (2 * κ_star ^ (3/2 : ℝ)) > 0 := by
-  have hn1 : n - 1 > 0 := by linarith
-  have hκ_pos : κ_critical h n > 0 := by
-    unfold κ_critical κ; simp only [not_le.mpr hn, ↓reduceIte]
-    exact sq_pos_of_pos (div_pos (mul_pos hpos log2_pos) (by linarith))
-  exact div_pos (by positivity) (by linarith [rpow_pos_of_pos hκ_pos (3/2 : ℝ)])
 
 end BiosphereCurvature
