@@ -19,22 +19,24 @@ paper:
 
   thesis:
     statement: |
-      Any process that generates information at a constant rate into a
-      branching hierarchy must embed into hyperbolic space. The geometric
-      state equation kappa = (h * ln 2 / (n-1))^2 links the curvature of
-      the embedding manifold to the entropy rate h and dimension n with
-      zero adjustable parameters.
+      Any process that retains distinguishable histories at exponential rate
+      beta and represents them faithfully at finite radial rate c must use a
+      host whose packing entropy obeys beta <= c * h_pack. For Riemannian hosts
+      with uniform fixed-ball volume bounds, h_pack = h_vol. Polynomial-growth
+      hosts are therefore excluded. Under capacity saturation and an isotropic
+      hyperbolic realization, normalized curvature kappa_bar = c^2 * kappa
+      obeys kappa_bar = (h * ln 2 / (n-1))^2.
 
     universal_invariant: |
-      Back-solving n = 1 + h*ln(2)/sqrt(kappa) across every system tested
-      (decade-old viral outbreaks to 3.8-billion-year cellular lineages,
-      across DNA, RNA, and protein alphabets) yields n = 2.00 +/- 0.05.
-      Evolution is two-dimensional. The curvature, by contrast, is
-      scale-dependent and predicted by the state equation at the
-      scale-appropriate entropy rate.
+      Genuinely branching tree metrics have minimal smooth hyperbolic ambient
+      dimension n = 2 in the embedding class used here. Back-solving n from
+      independently measured, consistently calibrated (h,c,kappa) is a test of
+      capacity saturation, not an independent derivation of dimension.
+      Reported biological systems yield n near 2; curvature magnitude remains
+      dependent on rate, radial calibration, and scale.
 
   abstract:
-    universal_invariant: "n = 2.00 +/- 0.05 across all systems tested"
+    universal_invariant: "reported n = 2.00 +/- 0.05; theoretical status is a pure-tree embeddability prediction"
     state_equation: "kappa = (h * ln 2 / (n-1))^2, zero free parameters"
     inter_domain_kappa: "kappa in [1.28, 1.34] (telescope on 3-domain encoder)"
     intra_domain_kappa: "kappa = 3.0 (fungi), 12.7 (archaea), 16.4 (bacteria)"
@@ -45,14 +47,38 @@ paper:
 # Formal Verification (Machine-Checked)
 # =============================================================================
 formal_verification:
-  lean_file: "theory/lean/ActiveGeometry/KappaCurvature.lean"
+  theoretical_kernel: "theory/ADDRESSABILITY_KERNEL.md"
+  mathematical_spine: "theory/MATHEMATICAL_SPINE.md"
+  lean_files:
+    - "theory/lean/ActiveGeometry/Packing.lean"
+    - "theory/lean/ActiveGeometry/Addressability.lean"
+    - "theory/lean/ActiveGeometry/KappaCurvature.lean"
   status: "MACHINE-CHECKED"
-  file_lines: ~370
   sorries: 0
   axioms_used: ["propext", "Classical.choice", "Quot.sound"]
 
+  scope_note: |
+    Lean proves the finite-depth metric packing count and the convergent-rate
+    addressability theorem using Mathlib's exact Metric.packingNumber. It keeps
+    the next logical levels explicit: CapacitySaturated is a separate
+    hypothesis, and IsotropicHyperbolic is a separate realization. It checks
+    their algebraic consequences, including the curvature floor, normalized
+    scale invariance, and conditional equality. It does not formalize the full
+    limsup extension, classical space-form/tree-embedding theorems, capacity
+    saturation as a physical law, or a dynamics toward equality.
+
   core_theorems:
-    - {name: "kappa_n2", statement: "kappa(h, 2) = (h * log 2)^2"}
+    - {name: "faithful_representation_addressable", statement: "independent represented-growth, radial-rate, and exact packing-rate limits imply beta <= c*h_pack"}
+    - {name: "hasFinitePacking_of_properSpace", statement: "in a proper metric space the packing-finiteness hypothesis is a theorem, not an assumption"}
+    - {name: "addressability_forces_positive_entropy", statement: "beta > 0, c > 0, and beta <= c*h_cap imply h_cap > 0"}
+    - {name: "efficiency_le_one", statement: "for c,h_cap > 0 and beta <= c*h_cap, eta = beta/(c*h_cap) <= 1"}
+    - {name: "curvature_at_least_floor", statement: "for beta,c > 0, n > 1, kappa >= 0, isotropic addressability implies kappa >= (beta/(c(n-1)))^2"}
+    - {name: "isotropic_curvature_at_least_floor", statement: "Addressable plus IsotropicHyperbolic implies the curvature floor"}
+    - {name: "saturated_curvature_eq_floor", statement: "for c > 0, n > 1, and kappa >= 0, capacity saturation fixes raw curvature magnitude once c and n are fixed"}
+    - {name: "normalized_state_equation", statement: "CapacitySaturated plus IsotropicHyperbolic implies the normalized state equation"}
+    - {name: "normalized_floor_eq_ideal", statement: "c^2*kappa_floor = (h*ln2/(n-1))^2"}
+    - {name: "normalized_curvature_scale_invariant", statement: "c^2*kappa is invariant under radial rescaling"}
+    - {name: "kappa_n2", statement: "normalized kappa_bar(h, 2) = (h * log 2)^2"}
     - {name: "kappa_pos", statement: "h > 0 => kappa(h, 2) > 0"}
     - {name: "kappa_unique", statement: "unique positive solution to the state equation"}
     - {name: "kappa_mono_h", statement: "h1 < h2 => kappa(h1, 2) < kappa(h2, 2)"}
@@ -67,10 +93,11 @@ formal_verification:
     - {name: "kappa_bounded_by_alphabet", statement: "kappa(h_eff, 2) <= 4 * (ln 2)^2 ~= 1.921 (DNA)"}
     - {name: "kappa_bounded_by_alphabet_general", statement: "kappa(h_eff, 2) <= (log alpha)^2 for any alpha > 1"}
 
-  lyapunov_stability:
-    - {name: "potential_zero_iff", statement: "U(h,kappa,n) = 0 iff kappa = kappa_critical"}
-    - {name: "lyapunov_zero_iff", statement: "V(kappa, kappa*) = 0 iff kappa = kappa*"}
-    - {name: "potential_gradient_zero_at_critical", statement: "residual vanishes at critical curvature"}
+  mismatch_potentials:
+    - {name: "potential_eq_scaled_mismatch", statement: "U(h,kappa,n) = (n-1)^2 * V(kappa, kappa_critical); the potential and mismatch are one object"}
+    - {name: "mismatch_zero_iff", statement: "On positive curvature magnitudes, V(kappa,kappa*) = 0 iff kappa = kappa*; no dynamics is claimed"}
+    - {name: "potential_zero_iff", statement: "U(h,kappa,n) = 0 iff kappa = kappa_critical; a corollary of the scaling identity"}
+    - {name: "residual_zero_at_critical", statement: "the rate-matching residual vanishes at the ideal equality value"}
 
 # =============================================================================
 # Results with Verification Protocols
@@ -109,7 +136,7 @@ results:
     category: "theory + measurement"
 
     key_finding:
-      state_equation: "kappa = (h * ln 2)^2 at n = 2"
+      state_equation: "normalized kappa_bar = c^2*kappa = (h * ln 2)^2 at n = 2"
       predicted_range: [1.20, 1.31]   # h in [1.58, 1.65]
       predicted_central: 1.25          # h = 1.61
       telescope_range: [1.28, 1.34]    # measured on frozen encoder embeddings
@@ -158,7 +185,8 @@ results:
       n_backsolved: 3.02
       interpretation: |
         Most horizontally-transferred bacterial gene; non-tree topology
-        diagnosed by n > 2. The exception validates the n=2 invariant.
+        is a biological hypothesis to test with quartet/topology measurements;
+        n > 2 back-solved from saturation is not an independent diagnosis.
 
     verification:
       notebook: "validation/notebooks/02_theory_verification.ipynb"
@@ -212,9 +240,11 @@ results:
     interpretation:
       coordinates: ["radial (temporal depth)", "angular (phenotypic direction)"]
       topological_origin: |
-        Trees are 1-complexes whose metric completion requires exactly
-        two dimensions for faithful hyperbolic embedding (Gromov 1987,
-        Sarkar 2012). Independent of alphabet, substrate, or timescale.
+        Genuinely branching finite tree metrics admit arbitrarily
+        low-distortion embeddings in H^2, while a connected one-dimensional
+        Riemannian host cannot embed their branching isometrically (Sarkar
+        2012). Path trees remain one-dimensional. The four-point condition
+        classifies tree metrics but does not calibrate curvature or dimension.
 
     verification:
       notebook: "validation/notebooks/05_topology.ipynb"
@@ -239,7 +269,7 @@ results:
 
     conclusions:
       - "Kappa has no gradient path through pure sequence compression"
-      - "Kappa is set analytically from Manning's theorem + measured h"
+      - "Normalized curvature is bounded by addressability and reaches the state-equation value only under capacity saturation"
       - "Coordinate system (not curvature) is a property of the data"
 
     verification:
