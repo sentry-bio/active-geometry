@@ -68,13 +68,19 @@ axiomatize a capacity envelope. Formalized results include:
 |---|---|
 | `card_le_packingCount` | every finite separated subset of a ball is bounded by its exact packing number |
 | `represented_card_le_packingCount` | retained represented histories obey that bound at every depth |
+| `represented_card_mono` | retention makes represented counts nondecreasing in depth |
 | `representedRate_le_capacity_eventually` | finite counts induce the normalized rate inequality |
 | `faithful_representation_addressable` | convergence of the three independent rates proves `Addressable β c hpack` |
+| `hasFinitePacking_of_properSpace` | in any proper metric space the finiteness hypothesis is a theorem |
+| `faithful_representation_addressable_of_properSpace` | the packing theorem with finiteness discharged |
 | `no_positive_growth_at_zero_capacity` | zero packing capacity excludes positive retained growth |
 
 The formal theorem uses ordinary finite limits for represented growth, radial
 rate, and packing growth. The full spine's limsup version is a more general
-paper theorem.
+paper theorem. `HasFinitePacking` is a hypothesis of the general theorem and a
+proved consequence of `ProperSpace` (ℝⁿ, hyperbolic space, and every complete
+Riemannian manifold via Hopf–Rinow), so the intended host class needs no extra
+assumption.
 
 ### `Addressability.lean`
 
@@ -101,8 +107,12 @@ corollaries:
 
 - positivity and uniqueness of the equality value;
 - monotonicity in transmitted rate and ambient dimension;
-- alphabet-capacity ceilings;
-- non-negative rate-matching diagnostics and their unique zero.
+- one general alphabet-capacity ceiling `kappa_bounded_by_alphabet_general`,
+  with each substrate (e.g. DNA `kappa_bounded_by_alphabet`) derived as an
+  instance;
+- the identity `potential_eq_scaled_mismatch`: the rate-matching potential `U`
+  and the mismatch `V` are one object up to the factor `(n-1)²`, so the
+  unique-zero results collapse to a single statement plus corollaries.
 
 Its declaration `κ h n` now denotes ideal **normalized** curvature
 \(\bar\kappa\), not unit-independent raw sectional curvature.

@@ -69,6 +69,7 @@ formal_verification:
 
   core_theorems:
     - {name: "faithful_representation_addressable", statement: "independent represented-growth, radial-rate, and exact packing-rate limits imply beta <= c*h_pack"}
+    - {name: "hasFinitePacking_of_properSpace", statement: "in a proper metric space the packing-finiteness hypothesis is a theorem, not an assumption"}
     - {name: "addressability_forces_positive_entropy", statement: "beta > 0, c > 0, and beta <= c*h_cap imply h_cap > 0"}
     - {name: "efficiency_le_one", statement: "for c,h_cap > 0 and beta <= c*h_cap, eta = beta/(c*h_cap) <= 1"}
     - {name: "curvature_at_least_floor", statement: "for beta,c > 0, n > 1, kappa >= 0, isotropic addressability implies kappa >= (beta/(c(n-1)))^2"}
@@ -93,8 +94,9 @@ formal_verification:
     - {name: "kappa_bounded_by_alphabet_general", statement: "kappa(h_eff, 2) <= (log alpha)^2 for any alpha > 1"}
 
   mismatch_potentials:
-    - {name: "potential_zero_iff", statement: "U(h,kappa,n) = 0 iff kappa = kappa_critical"}
+    - {name: "potential_eq_scaled_mismatch", statement: "U(h,kappa,n) = (n-1)^2 * V(kappa, kappa_critical); the potential and mismatch are one object"}
     - {name: "mismatch_zero_iff", statement: "On positive curvature magnitudes, V(kappa,kappa*) = 0 iff kappa = kappa*; no dynamics is claimed"}
+    - {name: "potential_zero_iff", statement: "U(h,kappa,n) = 0 iff kappa = kappa_critical; a corollary of the scaling identity"}
     - {name: "residual_zero_at_critical", statement: "the rate-matching residual vanishes at the ideal equality value"}
 
 # =============================================================================

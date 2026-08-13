@@ -31,6 +31,7 @@
 
 import ActiveGeometry.Addressability
 import Mathlib.Topology.MetricSpace.CoveringNumbers
+import Mathlib.Topology.MetricSpace.ProperSpace
 import Mathlib.Topology.Order.OrderClosed
 
 namespace ActiveGeometry.Packing
@@ -65,6 +66,10 @@ structure RetainedRepresentation (o : M) (ε : ℝ≥0) where
   radius : ℕ → ℝ
   resolution_pos : 0 < ε
   points_nonempty : ∀ R, (points R).Nonempty
+  /-- Retention: histories present at depth `R` persist to depth `R + 1`. This
+      is the load-bearing meaning of the word "retained"; the bound itself does
+      not need it, but it is what makes `β` a growth rate of retained history. -/
+  points_monotone : ∀ R, points R ⊆ points (R + 1)
   separated : ∀ R, Metric.IsSeparated ε (points R : Set M)
   contained : ∀ R, (points R : Set M) ⊆ Metric.closedBall o (radius R)
   radius_pos : ∀ R, 0 < radius R
@@ -153,6 +158,56 @@ theorem faithful_representation_addressable
     simpa [Function.comp_def] using hpacking.comp rep.radius_tendsto
   apply le_of_tendsto_of_tendsto hdemand (hradial.mul hsampled)
   exact representedRate_le_capacity_eventually o ε rep hfinite
+
+/-- Retention makes represented counts nondecreasing in depth. -/
+theorem represented_card_mono {o : M} {ε : ℝ≥0}
+    (rep : RetainedRepresentation o ε) (R : ℕ) :
+    (rep.points R).card ≤ (rep.points (R + 1)).card :=
+  Finset.card_le_card (rep.points_monotone R)
+
+/-- Local finiteness of packing is a theorem, not an assumption, for the entire
+    intended host class: proper metric spaces (ℝⁿ, hyperbolic space, and every
+    complete Riemannian manifold via Hopf–Rinow). Closed balls are compact,
+    hence totally bounded, hence finitely covered at resolution `ε / 2`, which
+    bounds the packing number at resolution `ε`. This is where a positive
+    resolution is genuinely required. -/
+theorem hasFinitePacking_of_properSpace [ProperSpace M] (o : M) {ε : ℝ≥0}
+    (hε : ε ≠ 0) : HasFinitePacking o ε := by
+  intro ρ _hρ
+  have hδ0 : ε / 2 ≠ 0 := div_ne_zero hε two_ne_zero
+  have h2δ : 2 * (ε / 2) = ε := by
+    rw [mul_comm]; exact div_mul_cancel₀ ε two_ne_zero
+  have htb : TotallyBounded (Metric.closedBall o ρ) :=
+    (isCompact_closedBall o ρ).totallyBounded
+  obtain ⟨N, _hNsub, hNfin, hNcov⟩ :=
+    Metric.exists_finite_isCover_of_totallyBounded hδ0 htb
+  have hpack_le :
+      Metric.packingNumber ε (Metric.closedBall o ρ)
+        ≤ Metric.externalCoveringNumber (ε / 2) (Metric.closedBall o ρ) := by
+    calc
+      Metric.packingNumber ε (Metric.closedBall o ρ)
+          = Metric.packingNumber (2 * (ε / 2)) (Metric.closedBall o ρ) := by
+            rw [h2δ]
+      _ ≤ Metric.externalCoveringNumber (ε / 2) (Metric.closedBall o ρ) :=
+            Metric.packingNumber_two_mul_le_externalCoveringNumber (ε / 2) _
+  have hcov_le :
+      Metric.externalCoveringNumber (ε / 2) (Metric.closedBall o ρ) ≤ N.encard :=
+    hNcov.externalCoveringNumber_le_encard
+  exact (lt_of_le_of_lt (hpack_le.trans hcov_le) hNfin.encard_lt_top).ne
+
+/-- The packing theorem in a proper metric space, with the finiteness
+    hypothesis discharged. The positive resolution field of the representation
+    is exactly what licenses this. -/
+theorem faithful_representation_addressable_of_properSpace
+    [ProperSpace M] (o : M) (ε : ℝ≥0) (rep : RetainedRepresentation o ε)
+    (β c hpack : ℝ)
+    (hdemand : Tendsto (representedRate rep) atTop (𝓝 β))
+    (hradial : Tendsto (radialRate rep) atTop (𝓝 c))
+    (hpacking : Tendsto (packingRate o ε) atTop (𝓝 hpack)) :
+    Addressability.Addressable β c hpack :=
+  faithful_representation_addressable o ε rep
+    (hasFinitePacking_of_properSpace o rep.resolution_pos.ne') β c hpack
+    hdemand hradial hpacking
 
 /-- A zero-capacity host cannot carry positive retained growth under the
     hypotheses of the packing theorem. -/

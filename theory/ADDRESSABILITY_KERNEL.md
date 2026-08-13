@@ -254,6 +254,12 @@ ball-packing growth. The limsup formulation in the full spine is the more
 general paper theorem; the Lean theorem deliberately uses ordinary finite
 limits to keep the formal kernel minimal.
 
+The finiteness side condition `HasFinitePacking` is not an extra assumption for
+the intended host class: `hasFinitePacking_of_properSpace` proves it for every
+proper metric space (ℝⁿ, hyperbolic space, and every complete Riemannian
+manifold via Hopf–Rinow). Retention is recorded structurally, and represented
+counts are proved nondecreasing in depth.
+
 `lean/ActiveGeometry/Addressability.lean` then formalizes the algebra
 downstream. Its central predicates mirror the dependency structure:
 

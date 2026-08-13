@@ -26,9 +26,10 @@
               kappa_bounded_by_raw, kappa_bounded_by_alphabet).
               Plus the trilogy-general form H_raw_of_alphabet α and the
               generic ceiling kappa_bounded_by_alphabet_general for any α > 1.
-    Part III — Rate-matching potentials and their unique zero on the positive
-              domain (U, V, potential_zero_iff, mismatch_zero_iff,
-              residual_zero_at_critical).
+    Part III — Rate-matching diagnostics. U and V are one object up to the
+              factor (n-1)² (potential_eq_scaled_mismatch); the unique-zero
+              results (mismatch_zero_iff, potential_zero_iff) and
+              residual_zero_at_critical follow from that single identity.
 
   Companion papers (The Hyperbolic Trilogy):
     Paper I   — Fenn & Fenn, "Evolution as Active Geometry"
@@ -96,10 +97,6 @@ theorem kappa_scaling (h c : ℝ) : κ (c * h) 2 = c ^ 2 * κ h 2 := by
 theorem growth_rate_match (h : ℝ) (r : ℝ) (hpos : h > 0) :
     r * sqrt (κ h 2) = h * r * log 2 := by
   rw [kappa_n2, sqrt_sq (mul_pos hpos log2_pos).le]; ring
-
-noncomputable def κ_biosphere : ℝ := κ 1.6 2
-
-theorem kappa_biosphere_form : κ_biosphere = (1.6 * log 2) ^ 2 := kappa_n2 1.6
 
 /-
   ═══════════════════════════════════════════════════════════════════════════════
@@ -216,18 +213,6 @@ theorem kappa_bounded_by_raw (phi psi omega : ℝ)
                   mul_pos H_raw_pos log2_pos])
     (mul_le_mul_of_nonneg_right (h_effective_le hphi hpsi homega) log2_pos.le)
 
-/-- The four-letter alphabet ceiling, explicit form: κ ≤ (2 ln 2)² = 4 (ln 2)². -/
-theorem kappa_bounded_by_alphabet (phi psi omega : ℝ)
-    (hphi : 0 < phi ∧ phi ≤ 1) (hpsi : 0 < psi ∧ psi ≤ 1) (homega : 0 < omega ∧ omega ≤ 1) :
-    κ (h_effective phi psi omega) 2 ≤ 4 * (log 2) ^ 2 := by
-  have hb := kappa_bounded_by_raw phi psi omega hphi hpsi homega
-  simp only [kappa_n2, H_raw_eq_two] at hb
-  -- hb : (h_effective phi psi omega * log 2) ^ 2 ≤ (2 * log 2) ^ 2
-  rw [kappa_n2]
-  calc (h_effective phi psi omega * log 2) ^ 2
-      ≤ (2 * log 2) ^ 2 := hb
-    _ = 4 * (log 2) ^ 2 := by ring
-
 /-
   ───────────────────────────────────────────────────────────────────────────
   Cross-substrate generalization (Hyperbolic Trilogy)
@@ -261,10 +246,10 @@ theorem H_raw_of_alphabet_mono (α β : ℝ) (hα : α > 1) (hlt : α < β) :
   exact div_lt_div_of_pos_right
     (log_lt_log (by linarith) hlt) log2_pos
 
-/-- Generic alphabet ceiling. For any alphabet size α > 1 and any effective
-    entropy rate h_eff bounded above by the alphabet's capacity, the curvature
-    at n = 2 is bounded by (log α)². The existing DNA-specific theorem
-    `kappa_bounded_by_alphabet` is the α = 4 instance, yielding 4(log 2)². -/
+/-- Generic alphabet ceiling. This is the single primary bound: for any
+    alphabet size α > 1 and any effective entropy rate h_eff bounded above by
+    the alphabet's capacity, the curvature at n = 2 is bounded by (log α)².
+    Every substrate-specific ceiling is an instance. -/
 theorem kappa_bounded_by_alphabet_general
     (α : ℝ) (hα : α > 1) (h_eff : ℝ)
     (h_pos : h_eff > 0) (h_le : h_eff ≤ H_raw_of_alphabet α) :
@@ -281,6 +266,22 @@ theorem kappa_bounded_by_alphabet_general
       _ = log α := eq
   have h_prod_pos : h_eff * log 2 > 0 := mul_pos h_pos log2_pos
   exact sq_le_sq' (by linarith) h_prod_le
+
+/-- The four-letter DNA ceiling is the α = 4 instance of the general bound:
+    κ ≤ (log 4)² = 4 (log 2)². The theory now carries one ceiling theorem and
+    derives each substrate from it. -/
+theorem kappa_bounded_by_alphabet (phi psi omega : ℝ)
+    (hphi : 0 < phi ∧ phi ≤ 1) (hpsi : 0 < psi ∧ psi ≤ 1) (homega : 0 < omega ∧ omega ≤ 1) :
+    κ (h_effective phi psi omega) 2 ≤ 4 * (log 2) ^ 2 := by
+  have hle : h_effective phi psi omega ≤ H_raw_of_alphabet 4 := by
+    rw [← H_raw_eq_alphabet_four]; exact h_effective_le hphi hpsi homega
+  have hpos := h_effective_pos hphi.1 hpsi.1 homega.1
+  have hb := kappa_bounded_by_alphabet_general 4 (by norm_num) _ hpos hle
+  have hlog4 : log 4 = 2 * log 2 := by
+    rw [show (4 : ℝ) = 2 ^ 2 by norm_num, log_pow]; push_cast; ring
+  rw [hlog4] at hb
+  calc κ (h_effective phi psi omega) 2 ≤ (2 * log 2) ^ 2 := hb
+    _ = 4 * (log 2) ^ 2 := by ring
 
 /-
   ═══════════════════════════════════════════════════════════════════════════════
@@ -307,30 +308,29 @@ noncomputable def U (h : ℝ) (κ_val : ℝ) (n : ℝ) : ℝ := (ε h κ_val n) 
 /-- Critical curvature: the unique κ solving the state equation for given (h, n). -/
 noncomputable def κ_critical (h : ℝ) (n : ℝ) : ℝ := κ h n
 
-theorem potential_nonneg (h κ_val n : ℝ) : U h κ_val n ≥ 0 := sq_nonneg _
-
-theorem potential_zero_iff (h : ℝ) (κ_val : ℝ) (n : ℝ)
-    (hpos : h > 0) (hκpos : κ_val > 0) (hn : n > 1) :
-    U h κ_val n = 0 ↔ κ_val = κ_critical h n := by
-  unfold U ε I C κ_critical κ
-  simp only [show ¬κ_val ≤ 0 by linarith, show ¬n ≤ 1 by linarith, ↓reduceIte]
-  unfold ActiveGeometry.Addressability.idealNormalizedCurvature
-    ActiveGeometry.Addressability.bitsToNats
-  have hn1 : n - 1 > 0 := by linarith
-  constructor
-  · intro hU
-    have hsqrt : sqrt κ_val = h * log 2 / (n - 1) := by
-      have := sq_eq_zero_iff.mp hU; field_simp at this ⊢; linarith
-    calc κ_val = (sqrt κ_val) ^ 2 := (sq_sqrt hκpos.le).symm
-      _ = _ := by rw [hsqrt]
-  · intro hκ; rw [hκ, sqrt_sq (div_pos (mul_pos hpos log2_pos) hn1).le]
-    field_simp; ring
-
 /-- On non-negative curvature magnitudes, a positive-definite mismatch from
     κ*. Without an explicit evolution law, this is not a Lyapunov theorem. -/
 noncomputable def V (κ_val κ_star : ℝ) : ℝ := (sqrt κ_val - sqrt κ_star) ^ 2
 
+theorem potential_nonneg (h κ_val n : ℝ) : U h κ_val n ≥ 0 := sq_nonneg _
+
 theorem mismatch_nonneg (κ_val κ_star : ℝ) : V κ_val κ_star ≥ 0 := sq_nonneg _
+
+private lemma kappa_critical_pos (h n : ℝ) (hpos : h > 0) (hn : n > 1) :
+    0 < κ_critical h n := by
+  unfold κ_critical κ
+  simp only [not_le.mpr hn, ↓reduceIte]
+  unfold ActiveGeometry.Addressability.idealNormalizedCurvature
+    ActiveGeometry.Addressability.bitsToNats
+  exact pow_pos (div_pos (mul_pos hpos log2_pos) (by linarith)) 2
+
+private lemma sqrt_kappa_critical (h n : ℝ) (hpos : h > 0) (hn : n > 1) :
+    sqrt (κ_critical h n) = h * log 2 / (n - 1) := by
+  unfold κ_critical κ
+  simp only [not_le.mpr hn, ↓reduceIte]
+  unfold ActiveGeometry.Addressability.idealNormalizedCurvature
+    ActiveGeometry.Addressability.bitsToNats
+  exact sqrt_sq (div_pos (mul_pos hpos log2_pos) (by linarith)).le
 
 theorem mismatch_zero_iff (κ_val κ_star : ℝ)
     (hκpos : κ_val > 0) (hκspos : κ_star > 0) :
@@ -343,18 +343,41 @@ theorem mismatch_zero_iff (κ_val κ_star : ℝ)
       _ = κ_star := sq_sqrt hκspos.le
   · intro heq; rw [heq, sub_self]; ring
 
+/-- The rate-matching potential and the mismatch function are the same object
+    up to the dimensional factor (n − 1)². Two apparently independent
+    diagnostics are therefore one. -/
+theorem potential_eq_scaled_mismatch (h κ_val n : ℝ)
+    (hpos : h > 0) (hκ : 0 < κ_val) (hn : n > 1) :
+    U h κ_val n = (n - 1) ^ 2 * V κ_val (κ_critical h n) := by
+  have hn1 : n - 1 ≠ 0 := sub_ne_zero.mpr (ne_of_gt hn)
+  unfold U ε I C V
+  simp only [show ¬κ_val ≤ 0 by linarith, ↓reduceIte]
+  rw [sqrt_kappa_critical h n hpos hn]
+  field_simp
+  ring
+
+/-- The rate-matching potential vanishes exactly at the critical curvature.
+    Now a corollary of the scaling identity and the mismatch theorem, rather
+    than an independent computation. -/
+theorem potential_zero_iff (h : ℝ) (κ_val : ℝ) (n : ℝ)
+    (hpos : h > 0) (hκpos : κ_val > 0) (hn : n > 1) :
+    U h κ_val n = 0 ↔ κ_val = κ_critical h n := by
+  have hcrit_pos := kappa_critical_pos h n hpos hn
+  have hfac : (n - 1) ^ 2 ≠ 0 := pow_ne_zero 2 (sub_ne_zero.mpr (ne_of_gt hn))
+  rw [potential_eq_scaled_mismatch h κ_val n hpos hκpos hn, mul_eq_zero,
+    mismatch_zero_iff κ_val (κ_critical h n) hκpos hcrit_pos]
+  simp [hfac]
+
 /-- The rate-matching residual vanishes at the ideal equality value. This is
     not a statement about the derivative of a physical potential. -/
 theorem residual_zero_at_critical (h n : ℝ) (hpos : h > 0) (hn : n > 1) :
     ε h (κ_critical h n) n = 0 := by
-  unfold ε I C κ_critical κ
-  simp only [show ¬n ≤ 1 by linarith, ↓reduceIte]
-  unfold ActiveGeometry.Addressability.idealNormalizedCurvature
-    ActiveGeometry.Addressability.bitsToNats
-  have hn1 : n - 1 > 0 := by linarith
-  have hnum := div_pos (mul_pos hpos log2_pos) hn1
-  have hnsq : ¬(h * log 2 / (n - 1)) ^ 2 ≤ 0 := not_le.mpr (sq_pos_of_pos hnum)
-  simp only [hnsq, ↓reduceIte, sqrt_sq hnum.le]
-  field_simp; ring
+  have hcrit_pos := kappa_critical_pos h n hpos hn
+  have hn1 : n - 1 ≠ 0 := sub_ne_zero.mpr (ne_of_gt hn)
+  unfold ε I C
+  simp only [show ¬κ_critical h n ≤ 0 by linarith, ↓reduceIte]
+  rw [sqrt_kappa_critical h n hpos hn]
+  field_simp
+  ring
 
 end BiosphereCurvature
