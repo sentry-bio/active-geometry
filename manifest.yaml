@@ -66,7 +66,7 @@ formal_verification:
     - {name: "addressability_forces_positive_entropy", statement: "beta > 0, c > 0, and beta <= c*h_vol imply h_vol > 0"}
     - {name: "efficiency_le_one", statement: "for c,h_vol > 0 and beta <= c*h_vol, eta = beta/(c*h_vol) <= 1"}
     - {name: "curvature_at_least_floor", statement: "for beta,c > 0, n > 1, kappa >= 0, isotropic addressability implies kappa >= (beta/(c(n-1)))^2"}
-    - {name: "saturated_curvature_eq_floor", statement: "on the same positive domain, capacity saturation fixes raw curvature magnitude once c and n are fixed"}
+    - {name: "saturated_curvature_eq_floor", statement: "for c > 0, n > 1, and kappa >= 0, capacity saturation fixes raw curvature magnitude once c and n are fixed"}
     - {name: "normalized_floor_eq_ideal", statement: "c^2*kappa_floor = (h*ln2/(n-1))^2"}
     - {name: "normalized_curvature_scale_invariant", statement: "c^2*kappa is invariant under radial rescaling"}
     - {name: "kappa_n2", statement: "normalized kappa_bar(h, 2) = (h * log 2)^2"}

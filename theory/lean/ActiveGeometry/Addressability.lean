@@ -110,7 +110,7 @@ theorem curvature_at_least_floor
     uniquely once the radial conversion c and ambient dimension n are fixed. -/
 theorem saturated_curvature_eq_floor
     (β c n κval : ℝ)
-    (hβ : 0 < β) (hc : 0 < c) (hn : 1 < n) (hκ : 0 ≤ κval)
+    (hc : 0 < c) (hn : 1 < n) (hκ : 0 ≤ κval)
     (hsaturated : β = c * (n - 1) * sqrt κval) :
     κval = curvatureFloor β c n := by
   have hden : 0 < c * (n - 1) := mul_pos hc (by linarith)
@@ -131,8 +131,9 @@ theorem floor_saturates_capacity
     c * (n - 1) * sqrt (curvatureFloor β c n) = β := by
   unfold curvatureFloor
   have hden : 0 < c * (n - 1) := mul_pos hc (by linarith)
+  have hn0 : n - 1 ≠ 0 := sub_ne_zero.mpr (ne_of_gt hn)
   rw [sqrt_sq (div_pos hβ hden).le]
-  field_simp [hden.ne']
+  field_simp [hden.ne', hn0]
 
 /-- Multiplying the raw curvature-magnitude floor by c² removes radial-unit
     dependence and recovers the normalized state-equation expression. -/
@@ -143,7 +144,6 @@ theorem normalized_floor_eq_ideal
   unfold normalizedCurvature curvatureFloor idealNormalizedCurvature
   have hn0 : n - 1 ≠ 0 := sub_ne_zero.mpr hn
   field_simp [hc, hn0]
-  <;> ring
 
 /-- The process-time gauge c = 1 turns the raw curvature-magnitude floor into
     the familiar formula. -/
@@ -161,7 +161,6 @@ theorem normalized_curvature_scale_invariant
       normalizedCurvature c κval := by
   unfold normalizedCurvature
   field_simp [ha]
-  <;> ring
 
 /-- A positive bit rate gives a positive information-growth rate in nats. -/
 theorem bitsToNats_pos (h : ℝ) (hh : 0 < h) :
