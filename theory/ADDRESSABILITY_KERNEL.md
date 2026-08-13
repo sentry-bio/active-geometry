@@ -148,6 +148,18 @@ achievability requires extension, causal, or embedding hypotheses.
 The identity concerns the host's *best possible* code. It does not say that a
 given physical hierarchy uses that code or fills it.
 
+### The open theorem
+
+The kernel has exactly one open mathematical problem, posed precisely as
+Conjecture 4.4 of [`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md): the
+relational tree capacity of \(\mathbb H_\kappa^n\) — the supremum growth rate
+of rooted trees admitting depth-uniform quasi-isometric codes at radial rate
+\(c\) and fixed resolution — equals \(c(n-1)\sqrt\kappa\). The converse half is
+Theorem 4.1. The achievability half is open. Its proof would be a coding
+theorem for genealogy; its refutation would make the gap below
+\(c(n-1)\sqrt\kappa\) a new host invariant. Neither outcome disturbs the
+inequality or the block identity.
+
 ## 4. Saturation of a given hierarchy is an additional condition
 
 Define

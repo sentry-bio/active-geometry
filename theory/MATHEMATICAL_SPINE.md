@@ -291,6 +291,75 @@ A reticulate source can use every available address, and a perfect tree can
 use very few. Any theorem turning \(\delta\) into a quantitative capacity gap
 must add a particular source class, host class, and distortion criterion.
 
+### Conjecture 4.4 — Relational tree capacity of hyperbolic hosts
+
+This is the program's open theorem, stated with the precision of its proved
+statements so that it can be settled by proof or by counterexample.
+
+Fix a host \(\mathbb H_\kappa^n\) with base point \(o\), \(\kappa>0\),
+\(n\ge2\); a resolution \(\varepsilon>0\); a radial rate \(c>0\); and a
+distortion \(D\ge1\) with additive slack \(K\ge0\).
+
+Let \(T\) be a rooted, locally finite tree with unit edge lengths, tree metric
+\(d_T\), and level sets \(T_R\) (vertices at depth \(\le R\)). A map
+\(f:V(T)\to\mathbb H_\kappa^n\) is a **\((D,K)\)-relational code at rate
+\(c\)** when:
+
+1. \(f(\mathrm{root})=o\);
+2. \(f(T_R)\subseteq B(o,cR)\) for all \(R\);
+3. distinct vertices satisfy \(d(f(u),f(v))\ge\varepsilon\);
+4. for all \(u,v\in V(T)\):
+
+   \[
+   \frac{c}{D}\,d_T(u,v)-K
+   \;\le\;
+   d(f(u),f(v))
+   \;\le\;
+   c\,D\,d_T(u,v)+K.
+   \]
+
+Define the relational capacity
+
+\[
+C_{\rm rel}(\kappa,n,c;\varepsilon)
+:=
+\sup_{D\ge1,\;K\ge0}\;
+\sup_{(T,f)}\;
+\limsup_{R\to\infty}\frac{\log|T_R|}{R},
+\]
+
+the outer supremum over admissible distortion classes, the inner over trees
+admitting a \((D,K)\)-relational code at rate \(c\).
+
+**Conjecture.**
+
+\[
+\boxed{
+C_{\rm rel}(\kappa,n,c;\varepsilon)
+=
+c\,(n-1)\sqrt{\kappa}.
+}
+\]
+
+The upper bound is Theorem 4.1 applied to condition 2 and condition 3: a
+relational code is in particular a faithful representation at radial rate
+\(c\), so \(C_{\rm rel}\le c\,h_{\rm vol}=c(n-1)\sqrt\kappa\). The open half is
+achievability: for every \(\beta<c(n-1)\sqrt\kappa\) there exist \(D\), \(K\),
+and a family \((T,f)\) with growth at least \(\beta\), where crucially \(D\)
+and \(K\) do not degrade with depth. Sarkar's low-distortion embeddings of
+finite trees in \(\mathbb H^2\) are the natural construction candidates; what
+they do not yet supply is the uniform, depth-independent control demanded by
+conditions 2–4 simultaneously at fixed \((\kappa,n,c,\varepsilon)\).
+
+Resolution of either sign is informative. A proof yields a coding theorem for
+genealogy: hyperbolic volume entropy is exactly the rate at which relationally
+faithful history can be retained. A refutation — a uniform obstruction placing
+\(C_{\rm rel}\) strictly below \(c(n-1)\sqrt\kappa\) — would establish a
+genuine price of genealogy above the counting bound, and the gap
+\(c(n-1)\sqrt\kappa - C_{\rm rel}\) would become a new host invariant. In
+either case the block identity of Theorem 4.2 and the converse of Theorem 4.1
+are unaffected.
+
 ### Corollary 4.3 — Polynomial-growth exclusion
 
 If \(\beta>0\) and \(c<\infty\), then \(h_{\mathrm{pack}}>0\). Consequently, no
