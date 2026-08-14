@@ -10,18 +10,32 @@ them.
   beneath it. Nothing here mentions curvature, trees, or biology. It is where
   the generality and the honesty live.
 
-- **Layer II — the curvature realization (where real systems live).** *If* a
-  host is homogeneous, isotropic, and negatively curved, its capacity is one
-  curvature scalar, and the inequality becomes a statement about \(\kappa\).
-  Layer II is not weaker for being conditional: for the class of systems the
-  program actually studies — relational, exponentially branching, roughly
-  homogeneous — hyperbolic geometry is the *natural* realization, so this is
-  where the theory becomes quantitative and where biology sits.
+- **Layer II — the curvature realization (where real systems live).** This
+  layer has two sublayers that must not be merged, because the evidence for
+  them is very different.
 
-The one inequality is Layer I. The state equation is Layer II, and only after
-two further hypotheses. The four-point tree theorem is an independent
-classifier attached to Layer II: it can motivate a hyperbolic host class or a
-minimal embedding dimension, but it does not calibrate capacity or curvature.
+  - **Layer IIa — the host class (realization).** *Which* geometry hosts the
+    data: is it hyperbolic/tree-like, and at what dimension? This is the
+    **better-supported** biological claim — seed-stable embeddings, curvature
+    as a fixed design parameter, tree-defect near zero, \(n=2\) as an
+    embeddability floor. The decisive test is whether a hyperbolic host beats a
+    Euclidean one *at matched capacity* (E9).
+
+  - **Layer IIb — saturation.** *Whether* a given process fills its budget,
+    giving the state-equation equality \(\bar\kappa^*=(h_{\mathrm{eff}}\ln2)^2\).
+    This is the **harder, less-supported** claim; every independent test to date
+    sits below its own kill line. It requires the extra hypothesis \(\eta=1\).
+
+The one inequality is Layer I. The host class is IIa. The equality is IIb, and
+only after both saturation and isotropy are supplied. The four-point tree
+theorem is an independent classifier attached to IIa: it can motivate a
+hyperbolic host class or a minimal embedding dimension, but it does not
+calibrate capacity or curvature.
+
+A warning that the sublayer split makes sharp: **isotropy is asserted, never
+measured.** In the meter it is the command-line flag
+`assume_isotropic_hyperbolic` — the entire IIa premise reduced to a switch. No
+result licenses that switch; E9 is what would.
 
 ---
 
@@ -276,6 +290,14 @@ utilization \(\beta/C_{\mathrm{rel}}\), not of \(\eta_{\mathrm{block}}\).
 
 # Layer II — The curvature realization
 
+Two sublayers, different evidence. **IIa (host class):** §5 realization and the
+genericity conjecture — *which* geometry hosts the data (hyperbolic? what
+dimension?); the better-supported biological claim. **IIb (saturation):** the
+*claim* that a process fills its budget — the coordinate-free condition \(\eta=1\)
+is defined in §4, and combined with the IIa realization it yields the §6
+equality; the harder, less-supported claim. The state equation needs both
+sublayers.
+
 ## 5. Isotropic hyperbolic realization
 
 The capacity rate need not be curvature. Add the independent modeling
@@ -417,7 +439,9 @@ conjectures, not theorems, and are labelled as such wherever they appear.
 The full status ledger — every claim tagged THEOREM / IDENTITY / OPEN /
 CONVENTION / INSTRUMENT / EMPIRICAL and bound to its artifact — is
 [`CLAIMS.md`](CLAIMS.md), enforced by
-[`../tools/check_doc_artifacts.py`](../tools/check_doc_artifacts.py).
+[`../tools/check_doc_artifacts.py`](../tools/check_doc_artifacts.py). The
+whole-program map, including the two manuscripts and their seams, is
+[`PROGRAM.md`](PROGRAM.md).
 
 Tree classification by the four-point condition is compatible with the kernel
 but logically independent of it. It can motivate a hyperbolic host class or a

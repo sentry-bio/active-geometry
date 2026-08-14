@@ -15,21 +15,32 @@ inequality \(\beta\le c\,h_{\mathrm{pack}}\); the exact **block identity**
 with block as its universal ceiling; and the decomposition of slack into a
 relational tax and a utilization term. No curvature, tree, or biology appears.
 
-**Layer II — the curvature realization (where real systems live), §§7–10.** The
-separate **capacity-saturation hypothesis** and the separate **isotropic
-realization** in which host capacity is one curvature scalar, together yielding
-the state equation; the **curvature-genericity conjecture** that explains why
-hyperbolic geometry — not an arbitrary exponential host — is the natural
-realization for the relational, exponentially branching class that biology
-belongs to. Layer II is conditional but not weaker: it is where the theory
-becomes quantitative and falsifiable.
+**Layer II — the curvature realization (where real systems live), §§7–10.** This
+layer splits into two sublayers with very different evidential standing.
 
-Only Layer I's inequality is unconditional. The state equation follows only
-after both Layer II hypotheses are supplied. The four-point tree theorem (§6)
-is an independent classifier that bridges the layers: it can motivate a
-hyperbolic host class or minimal embedding dimension, but it does not calibrate
-capacity or curvature. Sections 11–13 (measurement, falsification, minimal
-statement) span both layers.
+- **Layer IIa — host class (realization).** *Which* geometry hosts the data:
+  the space-form argument and **isotropic realization** (§7), the
+  **curvature-genericity conjecture** (§7) that explains why hyperbolic — not an
+  arbitrary exponential host — is the natural realization for the relational,
+  exponentially branching class, and \(n=2\) as an embeddability floor. This is
+  the **better-supported** biological claim.
+- **Layer IIb — saturation.** *Whether* a process fills its budget: the
+  **capacity-saturation hypothesis** (\(\eta=1\), §5) which, combined with the
+  IIa realization, yields the **state equation** (§8). This is the **harder,
+  less-supported** claim; every independent test to date sits below its kill
+  line.
+
+Only Layer I's inequality is unconditional. The host class is IIa; the state
+equation is IIb, and follows only after both saturation and isotropy are
+supplied. The four-point tree theorem (§6) is an independent classifier that
+bridges to IIa: it can motivate a hyperbolic host class or minimal embedding
+dimension, but it does not calibrate capacity or curvature. Sections 11–13
+(measurement, falsification, minimal statement) span all layers.
+
+A consequence the split makes sharp: **isotropy is asserted, never measured.**
+The decisive IIa test — does a hyperbolic host beat a Euclidean one at matched
+capacity — is E9 of [`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md), and it
+is distinct from the polynomial-exclusion (Layer I) Euclidean control in E5.
 
 All logarithms in this document are natural unless explicitly written
 `log₂`.
@@ -555,6 +566,10 @@ combination of these—not folded into the tree equality by definition.
 ---
 
 # Layer II — The curvature realization
+
+*Layer IIa (host class) is §7 (realization, genericity conjecture) with the
+\(n=2\) floor of §6. Layer IIb (saturation) is the equality of §8, conditional
+on the coordinate-free saturation of §5. §§9–10 refine scope and dynamics.*
 
 ## 7. Isotropic hyperbolic realization
 

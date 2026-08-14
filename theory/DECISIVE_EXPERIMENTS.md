@@ -4,26 +4,35 @@
 
 The theorems are not at stake. The packing converse and the block identity are
 counting facts, machine-checked, and no measurement can strengthen or damage
-them. Experiments decide the two questions mathematics cannot:
+them. Experiments decide the three questions mathematics cannot, **one per
+layer** (see [`CLAIMS.md`](CLAIMS.md) for the layer definitions):
 
-1. **Applicability.** Do natural systems instantiate the premises — retained
-   distinguishable histories, fixed operational resolution, finite radial
-   rate?
-2. **Saturation.** Where the premises hold, does the system fill its budget
-   (\(\eta\to 1\)), and is it *driven* there?
+1. **Applicability (Layer I).** Do natural systems instantiate the premises —
+   retained distinguishable histories, fixed resolution, finite radial rate,
+   and *exponential* host growth?
+2. **Host class (Layer IIa).** Is the host hyperbolic/tree-like, and is that
+   forced — does a hyperbolic host beat a Euclidean one *at matched capacity*?
+   Isotropy is currently asserted, never measured; this is where it gets tested.
+3. **Saturation (Layer IIb).** Where the host is fixed, does the process fill
+   its budget (\(\eta\to 1\)), and is it *driven* there?
 
 Decisiveness is ranked: **interventions** (turn a knob the theory names,
 predict the response function) beat **pre-registered predictions** (state the
 number before measuring) beat **calibrated observations** (fit after the
 fact).
 
-This document is written to be executed. Every experiment states its inputs,
-a numbered procedure, the estimator it calls (from the shared library below),
-and a **decision rule** with explicit numeric thresholds — a predicted outcome
-and a kill line. A protocol without a kill line is not an experiment.
+This document is written to be executed. Every experiment names its layer (the
+canonical assignment is the ranked table at the end), its inputs, a numbered
+procedure, the estimator it calls (from the shared library below), and a
+**decision rule** with explicit numeric thresholds — a predicted outcome and a
+kill line. A protocol without a kill line is not an experiment.
 
-The set is eight experiments: E1 (instrument), E2 (open theorem), E3–E4 and
-E7–E8 (biology, mostly interventions), E5 (cross-domain), E6 (the \(c\)-axis).
+The set is nine experiments across the three layers. A prior version tested
+**Layer IIb saturation almost exclusively** while the better-supported
+biological claim is **Layer IIa host class** — a misallocation. E9
+(matched-capacity Euclidean vs hyperbolic), pre-registered elsewhere as
+*E-alpha* and never run, is the decisive IIa test and was missing; it is added
+here and ranked accordingly. The allocation is audited in the table at the end.
 
 ---
 
@@ -65,6 +74,12 @@ meter's own disclaimer says so.
 **Resolution.** Fix \(\varepsilon\) once per system and hold it across all
 conditions. If distinguishability sharpens with depth, model
 \(\varepsilon(R)\) explicitly (spine §1); do not let it float silently.
+
+**Isotropy is a premise, not a measurement.** The Layer IIa hypothesis that the
+host is isotropic hyperbolic appears in the meter only as the flag
+`--assume-isotropic-hyperbolic`. No experiment below *asserts* it; E9 is the
+one that *tests* it. Any curvature magnitude reported without E9 having passed
+is conditional on an unverified switch, and must be labelled so.
 
 ---
 
@@ -463,6 +478,57 @@ polynomial \(h_{\mathrm{pack}}\)) is what occurs.
 
 ---
 
+## E9 — Matched-capacity Euclidean vs hyperbolic (the realization test)
+
+**Layer IIa — host class. This is the decisive realization test, and the one
+the program most needs.** Pre-registered elsewhere as *E-alpha* ("Matched-
+Capacity Euclidean vs Hyperbolic," deferred to a GPU phase) and **never run**;
+absent from the prior protocol. It is distinct from E5's Euclidean control,
+which tests Layer I polynomial exclusion (*can* a Euclidean host carry
+exponential novelty at all), not *whether hyperbolic is forced*.
+
+**Question.** Given the same data and a matched capacity budget, does a
+hyperbolic host represent tree-structured biology with materially higher
+relational fidelity than a Euclidean host? If yes, the hyperbolic host class is
+forced by the data's structure (Conjecture 7.1's empirical shadow). If they
+tie, the hyperbolic realization is *not* forced and Layer IIa is unsupported —
+however well saturation (IIb) fares.
+
+**Inputs.** A tree-structured dataset with a ground-truth or barcode genealogy
+(share E3's data where possible); two embedding hosts, \(\mathbb E^m\) and
+\(\mathbb H^n\); a capacity-matching protocol.
+
+**Capacity matching (the load-bearing design).** "Matched capacity" must be
+matched *packing capacity*, not matched parameter count. Fix resolution
+\(\varepsilon\) and radius budget, then size the two hosts so their certified
+block capacities \(c\,h_{\mathrm{pack}}\) (M3 growth-class-gated) agree within
+error. Matching parameters instead of capacity would confound the test with
+representational budget.
+
+**Procedure.**
+1. Match capacities as above; verify with the E1-certified M3 gate that both
+   hosts are in the same growth class at the matched budget.
+2. Embed the same genealogy into each host under identical relational
+   objectives and seeds.
+3. Measure relational fidelity in each: distortion \((D,K)\), tree-defect M4
+   against the ground-truth tree, and held-out lineage-placement accuracy.
+4. Repeat across \(\ge 3\) seeds and \(\ge 2\) dimensions per host.
+
+**Decision rule.**
+- *Predict (IIa holds):* hyperbolic achieves lower distortion and defect at
+  matched capacity, with a gap that widens with tree depth; Euclidean fidelity
+  degrades as depth grows (the crowding the packing bound predicts).
+- *Kill (IIa fails):* Euclidean matches hyperbolic fidelity at matched capacity
+  across depths → the hyperbolic host class is not forced; the realization
+  claim, and with it the biological use of curvature, is unsupported. Neither
+  the Layer I bound nor the block identity is touched.
+
+**Status.** Not run; needs GPU-scale embedding. It is the highest-value
+unrun experiment in the program, because the biological claim is IIa and E9 is
+the only direct IIa intervention.
+
+---
+
 ## The empirical bridge: the growth-class × tree-defect phase diagram
 
 The two certified instruments (the growth-class gate on M3, the defect meter
@@ -493,33 +559,59 @@ utilization (saturation) → optional curvature realization.** Leading with
 
 ## Ranked reading
 
-| Rank | Experiment | What it decides | Class |
-|---|---|---|---|
-| 1 | E4 mutation-rate intervention | Is saturation a response? | intervention |
-| 2 | E5 trained hierarchy (adversarial) | Is saturation cross-domain? | intervention |
-| 3 | E3 barcoded lineages | Is \(\eta\) real with a given tree? | ground-truth observation |
-| 4 | E7 reticulation intervention | Is \(\delta\perp h_{\mathrm{pack}}\) in vivo? | intervention |
-| 5 | E8 boundary mapping | Do the premises do real work? | intervention / observation |
-| 6 | E6 radius identification | Is \(c\) information? | pre-registered prediction |
-| 7 | E2 numerical achievability | Which half of Conjecture 4.4 to prove? | numerical |
-| 8 | E1 meter certification | Are the instruments legal? | calibration |
+Ranked by decisiveness *and* by layer, so the realization layer (IIa) — where
+the biological claim actually lives — is no longer buried.
+
+| Rank | Experiment | Layer | What it decides | Class |
+|---|---|---|---|---|
+| 1 | E9 matched-capacity Euclidean vs hyperbolic | IIa | Is the hyperbolic host *forced*? | intervention (unrun) |
+| 2 | E4 mutation-rate intervention | IIb | Is saturation a response? | intervention |
+| 3 | E3 barcoded lineages | IIb | Is \(\eta\) real with a given tree? | ground-truth observation |
+| 4 | E7 reticulation intervention | IIa | Is \(\delta\perp h_{\mathrm{pack}}\) in vivo? | intervention |
+| 5 | E2 numerical achievability | IIa | Subcritical vs strict-gap in Conjecture 4.4 | numerical |
+| 6 | E5 trained hierarchy (adversarial) | IIb | Is saturation cross-domain? | intervention |
+| 7 | E8 boundary mapping | I | Do the premises do real work? | intervention / observation |
+| 8 | E6 radius identification | I/IIb | Is \(c\) information? | pre-registered prediction |
+| 9 | E1 meter certification | I | Are the instruments legal? | calibration |
 
 E1 is last in the table and first in time. Nothing above it is interpretable
 until the meter recovers synthetic truth.
 
+### Allocation audit (the misallocation, fixed)
+
+The claim best supported by existing biology is the **host class (IIa)** —
+seed-stable embeddings, curvature as a fixed design parameter, tree-defect near
+zero, \(n=2\) as embeddability. Yet the prior protocol pointed almost entirely
+at **saturation (IIb)**: of E1–E8 only E2 and E7 touched IIa, and E2 sat 7th.
+The decisive IIa intervention, E9, was missing. This is now corrected: E9 is
+added and ranked first, E2 and E7 are read as IIa, and the layer column makes
+the balance visible. The standing imbalance in *evidence* remains and is stated
+plainly — IIa is comparatively well-supported and under-tested by intervention;
+IIb is heavily tested and fails its independent kill lines (domain
+\(r=0.35\), protein per-family \(-0.11\), tree-independent viral \(0.06\)–\(0.19\)).
+
 ## What would constitute firm theoretical ground
 
-Not any one of these. The bound is already firm. Firm *applicability* is:
+Not any one of these. The bound is already firm. Firm ground is layer by layer.
 
+**Layer I — applicability.**
 - E1 passed (legal instruments). **Current state:** M2 and M4 certified; M3
   certified only for the exponential/polynomial dichotomy via the growth-class
   gate, not yet as a magnitude estimator — so \(\eta\) to \(\pm20\%\) is not yet
   interpretable and this precondition is not fully met;
-- E3 showing \(\eta\le 1\) with a given tree (premises instantiated, bound
-  respected in a living hierarchy);
-- E4 showing capacity tracking \(\beta\) with spectrum and \(N_e\) controlled
-  (saturation as a response, not a correlation);
 - E8 showing a clean boundary (the premises are load-bearing).
+
+**Layer IIa — host class (the biological claim).**
+- E9 showing hyperbolic beats Euclidean at matched capacity — the isotropy
+  premise earned rather than asserted. **This is the single most important
+  unrun experiment.** Supporting: E2 settling Conjecture 4.4, E7 orthogonality
+  in vivo, the tree-defect and seed-stability evidence.
+
+**Layer IIb — saturation.**
+- E3 showing \(\eta\le 1\) with a given tree, and E4 showing capacity tracking
+  \(\beta\) with spectrum and \(N_e\) controlled (saturation as a response).
+  Current independent tests fail here; relocating saturation to IIb does not
+  rescue it.
 
 Firm *generality* is E5 in addition, with its negative controls failing as
 required: the same response under a knob that is description length and is not

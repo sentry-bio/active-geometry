@@ -1,5 +1,8 @@
 # Claim & Artifact Registry
 
+The whole-program map — layers, the two manuscripts, and their seams — is
+[`PROGRAM.md`](PROGRAM.md). This file is the ledger it refers to.
+
 A single machine-checkable ledger of the program's load-bearing claims, each
 tagged by status and bound to the artifact that backs it. This exists so that
 documentation cannot outrun code again: every backticked repository path in a
@@ -41,16 +44,30 @@ Status vocabulary:
 | B.1 | Four-point condition ⇔ tree metric; \(\delta=0\) ⇔ 0-hyperbolic | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §6 (Theorem 6.1) |
 | B.2 | \(\delta\) classifies tree-ness, not curvature magnitude | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §6 |
 
-## Layer II — curvature realization
+## Layer IIa — curvature realization (host class)
+
+*Which geometry hosts the data. The better-supported biological claim. Its
+premise — isotropy — is asserted, not measured; the decisive test is E9.*
 
 | # | Claim | Status | Backing artifact |
 |---|---|---|---|
-| L2.1 | Isotropic hyperbolic host has \(h_{\mathrm{vol}}=(n-1)\sqrt\kappa\) | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §7 |
-| L2.2 | Curvature floor \(\kappa\ge(\beta/(c(n-1)))^2\) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`isotropic_curvature_at_least_floor`) |
-| L2.3 | State equation \(\bar\kappa^*=(h_{\mathrm{eff}}\ln2/(n-1))^2\) under saturation + isotropy | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_state_equation`) |
-| L2.4 | \(\bar\kappa=c^2\kappa\) is the unit-invariant curvature; raw formula needs gauge \(c=1\) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_curvature_scale_invariant`, `process_time_gauge`) |
-| L2.5 | Curvature genericity: hyperbolic is the generic homogeneous realization of the relational-exponential class | OPEN | `theory/MATHEMATICAL_SPINE.md` §7 (Conjecture 7.1) |
-| L2.6 | \(n=2\) is an embeddability floor for branching trees, not a fitted constant | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §6, §7 |
+| L2a.1 | Isotropic hyperbolic host has \(h_{\mathrm{vol}}=(n-1)\sqrt\kappa\) | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §7 |
+| L2a.2 | Curvature floor \(\kappa\ge(\beta/(c(n-1)))^2\) (realization + bound, no saturation) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`isotropic_curvature_at_least_floor`) |
+| L2a.3 | Curvature genericity: hyperbolic is the generic homogeneous realization of the relational-exponential class | OPEN | `theory/MATHEMATICAL_SPINE.md` §7 (Conjecture 7.1) |
+| L2a.4 | \(n=2\) is an embeddability floor for branching trees, not a fitted constant | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §6, §7 |
+| L2a.5 | Isotropy is an asserted premise (`--assume-isotropic-hyperbolic`), not a measurement | HONESTY ITEM | `tools/addressability_meter.py`; test E9 |
+
+## Layer IIb — saturation
+
+*Whether a process fills its budget, yielding the state-equation equality. The
+harder, less-supported claim; independent tests currently fail their kill lines.*
+
+| # | Claim | Status | Backing artifact |
+|---|---|---|---|
+| L2b.1 | Saturation condition \(\eta=1\) (coordinate-free) | DEFINITION | `theory/MATHEMATICAL_SPINE.md` §5 |
+| L2b.2 | State equation \(\bar\kappa^*=(h_{\mathrm{eff}}\ln2/(n-1))^2\) under saturation + isotropy | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_state_equation`) |
+| L2b.3 | \(\bar\kappa=c^2\kappa\) is the unit-invariant curvature; raw formula needs gauge \(c=1\) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_curvature_scale_invariant`, `process_time_gauge`) |
+| L2b.4 | Some hierarchy actually saturates | EMPIRICAL, open (independent tests currently fail) | `theory/DECISIVE_EXPERIMENTS.md` E3, E4 |
 
 ## Instruments (status of tools, not claims about nature)
 
@@ -71,11 +88,36 @@ Status vocabulary:
 | E.2 | The law extends beyond biology | EMPIRICAL, open | `theory/DECISIVE_EXPERIMENTS.md` E5 |
 | E.3 | Radius is accumulated information (the \(c\)-axis) | EMPIRICAL, open | `theory/DECISIVE_EXPERIMENTS.md` E6 |
 
+## Experiment allocation (which layer each test interrogates)
+
+The biological claim is the host class (IIa); the protocol must not aim only at
+saturation (IIb). This table is the allocation of record; see
+[`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md) for the full designs.
+
+| Experiment | Layer | Status | Decides |
+|---|---|---|---|
+| E1 meter certification | I | run (M2/M4 pass, M3 magnitude fails, gate passes) | instruments legal |
+| E8 boundary mapping | I | designed | premises load-bearing |
+| E9 matched-capacity Euclidean vs hyperbolic (*E-alpha*) | IIa | **designed, unrun — highest value** | is hyperbolic forced |
+| E2 numerical achievability | IIa | run (endpoint obstruction; subcritical open) | Conjecture 4.4 |
+| E7 reticulation intervention | IIa | designed | \(\delta\perp h_{\mathrm{pack}}\) in vivo |
+| E3 barcoded lineages | IIb | designed | \(\eta\le1\) with a given tree |
+| E4 mutation-rate intervention | IIb | designed | saturation as a response |
+| E5 trained hierarchy | IIb | designed (small-scale runnable) | saturation cross-domain |
+| E6 radius identification | I/IIb | designed | is \(c\) information |
+
+Balance: IIa (host class) is comparatively well-supported by existing evidence
+yet under-tested by intervention — E9, the decisive one, is unrun. IIb
+(saturation) is heavily tested and currently fails its independent kill lines.
+Closing E9 is the program's highest-leverage empirical step.
+
 ## What is explicitly not claimed
 
 - No absolute curvature \(\kappa\) is a certified measurement (M3 magnitude is
   uncertified; embedding non-identifiability is documented).
 - No zero-free-parameter cross-domain law is established; the state equation is
-  a Layer II ideal awaiting the two open conjectures and the empirical program.
+  a Layer IIb ideal awaiting saturation evidence and the two open conjectures.
+- The hyperbolic host class (IIa) is not yet *forced* by evidence: isotropy is
+  asserted, and E9 has not been run.
 - Lean certifies algebra from definitions; it certifies neither that biology
   saturates nor either open conjecture.
