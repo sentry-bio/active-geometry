@@ -6,22 +6,48 @@ The compact dependency structure is stated in
 [`ADDRESSABILITY_KERNEL.md`](ADDRESSABILITY_KERNEL.md). This document supplies
 the full definitions, proof, scope, and measurement consequences.
 
-The core has three levels that must not be conflated:
+The theory is organized in **two layers** that must not be conflated.
 
-1. a **packing theorem** that forces the capacity inequality;
-2. a separate **capacity-saturation hypothesis**;
-3. a separate **isotropic realization** in which host capacity is represented
-   by one curvature scalar.
+**Layer I — the universal capacity theory (curvature-free), §§1–5.** Three
+independent quantities; a **packing theorem** that forces the capacity
+inequality \(\beta\le c\,h_{\mathrm{pack}}\); the exact **block identity**
+\(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\); a **constrained-capacity ladder**
+with block as its universal ceiling; and the decomposition of slack into a
+relational tax and a utilization term. No curvature, tree, or biology appears.
 
-Only the first is the general limit. The state equation follows after both
-additional conditions are supplied. The four-point tree theorem is an
-independent classifier: it can motivate a host class or minimal embedding
-dimension, but it does not calibrate capacity or curvature.
+**Layer II — the curvature realization (where real systems live), §§7–10.** This
+layer splits into two sublayers with very different evidential standing.
+
+- **Layer IIa — host class (realization).** *Which* geometry hosts the data:
+  the space-form argument and **isotropic realization** (§7), the
+  **curvature-genericity conjecture** (§7) that explains why hyperbolic — not an
+  arbitrary exponential host — is the natural realization for the relational,
+  exponentially branching class, and \(n=2\) as an embeddability floor. This is
+  the **better-supported** biological claim.
+- **Layer IIb — saturation.** *Whether* a process fills its budget: the
+  **capacity-saturation hypothesis** (\(\eta=1\), §5) which, combined with the
+  IIa realization, yields the **state equation** (§8). This is the **harder,
+  less-supported** claim; every independent test to date sits below its kill
+  line.
+
+Only Layer I's inequality is unconditional. The host class is IIa; the state
+equation is IIb, and follows only after both saturation and isotropy are
+supplied. The four-point tree theorem (§6) is an independent classifier that
+bridges to IIa: it can motivate a hyperbolic host class or minimal embedding
+dimension, but it does not calibrate capacity or curvature. Sections 11–13
+(measurement, falsification, minimal statement) span all layers.
+
+A consequence the split makes sharp: **isotropy is asserted, never measured.**
+The decisive IIa test — does a hyperbolic host beat a Euclidean one at matched
+capacity — is E9 of [`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md), and it
+is distinct from the polynomial-exclusion (Layer I) Euclidean control in E5.
 
 All logarithms in this document are natural unless explicitly written
 `log₂`.
 
 ---
+
+# Layer I — The universal capacity theory
 
 ## 1. Information-generating histories
 
@@ -193,7 +219,180 @@ machine-checked in
 Mathlib's exact `Metric.packingNumber`. The limsup statement above is retained
 as the more general paper theorem.
 
-### Corollary 4.2 — Polynomial-growth exclusion
+### Theorem 4.2 — General block-addressability identity
+
+The converse closes to an identity in full generality when the operational
+task is matched exactly to metric packing. Define
+
+\[
+A_{\rm block}(\rho,\varepsilon)
+:=
+\max\left\{
+|C|:\ C\subseteq B(o,\rho),\
+d(x,y)\ge\varepsilon\ \text{for }x\ne y
+\right\}.
+\]
+
+For every proper metric host, closed balls are compact and their
+fixed-resolution packing numbers are finite and attained. Therefore
+
+\[
+\boxed{
+A_{\rm block}(\rho,\varepsilon)
+=P(B(o,\rho),\varepsilon).
+}
+\]
+
+The left side is operational: the largest noiseless message set that can be
+assigned distinguishable addresses within budget \(\rho\). The right side is
+geometric. They are one quantity.
+
+At a linear radial budget \(\rho=cR\), \(c>0\), define
+
+\[
+C_{\rm block}(c,\varepsilon)
+:=
+\limsup_{R\to\infty}
+\frac{\log A_{\rm block}(cR,\varepsilon)}R.
+\]
+
+Because ball-packing counts are monotone in radius, sampling them at the
+linearly spaced radii \(cR\) preserves their radial limsup. Hence
+
+\[
+\boxed{
+C_{\rm block}(c,\varepsilon)
+=c\,h_{\rm pack}(M,o;\varepsilon).
+}
+\]
+
+This is a genuine operational-geometric capacity identity for arbitrary
+proper metric spaces. It requires no tree, hyperbolicity, isotropy,
+stationarity, or curvature. The finite-radius existence half is
+machine-checked as `exists_optimal_blockCode`; combined with
+`card_le_packingCount`, it establishes exact finite-block achievability.
+
+#### Why this does not make every hierarchy capacity-achieving
+
+A block code may be redesigned at every depth and must preserve only terminal
+distinguishability. Stronger meanings of “represent a hierarchy” form an
+admissibility ladder:
+
+1. **Block:** terminal messages are \(\varepsilon\)-separated.
+2. **Persistent:** one nested address family retains prior messages.
+3. **Causal:** parent-child addresses also obey a per-step motion or locality
+   bound.
+4. **Relational:** the representation preserves the hierarchy's pairwise
+   metric or topology up to a stated distortion, for example by a uniform
+   quasi-isometric embedding.
+
+The corresponding constrained capacities cannot exceed \(C_{\rm block}\).
+Packing alone proves achievability only at level 1. Extension theorems,
+online-coding arguments, or geometric embedding theorems are needed at the
+stronger levels.
+
+Positive packing entropy is insufficient for relational achievability. For a
+concrete counterexample, take a ray of hubs and attach to the hub at radius
+\(R\) a clique of \(\lceil e^{hR}\rceil\) vertices. With the graph metric this
+is a proper space with packing entropy \(h\): exponentially many distinguishable
+addresses occur in each bounded-diameter “balloon.” But it cannot contain a
+uniform quasi-isometric image of a regular branching tree. Up to radius \(R\)
+there are only \(O(R)\) bounded-diameter shells, while a tree level has
+exponentially many mutually tree-distant vertices; a quasi-isometric lower
+bound permits only a uniformly bounded number of them in each shell.
+
+This example locates the missing hypothesis precisely. Ordinary packing
+capacity counts addresses; it does not certify that their mutual geometry
+realizes the source's genealogy.
+
+Sarkar-type hyperbolic tree embeddings address the stronger relational task,
+but a finite-tree low-distortion result is not by itself an asymptotic
+capacity theorem. Closing that theorem requires a uniform family at fixed host
+geometry, fixed resolution, controlled radial rate, and distortion that does
+not degrade with depth.
+
+Finally, quartet defect \(\delta\) is not the capacity slack
+\(\Delta=c\,h_{\rm pack}-\beta\). It classifies deviation from tree geometry.
+A reticulate source can use every available address, and a perfect tree can
+use very few. Any theorem turning \(\delta\) into a quantitative capacity gap
+must add a particular source class, host class, and distortion criterion.
+
+### Conjecture 4.4 — Relational tree capacity of hyperbolic hosts
+
+This is the program's open theorem, stated with the precision of its proved
+statements so that it can be settled by proof or by counterexample.
+
+Fix a host \(\mathbb H_\kappa^n\) with base point \(o\), \(\kappa>0\),
+\(n\ge2\); a resolution \(\varepsilon>0\); a radial rate \(c>0\); and a
+distortion \(D\ge1\) with additive slack \(K\ge0\).
+
+Let \(T\) be a rooted, locally finite tree with unit edge lengths, tree metric
+\(d_T\), and level sets \(T_R\) (vertices at depth \(\le R\)). A map
+\(f:V(T)\to\mathbb H_\kappa^n\) is a **\((D,K)\)-relational code at rate
+\(c\)** when:
+
+1. \(f(\mathrm{root})=o\);
+2. \(f(T_R)\subseteq B(o,cR)\) for all \(R\);
+3. distinct vertices satisfy \(d(f(u),f(v))\ge\varepsilon\);
+4. for all \(u,v\in V(T)\):
+
+   \[
+   \frac{c}{D}\,d_T(u,v)-K
+   \;\le\;
+   d(f(u),f(v))
+   \;\le\;
+   c\,D\,d_T(u,v)+K.
+   \]
+
+Define the relational capacity as a **supremum**
+
+\[
+C_{\rm rel}(\kappa,n,c;\varepsilon)
+:=
+\sup_{D\ge1,\;K\ge0}\;
+\sup_{(T,f)}\;
+\limsup_{R\to\infty}\frac{\log|T_R|}{R},
+\]
+
+the outer supremum over admissible distortion classes, the inner over trees
+admitting a \((D,K)\)-relational code at rate \(c\).
+
+**Conjecture (subcritical form).** For every rate strictly below the bound
+there is a depth-uniform relational code:
+
+\[
+\boxed{
+\text{for all }\beta<c(n-1)\sqrt\kappa,\ \exists\,(D,K)\text{ and }(T,f)
+\text{ with growth }\ge\beta,\ (D,K)\text{ bounded in }R,
+}
+\]
+
+equivalently \(C_{\rm rel}(\kappa,n,c;\varepsilon)=c(n-1)\sqrt\kappa\).
+
+The upper bound is Theorem 4.1 applied to conditions 2 and 3: a relational code
+is in particular a faithful representation at radial rate \(c\), so
+\(C_{\rm rel}\le c\,h_{\rm vol}=c(n-1)\sqrt\kappa\). The open half is the
+subcritical achievability above.
+
+**Because the capacity is a supremum, the endpoint need not be attained.**
+Failure of a construction at the exact saturating rate \(\beta=c(n-1)\sqrt\kappa\)
+is *not* a refutation: it may only show that the boundary rate is unrealizable
+while every rate below it is fine — the ordinary situation for a capacity. A
+refutation requires a *subcritical* obstruction: some \(\beta_0<c(n-1)\sqrt\kappa\)
+above which distortion must grow with depth. Only that would place \(C_{\rm rel}\)
+strictly below the bound and make the gap \(c(n-1)\sqrt\kappa-C_{\rm rel}\) a new
+host invariant.
+
+The natural language for settling it is boundary geometry: a regular tree's
+boundary is a Cantor ultrametric, \(\partial\mathbb H^2\) carries a visual
+metric, a relational code is a quasisymmetric boundary embedding, and the growth
+rate is a Hausdorff dimension / critical exponent. Patterson–Sullivan theory
+already identifies critical exponent with limit-set dimension for
+convex-cocompact free groups, which is closer to the conjecture than finite
+Sarkar layouts. In every case the block identity (Theorem 4.2) and the converse
+(Theorem 4.1) are unaffected.
+
+### Corollary 4.3 — Polynomial-growth exclusion
 
 If \(\beta>0\) and \(c<\infty\), then \(h_{\mathrm{pack}}>0\). Consequently, no
 polynomial-growth host can represent retained exponential novelty faithfully
@@ -209,7 +408,7 @@ canonical realization only after additional symmetry assumptions are imposed.
 
 ---
 
-## 5. Slack, efficiency, and sharpness
+## 5. Slack, efficiency, and process saturation
 
 Define the non-negative addressability slack
 
@@ -236,6 +435,40 @@ generative-step unit itself is redefined.
 - \(\eta<1\): the host has excess asymptotic capacity, or the representation
   pays for distortion, anisotropy, finite-depth effects, or inefficient
   addressing.
+
+### The slack decomposition
+
+The block slack conflates two physically different things once a process is
+represented under a relational class. With block capacity
+\(B:=c\,h_{\mathrm{pack}}\) and relational capacity \(C_{\rm rel}\le B\),
+
+\[
+\boxed{
+B-\beta
+=
+\underbrace{(B-C_{\rm rel})}_{\text{relational tax }\Gamma\ \ge 0}
++
+\underbrace{(C_{\rm rel}-\beta)}_{\text{utilization slack }\Delta_{\mathrm{use}}\ \ge 0},}
+\]
+
+and the block efficiency factors as
+
+\[
+\eta_{\mathrm{block}}
+=\frac{\beta}{B}
+=\underbrace{\frac{C_{\rm rel}}{B}}_{\text{availability}}\cdot
+\underbrace{\frac{\beta}{C_{\rm rel}}}_{\text{utilization}} .
+\]
+
+The relational tax \(\Gamma\) is the unavoidable price of preserving genealogy
+— the gap of Conjecture 4.4, zero iff that conjecture holds with equality. The
+utilization term is what "saturation" should mean for a relationally
+constrained process. **Consequence for measurement:** an observed
+\(\eta_{\mathrm{block}}<1\) does not by itself indicate an inefficient or
+unsaturated system; it may be relationally optimal (\(\beta=C_{\rm rel}\)) while
+paying \(\Gamma>0\). The saturation question is properly posed on utilization
+\(\beta/C_{\rm rel}\), which requires an estimate of \(C_{\rm rel}\), not of
+\(B\) alone.
 
 ### Proposition 5.1 — Exponential saturation
 
@@ -282,7 +515,16 @@ ideal realization.
 
 ---
 
+# Bridge — the four-point classifier
+
 ## 6. The quartet: classification, not calibration
+
+*This section is neither Layer I nor Layer II. It is an independent
+classification theorem that bridges them: it decides whether a metric is
+tree-like (and so motivates the hyperbolic host class of Layer II) without
+supplying \(\beta\), \(c\), saturation, or curvature magnitude. Its defect
+\(\delta\) is the measured residual by which a real reticulate hierarchy
+departs from the pure tree class.*
 
 For four points \(a,b,c,d\), define
 
@@ -322,6 +564,12 @@ non-zero \(\delta\), increased effective boundary dimension, anisotropy, or a
 combination of these—not folded into the tree equality by definition.
 
 ---
+
+# Layer II — The curvature realization
+
+*Layer IIa (host class) is §7 (realization, genericity conjecture) with the
+\(n=2\) floor of §6. Layer IIb (saturation) is the equality of §8, conditional
+on the coordinate-free saturation of §5. §§9–10 refine scope and dynamics.*
 
 ## 7. Isotropic hyperbolic realization
 
@@ -384,6 +632,35 @@ ambient dimension \(n=2\),
 \kappa^*=
 \left(\frac{h_{\mathrm{eff}}\ln2}{c}\right)^2.
 \]
+
+### Conjecture 7.1 — Curvature genericity
+
+Layer I is curvature-free, so it is fair to ask why Layer II is about curvature
+rather than an arbitrary exponential-growth host. The answer is a genericity
+claim, and it is the second of the program's two open problems (the first being
+Conjecture 4.4).
+
+**Conjecture.** Among hosts that are complete, homogeneous, and isotropic, the
+requirement of positive volume entropy (exponential capacity) together with
+relational — genealogy-preserving — realizability of branching trees is met by
+the negatively curved space forms \(\mathbb H_\kappa^n\) and, up to the usual
+equivalences, only them.
+
+What is already classical is the enabling half: under homogeneity and isotropy
+the space-form classification leaves the constant-curvature models, and among
+these only the negatively curved ones have positive volume entropy. What is
+conjectural is that *relational realizability of trees* selects within this
+class rather than being an extra, independent stipulation — i.e. that
+hyperbolic geometry is the **generic realization** of the relational-exponential
+class, not an assumption bolted onto capacity.
+
+Two honesty caveats travel with it. "Generic" is clean only under homogeneity
+and isotropy; real hosts are neither exactly, so for them hyperbolic is the
+*natural* host, not a forced one. And real hierarchies reticulate, so they lie
+only *near* the tree-relational class, with the four-point defect \(\delta\)
+(§6) measuring the distance. Curvature is the correct host for the tree part;
+reticulation is measured residual. This is the precise sense in which, for the
+systems the program studies, biology and curvature go together.
 
 ---
 
@@ -570,6 +847,10 @@ anisotropy effects are controlled.
 
 This would not refute the addressability bound. It would refute or restrict the
 physical saturation hypothesis.
+
+The ranked experimental protocol — interventions first, then pre-registered
+predictions, with named kill lines — is
+[`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md).
 
 ### The pure-tree model would be challenged by
 

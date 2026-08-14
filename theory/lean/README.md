@@ -9,7 +9,16 @@ metric packing argument and its hypotheses are in
 
 ## Mathematical hierarchy
 
-The principal coordinate-free statement is the addressability bound
+The theory has two layers (see
+[`../ADDRESSABILITY_KERNEL.md`](../ADDRESSABILITY_KERNEL.md)). **Layer I** is
+universal and curvature-free: the addressability bound, the block-capacity
+identity, and the constrained-capacity ladder. **Layer II** is the curvature
+realization: saturation and isotropic-hyperbolic hypotheses give the state
+equation. Lean formalizes Layer I in full and the algebraic skeleton of
+Layer II; it does not formalize the two open conjectures (relational capacity,
+curvature genericity).
+
+The principal coordinate-free statement is the Layer I addressability bound
 
 \[
 \beta\le c\,h_{\mathrm{vol}},
@@ -67,6 +76,8 @@ axiomatize a capacity envelope. Formalized results include:
 | Declaration | Meaning |
 |---|---|
 | `card_le_packingCount` | every finite separated subset of a ball is bounded by its exact packing number |
+| `exists_optimal_blockCode` | an exact finite packing code exists whenever the ball packing number is finite |
+| `exists_optimal_blockCode_of_properSpace` | exact finite-block achievability in every proper metric host |
 | `represented_card_le_packingCount` | retained represented histories obey that bound at every depth |
 | `represented_card_mono` | retention makes represented counts nondecreasing in depth |
 | `representedRate_le_capacity_eventually` | finite counts induce the normalized rate inequality |
@@ -81,6 +92,14 @@ paper theorem. `HasFinitePacking` is a hypothesis of the general theorem and a
 proved consequence of `ProperSpace` (ℝⁿ, hyperbolic space, and every complete
 Riemannian manifold via Hopf–Rinow), so the intended host class needs no extra
 assumption.
+
+The upper bound and `exists_optimal_blockCode` together identify operational
+finite-block address capacity exactly with metric packing capacity. This
+achievability result is fully metric and host-agnostic, but deliberately does
+not assert that optimal codebooks at successive radii are nested, causal, or
+preserve a source hierarchy's relational metric. The asymptotic block identity
+\(C_{\rm block}(c,\varepsilon)=c h_{\rm pack}\) and stronger constrained
+achievability problems remain paper-level statements.
 
 ### `Addressability.lean`
 
@@ -128,7 +147,8 @@ The formalization intentionally does not claim to machine-check:
 5. Sarkar's low-distortion embedding theorem;
 6. Fisher–Rao curvature computations;
 7. a physical dynamics toward capacity saturation;
-8. empirical membership of any biological or linguistic system.
+8. nested, causal, or relation-preserving achievability;
+9. empirical membership of any biological or linguistic system.
 
 These are respectively paper proofs, classical cited results, open modeling
 choices, or empirical questions.
