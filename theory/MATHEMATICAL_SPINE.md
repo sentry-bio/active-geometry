@@ -6,22 +6,37 @@ The compact dependency structure is stated in
 [`ADDRESSABILITY_KERNEL.md`](ADDRESSABILITY_KERNEL.md). This document supplies
 the full definitions, proof, scope, and measurement consequences.
 
-The core has three levels that must not be conflated:
+The theory is organized in **two layers** that must not be conflated.
 
-1. a **packing theorem** that forces the capacity inequality;
-2. a separate **capacity-saturation hypothesis**;
-3. a separate **isotropic realization** in which host capacity is represented
-   by one curvature scalar.
+**Layer I — the universal capacity theory (curvature-free), §§1–5.** Three
+independent quantities; a **packing theorem** that forces the capacity
+inequality \(\beta\le c\,h_{\mathrm{pack}}\); the exact **block identity**
+\(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\); a **constrained-capacity ladder**
+with block as its universal ceiling; and the decomposition of slack into a
+relational tax and a utilization term. No curvature, tree, or biology appears.
 
-Only the first is the general limit. The state equation follows after both
-additional conditions are supplied. The four-point tree theorem is an
-independent classifier: it can motivate a host class or minimal embedding
-dimension, but it does not calibrate capacity or curvature.
+**Layer II — the curvature realization (where real systems live), §§7–10.** The
+separate **capacity-saturation hypothesis** and the separate **isotropic
+realization** in which host capacity is one curvature scalar, together yielding
+the state equation; the **curvature-genericity conjecture** that explains why
+hyperbolic geometry — not an arbitrary exponential host — is the natural
+realization for the relational, exponentially branching class that biology
+belongs to. Layer II is conditional but not weaker: it is where the theory
+becomes quantitative and falsifiable.
+
+Only Layer I's inequality is unconditional. The state equation follows only
+after both Layer II hypotheses are supplied. The four-point tree theorem (§6)
+is an independent classifier that bridges the layers: it can motivate a
+hyperbolic host class or minimal embedding dimension, but it does not calibrate
+capacity or curvature. Sections 11–13 (measurement, falsification, minimal
+statement) span both layers.
 
 All logarithms in this document are natural unless explicitly written
 `log₂`.
 
 ---
+
+# Layer I — The universal capacity theory
 
 ## 1. Information-generating histories
 
@@ -318,7 +333,7 @@ Let \(T\) be a rooted, locally finite tree with unit edge lengths, tree metric
    c\,D\,d_T(u,v)+K.
    \]
 
-Define the relational capacity
+Define the relational capacity as a **supremum**
 
 \[
 C_{\rm rel}(\kappa,n,c;\varepsilon)
@@ -331,34 +346,40 @@ C_{\rm rel}(\kappa,n,c;\varepsilon)
 the outer supremum over admissible distortion classes, the inner over trees
 admitting a \((D,K)\)-relational code at rate \(c\).
 
-**Conjecture.**
+**Conjecture (subcritical form).** For every rate strictly below the bound
+there is a depth-uniform relational code:
 
 \[
 \boxed{
-C_{\rm rel}(\kappa,n,c;\varepsilon)
-=
-c\,(n-1)\sqrt{\kappa}.
+\text{for all }\beta<c(n-1)\sqrt\kappa,\ \exists\,(D,K)\text{ and }(T,f)
+\text{ with growth }\ge\beta,\ (D,K)\text{ bounded in }R,
 }
 \]
 
-The upper bound is Theorem 4.1 applied to condition 2 and condition 3: a
-relational code is in particular a faithful representation at radial rate
-\(c\), so \(C_{\rm rel}\le c\,h_{\rm vol}=c(n-1)\sqrt\kappa\). The open half is
-achievability: for every \(\beta<c(n-1)\sqrt\kappa\) there exist \(D\), \(K\),
-and a family \((T,f)\) with growth at least \(\beta\), where crucially \(D\)
-and \(K\) do not degrade with depth. Sarkar's low-distortion embeddings of
-finite trees in \(\mathbb H^2\) are the natural construction candidates; what
-they do not yet supply is the uniform, depth-independent control demanded by
-conditions 2–4 simultaneously at fixed \((\kappa,n,c,\varepsilon)\).
+equivalently \(C_{\rm rel}(\kappa,n,c;\varepsilon)=c(n-1)\sqrt\kappa\).
 
-Resolution of either sign is informative. A proof yields a coding theorem for
-genealogy: hyperbolic volume entropy is exactly the rate at which relationally
-faithful history can be retained. A refutation — a uniform obstruction placing
-\(C_{\rm rel}\) strictly below \(c(n-1)\sqrt\kappa\) — would establish a
-genuine price of genealogy above the counting bound, and the gap
-\(c(n-1)\sqrt\kappa - C_{\rm rel}\) would become a new host invariant. In
-either case the block identity of Theorem 4.2 and the converse of Theorem 4.1
-are unaffected.
+The upper bound is Theorem 4.1 applied to conditions 2 and 3: a relational code
+is in particular a faithful representation at radial rate \(c\), so
+\(C_{\rm rel}\le c\,h_{\rm vol}=c(n-1)\sqrt\kappa\). The open half is the
+subcritical achievability above.
+
+**Because the capacity is a supremum, the endpoint need not be attained.**
+Failure of a construction at the exact saturating rate \(\beta=c(n-1)\sqrt\kappa\)
+is *not* a refutation: it may only show that the boundary rate is unrealizable
+while every rate below it is fine — the ordinary situation for a capacity. A
+refutation requires a *subcritical* obstruction: some \(\beta_0<c(n-1)\sqrt\kappa\)
+above which distortion must grow with depth. Only that would place \(C_{\rm rel}\)
+strictly below the bound and make the gap \(c(n-1)\sqrt\kappa-C_{\rm rel}\) a new
+host invariant.
+
+The natural language for settling it is boundary geometry: a regular tree's
+boundary is a Cantor ultrametric, \(\partial\mathbb H^2\) carries a visual
+metric, a relational code is a quasisymmetric boundary embedding, and the growth
+rate is a Hausdorff dimension / critical exponent. Patterson–Sullivan theory
+already identifies critical exponent with limit-set dimension for
+convex-cocompact free groups, which is closer to the conjecture than finite
+Sarkar layouts. In every case the block identity (Theorem 4.2) and the converse
+(Theorem 4.1) are unaffected.
 
 ### Corollary 4.3 — Polynomial-growth exclusion
 
@@ -403,6 +424,40 @@ generative-step unit itself is redefined.
 - \(\eta<1\): the host has excess asymptotic capacity, or the representation
   pays for distortion, anisotropy, finite-depth effects, or inefficient
   addressing.
+
+### The slack decomposition
+
+The block slack conflates two physically different things once a process is
+represented under a relational class. With block capacity
+\(B:=c\,h_{\mathrm{pack}}\) and relational capacity \(C_{\rm rel}\le B\),
+
+\[
+\boxed{
+B-\beta
+=
+\underbrace{(B-C_{\rm rel})}_{\text{relational tax }\Gamma\ \ge 0}
++
+\underbrace{(C_{\rm rel}-\beta)}_{\text{utilization slack }\Delta_{\mathrm{use}}\ \ge 0},}
+\]
+
+and the block efficiency factors as
+
+\[
+\eta_{\mathrm{block}}
+=\frac{\beta}{B}
+=\underbrace{\frac{C_{\rm rel}}{B}}_{\text{availability}}\cdot
+\underbrace{\frac{\beta}{C_{\rm rel}}}_{\text{utilization}} .
+\]
+
+The relational tax \(\Gamma\) is the unavoidable price of preserving genealogy
+— the gap of Conjecture 4.4, zero iff that conjecture holds with equality. The
+utilization term is what "saturation" should mean for a relationally
+constrained process. **Consequence for measurement:** an observed
+\(\eta_{\mathrm{block}}<1\) does not by itself indicate an inefficient or
+unsaturated system; it may be relationally optimal (\(\beta=C_{\rm rel}\)) while
+paying \(\Gamma>0\). The saturation question is properly posed on utilization
+\(\beta/C_{\rm rel}\), which requires an estimate of \(C_{\rm rel}\), not of
+\(B\) alone.
 
 ### Proposition 5.1 — Exponential saturation
 
@@ -449,7 +504,16 @@ ideal realization.
 
 ---
 
+# Bridge — the four-point classifier
+
 ## 6. The quartet: classification, not calibration
+
+*This section is neither Layer I nor Layer II. It is an independent
+classification theorem that bridges them: it decides whether a metric is
+tree-like (and so motivates the hyperbolic host class of Layer II) without
+supplying \(\beta\), \(c\), saturation, or curvature magnitude. Its defect
+\(\delta\) is the measured residual by which a real reticulate hierarchy
+departs from the pure tree class.*
 
 For four points \(a,b,c,d\), define
 
@@ -489,6 +553,8 @@ non-zero \(\delta\), increased effective boundary dimension, anisotropy, or a
 combination of these—not folded into the tree equality by definition.
 
 ---
+
+# Layer II — The curvature realization
 
 ## 7. Isotropic hyperbolic realization
 
@@ -551,6 +617,35 @@ ambient dimension \(n=2\),
 \kappa^*=
 \left(\frac{h_{\mathrm{eff}}\ln2}{c}\right)^2.
 \]
+
+### Conjecture 7.1 — Curvature genericity
+
+Layer I is curvature-free, so it is fair to ask why Layer II is about curvature
+rather than an arbitrary exponential-growth host. The answer is a genericity
+claim, and it is the second of the program's two open problems (the first being
+Conjecture 4.4).
+
+**Conjecture.** Among hosts that are complete, homogeneous, and isotropic, the
+requirement of positive volume entropy (exponential capacity) together with
+relational — genealogy-preserving — realizability of branching trees is met by
+the negatively curved space forms \(\mathbb H_\kappa^n\) and, up to the usual
+equivalences, only them.
+
+What is already classical is the enabling half: under homogeneity and isotropy
+the space-form classification leaves the constant-curvature models, and among
+these only the negatively curved ones have positive volume entropy. What is
+conjectural is that *relational realizability of trees* selects within this
+class rather than being an extra, independent stipulation — i.e. that
+hyperbolic geometry is the **generic realization** of the relational-exponential
+class, not an assumption bolted onto capacity.
+
+Two honesty caveats travel with it. "Generic" is clean only under homogeneity
+and isotropy; real hosts are neither exactly, so for them hyperbolic is the
+*natural* host, not a forced one. And real hierarchies reticulate, so they lie
+only *near* the tree-relational class, with the four-point defect \(\delta\)
+(§6) measuring the distance. Curvature is the correct host for the tree part;
+reticulation is measured residual. This is the precise sense in which, for the
+systems the program studies, biology and curvature go together.
 
 ---
 

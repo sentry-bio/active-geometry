@@ -1,9 +1,31 @@
 # The Addressability Kernel
 
-This is the minimal mathematical core of Active Geometry. It contains one
-general inequality and one conditional equality. Everything else is either a
-realization of the host capacity, a classification theorem, or an empirical
-claim.
+This is the minimal mathematical core of Active Geometry. It is organized in
+**two layers**, and the whole program's parsimony depends on not confusing
+them.
+
+- **Layer I — the universal capacity theory (curvature-free).** Three
+  independent quantities, one inequality that always holds, one exact identity
+  for the best possible block code, and a ladder of constrained capacities
+  beneath it. Nothing here mentions curvature, trees, or biology. It is where
+  the generality and the honesty live.
+
+- **Layer II — the curvature realization (where real systems live).** *If* a
+  host is homogeneous, isotropic, and negatively curved, its capacity is one
+  curvature scalar, and the inequality becomes a statement about \(\kappa\).
+  Layer II is not weaker for being conditional: for the class of systems the
+  program actually studies — relational, exponentially branching, roughly
+  homogeneous — hyperbolic geometry is the *natural* realization, so this is
+  where the theory becomes quantitative and where biology sits.
+
+The one inequality is Layer I. The state equation is Layer II, and only after
+two further hypotheses. The four-point tree theorem is an independent
+classifier attached to Layer II: it can motivate a hyperbolic host class or a
+minimal embedding dimension, but it does not calibrate capacity or curvature.
+
+---
+
+# Layer I — The universal capacity theory
 
 ## 1. Independent quantities
 
@@ -148,15 +170,47 @@ achievability requires extension, causal, or embedding hypotheses.
 The identity concerns the host's *best possible* code. It does not say that a
 given physical hierarchy uses that code or fills it.
 
+### The constrained-capacity ladder
+
+The deepest object of Layer I is not a single number but a **ladder of
+capacities**, one per admissibility class \(\mathcal A\) — the meanings of
+"represent a hierarchy," ordered by how much structure they demand:
+
+1. **block** — distinguish the terminal messages;
+2. **persistent** — retain one nested family of addresses;
+3. **causal** — bound parent-to-child motion;
+4. **relational** — preserve the source's pairwise metric up to fixed
+   distortion (genealogy);
+5. reticulate and other structural constraints.
+
+Writing \(C_{\mathcal A}(M,c;\varepsilon)\) for the supremum retained-growth
+rate achievable in host \(M\) under class \(\mathcal A\),
+
+\[
+\boxed{
+C_{\mathrm{relational}}\le C_{\mathrm{causal}}\le C_{\mathrm{persistent}}
+\le C_{\mathrm{block}}=c\,h_{\mathrm{cap}}.
+}
+\]
+
+Only the top rung is a theorem (the block identity above). The relational rung
+is the open problem below. The middle rungs are, at present, definitions. This
+is the honest state: the ladder is the right organizing frame, not a set of
+established results, and Active Geometry is most generally a **constrained
+capacity theory** — geometry supplies addresses; the admissibility class
+decides which addresses are usable.
+
 ### The open theorem
 
 The kernel has exactly one open mathematical problem, posed precisely as
 Conjecture 4.4 of [`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md): the
-relational tree capacity of \(\mathbb H_\kappa^n\) — the supremum growth rate
-of rooted trees admitting depth-uniform quasi-isometric codes at radial rate
-\(c\) and fixed resolution — equals \(c(n-1)\sqrt\kappa\). The converse half is
-Theorem 4.1. The achievability half is open. Its proof would be a coding
-theorem for genealogy; its refutation would make the gap below
+relational tree capacity of \(\mathbb H_\kappa^n\) equals \(c(n-1)\sqrt\kappa\).
+The converse half is Theorem 4.1. The achievability half — **subcritical**:
+every rate strictly below \(c(n-1)\sqrt\kappa\) is realized by a
+depth-uniform relational code — is open. Because the capacity is a supremum,
+failure at the exact saturating endpoint does *not* refute the conjecture; it
+may only show the endpoint is unattained. A proof would be a coding theorem for
+genealogy; a genuine subcritical obstruction would make the gap below
 \(c(n-1)\sqrt\kappa\) a new host invariant. Neither outcome disturbs the
 inequality or the block identity.
 
@@ -192,6 +246,36 @@ together with convergence of the three relevant rates. It can also be selected
 by an optimization problem that minimizes attainable host capacity subject to
 lossless addressability. Neither mechanism follows from the inequality alone.
 
+### The slack decomposes
+
+When a process is represented under a relational class, the block slack splits
+into two physically distinct terms. With block capacity
+\(B:=c\,h_{\mathrm{cap}}\) and relational capacity \(C_{\mathrm{rel}}\),
+
+\[
+\boxed{
+B-\beta
+=
+\underbrace{(B-C_{\mathrm{rel}})}_{\text{relational tax }\Gamma}
++
+\underbrace{(C_{\mathrm{rel}}-\beta)}_{\text{utilization slack }\Delta_{\mathrm{use}}},}
+\qquad
+\eta_{\mathrm{block}}
+=
+\underbrace{\frac{C_{\mathrm{rel}}}{B}}_{\text{availability}}\cdot
+\underbrace{\frac{\beta}{C_{\mathrm{rel}}}}_{\text{utilization}} .
+\]
+
+The distinction is load-bearing for measurement: an observed
+\(\eta_{\mathrm{block}}<1\) need not mean a system is inefficient or fails to
+saturate. It may be relationally optimal while paying an unavoidable price of
+genealogy \(\Gamma\). "Does it saturate?" is properly the question of
+utilization \(\beta/C_{\mathrm{rel}}\), not of \(\eta_{\mathrm{block}}\).
+
+---
+
+# Layer II — The curvature realization
+
 ## 5. Isotropic hyperbolic realization
 
 The capacity rate need not be curvature. Add the independent modeling
@@ -222,6 +306,27 @@ If capacity is also saturated, and only then,
 \]
 
 Writing \(\beta=h_{\mathrm{eff}}\ln2\) merely converts bits to nats.
+
+### Why curvature, and not just "some exponential host"
+
+Layer I is deliberately curvature-free, which raises the question of why
+Layer II is about curvature at all rather than an arbitrary exponential-growth
+space. The answer is a **genericity claim**, stated as a conjecture beside the
+capacity one (Conjecture 7.1 of the spine): among hosts that are homogeneous
+and isotropic, the requirement of exponential capacity plus relational
+(genealogy-preserving) fidelity is met by the negatively curved space forms and
+essentially only them. Under those symmetry hypotheses the space-form
+classification leaves \(\mathbb H_\kappa^n\), so hyperbolic geometry is not an
+extra assumption bolted onto capacity — it is the *generic realization* of the
+relational-exponential class.
+
+Two caveats keep this honest. The word "generic" is clean only under
+homogeneity and isotropy; real systems are neither exactly, so for them
+hyperbolic is the *natural* host, not a forced one. And real hierarchies
+reticulate, so they sit only *near* the tree-relational class, with the
+four-point defect \(\delta\) measuring the distance. Curvature is the right host
+for the tree part; reticulation is measured residual, not a failure of the
+host.
 
 ## 6. Unit-invariant equality
 
@@ -300,7 +405,19 @@ The kernel does not prove:
 - that a physical system saturates capacity;
 - that an ambient dimension is selected by optimization;
 - that a non-negative mismatch function generates attracting dynamics;
-- that tree thinness measures curvature magnitude.
+- that tree thinness measures curvature magnitude;
+- **the relational capacity conjecture** (subcritical achievability in
+  \(\mathbb H_\kappa^n\)) — open;
+- **the curvature-genericity conjecture** (hyperbolic hosts are the generic
+  homogeneous realization of the relational-exponential class) — open.
+
+The last two are the program's named open problems, one per layer. They are
+conjectures, not theorems, and are labelled as such wherever they appear.
+
+The full status ledger — every claim tagged THEOREM / IDENTITY / OPEN /
+CONVENTION / INSTRUMENT / EMPIRICAL and bound to its artifact — is
+[`CLAIMS.md`](CLAIMS.md), enforced by
+[`../tools/check_doc_artifacts.py`](../tools/check_doc_artifacts.py).
 
 Tree classification by the four-point condition is compatible with the kernel
 but logically independent of it. It can motivate a hyperbolic host class or a

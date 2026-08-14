@@ -209,14 +209,26 @@ mechanism made concrete. Extra radius does not rescue it: the distortion-optimal
 rate sits stably at \(1.20\times\) saturating across depths, and minimum \(D\)
 still grows (slope only drops \(0.56\to0.25\)).
 
-This is the **conjecture-false signature at the saturating rate**, from two
-constructions — reconnaissance, not proof. It redirects effort toward proving a
-**strict gap** \(C_{\rm rel}<c(n-1)\sqrt\kappa\) with a lower bound on
-distortion growth, i.e. a genuine price of genealogy, rather than toward proving
-equality. A prior fixed-cone implementation reached the opposite (also
-"false", but by an artifactual \(\varepsilon\)-decay mechanism); that two
-implementers of the same prose diverged is why step 1 now pins the
-construction.
+This is an **endpoint obstruction, not a refutation.** Conjecture 4.4 defines
+\(C_{\rm rel}\) as a supremum, so failure at the exact saturating rate
+\(\beta=c(n-1)\sqrt\kappa\) is consistent with the conjecture holding: it can
+mean only that the boundary rate is unattained while every rate below it is
+realizable. What E2 found is the *mechanism* of endpoint failure — the
+angularly-adjacent-but-tree-distant pairs of the §4.2 counterexample, made
+concrete — not a subcritical gap. Distinguishing the two is the open question.
+
+**The decisive follow-up (subcritical E2).** For each \(\beta<c(n-1)\sqrt\kappa\),
+ask whether a depth-uniform relational code of growth \(\beta\) exists. A
+gap-preserving boundary construction — a Cantor/Schottky limit set embedded in
+\(\partial\mathbb H^2\), where growth is a critical exponent / Hausdorff
+dimension — is the right instrument, not uniform circle-filling with increasing
+radius. If depth-uniform codes exist for all subcritical \(\beta\), the
+conjecture stands (endpoint merely unattained); if some \(\beta_0<c(n-1)\sqrt\kappa\)
+forces distortion to grow, that is the genuine strict gap and
+\(c(n-1)\sqrt\kappa-\beta_0\) is a new host invariant. A prior fixed-cone
+implementation reached a different (artifactual) verdict by an
+\(\varepsilon\)-decay mechanism; that two implementers of the same prose
+diverged is why step 1 now pins the construction.
 
 ---
 
@@ -448,6 +460,34 @@ polynomial \(h_{\mathrm{pack}}\)) is what occurs.
   bound. A system that fails a premise yet the naive \(\eta\) still behaves as
   if saturated → the premises are not doing the work the theory claims, and the
   applicability story needs revision.
+
+---
+
+## The empirical bridge: the growth-class × tree-defect phase diagram
+
+The two certified instruments (the growth-class gate on M3, the defect meter
+M4) yield a two-axis classifier that needs **no curvature magnitude** and no
+uncertified \(\eta\). It is the honest empirical figure for a real system, and
+it maps a dataset onto the two-layer theory directly.
+
+| | tree-like: \(\delta\approx 0\) | reticulate: \(\delta>0\) |
+|---|---|---|
+| **exponential capacity** | hyperbolic-tree host candidate (Layer II applies) | exponential network / mixed host |
+| **polynomial capacity** | path-like or non-expanding hierarchy | networked but capacity-limited |
+
+Reading it asks exactly the two questions the layers separate:
+
+1. *Growth class* (M3 gate): does the metric supply exponential room? This is
+   Layer I — Corollary 4.3, mechanically enforceable today.
+2. *Tree defect* (M4): is the relational structure tree-like, and if not, how
+   far (the measured reticulation residual)?
+
+Only the upper-left cell motivates a hyperbolic realization, and even there it
+does **not** fix a curvature magnitude — that needs a certified M3 magnitude
+estimator and the independence firewall. The disciplined progression for any
+substrate is therefore: **growth class → tree defect → constrained capacity →
+utilization (saturation) → optional curvature realization.** Leading with
+\(\kappa\) inverts this order and is what produced the retired v2 claims.
 
 ---
 

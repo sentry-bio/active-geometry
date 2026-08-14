@@ -2,7 +2,9 @@
   Active Geometry: Main Entry Point
   ==================================
 
-  The coordinate-free mathematical claim is the addressability bound
+  The theory is organized in two layers (see theory/ADDRESSABILITY_KERNEL.md).
+
+  Layer I (universal, curvature-free): the addressability bound
 
     β ≤ c · h_cap,
 
@@ -10,9 +12,12 @@
   c converts generative steps to radial distance, and h_cap is host packing
   entropy (or volume entropy under additional hypotheses). At finite block
   length, operational address capacity equals the exact metric packing number
-  in every proper metric host; nested, causal, and relation-preserving
-  achievability are stronger problems. Capacity saturation by a given process
-  and isotropic realization are separate predicates. For β > 0, c > 0, n > 1,
+  in every proper metric host (the block identity); nested, causal, and
+  relation-preserving achievability are stronger rungs of a constrained-capacity
+  ladder whose top is the block identity.
+
+  Layer II (curvature realization): capacity saturation by a given process and
+  isotropic realization are separate predicates. For β > 0, c > 0, n > 1,
   and κ ≥ 0, an isotropic hyperbolic host implies
 
     κ ≥ (β / (c · (n - 1)))².

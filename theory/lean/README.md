@@ -9,7 +9,16 @@ metric packing argument and its hypotheses are in
 
 ## Mathematical hierarchy
 
-The principal coordinate-free statement is the addressability bound
+The theory has two layers (see
+[`../ADDRESSABILITY_KERNEL.md`](../ADDRESSABILITY_KERNEL.md)). **Layer I** is
+universal and curvature-free: the addressability bound, the block-capacity
+identity, and the constrained-capacity ladder. **Layer II** is the curvature
+realization: saturation and isotropic-hyperbolic hypotheses give the state
+equation. Lean formalizes Layer I in full and the algebraic skeleton of
+Layer II; it does not formalize the two open conjectures (relational capacity,
+curvature genericity).
+
+The principal coordinate-free statement is the Layer I addressability bound
 
 \[
 \beta\le c\,h_{\mathrm{vol}},
