@@ -49,9 +49,18 @@ the object it was computed from (`clock`, `phenotype_metric`, `barcode_tree`,
 comparison may share a provenance tag. \(\beta\) and \(h_{\mathrm{pack}}\)
 compared through the same distance matrix is CIRCULAR and is reported as such
 regardless of numeric agreement. Every experiment below is designed around
-this rule; the agent enforces it mechanically by refusing to compute \(\eta\)
-when the numerator and denominator tags collide (the meter already refuses
-this).
+this rule.
+
+*Enforcement status (corrected).* The rule is **not** yet mechanically
+enforced. The meter (`tools/addressability_meter.py`) enforces weaker
+disciplines: it refuses to silently promote the occupancy slope to host
+entropy, refuses to compute \(\eta\) unless all three axes are supplied
+independently on the command line, and always reports
+`independence.verified: false` with a note that it cannot prove the axes were
+estimated from different objects. A runtime provenance-tag check that refuses
+\(\eta\) on tag collision is a **recommended addition, not present today**. Until
+it exists, the firewall is a convention the operator must uphold, and the
+meter's own disclaimer says so.
 
 **Resolution.** Fix \(\varepsilon\) once per system and hold it across all
 conditions. If distinguishability sharpens with depth, model
@@ -110,23 +119,51 @@ refusal rule. M1 and M2 are supplied per system by the experiments below.
    variants at transfer fraction \(f\in\{0,0.01,0.05,0.25\}\); Euclidean and
    product-space nulls; two non-stationary rate schedules (rate step, rate
    ramp).
-2. Subsample every matrix to a fixed leaf count (remove leaf-count confounds,
-   as in `kernel_orthogonality.py`).
+2. Subsample every matrix to a fixed leaf count, so a per-axis effect cannot
+   be a leaf-count artifact.
 3. Run M2, M3, M4 on every matrix. Run M1 on the generator.
-4. Regress each estimator against every ground-truth axis.
+4. Regress each estimator against every ground-truth axis, reporting both
+   correlation **and absolute error** (correlation is scale-blind — a
+   near-unity \(r\) can coexist with a large magnitude error).
 
 **Decision rule.**
-- *Pass:* M3 correlates with true \(h_{\mathrm{pack}}\) at \(r>0.95\) and with
-  reticulation \(|r|<0.1\); M4 is \(0\pm\) error on every pure tree
-  irrespective of \(\kappa\) and tracks \(f\); Euclidean nulls give M3
-  exponential rate consistent with zero.
+- *Pass:* an estimator recovers its own axis within a stated **absolute** error
+  and reads null on the others.
 - *Kill:* any estimator that misses its own axis beyond stated error, or moves
   with the orthogonal axis, is **disqualified from field use**, and any
   published number produced by it is withdrawn.
 
-**Status.** Partially done (occupancy-slope M3 and defect M4 validated on
-\(b\)-ary and reticulated grids). Open: non-stationary schedules and the M2
-\(c\)-estimator.
+**Status — executed (2026-08-13).**
+- **M2 (radial rate \(c\)): CERTIFIED.** Exact recovery, 0.00% error across all
+  16 cells, \(r=1.0000\).
+- **M4 (tree defect \(\delta\)): CERTIFIED.** Exactly zero on pure trees at
+  every branching factor, tracks reticulation at \(r=0.946\), orthogonal to
+  branching. This also reproduces the \(\delta\perp h_{\mathrm{pack}}\) split
+  on synthetic ground truth.
+- **M3 (packing entropy): NOT CERTIFIED as a single-point magnitude
+  estimator.** On an Arm-A grid built so \(\eta=1\) exactly, measured \(\eta\)
+  ran 0.87–1.19 with 11/16 cells above 1 — apparent bound violations from
+  estimator noise alone. It fails the Euclidean null only slowly and breaks
+  under non-stationarity (a branching-rate step gives ~25% error, driving
+  \(\eta\) to 0.80 on data that sits exactly at 1).
+
+**The growth-class gate (delivered and validated).** Exponential growth is
+linear in \(\log P\) vs \(\rho\); polynomial growth is linear in \(\log P\) vs
+\(\log\rho\). Fitting both and comparing adjusted \(R^2\) classified 13/13 hosts
+correctly with no overlap (trees and \(\mathbb H^2\) exponential; 2D/3D grids
+and Euclidean MSTs polynomial). **Certified M3 must carry this gate**: report a
+packing entropy only when the exponential model wins, else \(h_{\mathrm{pack}}=0\)
+by Corollary 4.3. This makes polynomial-growth exclusion — the coordinate-free
+core of the theory — mechanically enforceable, and is the part of M3 that is
+usable today. A **minimum-radial-shells precondition** is also required: M3
+error tracks the number of fit points directly.
+
+**Consequence for the protocol.** The *qualitative* axis (is the host
+exponential?) is instrumented now. The *quantitative* axis (what is \(\eta\)?)
+is not: an \(\eta\) within roughly \(\pm20\%\) of 1 is currently uninterpretable,
+which is the entire decision range of E3 (\(\eta\ge0.8\)) and E5
+(\(\eta\to1\) vs controls). E1 is correctly the gate on everything else, and it
+does not yet fully pass.
 
 ---
 
@@ -139,9 +176,12 @@ depth \(R\).
 
 **Procedure.**
 1. For each depth \(R\), construct relational codes of a \(b\)-ary tree into
-   \(\mathbb H^2_\kappa\): (a) a Sarkar-type deterministic embedding, (b) a
-   gradient-trained embedding minimizing distortion at fixed radius budget
-   \(cR\).
+   \(\mathbb H^2_\kappa\). **Pin the construction**: children of a node must
+   **subdivide their parent's angular sector** (a fixed cone half-angle is not
+   admissible — it fails to partition angular space among children and yields
+   an artifactual verdict). Run (a) the deterministic subdivided-sector layout
+   and (b) a gradient-trained embedding minimizing distortion at fixed radius
+   budget \(cR\).
 2. Record realized growth \(\hat\beta(R)\) and the smallest \((D,K)\) for which
    conditions 1–4 of Conjecture 4.4 still hold.
 3. Plot \(\hat\beta(R)\) against the bound \(c(n-1)\sqrt\kappa\), and
@@ -156,6 +196,27 @@ depth \(R\).
   to the gap.
 - *No kill line:* both outcomes are informative; this is reconnaissance for a
   proof, not a test of nature.
+
+**Status — executed (2026-08-13), subdivided-sector construction.** At the
+saturating rate \(c=\ln(b)/\sqrt\kappa\), conditions 1–3 hold exactly (radius =
+budget to four decimals; separation exactly constant, \(d(\log\varepsilon)/dR
+= -0.00000\), because arc length per node \(\sim\pi(e^\tau/b)^R\) is constant
+exactly when \(\tau=\ln b\)). **Condition 4 fails linearly:** \(D(R)=0.558\,R
++ 0.034\), \(R^2=0.99996\) (a linear fit beats exponential). The binding pair
+is angularly adjacent but tree-distant — neighbours on the circle whose
+subtrees split at the root — which is exactly the §4.2 counterexample
+mechanism made concrete. Extra radius does not rescue it: the distortion-optimal
+rate sits stably at \(1.20\times\) saturating across depths, and minimum \(D\)
+still grows (slope only drops \(0.56\to0.25\)).
+
+This is the **conjecture-false signature at the saturating rate**, from two
+constructions — reconnaissance, not proof. It redirects effort toward proving a
+**strict gap** \(C_{\rm rel}<c(n-1)\sqrt\kappa\) with a lower bound on
+distortion growth, i.e. a genuine price of genealogy, rather than toward proving
+equality. A prior fixed-cone implementation reached the opposite (also
+"false", but by an artifactual \(\varepsilon\)-decay mechanism); that two
+implementers of the same prose diverged is why step 1 now pins the
+construction.
 
 ---
 
@@ -341,8 +402,8 @@ A marked mobile element for an independent transfer count.
 
 **Decision rule.**
 - *Predict:* \(\delta\) increases with transfer rate; \(h_{\mathrm{pack}}\)
-  approximately invariant (the synthetic split of `kernel_orthogonality.py`,
-  reproduced in vivo).
+  approximately invariant (the synthetic \(\delta\perp h_{\mathrm{pack}}\) split
+  certified in E1's M4 run, reproduced in vivo).
 - *Kill:* \(\delta\) blind to a \(\ge\)4-fold transfer change, or
   \(h_{\mathrm{pack}}\) tracking transfer as if it were branching → operational
   orthogonality fails for this class.
@@ -410,7 +471,10 @@ until the meter recovers synthetic truth.
 
 Not any one of these. The bound is already firm. Firm *applicability* is:
 
-- E1 passed (legal instruments);
+- E1 passed (legal instruments). **Current state:** M2 and M4 certified; M3
+  certified only for the exponential/polynomial dichotomy via the growth-class
+  gate, not yet as a magnitude estimator — so \(\eta\) to \(\pm20\%\) is not yet
+  interpretable and this precondition is not fully met;
 - E3 showing \(\eta\le 1\) with a given tree (premises instantiated, bound
   respected in a living hierarchy);
 - E4 showing capacity tracking \(\beta\) with spectrum and \(N_e\) controlled
