@@ -182,9 +182,16 @@ does not yet fully pass.
 
 ---
 
-## E2 — Numerical achievability at fixed host geometry
+## E2 — Equal-edge endpoint diagnostic
 
-**Question.** Which half of Conjecture 4.4 deserves proof effort?
+**Layer IIa refinement, not a test of host capacity.** Theorem 4.4 now proves
+that weighted/radial relational capacity of \(\mathbb H_\kappa^n\) equals
+\(c(n-1)\sqrt\kappa\). E2 asks a stronger synchronization question: what if
+every source-tree edge is forced to consume exactly one clock unit, the budget
+is exactly \(cR\) at every finite depth, and no startup slack is allowed?
+
+**Question.** Is the exact boundary rate attained in that equal-edge subclass,
+or does synchronization force endpoint distortion?
 
 **Inputs.** Fixed \((\kappa, n=2, \varepsilon, c)\); a tree family of growing
 depth \(R\).
@@ -198,19 +205,16 @@ depth \(R\).
    and (b) a gradient-trained embedding minimizing distortion at fixed radius
    budget \(cR\).
 2. Record realized growth \(\hat\beta(R)\) and the smallest \((D,K)\) for which
-   conditions 1–4 of Conjecture 4.4 still hold.
+   the former unit-edge conditions of Conjecture 4.4 still hold.
 3. Plot \(\hat\beta(R)\) against the bound \(c(n-1)\sqrt\kappa\), and
    \((D,K)\) against \(R\).
 
 **Decision rule.**
-- *Conjecture-true signature:* \(\hat\beta(R)\to c(n-1)\sqrt\kappa\) with
-  \((D,K)\) bounded in \(R\) → attempt the coding theorem.
-- *Conjecture-false signature:* maintaining \(\hat\beta\ge\beta_0\) forces
-  \(D(R)\to\infty\); \(\beta_0\) estimates \(C_{\rm rel}\) and
-  \(c(n-1)\sqrt\kappa-\beta_0\) is a new host invariant → redirect proof effort
-  to the gap.
-- *No kill line:* both outcomes are informative; this is reconnaissance for a
-  proof, not a test of nature.
+- *Endpoint attained:* \(\hat\beta(R)\to c(n-1)\sqrt\kappa\) with
+  \((D,K)\) bounded in \(R\).
+- *Endpoint obstructed:* \(D(R)\to\infty\) at the exact boundary rate.
+- Neither outcome changes Theorem 4.4: capacity is a supremum and the weighted
+  coding theorem is already proved.
 
 **Status — executed (2026-08-13), subdivided-sector construction.** At the
 saturating rate \(c=\ln(b)/\sqrt\kappa\), conditions 1–3 hold exactly (radius =
@@ -224,26 +228,16 @@ mechanism made concrete. Extra radius does not rescue it: the distortion-optimal
 rate sits stably at \(1.20\times\) saturating across depths, and minimum \(D\)
 still grows (slope only drops \(0.56\to0.25\)).
 
-This is an **endpoint obstruction, not a refutation.** Conjecture 4.4 defines
-\(C_{\rm rel}\) as a supremum, so failure at the exact saturating rate
-\(\beta=c(n-1)\sqrt\kappa\) is consistent with the conjecture holding: it can
-mean only that the boundary rate is unattained while every rate below it is
-realizable. What E2 found is the *mechanism* of endpoint failure — the
-angularly-adjacent-but-tree-distant pairs of the §4.2 counterexample, made
-concrete — not a subcritical gap. Distinguishing the two is the open question.
+This is the **endpoint-obstructed** signature for this layout, not a host
+capacity gap. Theorem 4.4 supplies the decisive subcritical construction:
+Bishop--Jones free semigroup trees with local generator-dependent edge
+durations have critical exponents arbitrarily close to the ambient exponent
+and quasi-isometric orbit maps. The equal-edge restriction is exactly what
+E2 adds and what the theorem does not need.
 
-**The decisive follow-up (subcritical E2).** For each \(\beta<c(n-1)\sqrt\kappa\),
-ask whether a depth-uniform relational code of growth \(\beta\) exists. A
-gap-preserving boundary construction — a Cantor/Schottky limit set embedded in
-\(\partial\mathbb H^2\), where growth is a critical exponent / Hausdorff
-dimension — is the right instrument, not uniform circle-filling with increasing
-radius. If depth-uniform codes exist for all subcritical \(\beta\), the
-conjecture stands (endpoint merely unattained); if some \(\beta_0<c(n-1)\sqrt\kappa\)
-forces distortion to grow, that is the genuine strict gap and
-\(c(n-1)\sqrt\kappa-\beta_0\) is a new host invariant. A prior fixed-cone
-implementation reached a different (artifactual) verdict by an
-\(\varepsilon\)-decay mechanism; that two implementers of the same prose
-diverged is why step 1 now pins the construction.
+A prior fixed-cone implementation reached an artifactual
+\(\varepsilon\)-decay verdict; that two implementers of the same prose diverged
+is why step 1 pins the construction.
 
 ---
 
@@ -568,7 +562,7 @@ the biological claim actually lives — is no longer buried.
 | 2 | E4 mutation-rate intervention | IIb | Is saturation a response? | intervention |
 | 3 | E3 barcoded lineages | IIb | Is \(\eta\) real with a given tree? | ground-truth observation |
 | 4 | E7 reticulation intervention | IIa | Is \(\delta\perp h_{\mathrm{pack}}\) in vivo? | intervention |
-| 5 | E2 numerical achievability | IIa | Subcritical vs strict-gap in Conjecture 4.4 | numerical |
+| 5 | E2 equal-edge endpoint | IIa refinement | Does exact synchronization obstruct the endpoint? | numerical |
 | 6 | E5 trained hierarchy (adversarial) | IIb | Is saturation cross-domain? | intervention |
 | 7 | E8 boundary mapping | I | Do the premises do real work? | intervention / observation |
 | 8 | E6 radius identification | I/IIb | Is \(c\) information? | pre-registered prediction |
@@ -604,8 +598,10 @@ Not any one of these. The bound is already firm. Firm ground is layer by layer.
 **Layer IIa — host class (the biological claim).**
 - E9 showing hyperbolic beats Euclidean at matched capacity — the isotropy
   premise earned rather than asserted. **This is the single most important
-  unrun experiment.** Supporting: E2 settling Conjecture 4.4, E7 orthogonality
-  in vivo, the tree-defect and seed-stability evidence.
+  unrun experiment.** Mathematical support: Theorem 4.4 proves full weighted
+  relational capacity in the hyperbolic host. Empirical support: E7
+  orthogonality in vivo, the tree-defect and seed-stability evidence. E2 is
+  only an equal-edge endpoint refinement.
 
 **Layer IIb — saturation.**
 - E3 showing \(\eta\le 1\) with a given tree, and E4 showing capacity tracking
@@ -617,8 +613,9 @@ Firm *generality* is E5 in addition, with its negative controls failing as
 required: the same response under a knob that is description length and is not
 biology.
 
-Firm *relational geometry* is a proof or a clean numerical settlement of
-Conjecture 4.4 (E2 as reconnaissance).
+Firm *relational capacity* is now mathematical: Theorem 4.4 proves that
+weighted/radial genealogy-preserving codes attain the full hyperbolic exponent
+as a supremum. E2 concerns only the stronger equal-edge synchronization class.
 
 A single failed intervention does not unwind the theorems. It reclassifies
 saturation from a law-like regularity to a domain fact — a legitimate and

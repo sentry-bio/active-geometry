@@ -207,26 +207,43 @@ C_{\mathrm{relational}}\le C_{\mathrm{causal}}\le C_{\mathrm{persistent}}
 }
 \]
 
-Only the top rung is a theorem (the block identity above). The relational rung
-is the open problem below. The middle rungs are, at present, definitions. This
-is the honest state: the ladder is the right organizing frame, not a set of
-established results, and Active Geometry is most generally a **constrained
-capacity theory** — geometry supplies addresses; the admissibility class
-decides which addresses are usable.
+The top rung is always a theorem (the block identity above). The middle rungs
+are, at present, definitions. The relational rung depends on the host: it can
+be strictly below block capacity in general, but Theorem 4.4 proves equality
+for real hyperbolic space under a local weighted process clock. Active Geometry
+is therefore a **constrained capacity theory** — geometry supplies addresses;
+the admissibility class decides which addresses are usable — with a complete
+relational coding theorem in its canonical host.
 
-### The open theorem
+### The relational capacity theorem
 
-The kernel has exactly one open mathematical problem, posed precisely as
-Conjecture 4.4 of [`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md): the
-relational tree capacity of \(\mathbb H_\kappa^n\) equals \(c(n-1)\sqrt\kappa\).
-The converse half is Theorem 4.1. The achievability half — **subcritical**:
-every rate strictly below \(c(n-1)\sqrt\kappa\) is realized by a
-depth-uniform relational code — is open. Because the capacity is a supremum,
-failure at the exact saturating endpoint does *not* refute the conjecture; it
-may only show the endpoint is unattained. A proof would be a coding theorem for
-genealogy; a genuine subcritical obstruction would make the gap below
-\(c(n-1)\sqrt\kappa\) a new host invariant. Neither outcome disturbs the
-inequality or the block identity.
+The problem formerly called Conjecture 4.4 is settled, after correcting a
+false clocking condition.
+
+The old exact unit-edge statement was false: if \(c<\varepsilon\), the first
+child must be both within \(c\) and at least \(\varepsilon\) from the root.
+With a local weighted clock — positive edge durations, path-additive process
+time, and a radial budget \(d(o,f(v))\le c\,\tau(v)+A_0\) — the full identity
+holds:
+
+\[
+\boxed{
+C_{\mathrm{rel}}^{\mathrm{wt}}
+(\mathbb H_\kappa^n,c;\varepsilon)
+=c(n-1)\sqrt\kappa.
+}
+\]
+
+The upper bound is the packing theorem. The lower bound uses Skenderi's 2026
+Bishop--Jones theorem: free semigroup orbit trees have critical exponents
+arbitrarily close to the ambient hyperbolic exponent and are
+quasi-isometrically embedded. Weighting each generator by its geometric
+displacement divided by \(c\) gives the process clock and the radial bound.
+
+Thus genealogy has **zero exponential-order tax** in real hyperbolic space;
+the endpoint need not be attained. The proof and the exact boundary of the
+stronger equal-edge problem are in
+[`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md).
 
 The theorems do not decide whether nature instantiates the premises or fills
 the budget. The ranked experimental protocol is
@@ -280,11 +297,12 @@ B-\beta
 \underbrace{\frac{\beta}{C_{\mathrm{rel}}}}_{\text{utilization}} .
 \]
 
-The distinction is load-bearing for measurement: an observed
-\(\eta_{\mathrm{block}}<1\) need not mean a system is inefficient or fails to
-saturate. It may be relationally optimal while paying an unavoidable price of
-genealogy \(\Gamma\). "Does it saturate?" is properly the question of
-utilization \(\beta/C_{\mathrm{rel}}\), not of \(\eta_{\mathrm{block}}\).
+The distinction is load-bearing in general hosts. In the weighted hyperbolic
+class, Theorem 4.4 proves \(C_{\rm rel}^{\rm wt}=B\), so
+\(\Gamma=0\): relation preservation does not reduce exponential capacity.
+There the block ratio is the utilization ratio. Outside that class or under
+the stronger equal-edge synchronization constraint, an observed
+\(\eta_{\rm block}<1\) may still mix relational tax with under-utilization.
 
 ---
 
@@ -333,9 +351,9 @@ Writing \(\beta=h_{\mathrm{eff}}\ln2\) merely converts bits to nats.
 
 Layer I is deliberately curvature-free, which raises the question of why
 Layer II is about curvature at all rather than an arbitrary exponential-growth
-space. The answer is a **genericity claim**, stated as a conjecture beside the
-capacity one (Conjecture 7.1 of the spine): among hosts that are homogeneous
-and isotropic, the requirement of exponential capacity plus relational
+space. The answer is the program's remaining **genericity conjecture**
+(Conjecture 7.1 of the spine): among hosts that are homogeneous and isotropic,
+the requirement of exponential capacity plus relational
 (genealogy-preserving) fidelity is met by the negatively curved space forms and
 essentially only them. Under those symmetry hypotheses the space-form
 classification leaves \(\mathbb H_\kappa^n\), so hyperbolic geometry is not an
@@ -428,13 +446,14 @@ The kernel does not prove:
 - that an ambient dimension is selected by optimization;
 - that a non-negative mismatch function generates attracting dynamics;
 - that tree thinness measures curvature magnitude;
-- **the relational capacity conjecture** (subcritical achievability in
-  \(\mathbb H_\kappa^n\)) — open;
 - **the curvature-genericity conjecture** (hyperbolic hosts are the generic
   homogeneous realization of the relational-exponential class) — open.
 
-The last two are the program's named open problems, one per layer. They are
-conjectures, not theorems, and are labelled as such wherever they appear.
+The last item is the program's remaining open mathematical conjecture. The
+former relational-capacity conjecture is now Theorem 4.4. Its lower bound is a
+paper proof depending on Skenderi's Bishop--Jones theorem, not a Lean theorem.
+The stronger exact unit-edge synchronization problem remains unresolved for
+\(c\ge\varepsilon\), but it is no longer the definition of host capacity.
 
 The full status ledger — every claim tagged THEOREM / IDENTITY / OPEN /
 CONVENTION / INSTRUMENT / EMPIRICAL and bound to its artifact — is

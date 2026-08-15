@@ -317,80 +317,60 @@ A reticulate source can use every available address, and a perfect tree can
 use very few. Any theorem turning \(\delta\) into a quantitative capacity gap
 must add a particular source class, host class, and distortion criterion.
 
-### Conjecture 4.4 — Relational tree capacity of hyperbolic hosts
+### Theorem 4.4 — Relational capacity of hyperbolic hosts
 
-This is the program's open theorem, stated with the precision of its proved
-statements so that it can be settled by proof or by counterexample.
+The problem formerly stated here as Conjecture 4.4 is now settled. The exact
+unit-edge formulation was false as quantified: if \(c<\varepsilon\), a child
+of the root would have to lie both within distance \(c\) and at least
+\(\varepsilon\) from it. The only admissible tree is then the root, so its
+capacity is zero rather than \(c(n-1)\sqrt\kappa\).
 
-Fix a host \(\mathbb H_\kappa^n\) with base point \(o\), \(\kappa>0\),
-\(n\ge2\); a resolution \(\varepsilon>0\); a radial rate \(c>0\); and a
-distortion \(D\ge1\) with additive slack \(K\ge0\).
-
-Let \(T\) be a rooted, locally finite tree with unit edge lengths, tree metric
-\(d_T\), and level sets \(T_R\) (vertices at depth \(\le R\)). A map
-\(f:V(T)\to\mathbb H_\kappa^n\) is a **\((D,K)\)-relational code at rate
-\(c\)** when:
-
-1. \(f(\mathrm{root})=o\);
-2. \(f(T_R)\subseteq B(o,cR)\) for all \(R\);
-3. distinct vertices satisfy \(d(f(u),f(v))\ge\varepsilon\);
-4. for all \(u,v\in V(T)\):
-
-   \[
-   \frac{c}{D}\,d_T(u,v)-K
-   \;\le\;
-   d(f(u),f(v))
-   \;\le\;
-   c\,D\,d_T(u,v)+K.
-   \]
-
-Define the relational capacity as a **supremum**
+The error was not geometric; it was clocking. It forced every source-tree edge
+to cost exactly one unit while allowing no startup slack, even though the
+general addressability theorem permits an independently calibrated process
+clock. Give each tree edge \(e\) a positive duration \(a(e)\), let
+\(\tau(v)\) be elapsed path time, and use the weighted path metric \(d_\tau\).
+A weighted relational code is \(\varepsilon\)-separated, quasi-isometric for
+\(d_\tau\), and obeys
 
 \[
-C_{\rm rel}(\kappa,n,c;\varepsilon)
-:=
-\sup_{D\ge1,\;K\ge0}\;
-\sup_{(T,f)}\;
-\limsup_{R\to\infty}\frac{\log|T_R|}{R},
+d(o,f(v))\le c\,\tau(v)+A_0
 \]
 
-the outer supremum over admissible distortion classes, the inner over trees
-admitting a \((D,K)\)-relational code at rate \(c\).
-
-**Conjecture (subcritical form).** For every rate strictly below the bound
-there is a depth-uniform relational code:
+for a depth-independent \(A_0\). Define \(C_{\rm rel}^{\rm wt}\) from the
+growth of \(\{v:\tau(v)\le R\}\). Then, for every \(\kappa>0\), \(n\ge2\),
+\(c>0\), and \(\varepsilon>0\),
 
 \[
 \boxed{
-\text{for all }\beta<c(n-1)\sqrt\kappa,\ \exists\,(D,K)\text{ and }(T,f)
-\text{ with growth }\ge\beta,\ (D,K)\text{ bounded in }R,
+C_{\rm rel}^{\rm wt}(\mathbb H_\kappa^n,c;\varepsilon)
+=c(n-1)\sqrt\kappa .
 }
 \]
 
-equivalently \(C_{\rm rel}(\kappa,n,c;\varepsilon)=c(n-1)\sqrt\kappa\).
+The upper bound is Theorem 4.1. For the lower bound, choose an
+\(\varepsilon\)-separated finite-index subgroup of a cocompact hyperbolic
+lattice. Skenderi's 2026 Bishop--Jones theorem supplies free subsemigroups with
+critical exponent arbitrarily close to the lattice exponent
+\((n-1)\sqrt\kappa\), and its orbit tree is quasi-isometrically embedded.
+Assign generator \(s\) the edge duration
+\(a_s=d(o,so)/c\). The triangle inequality gives the radial budget exactly,
+and Skenderi's partition-sum inequality gives weighted growth arbitrarily
+close to \(c(n-1)\sqrt\kappa\).
 
-The upper bound is Theorem 4.1 applied to conditions 2 and 3: a relational code
-is in particular a faithful representation at radial rate \(c\), so
-\(C_{\rm rel}\le c\,h_{\rm vol}=c(n-1)\sqrt\kappa\). The open half is the
-subcritical achievability above.
+Thus preserving genealogy has **zero relational tax at exponential order** in
+real hyperbolic space. The supremum need not be attained. The stronger
+equal-edge, exact finite-depth problem remains false for \(c<\varepsilon\) and
+unresolved for \(c\ge\varepsilon\); E2 probes that synchronization constraint,
+not host capacity.
 
-**Because the capacity is a supremum, the endpoint need not be attained.**
-Failure of a construction at the exact saturating rate \(\beta=c(n-1)\sqrt\kappa\)
-is *not* a refutation: it may only show that the boundary rate is unrealizable
-while every rate below it is fine — the ordinary situation for a capacity. A
-refutation requires a *subcritical* obstruction: some \(\beta_0<c(n-1)\sqrt\kappa\)
-above which distortion must grow with depth. Only that would place \(C_{\rm rel}\)
-strictly below the bound and make the gap \(c(n-1)\sqrt\kappa-C_{\rm rel}\) a new
-host invariant.
-
-The natural language for settling it is boundary geometry: a regular tree's
-boundary is a Cantor ultrametric, \(\partial\mathbb H^2\) carries a visual
-metric, a relational code is a quasisymmetric boundary embedding, and the growth
-rate is a Hausdorff dimension / critical exponent. Patterson–Sullivan theory
-already identifies critical exponent with limit-set dimension for
-convex-cocompact free groups, which is closer to the conjecture than finite
-Sarkar layouts. In every case the block identity (Theorem 4.2) and the converse
-(Theorem 4.1) are unaffected.
+The complete definitions, counterexample, proof, citation dependencies, and
+formal boundary are in
+[`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md). The lower
+bound uses Aleksander Skenderi, "Free semigroups of large critical exponent,"
+*Journal of Topology* (2026), DOI
+[10.1112/topo.70087](https://doi.org/10.1112/topo.70087), especially Theorem
+3.1, Proposition 3.2(4), Theorem 1.1 (5.1), and equation (6.5).
 
 ### Corollary 4.3 — Polynomial-growth exclusion
 
@@ -460,15 +440,23 @@ and the block efficiency factors as
 \underbrace{\frac{\beta}{C_{\rm rel}}}_{\text{utilization}} .
 \]
 
-The relational tax \(\Gamma\) is the unavoidable price of preserving genealogy
-— the gap of Conjecture 4.4, zero iff that conjecture holds with equality. The
-utilization term is what "saturation" should mean for a relationally
-constrained process. **Consequence for measurement:** an observed
-\(\eta_{\mathrm{block}}<1\) does not by itself indicate an inefficient or
-unsaturated system; it may be relationally optimal (\(\beta=C_{\rm rel}\)) while
-paying \(\Gamma>0\). The saturation question is properly posed on utilization
-\(\beta/C_{\rm rel}\), which requires an estimate of \(C_{\rm rel}\), not of
-\(B\) alone.
+The relational tax \(\Gamma\) is the possible price of preserving genealogy in
+a general host or under a stronger synchronization constraint. Theorem 4.4
+proves that it is **zero at exponential order in real hyperbolic space** when
+the process has a local weighted clock:
+
+\[
+C_{\rm rel}^{\rm wt}
+=c(n-1)\sqrt\kappa
+=B.
+\]
+
+Thus in the intended hyperbolic realization, relation preservation itself does
+not reduce asymptotic capacity; only endpoint attainment and equal-edge
+synchronization may cost. The utilization term remains what "saturation"
+means for a particular physical process. In hosts outside Theorem 4.4's class,
+an observed \(\eta_{\rm block}<1\) can still mix relational tax and utilization,
+so the decomposition remains the correct audit.
 
 ### Proposition 5.1 — Exponential saturation
 
@@ -637,8 +625,8 @@ ambient dimension \(n=2\),
 
 Layer I is curvature-free, so it is fair to ask why Layer II is about curvature
 rather than an arbitrary exponential-growth host. The answer is a genericity
-claim, and it is the second of the program's two open problems (the first being
-Conjecture 4.4).
+claim, now the program's remaining open mathematical conjecture. The former
+relational-capacity conjecture is Theorem 4.4.
 
 **Conjecture.** Among hosts that are complete, homogeneous, and isotropic, the
 requirement of positive volume entropy (exponential capacity) together with

@@ -19,8 +19,11 @@ Status vocabulary:
 
 - **THEOREM** — proved; Lean-checked where marked, else a paper proof.
 - **IDENTITY** — proved equality of two independently defined quantities.
+- **DEFINITION** — fixes vocabulary; carries no empirical content.
 - **OPEN** — a stated conjecture, not proved.
+- **REFUTED** — false under its stated quantifiers; counterexample recorded.
 - **CONVENTION** — a gauge/coordinate choice, true by stipulation.
+- **HONESTY ITEM** — a premise or limitation that must accompany the claim.
 - **INSTRUMENT** — the status of a measurement tool, not a claim about nature.
 - **EMPIRICAL** — a claim about nature; decided only by experiment.
 
@@ -35,7 +38,8 @@ Status vocabulary:
 | L1.5 | Polynomial-growth exclusion (Corollary 4.3) | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §4 |
 | L1.6 | Constrained-capacity ladder: relational ≤ causal ≤ persistent ≤ block | THEOREM (ordering) / OPEN (rung values) | `theory/ADDRESSABILITY_KERNEL.md` §3 |
 | L1.7 | Slack decomposition: block slack = relational tax + utilization slack | THEOREM (definitional) | `theory/MATHEMATICAL_SPINE.md` §5 |
-| L1.8 | Relational capacity of \(\mathbb H_\kappa^n\) is \(c(n-1)\sqrt\kappa\) (subcritical achievability) | OPEN | `theory/MATHEMATICAL_SPINE.md` §4 (Conjecture 4.4) |
+| L1.8 | Weighted relational capacity of \(\mathbb H_\kappa^n\) is \(c(n-1)\sqrt\kappa\) | THEOREM (paper; cited lower bound) | `theory/RELATIONAL_CAPACITY_THEOREM.md`; `theory/MATHEMATICAL_SPINE.md` §4 (Theorem 4.4) |
+| L1.9 | Exact unit-edge formulation of former Conjecture 4.4 | REFUTED for \(c<\varepsilon\); open for \(c\ge\varepsilon\) | `theory/RELATIONAL_CAPACITY_THEOREM.md` §1, §5 |
 
 ## Bridge — four-point classifier
 
@@ -99,7 +103,7 @@ saturation (IIb). This table is the allocation of record; see
 | E1 meter certification | I | run (M2/M4 pass, M3 magnitude fails, gate passes) | instruments legal |
 | E8 boundary mapping | I | designed | premises load-bearing |
 | E9 matched-capacity Euclidean vs hyperbolic (*E-alpha*) | IIa | **designed, unrun — highest value** | is hyperbolic forced |
-| E2 numerical achievability | IIa | run (endpoint obstruction; subcritical open) | Conjecture 4.4 |
+| E2 equal-edge numerical achievability | IIa refinement | run (endpoint obstruction) | stronger synchronization subclass; Theorem 4.4 already settles host capacity |
 | E7 reticulation intervention | IIa | designed | \(\delta\perp h_{\mathrm{pack}}\) in vivo |
 | E3 barcoded lineages | IIb | designed | \(\eta\le1\) with a given tree |
 | E4 mutation-rate intervention | IIb | designed | saturation as a response |
@@ -116,7 +120,8 @@ Closing E9 is the program's highest-leverage empirical step.
 - No absolute curvature \(\kappa\) is a certified measurement (M3 magnitude is
   uncertified; embedding non-identifiability is documented).
 - No zero-free-parameter cross-domain law is established; the state equation is
-  a Layer IIb ideal awaiting saturation evidence and the two open conjectures.
+  a Layer IIb ideal awaiting saturation evidence and the remaining
+  curvature-genericity conjecture.
 - The hyperbolic host class (IIa) is not yet *forced* by evidence: isotropy is
   asserted, and E9 has not been run.
 - Lean certifies algebra from definitions; it certifies neither that biology

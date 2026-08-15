@@ -14,9 +14,13 @@ The theory has two layers (see
 universal and curvature-free: the addressability bound, the block-capacity
 identity, and the constrained-capacity ladder. **Layer II** is the curvature
 realization: saturation and isotropic-hyperbolic hypotheses give the state
-equation. Lean formalizes Layer I in full and the algebraic skeleton of
-Layer II; it does not formalize the two open conjectures (relational capacity,
-curvature genericity).
+equation. Lean formalizes the packing/block portion of Layer I and the
+algebraic skeleton of Layer II. The weighted relational-capacity lower bound
+is a paper proof depending on Skenderi's 2026 Bishop--Jones semigroup theorem
+(see
+[`../RELATIONAL_CAPACITY_THEOREM.md`](../RELATIONAL_CAPACITY_THEOREM.md)).
+Lean also does not formalize the remaining open curvature-genericity
+conjecture.
 
 The principal coordinate-free statement is the Layer I addressability bound
 

@@ -18,7 +18,8 @@ geometry that realizes it, and the question of whether nature fills it.
 The program is stratified so that a failure in one layer cannot contaminate
 another. The definitions live in [`CLAIMS.md`](CLAIMS.md); the mathematics in
 [`ADDRESSABILITY_KERNEL.md`](ADDRESSABILITY_KERNEL.md) and
-[`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md); the tests in
+[`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md); the relational coding theorem
+in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the tests in
 [`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md).
 
 - **Layer I — universal capacity theory (curvature-free).** The bound
@@ -49,15 +50,17 @@ stands whether or not the biology saturates.
 - **Domain.** Metric geometry, information theory. No biology in the load-bearing
   argument.
 - **Carries.** All of Layer I (bound, block identity, ladder, slack), the
-  Layer IIa realization theorems and the two open conjectures (relational
-  capacity, curvature genericity), and \(n=2\) as embeddability. Presents the
+  relational-capacity coding theorem (genealogy has zero exponential tax in
+  \(\mathbb H_\kappa^n\)), the Layer IIa realization theorems and remaining
+  curvature-genericity conjecture, and \(n=2\) as embeddability. Presents the
   state equation as a *conditional* Layer IIb ideal, not a law.
 - **Backed by.** The Lean development under `theory/lean/` (bound and block
-  identity fully checked; Layer II algebra checked; conjectures stated, not
-  proved) and the packing/quartet mathematics of the spine.
+  identity fully checked; Layer II algebra checked), the cited Bishop--Jones
+  lower bound in `theory/RELATIONAL_CAPACITY_THEOREM.md`, and the
+  packing/quartet mathematics of the spine.
 - **Claim it makes about nature.** None that can fail — it is a converse plus an
   achievable form plus a realization geometry. Its risk is entirely
-  mathematical (the two conjectures).
+  mathematical (the curvature-genericity conjecture).
 
 ### Paper II — *Evolution as Active Geometry*
 
@@ -84,6 +87,11 @@ future test, not part of the current artefact.
 - **Kernel seam.** Paper II *cites* Paper I for the bound and block identity; it
   never re-derives them. The inequality is the license; the biology is an
   instance.
+- **The genealogy seam.** Paper I proves that relational fidelity costs no
+  exponential-order capacity in a real hyperbolic host under a local weighted
+  process clock. Paper II therefore tests utilization and host class, not an
+  assumed universal "price of genealogy." E2's equal-edge endpoint obstruction
+  is a stronger synchronization issue, not host capacity.
 - **The \(n=2\) seam.** Paper I fixes \(n=2\) as a structural embeddability
   floor. Paper II therefore must **not** present \(n=2\) as an empirical
   discovery; a measured \(n>2\) (e.g. bacteria \(\approx 3.4\)) is a
@@ -119,9 +127,12 @@ The artefact checks itself, and CI should run all four:
 - **Finished:** Layer I (proved, checked); the two-layer/three-sublayer
   framing; the instrument for the qualitative claims (M2, M4, growth-class
   gate); the honesty apparatus.
-- **Open, mathematics:** the relational-capacity conjecture (subcritical
-  achievability; E2 found only an endpoint obstruction) and the
-  curvature-genericity conjecture.
+- **Finished, paper-level mathematics:** weighted/radial relational capacity of
+  \(\mathbb H_\kappa^n\) equals its volume entropy (Skenderi lower bound plus
+  the packing converse). The former unit-edge conjecture is refuted as stated.
+- **Open, mathematics:** the curvature-genericity conjecture, plus the stronger
+  equal-edge synchronization refinement for \(c\ge\varepsilon\) (not the
+  definition of host capacity).
 - **Open, instrument:** a certified M3 magnitude estimator and a runtime
   independence firewall.
 - **Open, empirical — the highest-leverage gap:** E9, the matched-capacity
