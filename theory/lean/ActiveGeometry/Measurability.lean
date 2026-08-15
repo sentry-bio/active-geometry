@@ -1,5 +1,5 @@
 /-
-  Layer 0: growth-class measurability identities
+  Growth-class gate identities (instrument, not a theory layer)
   ==============================================
 
   Elementary real identities behind the finite-sample growth-class test.

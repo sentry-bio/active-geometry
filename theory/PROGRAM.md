@@ -13,21 +13,14 @@ space gains room to keep them apart, and "room" is a counting property of
 geometry. Everything else is this inequality, its exact achievable form, the
 geometry that realizes it, and the question of whether nature fills it.
 
-## Four layers
+## Three layers
 
 The program is stratified so that a failure in one layer cannot contaminate
 another. The definitions live in [`CLAIMS.md`](CLAIMS.md); the mathematics in
 [`ADDRESSABILITY_KERNEL.md`](ADDRESSABILITY_KERNEL.md) and
 [`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md); the relational coding theorem
-in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the
-finite-sample layer in [`MEASURABILITY.md`](MEASURABILITY.md); the tests in
+in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the tests in
 [`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md).
-
-- **Layer 0 — finite-sample measurability.** What a finite pointed sample
-  can decide. The growth-class identities, the Le Cam bound that converts
-  radial span into a yes/no, and the instrument that refuses unmeasurable
-  matrices. No curvature, no clock, no saturation. This is the only
-  mathematical layer whose hypotheses *are* the measurement.
 
 - **Layer I — universal capacity theory (curvature-free).** The bound
   \(\beta\le c\,h_{\mathrm{pack}}\); the exact block identity
@@ -99,17 +92,12 @@ future test, not part of the current artefact.
   process clock. Paper II therefore tests utilization and host class, not an
   assumed universal "price of genealogy." E2's equal-edge endpoint obstruction
   is a stronger synchronization issue, not host capacity.
-- **The clock seam.** Paper I proves the radial concentration converse:
-  near-capacity operation in a hyperbolic host forces almost all retained
-  histories toward \(d(o,f(v))=c\tau(v)\), along a capacity-realizing sequence
-  (or eventually when the growth limit exists), with exponent
-  \(h\delta c-\Delta_{\rm cap}\). Here
-  \(\Delta_{\rm cap}=ch-\beta=ch(1-\eta)\), not the dimensionless efficiency
-  itself. Paper II's E6 tests this **conditional consequence of IIa+IIb**, not
-  an unconditional claim that biological radius is information. A negative E6
-  challenges the biological conjunction only after all theorem premises and
-  unbiased clock-ball sampling are verified; independent host-class and
-  utilization measurements identify which premise failed.
+- **The clock seam.** Radial concentration is a *corollary* of IIa+IIb, not
+  a load-bearing claim. If a hyperbolic host is near capacity, histories
+  concentrate on the outer clock shell. E6 tests that consequence only after
+  host class and utilization are independently known. It does not define
+  the theory and it does not license a biological radius-as-information
+  claim on its own.
 - **The \(n=2\) seam.** Paper I fixes \(n=2\) as a structural embeddability
   floor. Paper II therefore must **not** present \(n=2\) as an empirical
   discovery; a measured \(n>2\) (e.g. bacteria \(\approx 3.4\)) is a
@@ -120,82 +108,66 @@ future test, not part of the current artefact.
   report a measured \(\kappa\) only with the isotropy premise flagged and E9's
   status attached; no absolute \(\kappa\) is a certified measurement today.
 - **The instrument seam.** Both papers cite the same certified instruments
-  (`tools/addressability_meter.py`: M2, M4, the Layer 0 growth-class gate in
-  `tools/growth_class_gate.py`). The gate emits a class only when
-  [`MEASURABILITY.md`](MEASURABILITY.md) marks the sample measurable. Neither
-  paper may quote \(\eta\) to a precision the uncertified M3 magnitude
-  estimator does not support (\(\pm20\%\) is not yet interpretable).
-- **The finite-sample seam.** Paper I's rates are limsups. Paper II's
-  matrices are finite. Layer 0 is the join: a matrix that fails the
-  measurability predicate is not placed on the growth-class axis, and it
-  cannot be read as evidence for or against saturation. Short codes are
-  not approximate capacity-achieving codes.
+  (`tools/addressability_meter.py`: M2, M4, the growth-class gate). The gate
+  refuses short radial windows; that refusal is an instrument limit
+  ([`MEASURABILITY.md`](MEASURABILITY.md)), not a fourth layer of the
+  theory. Neither paper may quote \(\eta\) to a precision the uncertified
+  M3 magnitude estimator does not support (\(\pm20\%\) is not yet
+  interpretable).
 - **The honesty seam.** [`CLAIMS.md`](CLAIMS.md) tags every claim and binds it
   to its artifact and layer; it is the contract that keeps Paper II's empirical
   risk out of Paper I.
 
 ## Self-verification
 
-The artefact checks itself, and CI should run all five:
+The artefact checks itself, and CI should run all four:
 
 1. **Lean.** `cd theory/lean && lake build` — no `sorry`/`admit`;
    block-identity proofs use only `propext`, `Classical.choice`, `Quot.sound`.
-2. **Meter.** `python3 -m unittest tests.test_addressability_meter` — 6 tests.
-3. **Layer 0 gate.** `python3 -m unittest tests.test_growth_class_gate`.
-4. **Doc/artifact registry.** `python3 tools/check_doc_artifacts.py` — fails if
+2. **Meter.** `python3 -m unittest tests.test_addressability_meter tests.test_growth_class_gate`.
+3. **Doc/artifact registry.** `python3 tools/check_doc_artifacts.py` — fails if
    a tracked doc names a repository path not on disk (enforced on
    `theory`/`tools`/`tests`; `--all` advisory elsewhere).
-5. **Claim ledger.** [`CLAIMS.md`](CLAIMS.md) is the single source of truth for
+4. **Claim ledger.** [`CLAIMS.md`](CLAIMS.md) is the single source of truth for
    what is THEOREM / IDENTITY / OPEN / CONVENTION / INSTRUMENT / EMPIRICAL.
 
 ## Status: near-finished, with the gaps named
 
 - **Finished:** Layer I (proved, checked); the two-layer/three-sublayer
-  framing; the instrument for the qualitative claims (M2, M4); the honesty
-  apparatus.
-- **Finished, Layer 0:** the growth-class measurability theorem, the Lean
-  identities, and the instrument that refuses unmeasurable windows. The
-  2×-span death of the regression gate is now a bound, not a surprise.
+  framing; the instrument for the qualitative claims (M2, M4, growth-class
+  gate); the honesty apparatus.
 - **Finished, paper-level mathematics:** weighted/radial relational capacity of
   \(\mathbb H_\kappa^n\) equals its volume entropy (Skenderi lower bound plus
   the packing converse). The former unit-edge conjecture is refuted as stated.
 - **Open, mathematics:** the curvature-genericity conjecture, plus the stronger
   equal-edge synchronization refinement for \(c\ge\varepsilon\) (not the
-  definition of host capacity). Further Layer 0 finite-sample results
-  (magnitude intervals, short-code signatures) are not opened here.
+  definition of host capacity).
 - **Open, instrument:** a certified M3 magnitude estimator and a runtime
-  independence firewall.
-- **Open, empirical — the highest-leverage gap:** E0 on real matrices, then
-  E9. E9 remains the decisive IIa intervention; E0 is the filter that
-  decides which matrices may be asked any growth-class question at all.
+  independence firewall. The growth-class gate refuses short radial
+  windows; that is a property of the instrument, recorded in
+  [`MEASURABILITY.md`](MEASURABILITY.md).
+- **Open, empirical — the highest-leverage gap:** E9, the matched-capacity
+  Euclidean-vs-hyperbolic realization test. The biological claim is Layer IIa,
+  and E9 is the only direct IIa intervention; it is designed and unrun.
 
 ## Center of gravity — a stopping rule
 
-A theorem of the form "if \(A\) and \(B\) then \(C\)" is a gift to the theory
-and a debt to the experiment. Almost every recent Layer I/II theorem
-lengthened that chain. The spine of Layers I and II remains **closed for
-Paper I purposes**. Curvature genericity, the sector-gluing sharpness
-lemma, the equal-edge refinement, and further asymptotic converses are
-deferred.
+The theory is the inequality, the block identity, the balloon (room versus
+room that genealogy fits), and the split between host class and saturation.
+That spine is **closed**. Radial concentration is a corollary of IIa+IIb.
+The growth-class gate's short-window refusal is an instrument limit. Neither
+is a new foundation, and neither is a reason to keep proving.
 
-Layer 0 is the exception, and the only one: a theorem whose hypotheses
-*are* the measurement, and whose conclusion eliminates experiments rather
-than adding premises. That exception is now discharged. Further Layer 0
-work is admitted only if it likewise shortens the chain (a finite-sample
-magnitude interval that retires M3-as-number; a short-code signature that
-replaces asymptotic \(\eta\to 1\) as the IIb target). Another converse
-that adds a clock, an offset, or an isotropy switch is not admitted.
+**No new theorems until a measurement has run.** The empirical queue, in
+order of immediacy:
 
-The empirical queue, in order of immediacy:
-
-1. **E0 — measurability audit, then the phase diagram.** Run the Layer 0
-   predicate on real biological distance matrices. Place only the
-   measurable subset on the growth-class × tree-defect plane. Unmeasurable
-   matrices are recorded as such, not as failed classifications.
+1. **The phase diagram on real matrices — runnable now.** Growth class
+   (refusing windows the gate cannot speak on) and tree defect. No
+   \(\eta\) precision, no \(\kappa\).
 2. **E5 at small scale — runnable now.** Trained-hierarchy saturation with
-   co-equal negative controls, on windows Layer 0 marks measurable.
+   co-equal negative controls.
 3. **E4 rehearsal — public data.** Time-stamped serially sampled viruses as
    the pipeline rehearsal, labelled as such.
-4. **E9 — the decisive test.** Needs GPU-scale embedding; highest IIa value.
+4. **E9 — the decisive test.** Needs GPU-scale embedding; highest value.
 
-The next unit of effort belongs to item 1.
+The next unit of effort belongs to item 1, not to another converse.

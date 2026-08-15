@@ -29,10 +29,6 @@
 
   The familiar raw-curvature-magnitude formula uses the process-time gauge
   c = 1.
-  Layer 0 (finite-sample measurability): the growth-class identities that
-  decide whether a finite pointed sample can distinguish exponential from
-  polynomial occupancy. See theory/MEASURABILITY.md.
-
   See theory/MATHEMATICAL_SPINE.md for hypotheses, proofs, scope, and
   the independent role of the four-point tree condition.
 -/

@@ -1,14 +1,15 @@
-# Layer 0 — What a finite point set can decide
+# When the growth-class gate may speak
 
 ## Status
 
-This note opens the measurement layer of the program. Layers I and II are
-asymptotic. Every biological sample is finite. The two regimes were being
-treated as approximation and limit; they are different objects.
+This is an **instrument note**, not a layer of the theory. The theory remains
+the addressability bound, the block identity, the constrained-capacity
+ladder, and the IIa/IIb split. The growth-class gate is how Corollary 4.3
+is enforced on a distance matrix. Short radial windows make that
+enforcement meaningless. This note records why, and makes the gate refuse
+those windows.
 
-The load-bearing result is a measurability theorem for the only qualitative
-question the certified instruments can currently ask: is the host exponential
-or polynomial? The theorem takes the finite data a matrix actually supplies —
+The result takes the finite data a matrix actually supplies —
 \(N\) points, radial span ratio \(r\), resolvable shell count \(k\), resolution
 \(\varepsilon\) — and returns a three-way verdict:
 
@@ -28,29 +29,15 @@ the regression gate is the theorem's empirical shadow, reproduced in
 
 ---
 
-## 0. Why this layer exists
+## 0. Why this note exists
 
-Every quantity in Layers I and II is a limsup as radius goes to infinity.
-Every measurement is a finite \(\varepsilon\)-separated set. The addressability
-bound itself has a finite form — \(N(R)\le P(B(o,r(R)),\varepsilon)\) — and
-that finite form is the only quantity in the older spine that lives in the
-same regime as the data. Everything else was an asymptotic claim being read
-off a finite code.
-
-A theorem of the form "if \(A\) and \(B\) then \(C\)" is a gift to the theory
-and a debt to the experiment: to use \(C\) one must first establish \(A\) and
-\(B\). Almost every recent theorem in this program lengthened that chain. A
-measurability theorem is the rare kind that shortens it. It names the
-datasets that cannot answer a question, so those experiments are not run.
-
-This is also the honest finite-blocklength turn. Short codes have different
-optimal structure from capacity-achieving ones. Biological representation is
-a finite code: every clade is finite in size, finite in depth, and truncated
-by loss. "Does biology achieve asymptotic capacity" may be the wrong
-question, not because it is hard, but because the asymptotic regime is not
-the one the data inhabit. Layer 0 asks what can be known from finitely many
-points. Layer I remains the capacity theorem. Layer II remains the
-realization theory. Neither is retracted.
+The addressability bound already has a finite form —
+\(N(R)\le P(B(o,r(R)),\varepsilon)\). The growth-class gate is a finite
+regression on that occupancy. Over a short radial window an exponential
+and a polynomial can be matched at both endpoints, and the remaining
+shape is too small to trust. The gate should refuse those windows
+instead of emitting a class. That is all. It does not add a layer, a
+clock, or a new claim about nature.
 
 ---
 
@@ -315,8 +302,8 @@ interior radii.
   claimed. Magnitude estimation is a harder problem (E1 already failed it)
   and is not required to refuse a growth-class call.
 - No claim is made that a measurable exponential host is hyperbolic, nor
-  that a measurable dataset saturates capacity. Layer 0 decides
-  askability, not Layer IIa or IIb.
+  that a measurable dataset saturates capacity. The gate decides whether
+  it may speak, not Layer IIa or IIb.
 
 ---
 
@@ -349,20 +336,10 @@ measurable.
 
 ## 4. Consequence for the empirical program
 
-The growth-class × tree-defect phase diagram remains the honest figure, but
-its growth axis is now gated. A matrix that fails Layer 0 is not placed on
-that axis. This is the first filter of
-[`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md) experiment E0.
-
-It also re-reads the standing IIb failures. Saturation (\(\eta\to 1\)) is
-an asymptotic property. A good short code is not a capacity-achieving code.
-Finite clades should not be expected to look like the \(R\to\infty\)
-equality case, and a failed saturation test on a short-span matrix is not
-evidence about capacity filling. This does **not** rescue IIb: it forbids
-reading IIb on data that cannot support the question. IIb remains an
-asymptotic claim with its own kill lines, to be asked only of samples that
-Layer 0 marks measurable and that independently justify a magnitude
-estimator.
+The growth-class × tree-defect phase diagram remains the honest figure.
+Short-window matrices are left off the growth axis. That is a property of
+the gate, recorded here so it is not rediscovered as a surprise. It does
+not change what Layer I or Layer II claim.
 
 ---
 
