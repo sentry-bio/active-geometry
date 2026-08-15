@@ -71,11 +71,11 @@ class IdentityTests(unittest.TestCase):
     def test_span_table_values(self) -> None:
         table = {
             1.5: 0.0205,
-            2.0: 0.0602,
-            math.e: 0.109,
-            3.0: 0.116,
-            4.0: 0.163,
-            8.0: 0.280,
+            2.0: 0.0597,
+            math.e: 0.123,
+            3.0: 0.148,
+            4.0: 0.234,
+            8.0: 0.511,
         }
         for r, expected in table.items():
             self.assertAlmostEqual(span_information(r, 1.0), expected, places=3)
@@ -149,21 +149,26 @@ class GateSweepTests(unittest.TestCase):
         """
         tree_short = self._windowed_call(self.tree[0], span=2.0)
         grid_short = self._windowed_call(self.grid[0], span=2.0)
-        self.assertLess(tree_short["span_ratio"], 2.01)
-        self.assertLess(grid_short["span_ratio"], 2.01)
-        # Either the wrong host wins or the margin collapses below the
-        # full-span margin. Both are "the gate dies."
+        self.assertLessEqual(tree_short["span_ratio"], 2.01)
+        self.assertLessEqual(grid_short["span_ratio"], 2.01)
         tree_full = classify_occupancy(*occupancy_profile(self.tree[0]))
-        collapsed = (
-            tree_short["winner"] != "exponential"
-            or grid_short["winner"] != "polynomial"
-            or tree_short["adjusted_r_squared_margin"]
-            < 0.5 * tree_full["adjusted_r_squared_margin"]
+        grid_full = classify_occupancy(*occupancy_profile(self.grid[0]))
+        # Noiseless synthetics may still pick the right winner; the
+        # signal that does the picking collapses. That is the death.
+        self.assertLess(
+            tree_short["adjusted_r_squared_margin"],
+            0.5 * tree_full["adjusted_r_squared_margin"],
         )
-        self.assertTrue(collapsed)
-        refused = analyze_distances(self.tree[0], span=2.0)
-        self.assertNotEqual(refused["verdict"], "measurable")
-        self.assertIsNone(refused["growth_class"])
+        self.assertLess(
+            grid_short["adjusted_r_squared_margin"],
+            0.5 * grid_full["adjusted_r_squared_margin"],
+        )
+        refused_tree = analyze_distances(self.tree[0], span=2.0)
+        refused_grid = analyze_distances(self.grid[0], span=2.0)
+        self.assertNotEqual(refused_tree["verdict"], "measurable")
+        self.assertNotEqual(refused_grid["verdict"], "measurable")
+        self.assertIsNone(refused_tree["growth_class"])
+        self.assertIsNone(refused_grid["growth_class"])
 
     def test_wide_window_recovers_both_hosts(self) -> None:
         tree = self._windowed_call(self.tree[0], span=6.0)

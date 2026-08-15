@@ -166,7 +166,7 @@ Values of \(\Delta(r,2)/2\), the span information per dimension:
 
 | \(r\) | 1.5 | 2 | \(e\) | 3 | 4 | 8 |
 |---|---|---|---|---|---|---|
-| \(\Delta/d\) | 0.0205 | 0.0602 | 0.109 | 0.116 | 0.163 | 0.280 |
+| \(\Delta/d\) | 0.0205 | 0.0597 | 0.123 | 0.148 | 0.234 | 0.511 |
 
 At 2× span the entire geometric signal is 0.06 nats per dimension.
 
@@ -265,10 +265,10 @@ above the simple-hypothesis Le Cam line):
 
 | span \(r\) | \(\Delta(r,2)\) | \(N\) needed |
 |---|---|---|
-| 1.5 | 0.041 | \(\sim 5\times 10^{3}\) |
-| 2 | 0.120 | \(\sim 6\times 10^{2}\) |
-| 3 | 0.232 | \(\sim 1.7\times 10^{2}\) |
-| 4 | 0.326 | \(\sim 85\) |
+| 1.5 | 0.041 | \(\sim 5.4\times 10^{3}\) |
+| 2 | 0.119 | \(\sim 6.3\times 10^{2}\) |
+| 3 | 0.297 | \(\sim 1.0\times 10^{2}\) |
+| 4 | 0.468 | \(\sim 41\) |
 
 A few hundred points at 2× span sit on the wrong side of the line. A few
 thousand points are required before 1.5× span is even a candidate. This is

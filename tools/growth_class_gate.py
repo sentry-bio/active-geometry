@@ -101,13 +101,19 @@ def restrict_span(
     occupancies: np.ndarray,
     span: float,
 ) -> tuple[np.ndarray, np.ndarray] | None:
-    """Keep the innermost window whose radial ratio is at most ``span``."""
+    """Keep the outermost contiguous window whose radial ratio is at most ``span``.
+
+    Starting from the innermost radius of a unit-edge tree yields only two
+    shells at span 2 (radii 1 and 2). The outermost window is the one a
+    finite sample actually has when its observed range is a factor of
+    ``span``.
+    """
     if radii.size < 3 or span <= 1.0:
         return None
-    inner = float(radii[0])
-    if inner <= 0.0:
+    outer = float(radii[-1])
+    if outer <= 0.0:
         return None
-    keep = radii <= inner * span
+    keep = radii >= outer / span
     if int(np.count_nonzero(keep)) < 3:
         return None
     return radii[keep], occupancies[keep]
