@@ -149,3 +149,33 @@ The artefact checks itself, and CI should run all four:
 - **Open, empirical — the highest-leverage gap:** E9, the matched-capacity
   Euclidean-vs-hyperbolic realization test. The biological claim is Layer IIa,
   and E9 is the only direct IIa intervention; it is designed and unrun.
+
+## Center of gravity — a stopping rule
+
+Effort in this program flows downhill toward mathematics, because theorems can
+be produced on demand and experiments cannot. Every recent theorem also
+lengthened the dependency chain from proof to biological meaning (E6 now
+requires verified host class, measured utilization, and a calibrated clock
+before it means anything). That asymmetry is the architecture working — Paper I
+may advance while Paper II waits — but unchecked it is the failure mode of
+mathematically beautiful programs that lose contact with their subject.
+
+Accordingly, the spine is declared **closed for Paper I purposes**. The
+remaining mathematical items (curvature genericity, the sector-gluing
+sharpness lemma, the equal-edge refinement, Lean formalization of asymptotic
+corollaries) are not load-bearing for any biological claim and are deferred.
+
+**No new theorems until a measurement has run.** The empirical queue, in order
+of immediacy:
+
+1. **The phase diagram on real matrices — runnable now.** The growth-class
+   gate and the δ-meter are the two *certified* instruments; they need no
+   \(\eta\) precision and no \(\kappa\). Place real biological distance
+   matrices on the growth-class × tree-defect plane.
+2. **E5 at small scale — runnable now.** Trained-hierarchy saturation with
+   co-equal negative controls.
+3. **E4 rehearsal — public data.** Time-stamped serially sampled viruses as
+   the pipeline rehearsal, labelled as such.
+4. **E9 — the decisive test.** Needs GPU-scale embedding; highest value.
+
+The next unit of effort belongs to item 1, not to another converse.
