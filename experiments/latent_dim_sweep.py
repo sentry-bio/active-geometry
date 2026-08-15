@@ -3,8 +3,18 @@
 Latent Dimension Sweep Experiment
 ==================================
 
-Tests the hypothesis that the intrinsic dimensionality of phylogenetic
-structure is n=2, as predicted by the geometric state equation.
+Separates two packing problems that CCS sometimes treated as one:
+
+- Phylogenetic (HEX) structure is a tree metric. Its embeddability floor
+  is n=2 (radial depth + angular divergence). HEX loss should plateau
+  once the latent chart has that room; extra angular dimensions are
+  reticulation / encoder slack, not more depth.
+- Sequence reconstruction (MLM) is not a tree metric. It can demand a
+  much larger latent dimension without touching the n=2 floor.
+
+This sweep does **not** derive n=2 from the state equation, and it does
+not treat a fitted kappa as a certified measurement (curvature is
+degenerate with InfoNCE temperature; freeze it).
 
 Experiment Design:
 - Train BiosphereCodec with latent_dim ∈ {2, 4, 8, 16, 32, 64, 128}
@@ -12,14 +22,14 @@ Experiment Design:
   1. HEX-only (phylogenetic structure only)
   2. HEX + MLM (full reconstruction)
 - Measure:
-  - κ convergence (should be stable across all dims if theory is right)
-  - HEX loss (phylogenetic fidelity)
-  - MLM loss (reconstruction fidelity)
+  - HEX loss (phylogenetic fidelity) — expect plateau near dim 2–4
+  - MLM loss (reconstruction fidelity) — may keep improving well above 2
+  - If kappa is reported, treat it as a frozen design parameter, not a
+    discovery
 
 Prediction:
-- κ ≈ 1.25 regardless of latent_dim (it's a property of the data, not the model)
-- HEX loss plateaus at dim ≈ 2-4
-- MLM loss degrades sharply below dim ≈ 16-32
+- HEX loss plateaus at dim ≈ 2-4 (embeddability, not a fitted n)
+- MLM loss degrades sharply below dim ≈ 16-32 (different packing problem)
 """
 
 import argparse

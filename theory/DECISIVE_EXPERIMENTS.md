@@ -578,7 +578,11 @@ The two certified instruments (the growth-class gate on M3, the defect meter
 M4) yield a two-axis classifier that needs **no curvature magnitude** and no
 uncertified \(\eta\). It is the honest empirical figure for a real system, and
 it maps a dataset onto the two-layer theory directly. Short-window matrices
-are left off the growth axis.
+are left off the growth axis. Both axes must be read from a **representation
+metric**, not from patristic distances of the inferred tree: those make
+\(\delta\) vacuous by construction and turn growth class into the tree's
+own occupancy profile. A first pass on such matrices is an instrument
+check, not a placement of biology.
 
 | | tree-like: \(\delta\approx 0\) | reticulate: \(\delta>0\) |
 |---|---|---|

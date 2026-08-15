@@ -40,6 +40,11 @@ in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the tests
 The four-point (Buneman ≡ Gromov) classifier is an independent bridge to IIa:
 it decides tree-ness and measures reticulation, but calibrates nothing.
 
+These are the only domains. Finite-sample refusal of the growth-class gate
+is an instrument limit ([`MEASURABILITY.md`](MEASURABILITY.md)). Radial
+concentration is a corollary of IIa+IIb. Neither is a layer, a manuscript,
+or a reason to enlarge the map.
+
 ## Two manuscripts
 
 The program publishes as two papers with a firewall between them, so the theory
@@ -64,19 +69,23 @@ stands whether or not the biology saturates.
 
 ### Paper II — *Evolution as Active Geometry*
 
-- **Domain.** Evolutionary biology, phylogenetics.
-- **Carries.** The **Layer IIa** claim as its defensible spine — that
-  phylogenetic data is hosted by hyperbolic tree geometry (seed-stable
-  embeddings, curvature as a fixed design parameter, tree-defect near zero,
-  \(n=2\) by embeddability) — and the **Layer IIb** state-equation/saturation
-  claim as an *honestly ledgered open bet*, not a headline. Leads with the
-  growth-class × tree-defect phase diagram, not with \(\kappa\).
+- **Domain.** Evolutionary biology, phylogenetics. The living instance of
+  Layer IIa (host class) and the open Layer IIb bet (saturation). It does
+  not carry a coordinate-system atlas, a self-calibrating information clock,
+  or a claim that selection fills packing capacity.
+- **Carries.** The **Layer IIa** claim as its defensible spine — that a
+  *representation* of phylogenetic data (not the inferred tree read as its
+  own metric) is hosted by hyperbolic tree geometry — and the **Layer IIb**
+  state-equation/saturation claim as an *honestly ledgered open bet*, not a
+  headline. The honest figure is the growth-class × tree-defect phase
+  diagram on an independent representation, not \(\kappa\).
 - **Backed by.** The empirical pipelines under `validation/`, `experiments/`,
   `model/`, and `figures/`; the shared meter; the E-series protocol.
 - **Claim it makes about nature.** Real and falsifiable, and currently mixed:
   host class comparatively supported but its decisive test (E9) unrun;
-  saturation tested and failing its independent kill lines. Paper II must state
-  this split rather than average over it.
+  saturation tested and failing its independent kill lines. In the intended
+  hyperbolic host those failures are utilization, not relational tax
+  (Theorem 4.4). Paper II must state this split rather than average over it.
 
 A prospective **Paper III — *Language as Active Geometry*** (convergent
 alphabets) would fill a non-biological substrate row; it is a pre-registered
@@ -90,8 +99,9 @@ future test, not part of the current artefact.
 - **The genealogy seam.** Paper I proves that relational fidelity costs no
   exponential-order capacity in a real hyperbolic host under a local weighted
   process clock. Paper II therefore tests utilization and host class, not an
-  assumed universal "price of genealogy." E2's equal-edge endpoint obstruction
-  is a stronger synchronization issue, not host capacity.
+  assumed universal "price of genealogy." A measured \(\eta<1\) under a
+  hyperbolic assumption is utilization slack, not tax. E2's equal-edge
+  endpoint obstruction is a stronger synchronization issue, not host capacity.
 - **The clock seam.** Radial concentration is a *corollary* of IIa+IIb, not
   a load-bearing claim. If a hyperbolic host is near capacity, histories
   concentrate on the outer clock shell. E6 tests that consequence only after
@@ -107,6 +117,19 @@ future test, not part of the current artefact.
   dependent) curvature and the state equation as conditional. Paper II may
   report a measured \(\kappa\) only with the isotropy premise flagged and E9's
   status attached; no absolute \(\kappa\) is a certified measurement today.
+- **The CCS instrument seam.** The Poincaré encoder remnant
+  (`experiments/minimal_encoder/`, `model/`) is a Layer IIa *instrument*,
+  not a Layer IIb measurement and not Paper II's claim. Polar
+  \(\mathbb H^2\) is the embeddability floor (radial depth + angular
+  divergence); frozen \(\kappa\) is the right response to InfoNCE
+  degeneracy, while \(\kappa=5/4\) from genetic-code entropy is not a
+  theorem; taxonomy quartets train topology and do not calibrate
+  curvature; seed-stable Procrustes (unique up to \(\mathrm{SO}(2)\)) is
+  host-class evidence. The two training axes — NCBI ranks for quartets,
+  genome size for radius — are a primitive independence split, better
+  than patristic-for-both, still not a representation metric independent
+  of the tree of life. Radius-as-information, a filled atlas, and a
+  self-calibrating clock remain IIb and stay out.
 - **The instrument seam.** Both papers cite the same certified instruments
   (`tools/addressability_meter.py`: M2, M4, the growth-class gate). The gate
   refuses short radial windows; that refusal is an instrument limit
@@ -158,16 +181,21 @@ That spine is **closed**. Radial concentration is a corollary of IIa+IIb.
 The growth-class gate's short-window refusal is an instrument limit. Neither
 is a new foundation, and neither is a reason to keep proving.
 
-**No new theorems until a measurement has run.** The empirical queue, in
-order of immediacy:
+**No new theorems until a measurement has run.** The empirical queue stays
+inside Paper II's domain. In order of immediacy:
 
-1. **The phase diagram on real matrices — runnable now.** Growth class
-   (refusing windows the gate cannot speak on) and tree defect. No
-   \(\eta\) precision, no \(\kappa\).
+1. **The phase diagram on an independent representation.** Growth class
+   (refusing windows the gate cannot speak on) and tree defect, from a
+   metric that is not the inferred tree. No \(\eta\) precision, no
+   \(\kappa\). A first pass on tree-patristic matrices refused 11/24
+   windows and made \(\delta\) vacuous by construction; that is an
+   instrument result, not a placement of biology.
 2. **E5 at small scale — runnable now.** Trained-hierarchy saturation with
-   co-equal negative controls.
+   co-equal negative controls (Layer IIb, labelled as such).
 3. **E4 rehearsal — public data.** Time-stamped serially sampled viruses as
    the pipeline rehearsal, labelled as such.
-4. **E9 — the decisive test.** Needs GPU-scale embedding; highest value.
+4. **E9 — the decisive test.** Matched-capacity Euclidean vs hyperbolic.
+   Needs GPU-scale embedding; highest IIa value.
 
-The next unit of effort belongs to item 1, not to another converse.
+The next unit of effort belongs to item 1, not to another converse, and
+not to a new domain.

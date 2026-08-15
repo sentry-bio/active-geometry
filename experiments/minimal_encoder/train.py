@@ -1,24 +1,29 @@
 #!/usr/bin/env python3
 """
-E11: Pure 2D Coordinate System
+E11: Pure 2D Coordinate System (Layer IIa instrument)
 
-THE HYPOTHESIS: The biosphere's information geometry is a 2D Poincare ball
-with curvature kappa = 5/4, fixed by the Shannon entropy of the genetic code.
-This experiment tests whether a pure 2D model -- no classification heads,
-no ODE flow, kappa frozen -- produces stable, reproducible coordinates.
+WHAT THIS TESTS: Whether a polar H^2 chart — kappa frozen, no classification
+heads, no ODE — is seed-stable up to SO(2). That is host-class evidence
+(embeddability floor n=2: radial depth + angular divergence), not a
+saturation measurement and not a derivation of kappa from the genetic code.
 
 ARCHITECTURE:
-  Token embedding -> mean pool -> MLP -> exp_map -> H^2(kappa=5/4)
+  Token embedding -> mean pool -> MLP -> exp_map -> H^2(kappa frozen)
   ~35K parameters. No classification heads. No ODE.
-  kappa is a constant, not a parameter.
+  kappa is a design constant. InfoNCE temperature is degenerate with
+  curvature, so kappa cannot be discovered by gradient descent. The
+  reference run uses 5/4; that number is not a theorem.
 
 LOSS (three terms):
   1. Domain separation: organisms from different domains should be far apart
      in Poincare distance. Simple contrastive margin loss.
   2. Quartet consistency: d(a,b) + d(c,d) < d(a,c) + d(b,d)
      Quartets derived from taxonomy (genus < family < order < class < phylum < domain).
-  3. Radial functional ordering: larger genome -> deeper in ball.
-     (Genome size proxies functional complexity for prokaryotes.)
+     This is the four-point classifier used as a training signal, not a
+     curvature calibrator.
+  3. Radial ordering: larger genome -> deeper in ball.
+     Genome size is an independent depth proxy. It is not accumulated
+     information and not a clock (E6: CCS radial axis stays advisory).
 
 ANCHOR SELECTION:
   200-300 organisms from the full manifest, balanced across:
@@ -26,13 +31,14 @@ ANCHOR SELECTION:
   - Major phyla within each domain
   - Full range of genome sizes
 
-SEED STABILITY TEST (WGS84):
+SEED STABILITY TEST:
   Train N seeds. Procrustes-align the resulting coordinate sets.
-  If the 2D thesis is correct, residual after alignment < 5% of ball radius.
-  Coordinates determined by data, not initialization.
+  If the polar chart is determined by the data, residual after alignment
+  is small compared with ball radius; the leftover gauge is a global
+  rotation. This does not certify a filled atlas of life.
 
 USAGE:
-  python train_E11_2d_coordinate.py \\
+  python train.py \\
     --manifest /path/to/manifest.csv \\
     --output-dir /path/to/E11_results \\
     --device cuda \\
@@ -61,7 +67,7 @@ from torch.utils.data import DataLoader, Dataset
 
 # ── Constants ──────────────────────────────────────────────────────────────
 
-KAPPA = 1.25          # 5/4 — frozen. Theorem, not parameter.
+KAPPA = 1.25          # 5/4 — frozen design constant, not a learned parameter.
 VOCAB_SIZE = 4096
 FEAT_DIM = 8
 MAX_SEQ_LEN = 8192    # tokens per genome window
