@@ -478,6 +478,45 @@ Conversely, equality of these exponential rates says that the represented
 histories fill the available address space at exponential order, though
 subexponential inefficiency may remain.
 
+### Theorem 5.2 — Radial concentration converse
+
+Let a weighted relational code in \(\mathbb H_\kappa^n\) have
+\(h=(n-1)\sqrt\kappa\), radial rate \(c\), offset \(A_0\), and growth at least
+\(ch-\eta\). For \(0<\delta<1\), let \(E_\delta(R)\) be histories through time
+\(R\) satisfying
+
+\[
+d(o,f(v))\le(1-\delta)c\tau(v)+A_0.
+\]
+
+The smaller-ball packing count gives
+
+\[
+\boxed{
+\frac{|E_\delta(R)|}{|T_R^\tau|}
+\le C e^{-(h\delta c-\eta)R}
+}
+\]
+
+whenever the stated growth lower bound holds, with
+\(C=C(\varepsilon,n,\kappa,A_0)\). For a limsup growth rate, the estimate holds
+along a realizing sequence; if the growth limit exists, it holds eventually.
+No shell-regularity assumption is needed.
+
+At exact capacity (\(\eta=0\)),
+
+\[
+\frac{d(o,f(v))}{c\tau(v)}\to1
+\]
+
+in probability over retained histories. For fixed \(\eta>0\), only the
+one-sided band \(d/(c\tau)\gtrsim1-\eta/(hc)\) follows. Thus “radius is
+accumulated information” is a necessary consequence of **near-capacity
+hyperbolic coding**, not an unconditional prediction about nature. The
+finite-radius sub-ball count is Lean-checked; the proof, sharpness example, and
+limsup qualifications are in
+[`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md) §5.
+
 ### Variational interpretation
 
 Fix \(c\). Consider any admissible-representation objective whose geometric

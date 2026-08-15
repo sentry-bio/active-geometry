@@ -378,7 +378,24 @@ of training objectives; a representation whose geometry is measured by M2–M3.
 
 ## E6 — Radius identification (the \(c\)-axis)
 
-**Question.** Is radius accumulated information rather than elapsed time?
+**Layer IIa + IIb consequence, not an unconditional prediction.** Theorem 5.1
+of [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md) proves:
+*if* the host is hyperbolic (IIa) and the code operates near capacity (IIb),
+then almost all retained histories lie near the outer radial shell. At exact
+capacity,
+
+\[
+\frac{d(o,f(v))}{c\tau(v)}\to1
+\quad\text{in probability.}
+\]
+
+With fixed deficit \(\eta>0\), only the band
+\(d/(c\tau)\gtrsim1-\eta/(hc)\) is forced. Existing independent saturation
+tests fail, so the exact-capacity prediction is **not currently licensed for
+biology without a separate \(\eta\) measurement**.
+
+**Question.** Conditional on a hyperbolic host and measured near-capacity
+operation, is radius accumulated information rather than elapsed time?
 
 **Inputs.** A clade sample where process time, sequence divergence, and
 functional complexity are known to disagree: bradytelic ("living fossil")
@@ -392,15 +409,23 @@ high functional gain).
    functional-category count, morphological character count).
 4. Embedded radius \(r\) via M2 from a representation taking none of the above
    as input.
-5. Partial correlations of \(r\) with each of time, divergence, complexity,
+5. Independently estimate host class (E9) and utilization \(\eta\) (M1–M3).
+   Without both, label the run exploratory.
+6. Partial correlations of \(r\) with each of time, divergence, complexity,
    controlling for the other two.
 
 **Decision rule.**
-- *Predict:* \(r\) tracks functional complexity (partial \(r>0.5\)) and does
-  **not** track elapsed time (partial \(r\approx 0\)) when the three disagree.
-- *Kill:* \(r\) tracks elapsed time rather than complexity → the identification
-  of \(c\) with an information rate fails; the bound is untouched and the CCS
-  radial axis stays advisory.
+- *Necessary-condition prediction:* when E9 supports the hyperbolic host and
+  independently measured \(\eta\approx1\), \(r/(c\tau)\) concentrates near 1;
+  operationally, \(r\) tracks accumulated change rather than elapsed time.
+- *Positive result:* supports the necessary consequence of near-capacity
+  hyperbolic coding, but does **not** prove saturation (low-rate radial codes
+  can also correlate).
+- *Negative result:* falsifies the conjunction
+  `hyperbolic host + near capacity + correct clock`; it does not identify which
+  conjunct failed. Use the independent E9 and \(\eta\) measurements to
+  separate them. The bound is untouched and the CCS radial axis stays
+  advisory.
 
 ---
 
@@ -565,7 +590,7 @@ the biological claim actually lives — is no longer buried.
 | 5 | E2 equal-edge endpoint | IIa refinement | Does exact synchronization obstruct the endpoint? | numerical |
 | 6 | E5 trained hierarchy (adversarial) | IIb | Is saturation cross-domain? | intervention |
 | 7 | E8 boundary mapping | I | Do the premises do real work? | intervention / observation |
-| 8 | E6 radius identification | I/IIb | Is \(c\) information? | pre-registered prediction |
+| 8 | E6 radius concentration | IIa+IIb | Does near-capacity hyperbolic coding put histories on the outer shell? | conditional prediction |
 | 9 | E1 meter certification | I | Are the instruments legal? | calibration |
 
 E1 is last in the table and first in time. Nothing above it is interpretable

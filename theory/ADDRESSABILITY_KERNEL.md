@@ -304,6 +304,26 @@ There the block ratio is the utilization ratio. Outside that class or under
 the stronger equal-edge synchronization constraint, an observed
 \(\eta_{\rm block}<1\) may still mix relational tax with under-utilization.
 
+### Near capacity forces radial concentration
+
+In \(\mathbb H_\kappa^n\), the same packing count applied to the smaller ball
+of histories satisfying
+\(d(o,f(v))\le(1-\delta)c\tau(v)+A_0\) gives
+
+\[
+\frac{|E_\delta(R)|}{|T_R^\tau|}
+\le
+C e^{-(h\delta c-\eta)R},
+\qquad
+h=(n-1)\sqrt\kappa,
+\]
+
+for growth at least \(ch-\eta\). At exact capacity,
+\(d(o,f(v))/(c\tau(v))\to1\) in probability. With fixed \(\eta>0\), only a
+one-sided band follows. This is Theorem 5.2 of the spine: the clock--radius
+identity is a **conditional consequence of IIa+IIb**, not an unconditional
+biological law.
+
 ---
 
 # Layer II — The curvature realization

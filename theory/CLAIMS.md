@@ -72,6 +72,7 @@ harder, less-supported claim; independent tests currently fail their kill lines.
 | L2b.2 | State equation \(\bar\kappa^*=(h_{\mathrm{eff}}\ln2/(n-1))^2\) under saturation + isotropy | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_state_equation`) |
 | L2b.3 | \(\bar\kappa=c^2\kappa\) is the unit-invariant curvature; raw formula needs gauge \(c=1\) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_curvature_scale_invariant`, `process_time_gauge`) |
 | L2b.4 | Some hierarchy actually saturates | EMPIRICAL, open (independent tests currently fail) | `theory/DECISIVE_EXPERIMENTS.md` E3, E4 |
+| L2b.5 | Near-capacity hyperbolic codes concentrate retained histories at \(d(o,f(v))\approx c\tau(v)\); deficit tradeoff \(e^{-(h\delta c-\eta)R}\) | THEOREM (finite count Lean; asymptotic paper) | `theory/RELATIONAL_CAPACITY_THEOREM.md` §5; `theory/lean/ActiveGeometry/Packing.lean` (`subball_fraction_le_packing_fraction`) |
 
 ## Instruments (status of tools, not claims about nature)
 
@@ -90,7 +91,7 @@ harder, less-supported claim; independent tests currently fail their kill lines.
 |---|---|---|---|
 | E.1 | Some hierarchy saturates its budget (\(\eta\to1\) / high utilization) | EMPIRICAL, open | `theory/DECISIVE_EXPERIMENTS.md` E3, E4 |
 | E.2 | The law extends beyond biology | EMPIRICAL, open | `theory/DECISIVE_EXPERIMENTS.md` E5 |
-| E.3 | Radius is accumulated information (the \(c\)-axis) | EMPIRICAL, open | `theory/DECISIVE_EXPERIMENTS.md` E6 |
+| E.3 | Biological radius concentrates at accumulated process duration | EMPIRICAL, open; conditional on IIa+IIb | `theory/DECISIVE_EXPERIMENTS.md` E6 |
 
 ## Experiment allocation (which layer each test interrogates)
 
@@ -108,7 +109,7 @@ saturation (IIb). This table is the allocation of record; see
 | E3 barcoded lineages | IIb | designed | \(\eta\le1\) with a given tree |
 | E4 mutation-rate intervention | IIb | designed | saturation as a response |
 | E5 trained hierarchy | IIb | designed (small-scale runnable) | saturation cross-domain |
-| E6 radius identification | I/IIb | designed | is \(c\) information |
+| E6 radius concentration | IIa+IIb | designed | necessary shell consequence of near-capacity hyperbolic coding |
 
 Balance: IIa (host class) is comparatively well-supported by existing evidence
 yet under-tested by intervention — E9, the decisive one, is unrun. IIb

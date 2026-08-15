@@ -80,6 +80,7 @@ axiomatize a capacity envelope. Formalized results include:
 | Declaration | Meaning |
 |---|---|
 | `card_le_packingCount` | every finite separated subset of a ball is bounded by its exact packing number |
+| `subball_fraction_le_packing_fraction` | the fraction of codewords in any smaller sub-ball is bounded by its packing fraction (finite-radius radial concentration) |
 | `exists_optimal_blockCode` | an exact finite packing code exists whenever the ball packing number is finite |
 | `exists_optimal_blockCode_of_properSpace` | exact finite-block achievability in every proper metric host |
 | `represented_card_le_packingCount` | retained represented histories obey that bound at every depth |

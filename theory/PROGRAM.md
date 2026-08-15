@@ -92,6 +92,13 @@ future test, not part of the current artefact.
   process clock. Paper II therefore tests utilization and host class, not an
   assumed universal "price of genealogy." E2's equal-edge endpoint obstruction
   is a stronger synchronization issue, not host capacity.
+- **The clock seam.** Paper I proves the radial concentration converse:
+  near-capacity operation in a hyperbolic host forces almost all retained
+  histories toward \(d(o,f(v))=c\tau(v)\), with deficit exponent
+  \(h\delta c-\eta\). Paper II's E6 tests this **conditional consequence of
+  IIa+IIb**, not an unconditional claim that biological radius is information.
+  A negative E6 falsifies the conjunction and needs independent host-class and
+  utilization measurements to identify which premise failed.
 - **The \(n=2\) seam.** Paper I fixes \(n=2\) as a structural embeddability
   floor. Paper II therefore must **not** present \(n=2\) as an empirical
   discovery; a measured \(n>2\) (e.g. bacteria \(\approx 3.4\)) is a

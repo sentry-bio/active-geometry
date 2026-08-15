@@ -375,7 +375,180 @@ does not identify clock balls literally with ambient radial balls.
 
 ---
 
-## 5. Exact boundary of the result
+## 5. Radial concentration near capacity
+
+The capacity theorem has a converse rigidity statement: a code operating near
+capacity cannot hide a positive fraction of its histories deep inside the
+available radial ball.
+
+Write \(h=(n-1)\sqrt\kappa\), let
+
+\[
+N(R):=|T_R^\tau|,
+\]
+
+and, for \(0<\delta<1\), define the radially deficient histories
+
+\[
+E_\delta(R)
+:=
+\left\{
+v\in T_R^\tau:
+d(o,f(v))\le(1-\delta)c\,\tau(v)+A_0
+\right\}.
+\]
+
+At fixed resolution there is a constant
+\(A=A(\varepsilon,n,\kappa)>0\) such that
+
+\[
+P(B(o,\rho),\varepsilon)\le A e^{h\rho}
+\qquad(\rho\ge0).
+\]
+
+### Theorem 5.1 -- finite-radius concentration bound
+
+For every \(R>0\),
+
+\[
+\boxed{
+\frac{|E_\delta(R)|}{N(R)}
+\le
+\frac{A e^{hA_0}e^{h(1-\delta)cR}}{N(R)}.
+}
+\]
+
+If, for constants \(B\ge1\) and \(\eta\ge0\),
+
+\[
+N(R)\ge B^{-1}e^{(ch-\eta)R},
+\]
+
+then
+
+\[
+\boxed{
+\frac{|E_\delta(R)|}{N(R)}
+\le
+ABe^{hA_0}
+e^{-(h\delta c-\eta)R}.
+}
+\]
+
+Thus the deficient fraction vanishes exponentially whenever
+\(\eta<h\delta c\).
+
+### Proof
+
+Every \(v\in E_\delta(R)\) satisfies \(\tau(v)\le R\), hence
+
+\[
+d(o,f(v))
+\le(1-\delta)cR+A_0.
+\]
+
+The images are \(\varepsilon\)-separated, so
+
+\[
+|E_\delta(R)|
+\le
+P(B(o,(1-\delta)cR+A_0),\varepsilon)
+\le
+A e^{hA_0}e^{h(1-\delta)cR}.
+\]
+
+Divide by \(N(R)\); the second statement follows by its assumed lower bound.
+\(\square\)
+
+### Limsup and limit forms
+
+Let
+
+\[
+\beta:=\limsup_{R\to\infty}\frac{\log N(R)}R
+\ge ch-\eta.
+\]
+
+For every \(\xi>0\), there is an unbounded sequence \(R_j\) along which
+
+\[
+N(R_j)\ge e^{(\beta-\xi)R_j}.
+\]
+
+Along that sequence,
+
+\[
+\frac{|E_\delta(R_j)|}{N(R_j)}
+\le
+A e^{hA_0}
+e^{-(h\delta c-\eta-\xi)R_j}.
+\]
+
+If the growth limit exists (or the corresponding lower exponential bound
+holds eventually), the same estimate holds for all sufficiently large \(R\).
+No shell-regularity hypothesis is needed: the finite-radius packing estimate
+uses the full clock ball in both numerator and denominator.
+
+### Capacity concentration
+
+For a capacity-achieving code (\(\eta=0\)), every fixed
+\(\delta>0\) has an exponentially vanishing deficient fraction. If weighted
+clock balls are finite, then for every fixed \(L\),
+\(N(L)/N(R)\to0\) along a capacity-realizing sequence. Outside that vanishing
+set, \(\tau(v)>L\), and the radial upper bound gives
+
+\[
+\frac{d(o,f(v))}{c\tau(v)}
+\le1+\frac{A_0}{cL}.
+\]
+
+Letting first \(R\to\infty\) and then \(L\to\infty\) yields
+
+\[
+\boxed{
+\frac{d(o,f(v))}{c\tau(v)}
+\longrightarrow 1
+\quad\text{in probability over retained histories.}
+}
+\]
+
+For a fixed positive deficit \(\eta\), this stronger \(1+o(1)\) conclusion does
+**not** follow. The theorem gives only the sharp one-sided band
+
+\[
+\frac{d(o,f(v))}{c\tau(v)}
+\gtrsim
+1-\frac{\eta}{hc}
+\]
+
+in probability (with an arbitrary additional margin).
+
+### Sharpness of the exponent
+
+The decay rate \(h\delta c-\eta\) cannot be improved from these hypotheses.
+Up to an arbitrarily small exponent error, take the rooted wedge of two
+Bishop--Jones relational codes placed in separated boundary sectors:
+
+1. an outer code of growth \(ch-\eta\), obtained by uniformly slowing a
+   capacity-approaching weighted clock;
+2. an inner code with radial rate \((1-\delta)c\) and growth
+   \(h(1-\delta)c\).
+
+The second component lies in \(E_\delta(R)\), while the first dominates the
+total count when \(\eta<h\delta c\). Their count ratio has exponent
+
+\[
+h(1-\delta)c-(ch-\eta)
+=-(h\delta c-\eta).
+\]
+
+Separated sectors make the finite wedge a relational code after changing only
+depth-independent quasi-isometry constants. Hence the theorem's exponential
+rate is sharp as a supremum.
+
+---
+
+## 6. Exact boundary of the result
 
 ### Settled
 
@@ -407,11 +580,13 @@ addressability capacity of the host. E2's circle-filling construction probes
 this stricter subclass and finds endpoint distortion; it does not challenge
 the weighted/radial theorem.
 
-## 6. Formal boundary
+## 7. Formal boundary
 
 The packing upper bound is already machine-checked in
 `lean/ActiveGeometry/Packing.lean`. The lower bound depends on Skenderi's deep
 Bishop--Jones semigroup theorem, residual finiteness of finitely generated
 linear groups, and the critical exponent of cocompact hyperbolic lattices.
 These cited results are not currently formalized in Mathlib, so the lower bound
-is a paper proof, not a Lean theorem.
+is a paper proof, not a Lean theorem. The finite sub-ball count underlying
+Theorem 5.1 is machine-checked in `Packing.lean`; its full exponential
+asymptotic corollary remains a paper theorem.
