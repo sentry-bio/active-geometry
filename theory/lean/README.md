@@ -9,13 +9,16 @@ metric packing argument and its hypotheses are in
 
 ## Mathematical hierarchy
 
-The theory has two layers (see
-[`../ADDRESSABILITY_KERNEL.md`](../ADDRESSABILITY_KERNEL.md)). **Layer I** is
-universal and curvature-free: the addressability bound, the block-capacity
-identity, and the constrained-capacity ladder. **Layer II** is the curvature
-realization: saturation and isotropic-hyperbolic hypotheses give the state
-equation. Lean formalizes the packing/block portion of Layer I and the
-algebraic skeleton of Layer II. The weighted relational-capacity lower bound
+The theory has a finite-sample layer and two asymptotic layers (see
+[`../ADDRESSABILITY_KERNEL.md`](../ADDRESSABILITY_KERNEL.md) and
+[`../MEASURABILITY.md`](../MEASURABILITY.md)). **Layer 0** is what a finite
+pointed sample can decide: the growth-class identities that distinguish
+exponential from polynomial occupancy. **Layer I** is universal and
+curvature-free: the addressability bound, the block-capacity identity, and
+the constrained-capacity ladder. **Layer II** is the curvature realization:
+saturation and isotropic-hyperbolic hypotheses give the state equation.
+Lean formalizes the Layer 0 identities, the packing/block portion of Layer I,
+and the algebraic skeleton of Layer II. The weighted relational-capacity lower bound
 is a paper proof depending on Skenderi's 2026 Bishop--Jones semigroup theorem
 (see
 [`../RELATIONAL_CAPACITY_THEOREM.md`](../RELATIONAL_CAPACITY_THEOREM.md)).
@@ -67,10 +70,23 @@ Neither saturation nor isotropy is part of `Addressable`.
 
 ```text
 ActiveGeometry/
+├── Measurability.lean     # Layer 0 growth-class identities
 ├── Packing.lean           # metric packing count and asymptotic limit
 ├── Addressability.lean    # scale-aware bound and normalized equality
 └── KappaCurvature.lean    # derived normalized algebra and ceilings
 ```
+
+### `Measurability.lean`
+
+| Declaration | Meaning |
+|---|---|
+| `midpoint_exponent_eq` | endpoint-matched log-gap at \(\sqrt{r}\) (Lemma 1.2) |
+| `spanInformation_eq_logGap_logMean` | maximum gap is \(\Delta(r,d)\) at the logarithmic mean |
+| `logGapDeriv_logMean` | formal derivative vanishes at that mean |
+| `spanInformation_pos` | \(\Delta(r,d)>0\) for \(r>1\), \(d>0\) |
+
+Lean does not formalize Hellinger distance, Le Cam's lemma, or the
+Poisson-increment model.
 
 ### `Packing.lean`
 

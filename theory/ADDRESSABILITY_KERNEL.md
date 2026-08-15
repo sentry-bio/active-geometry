@@ -1,8 +1,15 @@
 # The Addressability Kernel
 
 This is the minimal mathematical core of Active Geometry. It is organized in
-**two layers**, and the whole program's parsimony depends on not confusing
+**layers**, and the whole program's parsimony depends on not confusing
 them.
+
+- **Layer 0 — finite-sample measurability.** What \(N\) points spanning
+  radial ratio \(r\) at resolution \(\varepsilon\) can decide. The
+  growth-class identities and the Le Cam bound live in
+  [`MEASURABILITY.md`](MEASURABILITY.md). This layer mentions no curvature
+  and no process clock. Its conclusion is a refusal: unmeasurable
+  samples are not classified.
 
 - **Layer I — the universal capacity theory (curvature-free).** Three
   independent quantities, one inequality that always holds, one exact identity
@@ -484,7 +491,8 @@ CONVENTION / INSTRUMENT / EMPIRICAL and bound to its artifact — is
 [`CLAIMS.md`](CLAIMS.md), enforced by
 [`../tools/check_doc_artifacts.py`](../tools/check_doc_artifacts.py). The
 whole-program map, including the two manuscripts and their seams, is
-[`PROGRAM.md`](PROGRAM.md).
+[`PROGRAM.md`](PROGRAM.md). Finite-sample askability is
+[`MEASURABILITY.md`](MEASURABILITY.md).
 
 Tree classification by the four-point condition is compatible with the kernel
 but logically independent of it. It can motivate a hyperbolic host class or a

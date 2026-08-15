@@ -6,7 +6,18 @@ The compact dependency structure is stated in
 [`ADDRESSABILITY_KERNEL.md`](ADDRESSABILITY_KERNEL.md). This document supplies
 the full definitions, proof, scope, and measurement consequences.
 
-The theory is organized in **two layers** that must not be conflated.
+The theory is organized in **layers** that must not be conflated.
+
+**Layer 0 — finite-sample measurability.** Every rate in Layers I and II
+is a limsup. Every sample is a finite \(\varepsilon\)-separated set.
+[`MEASURABILITY.md`](MEASURABILITY.md) proves when that set can
+distinguish exponential occupancy of rate \(h\) from polynomial occupancy
+of degree \(d\): the span information \(\Delta(r,d)\) and a Le Cam bound
+whose critical excess span scales as \(N^{-1/4}\). A matrix that fails
+the predicate is not evidence about growth class, host class, or
+saturation. The finite packing inequality
+\(N(R)\le P(B(o,r(R)),\varepsilon)\) of Theorem 4.1 is the other Layer 0
+object — already proved, already finite.
 
 **Layer I — the universal capacity theory (curvature-free), §§1–5.** Three
 independent quantities; a **packing theorem** that forces the capacity
@@ -807,6 +818,11 @@ Until such a dynamics is supplied, the correct claims are:
 ---
 
 ## 11. Measurement protocol
+
+Every test that classifies growth class must first pass Layer 0
+([`MEASURABILITY.md`](MEASURABILITY.md)): the sample is growth-class
+measurable at the pre-registered \((d_{\star},\alpha)\), or the growth
+axis is left blank. Unmeasurable windows are recorded, not classified.
 
 Every test must estimate the two sides independently.
 

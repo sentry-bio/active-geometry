@@ -13,14 +13,21 @@ space gains room to keep them apart, and "room" is a counting property of
 geometry. Everything else is this inequality, its exact achievable form, the
 geometry that realizes it, and the question of whether nature fills it.
 
-## Three layers
+## Four layers
 
 The program is stratified so that a failure in one layer cannot contaminate
 another. The definitions live in [`CLAIMS.md`](CLAIMS.md); the mathematics in
 [`ADDRESSABILITY_KERNEL.md`](ADDRESSABILITY_KERNEL.md) and
 [`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md); the relational coding theorem
-in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the tests in
+in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the
+finite-sample layer in [`MEASURABILITY.md`](MEASURABILITY.md); the tests in
 [`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md).
+
+- **Layer 0 — finite-sample measurability.** What a finite pointed sample
+  can decide. The growth-class identities, the Le Cam bound that converts
+  radial span into a yes/no, and the instrument that refuses unmeasurable
+  matrices. No curvature, no clock, no saturation. This is the only
+  mathematical layer whose hypotheses *are* the measurement.
 
 - **Layer I — universal capacity theory (curvature-free).** The bound
   \(\beta\le c\,h_{\mathrm{pack}}\); the exact block identity
@@ -113,69 +120,82 @@ future test, not part of the current artefact.
   report a measured \(\kappa\) only with the isotropy premise flagged and E9's
   status attached; no absolute \(\kappa\) is a certified measurement today.
 - **The instrument seam.** Both papers cite the same certified instruments
-  (`tools/addressability_meter.py`: M2, M4, the growth-class gate). Neither may
-  quote \(\eta\) to a precision the uncertified M3 magnitude estimator does not
-  support (\(\pm20\%\) is not yet interpretable).
+  (`tools/addressability_meter.py`: M2, M4, the Layer 0 growth-class gate in
+  `tools/growth_class_gate.py`). The gate emits a class only when
+  [`MEASURABILITY.md`](MEASURABILITY.md) marks the sample measurable. Neither
+  paper may quote \(\eta\) to a precision the uncertified M3 magnitude
+  estimator does not support (\(\pm20\%\) is not yet interpretable).
+- **The finite-sample seam.** Paper I's rates are limsups. Paper II's
+  matrices are finite. Layer 0 is the join: a matrix that fails the
+  measurability predicate is not placed on the growth-class axis, and it
+  cannot be read as evidence for or against saturation. Short codes are
+  not approximate capacity-achieving codes.
 - **The honesty seam.** [`CLAIMS.md`](CLAIMS.md) tags every claim and binds it
   to its artifact and layer; it is the contract that keeps Paper II's empirical
   risk out of Paper I.
 
 ## Self-verification
 
-The artefact checks itself, and CI should run all four:
+The artefact checks itself, and CI should run all five:
 
-1. **Lean.** `cd theory/lean && lake build` — 3017 jobs, no `sorry`/`admit`;
+1. **Lean.** `cd theory/lean && lake build` — no `sorry`/`admit`;
    block-identity proofs use only `propext`, `Classical.choice`, `Quot.sound`.
 2. **Meter.** `python3 -m unittest tests.test_addressability_meter` — 6 tests.
-3. **Doc/artifact registry.** `python3 tools/check_doc_artifacts.py` — fails if
+3. **Layer 0 gate.** `python3 -m unittest tests.test_growth_class_gate`.
+4. **Doc/artifact registry.** `python3 tools/check_doc_artifacts.py` — fails if
    a tracked doc names a repository path not on disk (enforced on
    `theory`/`tools`/`tests`; `--all` advisory elsewhere).
-4. **Claim ledger.** [`CLAIMS.md`](CLAIMS.md) is the single source of truth for
+5. **Claim ledger.** [`CLAIMS.md`](CLAIMS.md) is the single source of truth for
    what is THEOREM / IDENTITY / OPEN / CONVENTION / INSTRUMENT / EMPIRICAL.
 
 ## Status: near-finished, with the gaps named
 
 - **Finished:** Layer I (proved, checked); the two-layer/three-sublayer
-  framing; the instrument for the qualitative claims (M2, M4, growth-class
-  gate); the honesty apparatus.
+  framing; the instrument for the qualitative claims (M2, M4); the honesty
+  apparatus.
+- **Finished, Layer 0:** the growth-class measurability theorem, the Lean
+  identities, and the instrument that refuses unmeasurable windows. The
+  2×-span death of the regression gate is now a bound, not a surprise.
 - **Finished, paper-level mathematics:** weighted/radial relational capacity of
   \(\mathbb H_\kappa^n\) equals its volume entropy (Skenderi lower bound plus
   the packing converse). The former unit-edge conjecture is refuted as stated.
 - **Open, mathematics:** the curvature-genericity conjecture, plus the stronger
   equal-edge synchronization refinement for \(c\ge\varepsilon\) (not the
-  definition of host capacity).
+  definition of host capacity). Further Layer 0 finite-sample results
+  (magnitude intervals, short-code signatures) are not opened here.
 - **Open, instrument:** a certified M3 magnitude estimator and a runtime
   independence firewall.
-- **Open, empirical — the highest-leverage gap:** E9, the matched-capacity
-  Euclidean-vs-hyperbolic realization test. The biological claim is Layer IIa,
-  and E9 is the only direct IIa intervention; it is designed and unrun.
+- **Open, empirical — the highest-leverage gap:** E0 on real matrices, then
+  E9. E9 remains the decisive IIa intervention; E0 is the filter that
+  decides which matrices may be asked any growth-class question at all.
 
 ## Center of gravity — a stopping rule
 
-Effort in this program flows downhill toward mathematics, because theorems can
-be produced on demand and experiments cannot. Every recent theorem also
-lengthened the dependency chain from proof to biological meaning (E6 now
-requires verified host class, measured utilization, and a calibrated clock
-before it means anything). That asymmetry is the architecture working — Paper I
-may advance while Paper II waits — but unchecked it is the failure mode of
-mathematically beautiful programs that lose contact with their subject.
+A theorem of the form "if \(A\) and \(B\) then \(C\)" is a gift to the theory
+and a debt to the experiment. Almost every recent Layer I/II theorem
+lengthened that chain. The spine of Layers I and II remains **closed for
+Paper I purposes**. Curvature genericity, the sector-gluing sharpness
+lemma, the equal-edge refinement, and further asymptotic converses are
+deferred.
 
-Accordingly, the spine is declared **closed for Paper I purposes**. The
-remaining mathematical items (curvature genericity, the sector-gluing
-sharpness lemma, the equal-edge refinement, Lean formalization of asymptotic
-corollaries) are not load-bearing for any biological claim and are deferred.
+Layer 0 is the exception, and the only one: a theorem whose hypotheses
+*are* the measurement, and whose conclusion eliminates experiments rather
+than adding premises. That exception is now discharged. Further Layer 0
+work is admitted only if it likewise shortens the chain (a finite-sample
+magnitude interval that retires M3-as-number; a short-code signature that
+replaces asymptotic \(\eta\to 1\) as the IIb target). Another converse
+that adds a clock, an offset, or an isotropy switch is not admitted.
 
-**No new theorems until a measurement has run.** The empirical queue, in order
-of immediacy:
+The empirical queue, in order of immediacy:
 
-1. **The phase diagram on real matrices — runnable now.** The growth-class
-   gate and the δ-meter are the two *certified* instruments; they need no
-   \(\eta\) precision and no \(\kappa\). Place real biological distance
-   matrices on the growth-class × tree-defect plane.
+1. **E0 — measurability audit, then the phase diagram.** Run the Layer 0
+   predicate on real biological distance matrices. Place only the
+   measurable subset on the growth-class × tree-defect plane. Unmeasurable
+   matrices are recorded as such, not as failed classifications.
 2. **E5 at small scale — runnable now.** Trained-hierarchy saturation with
-   co-equal negative controls.
+   co-equal negative controls, on windows Layer 0 marks measurable.
 3. **E4 rehearsal — public data.** Time-stamped serially sampled viruses as
    the pipeline rehearsal, labelled as such.
-4. **E9 — the decisive test.** Needs GPU-scale embedding; highest value.
+4. **E9 — the decisive test.** Needs GPU-scale embedding; highest IIa value.
 
-The next unit of effort belongs to item 1, not to another converse.
+The next unit of effort belongs to item 1.

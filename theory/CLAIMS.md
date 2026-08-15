@@ -27,6 +27,21 @@ Status vocabulary:
 - **INSTRUMENT** — the status of a measurement tool, not a claim about nature.
 - **EMPIRICAL** — a claim about nature; decided only by experiment.
 
+## Layer 0 — finite-sample measurability
+
+*What a finite pointed sample can decide. The hypotheses are the
+measurement; the conclusion eliminates experiments.*
+
+| # | Claim | Status | Backing artifact |
+|---|---|---|---|
+| L0.1 | Endpoint-matched exp/poly log-gap at \(\sqrt{r}\) equals \(d\log r(\tfrac12-1/(\sqrt{r}+1))\) | THEOREM (Lean) | `theory/lean/ActiveGeometry/Measurability.lean` (`midpoint_exponent_eq`); `theory/MEASURABILITY.md` Lemma 1.2 |
+| L0.2 | Maximum log-gap is the span information \(\Delta(r,d)\) at the logarithmic mean | THEOREM (Lean) | `theory/lean/ActiveGeometry/Measurability.lean` (`spanInformation_eq_logGap_logMean`, `spanInformation_pos`) |
+| L0.3 | \(\Delta(r,d)=\frac{d}{8}(r-1)^{2}+O((r-1)^{3})\) | THEOREM (paper) | `theory/MEASURABILITY.md` Proposition 1.4 |
+| L0.4 | Le Cam lower bound: endpoint-matched pair is unmeasurable when \(R^{\star}\ge\alpha\) | THEOREM (paper; Poisson-increment model) | `theory/MEASURABILITY.md` Theorem 2.1; `tools/growth_class_gate.py` |
+| L0.5 | Adjusted-\(R^{2}\) gate is undefined or order-one-error for \(k\le 4\) | THEOREM (paper; regression) | `theory/MEASURABILITY.md` Theorem 2.2 |
+| L0.6 | Critical excess span scales as \(N^{-1/4}\); 2× span dies at a few hundred points (\(d=2\)) | THEOREM (scaling) / EMPIRICAL (gate) | `theory/MEASURABILITY.md` §2; `tests/test_growth_class_gate.py` |
+| L0.7 | The meter emits a growth class only on a measurable window | INSTRUMENT | `tools/growth_class_gate.py`; `tools/addressability_meter.py` |
+
 ## Layer I — universal capacity theory (curvature-free)
 
 | # | Claim | Status | Backing artifact |
@@ -81,7 +96,7 @@ harder, less-supported claim; independent tests currently fail their kill lines.
 | I.1 | Radial-rate meter (M2) | CERTIFIED on synthetic ground truth | `theory/DECISIVE_EXPERIMENTS.md` E1 |
 | I.2 | Tree-defect meter (M4) | CERTIFIED on synthetic ground truth | `tools/addressability_meter.py`; `theory/DECISIVE_EXPERIMENTS.md` E1 |
 | I.3 | Packing-entropy magnitude (M3) | NOT CERTIFIED as a magnitude estimator | `theory/DECISIVE_EXPERIMENTS.md` E1 |
-| I.4 | Growth-class gate (exponential vs polynomial) | CERTIFIED (13/13); makes Corollary 4.3 enforceable | `theory/DECISIVE_EXPERIMENTS.md` E1 |
+| I.4 | Growth-class gate (exponential vs polynomial) | CERTIFIED on *measurable* full-span synthetics (13/13 in E1; reproduced in `tests/test_growth_class_gate.py`); **refuses** unmeasurable windows (Layer 0) | `tools/growth_class_gate.py`; `theory/MEASURABILITY.md`; `theory/DECISIVE_EXPERIMENTS.md` E0, E1 |
 | I.5 | Independence firewall | CONVENTION only; runtime provenance check not yet implemented | `tools/addressability_meter.py` (`independence.verified: false`) |
 | I.6 | Meter refuses to back-solve a missing axis from curvature | INSTRUMENT (enforced) | `tools/addressability_meter.py`; `tests/test_addressability_meter.py` |
 
@@ -101,7 +116,8 @@ saturation (IIb). This table is the allocation of record; see
 
 | Experiment | Layer | Status | Decides |
 |---|---|---|---|
-| E1 meter certification | I | run (M2/M4 pass, M3 magnitude fails, gate passes) | instruments legal |
+| E0 measurability audit | 0 | designed (predicate implemented) | which matrices may be asked growth class |
+| E1 meter certification | I | run (M2/M4 pass, M3 magnitude fails, gate passes on full-span synthetics) | instruments legal |
 | E8 boundary mapping | I | designed | premises load-bearing |
 | E9 matched-capacity Euclidean vs hyperbolic (*E-alpha*) | IIa | **designed, unrun — highest value** | is hyperbolic forced |
 | E2 equal-edge numerical achievability | IIa refinement | run (endpoint obstruction) | stronger synchronization subclass; Theorem 4.4 already settles host capacity |

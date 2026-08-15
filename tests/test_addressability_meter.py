@@ -159,6 +159,9 @@ class AddressabilityMeterTests(unittest.TestCase):
         self.assertEqual(report["growth"]["reference_center"]["policy"], "supplied root")
         self.assertTrue(report["state"]["bound_satisfied"])
         self.assertIn("explicit user assumption", report["state"]["host_entropy_source"])
+        self.assertIn("growth_class", report)
+        self.assertIn(report["growth_class"]["verdict"],
+                      ("measurable", "undecided", "unmeasurable"))
 
 
 if __name__ == "__main__":

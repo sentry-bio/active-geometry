@@ -4,9 +4,12 @@
 
 The theorems are not at stake. The packing converse and the block identity are
 counting facts, machine-checked, and no measurement can strengthen or damage
-them. Experiments decide the three questions mathematics cannot, **one per
+them. Experiments decide the questions mathematics cannot, **one per
 layer** (see [`CLAIMS.md`](CLAIMS.md) for the layer definitions):
 
+0. **Askability (Layer 0).** Can this finite sample decide growth class at
+   all? [`MEASURABILITY.md`](MEASURABILITY.md) answers before any other
+   test is interpreted. Unmeasurable matrices are not failed runs.
 1. **Applicability (Layer I).** Do natural systems instantiate the premises —
    retained distinguishable histories, fixed resolution, finite radial rate,
    and *exponential* host growth?
@@ -14,7 +17,8 @@ layer** (see [`CLAIMS.md`](CLAIMS.md) for the layer definitions):
    forced — does a hyperbolic host beat a Euclidean one *at matched capacity*?
    Isotropy is currently asserted, never measured; this is where it gets tested.
 3. **Saturation (Layer IIb).** Where the host is fixed, does the process fill
-   its budget (\(\eta\to 1\)), and is it *driven* there?
+   its budget (\(\eta\to 1\)), and is it *driven* there? This question is
+   asymptotic; Layer 0 forbids reading it on a short-span window.
 
 Decisiveness is ranked: **interventions** (turn a knob the theory names,
 predict the response function) beat **pre-registered predictions** (state the
@@ -27,7 +31,7 @@ procedure, the estimator it calls (from the shared library below), and a
 **decision rule** with explicit numeric thresholds — a predicted outcome and a
 kill line. A protocol without a kill line is not an experiment.
 
-The set is nine experiments across the three layers. A prior version tested
+The set is ten experiments across four layers. A prior version tested
 **Layer IIb saturation almost exclusively** while the better-supported
 biological claim is **Layer IIa host class** — a misallocation. E9
 (matched-capacity Euclidean vs hyperbolic), pre-registered elsewhere as
@@ -80,6 +84,42 @@ host is isotropic hyperbolic appears in the meter only as the flag
 `--assume-isotropic-hyperbolic`. No experiment below *asserts* it; E9 is the
 one that *tests* it. Any curvature magnitude reported without E9 having passed
 is conditional on an unverified switch, and must be labelled so.
+
+---
+
+## E0 — Measurability audit (Layer 0)
+
+**Question.** Which matrices may be asked the growth-class question?
+
+**Inputs.** A collection of pointed distance matrices (synthetic first, then
+public biological matrices). The Layer 0 instrument
+`tools/growth_class_gate.py`.
+
+**Procedure.**
+1. For each matrix, pick the declared root or the metric medoid.
+2. Extract the occupancy window used by M3 (`min_count=3`,
+   `max_fraction=0.5`).
+3. Compute the measurability predicate at pre-registered
+   \((d_{\star},\alpha,k_{\min})=(2,0.05,6)\).
+4. Emit one of `{measurable, undecided, unmeasurable}` and, only in the
+   first case, a growth class.
+5. Place **only** measurable matrices on the growth-class axis of the
+   phase diagram. Record the others as Layer 0 refusals, with
+   \((N,r,k,\Delta)\).
+
+**Decision rule.**
+- *Predict:* full-span synthetic trees and grids used in E1 are
+  measurable and classify correctly; windows with \(r\le 2\) and a few
+  hundred points are unmeasurable (Theorem 2.1 / the \(N^{-1/4}\) law).
+- *Kill (instrument):* a window the predicate marks unmeasurable is
+  nonetheless assigned a growth class, or a full-span E1 host is marked
+  unmeasurable.
+- *Kill (scope):* a published growth-class claim in this program rests
+  on a matrix that the predicate now refuses.
+
+**Status.** Predicate implemented and unit-tested, including the 2×-span
+death of the regression gate. The audit of *real* biological matrices
+is the next empirical step and has not been run.
 
 ---
 
@@ -162,16 +202,20 @@ refusal rule. M1 and M2 are supplied per system by the experiments below.
   under non-stationarity (a branching-rate step gives ~25% error, driving
   \(\eta\) to 0.80 on data that sits exactly at 1).
 
-**The growth-class gate (delivered and validated).** Exponential growth is
+**The growth-class gate (delivered, now Layer-0-gated).** Exponential growth is
 linear in \(\log P\) vs \(\rho\); polynomial growth is linear in \(\log P\) vs
 \(\log\rho\). Fitting both and comparing adjusted \(R^2\) classified 13/13 hosts
 correctly with no overlap (trees and \(\mathbb H^2\) exponential; 2D/3D grids
-and Euclidean MSTs polynomial). **Certified M3 must carry this gate**: report a
-packing entropy only when the exponential model wins, else \(h_{\mathrm{pack}}=0\)
-by Corollary 4.3. This makes polynomial-growth exclusion — the coordinate-free
-core of the theory — mechanically enforceable, and is the part of M3 that is
-usable today. A **minimum-radial-shells precondition** is also required: M3
-error tracks the number of fit points directly.
+and Euclidean MSTs polynomial) **on full-span synthetics**. That certification
+does not transfer to short windows: at 2× span the same gate ceases to
+separate the two hosts, which is the content of
+[`MEASURABILITY.md`](MEASURABILITY.md) Theorems 2.1–2.2, not a software
+failure. **Certified M3 must carry this gate and the Layer 0 predicate**:
+report a packing entropy only when the sample is measurable *and* the
+exponential model wins, else refuse the class (short span) or report
+\(h_{\mathrm{pack}}=0\) by Corollary 4.3 (measurable polynomial). The
+instrument is `tools/growth_class_gate.py`. A **minimum-radial-shells
+precondition** is now a theorem (\(k\ge k_{\min}\)), not only a heuristic.
 
 **Consequence for the protocol.** The *qualitative* axis (is the host
 exponential?) is instrumented now. The *quantitative* axis (what is \(\eta\)?)
@@ -572,10 +616,11 @@ the only direct IIa intervention.
 
 ## The empirical bridge: the growth-class × tree-defect phase diagram
 
-The two certified instruments (the growth-class gate on M3, the defect meter
-M4) yield a two-axis classifier that needs **no curvature magnitude** and no
-uncertified \(\eta\). It is the honest empirical figure for a real system, and
-it maps a dataset onto the two-layer theory directly.
+The two certified instruments (the Layer-0-gated growth-class gate on M3, the
+defect meter M4) yield a two-axis classifier that needs **no curvature
+magnitude** and no uncertified \(\eta\). It is the honest empirical figure for
+a real system, and it maps a dataset onto the layered theory directly.
+Matrices that fail E0 are not placed on the growth axis.
 
 | | tree-like: \(\delta\approx 0\) | reticulate: \(\delta>0\) |
 |---|---|---|
@@ -605,6 +650,7 @@ the biological claim actually lives — is no longer buried.
 
 | Rank | Experiment | Layer | What it decides | Class |
 |---|---|---|---|---|
+| 0 | E0 measurability audit | 0 | Which matrices may be asked growth class? | filter (predicate implemented; real audit unrun) |
 | 1 | E9 matched-capacity Euclidean vs hyperbolic | IIa | Is the hyperbolic host *forced*? | intervention (unrun) |
 | 2 | E4 mutation-rate intervention | IIb | Is saturation a response? | intervention |
 | 3 | E3 barcoded lineages | IIb | Is \(\eta\) real with a given tree? | ground-truth observation |
@@ -635,10 +681,15 @@ IIb is heavily tested and fails its independent kill lines (domain
 
 Not any one of these. The bound is already firm. Firm ground is layer by layer.
 
+**Layer 0 — askability.**
+- E0 predicate in hand; real-matrix audit unrun. No growth-class claim
+  without a measurable window.
+
 **Layer I — applicability.**
 - E1 passed (legal instruments). **Current state:** M2 and M4 certified; M3
-  certified only for the exponential/polynomial dichotomy via the growth-class
-  gate, not yet as a magnitude estimator — so \(\eta\) to \(\pm20\%\) is not yet
+  certified only for the exponential/polynomial dichotomy via the
+  Layer-0-gated growth-class gate on full-span synthetics, not yet as a
+  magnitude estimator — so \(\eta\) to \(\pm20\%\) is not yet
   interpretable and this precondition is not fully met;
 - E8 showing a clean boundary (the premises are load-bearing).
 
