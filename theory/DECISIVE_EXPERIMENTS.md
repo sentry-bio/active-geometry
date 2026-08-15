@@ -381,51 +381,73 @@ of training objectives; a representation whose geometry is measured by M2–M3.
 **Layer IIa + IIb consequence, not an unconditional prediction.** Theorem 5.1
 of [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md) proves:
 *if* the host is hyperbolic (IIa) and the code operates near capacity (IIb),
-then almost all retained histories lie near the outer radial shell. At exact
-capacity,
+then almost all retained histories use nearly all of the radial budget
+available at **their own weighted clock time**. At exact capacity,
 
 \[
 \frac{d(o,f(v))}{c\tau(v)}\to1
-\quad\text{in probability.}
+\quad\text{in probability under uniform counting on clock balls}
 \]
 
-With fixed deficit \(\eta>0\), only the band
-\(d/(c\tau)\gtrsim1-\eta/(hc)\) is forced. Existing independent saturation
-tests fail, so the exact-capacity prediction is **not currently licensed for
-biology without a separate \(\eta\) measurement**.
+along a capacity-realizing sequence (or eventually when the growth limit
+exists). With additive capacity deficit
+\(\Delta_{\rm cap}=ch-\beta=ch(1-\eta)>0\), the exact statement is: for every
+margin \(m>0\), the fraction with
+\[
+\frac{d}{c\tau}\le
+1-\frac{\Delta_{\rm cap}}{hc}-m
+=\eta-m
+\]
+vanishes along the applicable sequence. Existing independent saturation tests
+fail, so the exact-capacity prediction is **not currently licensed for biology
+without a separate \(\eta\) measurement**.
 
 **Question.** Conditional on a hyperbolic host and measured near-capacity
-operation, is radius accumulated information rather than elapsed time?
+operation, does biological radius show the theorem's clock-relative
+concentration?
 
-**Inputs.** A clade sample where process time, sequence divergence, and
-functional complexity are known to disagree: bradytelic ("living fossil")
-lineages (deep time, low change) and rapid-innovation lineages (modest time,
-high functional gain).
+**Inputs.** A hierarchy with an independently calibrated **weighted generative
+clock \(\tau\)**, a representation radius, and enough retained histories at
+successive clock cutoffs to estimate threshold fractions. A barcoded lineage
+system (E3) is preferable. Fossil elapsed time, sequence divergence, or a
+complexity score is not automatically the theorem's \(\tau\); substituting one
+requires an independent calibration.
 
 **Procedure.**
-1. Process time from fossils or a clock that is **not** the embedding radius.
-2. Sequence divergence from an alignment that is **not** the embedding.
-3. Functional complexity from an independent measure (gene-content, proteome
-   functional-category count, morphological character count).
-4. Embedded radius \(r\) via M2 from a representation taking none of the above
-   as input.
-5. Independently estimate host class (E9) and utilization \(\eta\) (M1–M3).
+1. Define \(\tau\) independently of the embedding and verify that clock balls
+   \(T_R^\tau\) are finite and sampled without lineage bias (or reweight to the
+   uniform counting measure).
+2. Estimate embedded radius \(d(o,f(v))\), radial rate \(c\), offset \(A_0\),
+   and host exponent \(h\) from independent inputs.
+3. Independently verify the theorem's premises: fixed resolution,
+   \(\varepsilon\)-separation, quasi-isometry/relational fidelity, the radial
+   budget, and hyperbolic host class (E9).
+4. Independently estimate growth \(\beta\), then
+   \(\Delta_{\rm cap}=ch-\beta\) and efficiency \(\eta=\beta/(ch)\).
    Without both, label the run exploratory.
-6. Partial correlations of \(r\) with each of time, divergence, complexity,
-   controlling for the other two.
+5. For pre-registered \(\delta\) values and successive \(R\), compute
+   \[
+   q_\delta(R)=
+   \frac{\#\{v\in T_R^\tau:
+   d(o,f(v))\le(1-\delta)c\tau(v)+A_0\}}
+   {|T_R^\tau|}.
+   \]
+   Test its decay against \(h\delta c-\Delta_{\rm cap}\).
+6. Only as a secondary biological interpretation, compare radius with elapsed
+   time, sequence divergence, and functional complexity where they disagree.
 
 **Decision rule.**
 - *Necessary-condition prediction:* when E9 supports the hyperbolic host and
-  independently measured \(\eta\approx1\), \(r/(c\tau)\) concentrates near 1;
-  operationally, \(r\) tracks accumulated change rather than elapsed time.
-- *Positive result:* supports the necessary consequence of near-capacity
-  hyperbolic coding, but does **not** prove saturation (low-rate radial codes
-  can also correlate).
-- *Negative result:* falsifies the conjunction
-  `hyperbolic host + near capacity + correct clock`; it does not identify which
-  conjunct failed. Use the independent E9 and \(\eta\) measurements to
-  separate them. The bound is untouched and the CCS radial axis stays
-  advisory.
+  independently measured \(\eta\approx1\), \(q_\delta(R)\) decays
+  exponentially; at exact capacity \(r/(c\tau)\) concentrates near 1.
+- *Positive result:* supports a necessary consequence of near-capacity
+  hyperbolic coding, but does **not** prove saturation.
+- *Negative result:* challenges the biological application only after
+  separation, quasi-isometry, radial budget, unbiased counting, asymptotic
+  regime, host class, and near-capacity premises are independently verified.
+  Otherwise it is a premise failure, not a theorem failure. Use E9 and the
+  independent \(\eta\) measurement to separate causes. The bound is untouched
+  and the CCS radial axis stays advisory.
 
 ---
 
@@ -590,7 +612,7 @@ the biological claim actually lives — is no longer buried.
 | 5 | E2 equal-edge endpoint | IIa refinement | Does exact synchronization obstruct the endpoint? | numerical |
 | 6 | E5 trained hierarchy (adversarial) | IIb | Is saturation cross-domain? | intervention |
 | 7 | E8 boundary mapping | I | Do the premises do real work? | intervention / observation |
-| 8 | E6 radius concentration | IIa+IIb | Does near-capacity hyperbolic coding put histories on the outer shell? | conditional prediction |
+| 8 | E6 radius concentration | IIa+IIb | Does clock-relative radius concentrate as the converse predicts? | conditional prediction |
 | 9 | E1 meter certification | I | Are the instruments legal? | calibration |
 
 E1 is last in the table and first in time. Nothing above it is interpretable

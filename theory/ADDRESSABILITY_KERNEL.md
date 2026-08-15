@@ -313,16 +313,20 @@ of histories satisfying
 \[
 \frac{|E_\delta(R)|}{|T_R^\tau|}
 \le
-C e^{-(h\delta c-\eta)R},
+C e^{-(h\delta c-\Delta_{\rm cap})R},
 \qquad
 h=(n-1)\sqrt\kappa,
 \]
 
-for growth at least \(ch-\eta\). At exact capacity,
-\(d(o,f(v))/(c\tau(v))\to1\) in probability. With fixed \(\eta>0\), only a
-one-sided band follows. This is Theorem 5.2 of the spine: the clock--radius
-identity is a **conditional consequence of IIa+IIb**, not an unconditional
-biological law.
+for an eventual lower growth bound \(ch-\Delta_{\rm cap}\); a limsup gives the
+same conclusion along a realizing sequence with an arbitrary exponent margin.
+Here \(\Delta_{\rm cap}=ch-\beta=ch(1-\eta)\) is additive deficit, not
+dimensionless efficiency. At exact capacity,
+\(d(o,f(v))/(c\tau(v))\to1\) in probability under uniform counting on clock
+balls, along that sequence (or eventually if the growth limit exists). With
+fixed positive deficit, only a one-sided band follows. This is Theorem 5.2 of
+the spine: the clock--radius identity is a **conditional consequence of
+IIa+IIb**, not an unconditional biological law.
 
 ---
 

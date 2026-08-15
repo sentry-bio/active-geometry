@@ -72,7 +72,7 @@ harder, less-supported claim; independent tests currently fail their kill lines.
 | L2b.2 | State equation \(\bar\kappa^*=(h_{\mathrm{eff}}\ln2/(n-1))^2\) under saturation + isotropy | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_state_equation`) |
 | L2b.3 | \(\bar\kappa=c^2\kappa\) is the unit-invariant curvature; raw formula needs gauge \(c=1\) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_curvature_scale_invariant`, `process_time_gauge`) |
 | L2b.4 | Some hierarchy actually saturates | EMPIRICAL, open (independent tests currently fail) | `theory/DECISIVE_EXPERIMENTS.md` E3, E4 |
-| L2b.5 | Near-capacity hyperbolic codes concentrate retained histories at \(d(o,f(v))\approx c\tau(v)\); deficit tradeoff \(e^{-(h\delta c-\eta)R}\) | THEOREM (finite count Lean; asymptotic paper) | `theory/RELATIONAL_CAPACITY_THEOREM.md` §5; `theory/lean/ActiveGeometry/Packing.lean` (`subball_fraction_le_packing_fraction`) |
+| L2b.5 | Near-capacity hyperbolic codes concentrate clock-relative radius; additive-deficit tradeoff \(e^{-(h\delta c-\Delta_{\rm cap})R}\), \(\Delta_{\rm cap}=ch(1-\eta)\) | THEOREM (finite count Lean; asymptotic paper with limsup qualification) | `theory/RELATIONAL_CAPACITY_THEOREM.md` §5; `theory/lean/ActiveGeometry/Packing.lean` (`subball_fraction_le_packing_fraction`) |
 
 ## Instruments (status of tools, not claims about nature)
 

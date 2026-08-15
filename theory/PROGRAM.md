@@ -94,11 +94,15 @@ future test, not part of the current artefact.
   is a stronger synchronization issue, not host capacity.
 - **The clock seam.** Paper I proves the radial concentration converse:
   near-capacity operation in a hyperbolic host forces almost all retained
-  histories toward \(d(o,f(v))=c\tau(v)\), with deficit exponent
-  \(h\delta c-\eta\). Paper II's E6 tests this **conditional consequence of
-  IIa+IIb**, not an unconditional claim that biological radius is information.
-  A negative E6 falsifies the conjunction and needs independent host-class and
-  utilization measurements to identify which premise failed.
+  histories toward \(d(o,f(v))=c\tau(v)\), along a capacity-realizing sequence
+  (or eventually when the growth limit exists), with exponent
+  \(h\delta c-\Delta_{\rm cap}\). Here
+  \(\Delta_{\rm cap}=ch-\beta=ch(1-\eta)\), not the dimensionless efficiency
+  itself. Paper II's E6 tests this **conditional consequence of IIa+IIb**, not
+  an unconditional claim that biological radius is information. A negative E6
+  challenges the biological conjunction only after all theorem premises and
+  unbiased clock-ball sampling are verified; independent host-class and
+  utilization measurements identify which premise failed.
 - **The \(n=2\) seam.** Paper I fixes \(n=2\) as a structural embeddability
   floor. Paper II therefore must **not** present \(n=2\) as an empirical
   discovery; a measured \(n>2\) (e.g. bacteria \(\approx 3.4\)) is a

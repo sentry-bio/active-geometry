@@ -482,8 +482,11 @@ subexponential inefficiency may remain.
 
 Let a weighted relational code in \(\mathbb H_\kappa^n\) have
 \(h=(n-1)\sqrt\kappa\), radial rate \(c\), offset \(A_0\), and growth at least
-\(ch-\eta\). For \(0<\delta<1\), let \(E_\delta(R)\) be histories through time
-\(R\) satisfying
+\(ch-\Delta_{\rm cap}\), in the finite form
+\(|T_R^\tau|\ge B^{-1}e^{(ch-\Delta_{\rm cap})R}\). Here
+\(\Delta_{\rm cap}\) is an additive rate deficit, not the dimensionless
+efficiency \(\eta=\beta/(ch)\). For \(0<\delta<1\), let \(E_\delta(R)\) be
+histories through time \(R\) satisfying
 
 \[
 d(o,f(v))\le(1-\delta)c\tau(v)+A_0.
@@ -494,27 +497,30 @@ The smaller-ball packing count gives
 \[
 \boxed{
 \frac{|E_\delta(R)|}{|T_R^\tau|}
-\le C e^{-(h\delta c-\eta)R}
+\le C e^{-(h\delta c-\Delta_{\rm cap})R}
 }
 \]
 
 whenever the stated growth lower bound holds, with
-\(C=C(\varepsilon,n,\kappa,A_0)\). For a limsup growth rate, the estimate holds
-along a realizing sequence; if the growth limit exists, it holds eventually.
-No shell-regularity assumption is needed.
+\(C=C(\varepsilon,n,\kappa,A_0,B)\). For a limsup growth rate, the estimate
+holds along a realizing sequence with an arbitrary exponent margin
+\(\xi>0\); if the growth limit exists, it holds eventually. No
+shell-regularity assumption is needed.
 
-At exact capacity (\(\eta=0\)),
+At exact capacity (\(\Delta_{\rm cap}=0\)),
 
 \[
 \frac{d(o,f(v))}{c\tau(v)}\to1
 \]
 
-in probability over retained histories. For fixed \(\eta>0\), only the
-one-sided band \(d/(c\tau)\gtrsim1-\eta/(hc)\) follows. Thus “radius is
-accumulated information” is a necessary consequence of **near-capacity
-hyperbolic coding**, not an unconditional prediction about nature. The
-finite-radius sub-ball count is Lean-checked; the proof, sharpness example, and
-limsup qualifications are in
+in probability under uniform counting on \(T_R^\tau\), along the realizing
+sequence (or eventually when the growth limit exists). For fixed
+\(\Delta_{\rm cap}>0\), the quantified conclusion is only that every band
+strictly below \(1-\Delta_{\rm cap}/(hc)=\eta\) has vanishing mass. Thus
+“radius is accumulated information” is a necessary consequence of
+**near-capacity hyperbolic coding**, not an unconditional prediction about
+nature. The finite-radius sub-ball count is Lean-checked; the proof,
+sharpness-construction sketch, and limsup qualifications are in
 [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md) §5.
 
 ### Variational interpretation

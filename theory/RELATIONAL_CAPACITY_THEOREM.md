@@ -418,10 +418,11 @@ For every \(R>0\),
 }
 \]
 
-If, for constants \(B\ge1\) and \(\eta\ge0\),
+If, for constants \(B\ge1\) and additive capacity deficit
+\(\Delta_{\mathrm{cap}}\ge0\),
 
 \[
-N(R)\ge B^{-1}e^{(ch-\eta)R},
+N(R)\ge B^{-1}e^{(ch-\Delta_{\mathrm{cap}})R},
 \]
 
 then
@@ -431,12 +432,15 @@ then
 \frac{|E_\delta(R)|}{N(R)}
 \le
 ABe^{hA_0}
-e^{-(h\delta c-\eta)R}.
+e^{-(h\delta c-\Delta_{\mathrm{cap}})R}.
 }
 \]
 
 Thus the deficient fraction vanishes exponentially whenever
-\(\eta<h\delta c\).
+\(\Delta_{\mathrm{cap}}<h\delta c\). This additive deficit is not the
+dimensionless efficiency \(\eta=\beta/(ch)\) used elsewhere in the program;
+when the growth rate is \(\beta\),
+\(\Delta_{\mathrm{cap}}=ch-\beta=ch(1-\eta)\).
 
 ### Proof
 
@@ -466,7 +470,7 @@ Let
 
 \[
 \beta:=\limsup_{R\to\infty}\frac{\log N(R)}R
-\ge ch-\eta.
+\ge ch-\Delta_{\mathrm{cap}}.
 \]
 
 For every \(\xi>0\), there is an unbounded sequence \(R_j\) along which
@@ -481,7 +485,7 @@ Along that sequence,
 \frac{|E_\delta(R_j)|}{N(R_j)}
 \le
 A e^{hA_0}
-e^{-(h\delta c-\eta-\xi)R_j}.
+e^{-(h\delta c-\Delta_{\mathrm{cap}}-\xi)R_j}.
 \]
 
 If the growth limit exists (or the corresponding lower exponential bound
@@ -491,11 +495,18 @@ uses the full clock ball in both numerator and denominator.
 
 ### Capacity concentration
 
-For a capacity-achieving code (\(\eta=0\)), every fixed
-\(\delta>0\) has an exponentially vanishing deficient fraction. If weighted
-clock balls are finite, then for every fixed \(L\),
-\(N(L)/N(R)\to0\) along a capacity-realizing sequence. Outside that vanishing
-set, \(\tau(v)>L\), and the radial upper bound gives
+For a capacity-rate code (\(\Delta_{\mathrm{cap}}=0\)), every fixed
+\(\delta>0\) has an exponentially vanishing deficient fraction along a
+sequence realizing the limsup. If the growth limit exists (or an eventual
+capacity-rate lower bound is assumed), this holds for all sufficiently large
+\(R\).
+
+Take the probability measure to be uniform on the finite clock ball
+\(T_R^\tau\). Assign any value to the root's undefined radial ratio; its mass
+vanishes. Weighted clock balls are finite here because their
+\(\varepsilon\)-separated images lie in compact hyperbolic balls. For every
+fixed \(L\), \(N(L)/N(R)\to0\) along the applicable sequence. Outside that
+vanishing set, \(\tau(v)>L\), and the radial upper bound gives
 
 \[
 \frac{d(o,f(v))}{c\tau(v)}
@@ -508,43 +519,54 @@ Letting first \(R\to\infty\) and then \(L\to\infty\) yields
 \boxed{
 \frac{d(o,f(v))}{c\tau(v)}
 \longrightarrow 1
-\quad\text{in probability over retained histories.}
+\quad\text{in probability under the uniform measure on }T_R^\tau.
 }
 \]
 
-For a fixed positive deficit \(\eta\), this stronger \(1+o(1)\) conclusion does
-**not** follow. The theorem gives only the sharp one-sided band
+For a fixed positive deficit \(\Delta_{\mathrm{cap}}\), this stronger
+\(1+o(1)\) conclusion does **not** follow. Instead, for every margin \(m>0\),
 
 \[
+\Pr_{v\sim\mathrm{Unif}(T_R^\tau)}
+\left[
 \frac{d(o,f(v))}{c\tau(v)}
-\gtrsim
-1-\frac{\eta}{hc}
+\le
+1-\frac{\Delta_{\mathrm{cap}}}{hc}-m
+\right]
+\longrightarrow0
 \]
 
-in probability (with an arbitrary additional margin).
+along the applicable sequence, provided
+\(0\le\Delta_{\mathrm{cap}}<hc\). In terms of dimensionless efficiency this
+threshold is \(1-\Delta_{\mathrm{cap}}/(hc)=\eta\).
 
-### Sharpness of the exponent
+### Sharpness construction (sketch)
 
-The decay rate \(h\delta c-\eta\) cannot be improved from these hypotheses.
-Up to an arbitrarily small exponent error, take the rooted wedge of two
-Bishop--Jones relational codes placed in separated boundary sectors:
+The exponent arithmetic \(h\delta c-\Delta_{\mathrm{cap}}\) is the one forced
+by packing and total growth. A candidate showing sharpness, up to arbitrarily
+small exponent error, is the rooted wedge of two Bishop--Jones relational
+codes placed in separated boundary sectors:
 
-1. an outer code of growth \(ch-\eta\), obtained by uniformly slowing a
+1. an outer code of growth \(ch-\Delta_{\mathrm{cap}}\), obtained by uniformly slowing a
    capacity-approaching weighted clock;
 2. an inner code with radial rate \((1-\delta)c\) and growth
    \(h(1-\delta)c\).
 
 The second component lies in \(E_\delta(R)\), while the first dominates the
-total count when \(\eta<h\delta c\). Their count ratio has exponent
+total count when \(\Delta_{\mathrm{cap}}<h\delta c\). Their count ratio has
+exponent
 
 \[
-h(1-\delta)c-(ch-\eta)
-=-(h\delta c-\eta).
+h(1-\delta)c-(ch-\Delta_{\mathrm{cap}})
+=-(h\delta c-\Delta_{\mathrm{cap}}).
 \]
 
-Separated sectors make the finite wedge a relational code after changing only
-depth-independent quasi-isometry constants. Hence the theorem's exponential
-rate is sharp as a supremum.
+To upgrade this arithmetic to a theorem requires a sector-gluing lemma:
+sector-localized capacity approximators, uniform cross-component separation,
+bounded cross Gromov products (hence a global quasi-isometric lower bound), and
+two-sided counting asymptotics. Those ingredients are plausible but are not
+proved here. Accordingly this paragraph is a sharpness construction sketch,
+not an established corollary.
 
 ---
 
