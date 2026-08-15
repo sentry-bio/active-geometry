@@ -24,7 +24,7 @@ The result says something stronger than block achievability:
 
 > In a real hyperbolic host, preserving a branching genealogy costs no
 > exponential-order capacity. The relational tax is zero as a supremum,
-> although the boundary rate need not be attained.
+> without requiring or establishing attainment of the boundary rate.
 
 ---
 
@@ -154,8 +154,17 @@ DOI [10.1112/topo.70087](https://doi.org/10.1112/topo.70087):
 - equation (6.5), in the proof of Theorem 6.1: the orbit map of the semigroup's
   tree is a quasi-isometric embedding into the symmetric space.
 
-Real-hyperbolic lattices are rank-one transverse groups, so these results apply
-to \(\mathbb H_\kappa^n\).
+Precisely, Skenderi's Theorem 3.1 applies to a discrete non-elementary
+convergence group equipped with an expanding coarse cocycle. Theorem 1.1/5.1
+applies to a non-elementary \(P_\theta\)-transverse subgroup of a connected
+semisimple group with finite center and no compact factors, and to a functional
+\(\phi\) proper on distinct sequences:
+\(\phi(\kappa(\gamma_j))\to\infty\). A cocompact lattice in
+\(\operatorname{Isom}^+(\mathbb H_\kappa^n)\) satisfies these rank-one
+hypotheses; the Cartan functional is hyperbolic displacement up to the fixed
+metric normalization. Rescaling the standard symmetric-space metric to
+sectional curvature \(-\kappa\) rescales critical exponents by
+\(\sqrt\kappa\) and preserves quasi-isometry.
 
 ### Proof
 
@@ -228,7 +237,7 @@ Finite index preserves cocompactness and critical exponent, so
 
 #### Bishop--Jones semigroup
 
-Fix any \(a<h\). Apply Skenderi's Theorem 3.1 to
+Fix any \(0<a<h\). Apply Skenderi's Theorem 3.1 to
 \(\Lambda_\varepsilon\), using the rank-one Busemann cocycle whose magnitude is
 \[
 \|\gamma\|=d(o,\gamma o).
@@ -292,8 +301,21 @@ At \(q=ca\),
 \]
 
 Hence the series diverges and the weighted-tree growth exponent is at least
-\(ca\). This constructs an admissible relational code of rate at least
-\(ca\). Since \(a<h\) was arbitrary,
+\(ca\). Explicitly, because \(S\) is finite and
+\(\min_{s\in S}a_s>0\), the weighted tree is locally finite and proper. For
+its counting function
+\[
+N_\tau(R):=\#\{w:\tau(w)\le R\},
+\]
+the standard abscissa-of-convergence identity gives
+\[
+\inf\left\{q:\sum_w e^{-q\tau(w)}<\infty\right\}
+=
+\limsup_{R\to\infty}\frac{\log N_\tau(R)}R.
+\]
+Therefore divergence at \(q=ca\) implies weighted growth at least \(ca\).
+This constructs an admissible relational code of rate at least \(ca\). Since
+\(a<h\) was arbitrary,
 
 \[
 C_{\mathrm{rel}}^{\mathrm{wt}}\ge ch.
@@ -310,8 +332,15 @@ C_{\mathrm{rel}}^{\mathrm{wt}}=ch.
 
 ## 4. Radial form
 
-The same result can be stated without choosing a process clock. For an
-\(\varepsilon\)-separated quasi-isometrically embedded tree, let
+The same result can be stated without choosing a process clock. Let \(T\) range
+over rooted, locally finite unit-edge trees with tree metric \(d_T\), and let
+\(f:V(T)\to\mathbb H_\kappa^n\) satisfy:
+
+- \(f(\mathrm{root})=o\);
+- \(f(V(T))\) is \(\varepsilon\)-separated;
+- \(f\) is a quasi-isometric embedding for \(d_T\).
+
+Define
 
 \[
 N_f(\rho):=
@@ -339,7 +368,10 @@ h_{\mathrm{rel}}^{\mathrm{rad}}
 }
 \]
 
-The process-time theorem is the conversion \(\rho=cR\).
+The radial and process-time capacity values differ by the factor \(c\). The
+lower-bound construction realizes that scaling with the local durations
+\(a_s=d(o,so)/c\); for a general weighted code, the one-sided radial condition
+does not identify clock balls literally with ambient radial balls.
 
 ---
 

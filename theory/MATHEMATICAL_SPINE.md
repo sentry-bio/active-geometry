@@ -359,7 +359,8 @@ and Skenderi's partition-sum inequality gives weighted growth arbitrarily
 close to \(c(n-1)\sqrt\kappa\).
 
 Thus preserving genealogy has **zero relational tax at exponential order** in
-real hyperbolic space. The supremum need not be attained. The stronger
+real hyperbolic space. The proof does not require or establish endpoint
+attainment. The stronger
 equal-edge, exact finite-depth problem remains false for \(c<\varepsilon\) and
 unresolved for \(c\ge\varepsilon\); E2 probes that synchronization constraint,
 not host capacity.

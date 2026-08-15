@@ -241,7 +241,7 @@ quasi-isometrically embedded. Weighting each generator by its geometric
 displacement divided by \(c\) gives the process clock and the radial bound.
 
 Thus genealogy has **zero exponential-order tax** in real hyperbolic space;
-the endpoint need not be attained. The proof and the exact boundary of the
+the proof does not require or establish endpoint attainment. The proof and the exact boundary of the
 stronger equal-edge problem are in
 [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md).
 
