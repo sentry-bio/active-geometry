@@ -532,10 +532,12 @@ exponential novelty at all), not *whether hyperbolic is forced*.
 
 **Question.** Given the same data and a matched capacity budget, does a
 hyperbolic host represent tree-structured biology with materially higher
-relational fidelity than a Euclidean host? If yes, the hyperbolic host class is
-forced by the data's structure (Conjecture 7.1's empirical shadow). If they
+relational fidelity than a Euclidean host? If yes, the data prefer the
+exponential host class over the polynomial one at matched packing budget
+(Corollary 4.3's empirical shadow, not Conjecture 7.1). If they
 tie, the hyperbolic realization is *not* forced and Layer IIa is unsupported —
-however well saturation (IIb) fares.
+however well saturation (IIb) fares. Conjecture 7.1, narrowed, is a different
+test: whether packing rate is isotropic across angular sectors.
 
 **Inputs.** A tree-structured dataset with a ground-truth or barcode genealogy
 (share E3's data where possible); two embedding hosts, \(\mathbb E^m\) and

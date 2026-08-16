@@ -29,10 +29,11 @@ in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the tests
   the slack decomposition. Proven and machine-checked. Mentions no curvature.
 
 - **Layer IIa — host class (realization).** *Which* geometry hosts the data:
-  hyperbolic, at what dimension, and is that *forced*. The space-form argument,
-  the curvature-genericity conjecture, \(n=2\) as an embeddability floor. The
-  **better-supported** biological claim — but its premise, isotropy, is
-  asserted, not measured. Decisive test: E9.
+  hyperbolic, at what dimension, and is that *forced*. The space-form argument
+  (given isotropy), the curvature-genericity conjecture now narrowed to
+  isotropy as exchangeability of the generator, \(n=2\) as an embeddability
+  floor. The **better-supported** biological claim — but its premise,
+  isotropy, is asserted, not measured. Decisive test: E9.
 
 - **Layer IIb — saturation.** *Whether* a process fills its budget, giving the
   state-equation equality. The **harder, less-supported** claim; every
@@ -169,7 +170,9 @@ The artefact checks itself, and CI should run all four:
 - **Finished, paper-level mathematics:** weighted/radial relational capacity of
   \(\mathbb H_\kappa^n\) equals its volume entropy (Skenderi lower bound plus
   the packing converse). The former unit-edge conjecture is refuted as stated.
-- **Open, mathematics:** the curvature-genericity conjecture, plus the stronger
+- **Open, mathematics:** the curvature-genericity conjecture, narrowed to
+  whether isotropy follows from exchangeable branching (space-form + packing
+  already force \(\mathbb H_\kappa^n\) given isotropy), plus the stronger
   equal-edge synchronization refinement for \(c\ge\varepsilon\) (not the
   definition of host capacity).
 - **Open, instrument:** a certified M3 magnitude estimator and a runtime

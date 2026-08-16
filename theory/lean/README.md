@@ -23,7 +23,7 @@ is a paper proof depending on Skenderi's 2026 Bishop--Jones semigroup theorem
 (see
 [`../RELATIONAL_CAPACITY_THEOREM.md`](../RELATIONAL_CAPACITY_THEOREM.md)).
 Lean also does not formalize the remaining open curvature-genericity
-conjecture.
+conjecture (isotropy from exchangeable branching).
 
 The principal coordinate-free statement is the Layer I addressability bound
 

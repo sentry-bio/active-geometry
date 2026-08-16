@@ -58,7 +58,7 @@ premise — isotropy — is asserted, not measured; the decisive test is E9.*
 |---|---|---|---|
 | L2a.1 | Isotropic hyperbolic host has \(h_{\mathrm{vol}}=(n-1)\sqrt\kappa\) | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §7 |
 | L2a.2 | Curvature floor \(\kappa\ge(\beta/(c(n-1)))^2\) (realization + bound, no saturation) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`isotropic_curvature_at_least_floor`) |
-| L2a.3 | Curvature genericity: hyperbolic is the generic homogeneous realization of the relational-exponential class | OPEN | `theory/MATHEMATICAL_SPINE.md` §7 (Conjecture 7.1) |
+| L2a.3 | Curvature genericity, narrowed: given isotropy, space-form + packing force \(\mathbb H_\kappa^n\); remaining open is whether isotropy is selected by exchangeable branching (constant curvature is not generic among homogeneous negative curvature) | OPEN (process claim; not a homogeneous-geometry theorem) | `theory/MATHEMATICAL_SPINE.md` §7 (Conjecture 7.1) |
 | L2a.4 | \(n=2\) is an embeddability floor for branching trees, not a fitted constant | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §6, §7 |
 | L2a.5 | Isotropy is an asserted premise (`--assume-isotropic-hyperbolic`), not a measurement | HONESTY ITEM | `tools/addressability_meter.py`; test E9 |
 
@@ -122,8 +122,9 @@ Closing E9 is the program's highest-leverage empirical step.
 - No absolute curvature \(\kappa\) is a certified measurement (M3 magnitude is
   uncertified; embedding non-identifiability is documented).
 - No zero-free-parameter cross-domain law is established; the state equation is
-  a Layer IIb ideal awaiting saturation evidence and the remaining
-  curvature-genericity conjecture.
+  a Layer IIb ideal awaiting saturation evidence. The remaining mathematical
+  conjecture is whether isotropy follows from exchangeable branching
+  (Conjecture 7.1, narrowed).
 - The hyperbolic host class (IIa) is not yet *forced* by evidence: isotropy is
   asserted, and E9 has not been run.
 - Lean certifies algebra from definitions; it certifies neither that biology

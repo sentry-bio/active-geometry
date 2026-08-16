@@ -228,7 +228,9 @@ utilization. Nothing above depends on nature saturating.
 ## Stop here
 
 The four-piece spine is closed at the block and weighted-clock supremum level.
-Curvature genericity, equal-edge synchronization, host-class selection, and
+Curvature genericity is narrowed rather than closed: given isotropy,
+\(\mathbb H_\kappa^n\) is forced; whether isotropy comes from exchangeable
+branching remains open. Equal-edge synchronization, host-class selection, and
 biological saturation remain open. The next work is measurement, not another
 layer:
 

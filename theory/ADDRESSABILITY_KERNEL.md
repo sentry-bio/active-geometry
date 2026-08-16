@@ -373,24 +373,20 @@ Writing \(\beta=h_{\mathrm{eff}}\ln2\) merely converts bits to nats.
 
 ### Why curvature, and not just "some exponential host"
 
-Layer I is deliberately curvature-free, which raises the question of why
-Layer II is about curvature at all rather than an arbitrary exponential-growth
-space. The answer is the program's remaining **genericity conjecture**
-(Conjecture 7.1 of the spine): among hosts that are homogeneous and isotropic,
-the requirement of exponential capacity plus relational
-(genealogy-preserving) fidelity is met by the negatively curved space forms and
-essentially only them. Under those symmetry hypotheses the space-form
-classification leaves \(\mathbb H_\kappa^n\), so hyperbolic geometry is not an
-extra assumption bolted onto capacity — it is the *generic realization* of the
-relational-exponential class.
+Layer I is deliberately curvature-free. Given homogeneity *and isotropy*,
+the space-form classification plus polynomial exclusion already select
+\(\mathbb H_\kappa^n\); that half is not a conjecture. What remains open is
+Conjecture 7.1 of the spine, now narrowed: among homogeneous negatively
+curved hosts, constant-curvature hyperbolic space is the symmetric special
+case, not the generic one (Heintze). Isotropy — hence \(\mathbb H_\kappa^n\)
+— is conjectured to be selected by **exchangeability of the generator**, not
+by homogeneous geometry alone. The meter still treats isotropy as an
+asserted switch (`--assume-isotropic-hyperbolic`).
 
-Two caveats keep this honest. The word "generic" is clean only under
-homogeneity and isotropy; real systems are neither exactly, so for them
-hyperbolic is the *natural* host, not a forced one. And real hierarchies
-reticulate, so they sit only *near* the tree-relational class, with the
-four-point defect \(\delta\) measuring the distance. Curvature is the right host
-for the tree part; reticulation is measured residual, not a failure of the
-host.
+Real systems are neither exactly homogeneous nor isotropic, so hyperbolic
+is the *natural* chart for an exchangeable tree source, not a forced one.
+Reticulation sits near the tree class, with four-point defect \(\delta\)
+measuring the distance.
 
 ## 6. Unit-invariant equality
 
@@ -470,8 +466,10 @@ The kernel does not prove:
 - that an ambient dimension is selected by optimization;
 - that a non-negative mismatch function generates attracting dynamics;
 - that tree thinness measures curvature magnitude;
-- **the curvature-genericity conjecture** (hyperbolic hosts are the generic
-  homogeneous realization of the relational-exponential class) — open.
+- **the curvature-genericity conjecture** (isotropy — hence
+  \(\mathbb H_\kappa^n\) — from exchangeable branching, not from homogeneous
+  geometry alone; Heintze: constant curvature is not generic among
+  homogeneous negative curvature) — open.
 
 The last item is the program's remaining open mathematical conjecture. The
 former relational-capacity conjecture is now Theorem 4.4. Its lower bound is a

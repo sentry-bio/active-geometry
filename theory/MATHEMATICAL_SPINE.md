@@ -20,10 +20,11 @@ layer splits into two sublayers with very different evidential standing.
 
 - **Layer IIa — host class (realization).** *Which* geometry hosts the data:
   the space-form argument and **isotropic realization** (§7), the
-  **curvature-genericity conjecture** (§7) that explains why hyperbolic — not an
-  arbitrary exponential host — is the natural realization for the relational,
-  exponentially branching class, and \(n=2\) as an embeddability floor. This is
-  the **better-supported** biological claim.
+  **curvature-genericity conjecture** (§7) now narrowed to isotropy as
+  exchangeability of the generator (constant-curvature hyperbolic is forced
+  *given* isotropy; it is not generic among homogeneous negative curvature),
+  and \(n=2\) as an embeddability floor. This is the **better-supported**
+  biological claim.
 - **Layer IIb — saturation.** *Whether* a process fills its budget: the
   **capacity-saturation hypothesis** (\(\eta=1\), §5) which, combined with the
   IIa realization, yields the **state equation** (§8). This is the **harder,
@@ -669,32 +670,46 @@ ambient dimension \(n=2\),
 
 ### Conjecture 7.1 — Curvature genericity
 
-Layer I is curvature-free, so it is fair to ask why Layer II is about curvature
-rather than an arbitrary exponential-growth host. The answer is a genericity
-claim, now the program's remaining open mathematical conjecture. The former
-relational-capacity conjecture is Theorem 4.4.
+Layer I is curvature-free, so it is fair to ask why Layer II is about
+hyperbolic space rather than an arbitrary exponential-growth host. Most of
+that question is already settled. What remains open is narrower than the
+former wording, and it is not a claim that geometry alone hands over
+\(\mathbb H_\kappa^n\).
 
-**Conjecture.** Among hosts that are complete, homogeneous, and isotropic, the
-requirement of positive volume entropy (exponential capacity) together with
-relational — genealogy-preserving — realizability of branching trees is met by
-the negatively curved space forms \(\mathbb H_\kappa^n\) and, up to the usual
-equivalences, only them.
+**Already forced, given isotropy.** Among complete, homogeneous, isotropic,
+simply connected, unbounded Riemannian hosts, the space-form classification
+leaves constant-curvature models. The sphere is excluded by bounded diameter.
+Euclidean space is excluded by polynomial packing (Corollary 4.3). Positive
+volume entropy and relational realizability of branching trees therefore
+select \(\mathbb H_\kappa^n\). No genericity argument is required in this
+class. Theorem 4.4 then says that, in this host, genealogy has zero
+exponential-order tax as a weighted-clock supremum.
 
-What is already classical is the enabling half: under homogeneity and isotropy
-the space-form classification leaves the constant-curvature models, and among
-these only the negatively curved ones have positive volume entropy. What is
-conjectural is that *relational realizability of trees* selects within this
-class rather than being an extra, independent stipulation — i.e. that
-hyperbolic geometry is the **generic realization** of the relational-exponential
-class, not an assumption bolted onto capacity.
+**What the old conjecture asked too much of.** Drop isotropy, keep
+homogeneity and negative curvature, and constant-curvature hyperbolic space
+is no longer typical. Heintze's classification of homogeneous manifolds of
+negative curvature identifies them with solvable groups \(N\rtimes\mathbb R\);
+the generic member has non-abelian \(N\) or a non-scalar contraction, hence
+pinched, anisotropic curvature. Real hyperbolic space is the symmetric
+special case (\(N\) abelian, contraction a scalar). Read literally,
+"hyperbolic is the generic homogeneous realization" is not what that
+classification supports.
 
-Two honesty caveats travel with it. "Generic" is clean only under homogeneity
-and isotropy; real hosts are neither exactly, so for them hyperbolic is the
-*natural* host, not a forced one. And real hierarchies reticulate, so they lie
-only *near* the tree-relational class, with the four-point defect \(\delta\)
-(§6) measuring the distance. Curvature is the correct host for the tree part;
-reticulation is measured residual. This is the precise sense in which, for the
-systems the program studies, biology and curvature go together.
+**Conjecture (narrowed).** Among homogeneous negatively curved hosts
+compatible with a single scalar growth rate \(\beta\), *isotropy* — and
+therefore constant-curvature \(\mathbb H_\kappa^n\) — is selected by
+**exchangeability of the generator**: no branch direction is privileged a
+priori. Anisotropy would encode a preferred axis the process did not
+supply. Structured, non-exchangeable mixing should pinch for real, with
+sector-dependent packing rate, not merely as a curvature band.
+
+This is a process claim, not a theorem of homogeneous geometry. It is
+testable (angular-sector \(h_{\mathrm{pack}}\); a shuffle-angle null). It
+does not follow from the packing bound, from Theorem 4.4, or from
+saturation. Real hosts are neither exactly homogeneous nor isotropic, so
+even if the conjecture holds, hyperbolic remains the *natural* chart for an
+exchangeable tree source, not a forced one. Reticulation is measured
+residual \(\delta\) (§6), not a failure of the host.
 
 ---
 
