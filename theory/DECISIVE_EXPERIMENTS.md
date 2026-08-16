@@ -10,9 +10,12 @@ layer** (see [`CLAIMS.md`](CLAIMS.md) for the layer definitions):
 1. **Applicability (Layer I).** Do natural systems instantiate the premises —
    retained distinguishable histories, fixed resolution, finite radial rate,
    and *exponential* host growth?
-2. **Host class (Layer IIa).** Is the host hyperbolic/tree-like, and is that
-   forced — does a hyperbolic host beat a Euclidean one *at matched capacity*?
-   Isotropy is currently asserted, never measured; this is where it gets tested.
+2. **Host class (Layer IIa).** Does a real process occupy exponential,
+   tree-like room (growth class \(\times\) quartets, on a representation
+   that is not the inferred tree)? Isotropy is asserted, never measured;
+   sector-wise packing after occupancy is where it would be tested. A
+   hyperbolic-versus-Euclidean bake-off at matched packing (E9) illustrates
+   Corollary 4.3; it does not force \(\mathbb H^2\) or grant A3.
 3. **Saturation (Layer IIb).** Where the host is fixed, does the process fill
    its budget (\(\eta\to 1\)), and is it *driven* there?
 
@@ -29,10 +32,12 @@ kill line. A protocol without a kill line is not an experiment.
 
 The set is nine experiments across the three layers. A prior version tested
 **Layer IIb saturation almost exclusively** while the better-supported
-biological claim is **Layer IIa host class** — a misallocation. E9
-(matched-capacity Euclidean vs hyperbolic), pre-registered elsewhere as
-*E-alpha* and never run, is the decisive IIa test and was missing; it is added
-here and ranked accordingly. The allocation is audited in the table at the end.
+biological claim is **Layer IIa occupancy of exponential, tree-like room**.
+E9 (matched-capacity Euclidean vs hyperbolic) is a finite-sample shadow of
+Corollary 4.3, not the argument that forces the host. Ranking it as "is
+hyperbolic forced?" was a second misallocation: it put demonstration under
+a theorem the spine already has. The allocation is audited in the table at
+the end.
 
 ---
 
@@ -77,9 +82,10 @@ conditions. If distinguishability sharpens with depth, model
 
 **Isotropy is a premise, not a measurement.** The Layer IIa hypothesis that the
 host is isotropic hyperbolic appears in the meter only as the flag
-`--assume-isotropic-hyperbolic`. No experiment below *asserts* it; E9 is the
-one that *tests* it. Any curvature magnitude reported without E9 having passed
-is conditional on an unverified switch, and must be labelled so.
+`--assume-isotropic-hyperbolic`. No experiment below *asserts* it, and E9
+does not grant it. Any curvature magnitude reported without A3, or without
+sector-wise packing, is conditional on an unverified switch, and must be
+labelled so.
 
 ---
 
@@ -432,7 +438,7 @@ requires an independent calibration.
    and host exponent \(h\) from independent inputs.
 3. Independently verify the theorem's premises: fixed resolution,
    \(\varepsilon\)-separation, quasi-isometry/relational fidelity, the radial
-   budget, and hyperbolic host class (E9).
+   budget, and exponential growth class (Corollary 4.3 / growth-class gate).
 4. Independently estimate growth \(\beta\), then
    \(\Delta_{\rm cap}=ch-\beta\) and efficiency \(\eta=\beta/(ch)\).
    Without both, label the run exploratory.
@@ -448,17 +454,18 @@ requires an independent calibration.
    time, sequence divergence, and functional complexity where they disagree.
 
 **Decision rule.**
-- *Necessary-condition prediction:* when E9 supports the hyperbolic host and
-  independently measured \(\eta\approx1\), \(q_\delta(R)\) decays
+- *Necessary-condition prediction:* when growth class is exponential, the
+  host is hyperbolic at the stated class, and independently measured
+  \(\eta\approx1\), \(q_\delta(R)\) decays
   exponentially; at exact capacity \(r/(c\tau)\) concentrates near 1.
 - *Positive result:* supports a necessary consequence of near-capacity
   hyperbolic coding, but does **not** prove saturation.
 - *Negative result:* challenges the biological application only after
   separation, quasi-isometry, radial budget, unbiased counting, asymptotic
   regime, host class, and near-capacity premises are independently verified.
-  Otherwise it is a premise failure, not a theorem failure. Use E9 and the
-  independent \(\eta\) measurement to separate causes. The bound is untouched
-  and the CCS radial axis stays advisory.
+  Otherwise it is a premise failure, not a theorem failure. Use the
+  growth-class gate and the independent \(\eta\) measurement to separate
+  causes. The bound is untouched and the CCS radial axis stays advisory.
 
 ---
 
@@ -496,7 +503,9 @@ and retains yet provably falls outside the theory?
 
 **Rationale.** The strongest evidence for a tier-1 law is a clean boundary:
 finding *where* it stops applying shows the premises are load-bearing rather
-than always-satisfiable. Every other experiment probes systems assumed inside
+than always-satisfiable. E8 is the empirical edge of Corollary 4.3's
+trichotomy (forget, pay exponential addresses, or occupy exponential room).
+Every other experiment probes systems assumed inside
 the theory; E8 hunts the edge.
 
 **Candidate boundary systems.**
@@ -511,7 +520,9 @@ the theory; E8 hunts the edge.
 3. **Euclidean-hostable hierarchy.** A genuinely branching but *shallow* or
    *path-like* process whose tree embeds in low-dimensional Euclidean space
    (Corollary 4.3 boundary). \(h_{\mathrm{pack}}\) should be polynomial, and
-   \(\beta\) forced to \(0\) at finite \(c\).
+   \(\beta\) forced to \(0\) at finite \(c\); if \(\beta>0\) is insisted on,
+   \(r(R)\) must grow exponentially in depth. Extra Euclidean dimension is
+   extra polynomial budget, not a fourth face of the trichotomy.
 
 **Procedure.** For each candidate, measure the full vector and locate which
 premise fails. Show that the theory's *predicted* behavior at that boundary
@@ -530,34 +541,34 @@ polynomial \(h_{\mathrm{pack}}\)) is what occurs.
 
 ---
 
-## E9 — Matched-capacity Euclidean vs hyperbolic (the realization test)
+## E9 — Matched-capacity Euclidean vs hyperbolic (Corollary 4.3's shadow)
 
-**Layer IIa — host class. This is the decisive realization test, and the one
-the program most needs.** Pre-registered elsewhere as *E-alpha* ("Matched-
-Capacity Euclidean vs Hyperbolic," deferred to a GPU phase) and **never run**;
-absent from the prior protocol. It is distinct from E5's Euclidean control,
-which tests Layer I polynomial exclusion (*can* a Euclidean host carry
-exponential novelty at all), not *whether hyperbolic is forced*.
+**Layer I illustration, optional.** Pre-registered elsewhere as *E-alpha*
+("Matched-Capacity Euclidean vs Hyperbolic"). It is not the test that forces
+a hyperbolic host and not a pillar of Paper I
+([`PAPER_I_OUTLINE.md`](PAPER_I_OUTLINE.md)). Corollary 4.3 already excludes
+polynomial hosts at finite radial rate and *fixed* dimension. This
+experiment asks whether that crowding is visible at finite depth when
+packing budgets are matched.
 
-**Question.** Given the same data and a matched capacity budget, does a
-hyperbolic host represent tree-structured biology with materially higher
-relational fidelity than a Euclidean host? If yes, the data prefer the
-exponential host class over the polynomial one at matched packing budget
-(Corollary 4.3's empirical shadow, not Theorem 7.1). If they
-tie, the hyperbolic realization is *not* forced and Layer IIa is unsupported —
-however well saturation (IIb) fares. Theorem 7.1's empirical remainder is
-whether packing rate depends on angle, askable only after E9 passes.
+It is distinct from E5's Euclidean control, which asks whether a given
+embedder is even an exponential-capacity chart of the generator.
+
+**Question.** Given the same tree-structured data and a matched *packing*
+budget, does a hyperbolic host show lower relational distortion than a
+Euclidean host, with a gap that widens with depth?
+
+**Capacity matching (the load-bearing design).** Match *packing capacity*,
+not parameter count. Fix resolution \(\varepsilon\) and radius budget, then
+size the two hosts so their certified block capacities \(c\,h_{\mathrm{pack}}\)
+(M3 growth-class-gated) agree within error. Matching parameters instead of
+capacity confounds the test with representational budget: extra Euclidean
+dimension is extra polynomial room, which the trichotomy already says can
+postpone crowding.
 
 **Inputs.** A tree-structured dataset with a ground-truth or barcode genealogy
 (share E3's data where possible); two embedding hosts, \(\mathbb E^m\) and
 \(\mathbb H^n\); a capacity-matching protocol.
-
-**Capacity matching (the load-bearing design).** "Matched capacity" must be
-matched *packing capacity*, not matched parameter count. Fix resolution
-\(\varepsilon\) and radius budget, then size the two hosts so their certified
-block capacities \(c\,h_{\mathrm{pack}}\) (M3 growth-class-gated) agree within
-error. Matching parameters instead of capacity would confound the test with
-representational budget.
 
 **Procedure.**
 1. Match capacities as above; verify with the E1-certified M3 gate that both
@@ -566,20 +577,24 @@ representational budget.
    objectives and seeds.
 3. Measure relational fidelity in each: distortion \((D,K)\), tree-defect M4
    against the ground-truth tree, and held-out lineage-placement accuracy.
-4. Repeat across \(\ge 3\) seeds and \(\ge 2\) dimensions per host.
+4. Repeat across \(\ge 3\) seeds and \(\ge 2\) dimensions per host, always
+   at matched packing, never at matched parameter count.
 
 **Decision rule.**
-- *Predict (IIa holds):* hyperbolic achieves lower distortion and defect at
-  matched capacity, with a gap that widens with tree depth; Euclidean fidelity
-  degrades as depth grows (the crowding the packing bound predicts).
-- *Kill (IIa fails):* Euclidean matches hyperbolic fidelity at matched capacity
-  across depths → the hyperbolic host class is not forced; the realization
-  claim, and with it the biological use of curvature, is unsupported. Neither
-  the Layer I bound nor the block identity is touched.
+- *Predict (shadow of Corollary 4.3):* at matched packing and matched
+  dimension, hyperbolic distortion stays lower as depth grows; Euclidean
+  crowding appears. The gap is a finite-sample reading of polynomial
+  exclusion, remainder \(O(1/R)\).
+- *Not a kill of Layer I:* Euclidean looking better at *higher unmatched
+  \(d\)* is extra polynomial budget. It does not touch the bound, the
+  block identity, or Theorem 7.1.
+- *Not a grant of IIa:* even a clean matched-capacity win does not earn
+  A3, isotropy, or "\(\mathbb H^2\) is forced." Occupancy of the
+  growth-class \(\times\) tree-defect figure is the biological IIa
+  measurement. Sector-wise \(h_{\mathrm{pack}}\) is the remainder.
 
-**Status.** Not run; needs GPU-scale embedding. It is the highest-value
-unrun experiment in the program, because the biological claim is IIa and E9 is
-the only direct IIa intervention.
+**Status.** Designed; not a prerequisite for Paper I or for Paper II's
+occupancy claim. Needs GPU-scale embedding if run.
 
 ---
 
@@ -618,35 +633,36 @@ utilization (saturation) → optional curvature realization.** Leading with
 
 ## Ranked reading
 
-Ranked by decisiveness *and* by layer, so the realization layer (IIa) — where
-the biological claim actually lives — is no longer buried.
+Ranked by what is still load-bearing *empirically*. The bound is not on
+this list. Occupancy of the phase diagram above is Paper II's figure and
+outranks every E-number that was asked to force a host.
 
 | Rank | Experiment | Layer | What it decides | Class |
 |---|---|---|---|---|
-| 1 | E9 matched-capacity Euclidean vs hyperbolic | IIa | Is the hyperbolic host *forced*? | intervention (unrun) |
-| 2 | E4 mutation-rate intervention | IIb | Is saturation a response? | intervention |
-| 3 | E3 barcoded lineages | IIb | Is \(\eta\) real with a given tree? | ground-truth observation |
-| 4 | E7 reticulation intervention | IIa | Is \(\delta\perp h_{\mathrm{pack}}\) in vivo? | intervention |
-| 5 | E2 equal-edge endpoint | IIa refinement | Does exact synchronization obstruct the endpoint? | numerical |
-| 6 | E5 trained hierarchy (adversarial) | IIb | Is saturation cross-domain? | intervention |
-| 7 | E8 boundary mapping | I | Do the premises do real work? | intervention / observation |
-| 8 | E6 radius concentration | IIa+IIb | Does clock-relative radius concentrate as the converse predicts? | conditional prediction |
-| 9 | E1 meter certification | I | Are the instruments legal? | calibration |
+| 1 | Phase diagram on an independent representation | IIa occupancy | Does a real process sit in the top row? | observation (Paper II) |
+| 2 | E8 boundary mapping | I | Do the premises do real work (trichotomy's edge)? | intervention / observation |
+| 3 | E7 reticulation intervention | IIa | Is \(\delta\perp h_{\mathrm{pack}}\) in vivo? | intervention |
+| 4 | E4 mutation-rate intervention | IIb | Is saturation a response? | intervention |
+| 5 | E3 barcoded lineages | IIb | Is \(\eta\) real with a given tree? | ground-truth observation |
+| 6 | E2 equal-edge endpoint | IIa refinement | Does exact synchronization obstruct the endpoint? | numerical |
+| 7 | E5 trained hierarchy (adversarial) | IIb | Is saturation cross-domain? | intervention |
+| 8 | E9 matched-capacity Euclidean vs hyperbolic | I shadow | Is Corollary 4.3 visible at finite depth, matched packing? | illustration (optional) |
+| 9 | E6 radius concentration | IIa+IIb | Does clock-relative radius concentrate as the converse predicts? | conditional prediction |
+| 10 | E1 meter certification | I | Are the instruments legal? | calibration |
 
 E1 is last in the table and first in time. Nothing above it is interpretable
 until the meter recovers synthetic truth.
 
-### Allocation audit (the misallocation, fixed)
+### Allocation audit
 
-The claim best supported by existing biology is the **host class (IIa)** —
-seed-stable embeddings, curvature as a fixed design parameter, tree-defect near
-zero, \(n=2\) as embeddability. Yet the prior protocol pointed almost entirely
-at **saturation (IIb)**: of E1–E8 only E2 and E7 touched IIa, and E2 sat 7th.
-The decisive IIa intervention, E9, was missing. This is now corrected: E9 is
-added and ranked first, E2 and E7 are read as IIa, and the layer column makes
-the balance visible. The standing imbalance in *evidence* remains and is stated
-plainly — IIa is comparatively well-supported and under-tested by intervention;
-IIb is heavily tested and fails its independent kill lines (domain
+The claim best supported by existing biology is **occupancy of exponential,
+tree-like room (IIa)** — independent functional geometry, tree-defect, \(n=2\)
+as embeddability. A prior protocol pointed almost entirely at **saturation
+(IIb)**. A later correction ranked E9 first as "is hyperbolic forced?"
+That over-asked a simulation to underwrite Corollary 4.3. The trichotomy
+already does that work at Layer I; Paper II measures occupancy; A3 remains
+asserted. E9 stays in the registry as an optional shadow at matched
+packing. IIb is heavily tested and fails its independent kill lines (domain
 \(r=0.35\), protein per-family \(-0.11\), tree-independent viral \(0.06\)–\(0.19\)).
 
 ## What would constitute firm theoretical ground
@@ -658,15 +674,16 @@ Not any one of these. The bound is already firm. Firm ground is layer by layer.
   certified only for the exponential/polynomial dichotomy via the growth-class
   gate, not yet as a magnitude estimator — so \(\eta\) to \(\pm20\%\) is not yet
   interpretable and this precondition is not fully met;
-- E8 showing a clean boundary (the premises are load-bearing).
+- E8 showing a clean boundary (the premises are load-bearing, including
+  the forgetting / exponential-address faces of Corollary 4.3).
 
 **Layer IIa — host class (the biological claim).**
-- E9 showing hyperbolic beats Euclidean at matched capacity — the isotropy
-  premise earned rather than asserted. **This is the single most important
-  unrun experiment.** Mathematical support: Theorem 4.4 proves full weighted
-  relational capacity in the hyperbolic host. Empirical support: E7
-  orthogonality in vivo, the tree-defect and seed-stability evidence. E2 is
-  only an equal-edge endpoint refinement.
+- Occupancy of the top-left cell on an independent representation metric
+  (Paper II's figure). Mathematical support: Theorem 4.4 proves full weighted
+  relational capacity in the hyperbolic host; Corollary 4.3 excludes the
+  bottom row at finite rate. Empirical support: E7 orthogonality, tree-defect
+  and seed-stability evidence. A3 and sector-wise packing remain open. E9 is
+  not the earning of isotropy. E2 is only an equal-edge endpoint refinement.
 
 **Layer IIb — saturation.**
 - E3 showing \(\eta\le 1\) with a given tree, and E4 showing capacity tracking

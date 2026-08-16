@@ -31,7 +31,8 @@ reflection), unless an orientation convention is imposed.
 That is seed-stable reproducibility **within the imposed model**:
 \(\mathbb H^2\), frozen \(\kappa\), taxonomy quartets, and the radial
 target are supplied by construction. It does not compare host classes
-(that is E9). It does not certify saturation, an absolute \(\kappa\), or
+(occupancy of the growth-class \(\times\) tree-defect figure does; E9 is
+a matched-packing illustration of Corollary 4.3). It does not certify saturation, an absolute \(\kappa\), or
 a filled atlas of life. Genome-size radius stays advisory (E6). The two
 axes are a better independence split than reading both from an inferred
 tree, and still not a representation metric independent of taxonomy.

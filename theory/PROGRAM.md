@@ -29,17 +29,20 @@ in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the tests
   the slack decomposition. Proven and machine-checked. Mentions no curvature.
 
 - **Layer IIa — host class (realization).** *Which* geometry hosts the data:
-  hyperbolic, at what dimension, and is that *forced*. The space-form argument
+  hyperbolic, at what dimension, given named symmetry. The space-form argument
   (given isotropy), Theorem 7.1 (Heintze isotropy given axiom A3), \(n=2\) as
-  an embeddability floor. The **better-supported** biological claim — but A3
-  is asserted, not measured. Decisive host-class test: E9.
+  an embeddability floor. The **better-supported** biological claim is
+  *occupancy* of exponential tree-like room, not a bake-off that forces the
+  host. A3 is asserted, not measured. E9 is Corollary 4.3's finite-sample
+  shadow at matched packing.
 
 - **Layer IIb — saturation.** *Whether* a process fills its budget, giving the
   state-equation equality. The **harder, less-supported** claim; every
   independent test of the *retired plot* (sequence-\(\kappa\) vs tree-derived
   \(h\)) sits below its kill line. The well-posed bet is
-  [`IIB_CONTRACT.md`](IIB_CONTRACT.md): \(\eta\) on the process after E9,
-  mixed cell out. It is a sequel, not a chapter of Paper II.
+  [`IIB_CONTRACT.md`](IIB_CONTRACT.md): \(\eta\) on the process after
+  exponential occupancy, mixed cell out. It is a sequel, not a chapter of
+  Paper II.
 
 The four-point (Buneman ≡ Gromov) classifier is an independent bridge to IIa:
 it decides tree-ness and measures reticulation, but calibrates nothing.
@@ -56,14 +59,21 @@ stands whether or not the biology saturates.
 
 ### Paper I — *The Addressability Limit: A Packing Bound for Information-Generating Hierarchies*
 
+This is the private manuscript that replaces the Zenodo record *A Geometric
+State Equation for Information-Generating Hierarchies* before arXiv. The
+publication contract is [`PAPER_I_OUTLINE.md`](PAPER_I_OUTLINE.md).
+
 - **Domain.** Metric geometry, information theory. No biology in the load-bearing
   argument.
-- **Carries.** All of Layer I (bound, block identity, ladder, slack), the
-  relational-capacity coding theorem (genealogy has zero exponential tax in
-  \(\mathbb H_\kappa^n\)), the Layer IIa realization theorems including
-  Theorem 7.1 (Heintze isotropy, conditional on axiom A3), and \(n=2\) as
-  embeddability. Presents the
-  state equation as a *conditional* Layer IIb ideal, not a law.
+- **arXiv.** Primary `math.MG`; secondary `cs.IT`. Not `q-bio.*`, not
+  `cs.LG`, not `cond-mat.stat-mech`. Cross-list `math.DG` only if the
+  Heintze section stays long in the submitted TeX.
+- **Carries.** All of Layer I (bound, trichotomy, block identity, ladder,
+  slack), the relational-capacity coding theorem (genealogy has zero
+  exponential tax in \(\mathbb H_\kappa^n\)), the Layer IIa realization
+  theorems including Theorem 7.1 (Heintze isotropy, conditional on axiom
+  A3), and \(n=2\) as embeddability. Presents the state equation as a
+  *conditional* Layer IIb ideal, not a law, and not in the title.
 - **Backed by.** The Lean development under `theory/lean/` (bound and block
   identity fully checked; Layer II algebra checked), the cited Bishop--Jones
   lower bound in `theory/RELATIONAL_CAPACITY_THEOREM.md`, and the
@@ -72,7 +82,7 @@ stands whether or not the biology saturates.
   achievable form plus a realization geometry. Its remaining mathematical
   risk is the paper sketch of Theorem 7.1 (not Lean-checked) and the
   equal-edge synchronization refinement. Axiom A3 is not a Paper I claim
-  about nature.
+  about nature. E9 is not a Paper I pillar.
 
 ### Paper II — *Evolution as Active Geometry*
 
@@ -86,18 +96,19 @@ stands whether or not the biology saturates.
   an *honestly ledgered open bet*, not a headline. The working outline is
   [`PAPER_II_OUTLINE.md`](PAPER_II_OUTLINE.md): descent occupies exponential
   room; genomes encode it; sequence metrics lose the tree by erasure or by
-  reticulation; sequence-\(\kappa\) was a plot of the encoding. A3 and
-  saturation unrun. E9 unrun: occupancy, not force.
+  reticulation; sequence-\(\kappa\) was a plot of the encoding.   A3 and saturation unrun. Occupancy, not force: Corollary 4.3 already
+  excludes the bottom row at finite rate; E9 is an optional shadow.
 - **Backed by.** The empirical pipelines under `validation/`, `experiments/`,
   `model/`, and `figures/`; the shared meter; the E-series protocol.
 - **Claim it makes about nature.** Real and falsifiable, and currently mixed:
   the process occupies the top row of the figure on independent functional
-  geometry, but the decisive host-class test (E9) is unrun; mixing scars are
+  geometry; mixing scars are
   two independent HGT instruments, with Test B still the gate on calling a
   real-data floor mixing; saturation tested and failing its independent kill
   lines. In the intended hyperbolic host those failures are utilization, not
   relational tax (Theorem 4.4). Paper II must state this split rather than
-  average over it.
+  average over it. A matched-parameter Euclidean win at extra \(d\) does not
+  kill occupancy.
 
 A prospective **Paper III — *Language as Active Geometry*** (convergent
 alphabets) would fill a non-biological substrate row; it is a pre-registered
@@ -105,9 +116,10 @@ future test, not part of the current artefact.
 
 ## The seams (joinery)
 
-- **Kernel seam.** Paper II *cites* Paper I for the bound and block identity; it
-  never re-derives them. The inequality is the license; the biology is an
-  instance.
+- **Kernel seam.** Paper II *cites* Paper I for the bound, the trichotomy,
+  and the block identity; it never re-derives them. The inequality is the
+  license; the biology is an instance. The manuscript contract is
+  [`PAPER_I_OUTLINE.md`](PAPER_I_OUTLINE.md).
 - **The genealogy seam.** Paper I proves that the *supremum* relational
   capacity of a real hyperbolic host under a local weighted process clock
   equals block capacity. Paper II therefore tests utilization and host
@@ -129,8 +141,8 @@ future test, not part of the current artefact.
   refutation of the floor.
 - **The \(\kappa\) seam.** Paper I defines \(\kappa\) as normalized (gauge-
   dependent) curvature and the state equation as conditional. Paper II may
-  report a measured \(\kappa\) only with the isotropy premise flagged and E9's
-  status attached; no absolute \(\kappa\) is a certified measurement today.
+  report a measured \(\kappa\) only with the isotropy premise flagged; no
+  absolute \(\kappa\) is a certified measurement today.
 - **The CCS instrument seam.** The Poincaré encoder remnant
   (`experiments/minimal_encoder/`, `model/`) is a Layer IIa *instrument*,
   not a Layer IIb measurement and not Paper II's claim. Polar
@@ -142,8 +154,9 @@ future test, not part of the current artefact.
   calibrate curvature. Seed-stable Procrustes (unique up to \(O(2)\),
   unless orientation is fixed) is reproducibility **within the imposed
   model** — \(\mathbb H^2\), curvature, and both training axes are
-  supplied by construction — not a host-class selection test (that is
-  E9). The two training axes — NCBI ranks for quartets, genome size for
+  supplied by construction — not a host-class selection test (occupancy
+  of the figure is; E9 is a packing-matched illustration). The two
+  training axes — NCBI ranks for quartets, genome size for
   radius — are a primitive independence split, better than
   patristic-for-both, still not a representation metric independent of
   the tree of life. Radius-as-information, a filled atlas, and a
@@ -188,9 +201,10 @@ The artefact checks itself, and CI should run all four:
   independence firewall. The growth-class gate refuses short radial
   windows; that is a property of the instrument, recorded in
   [`MEASURABILITY.md`](MEASURABILITY.md).
-- **Open, empirical — the highest-leverage gap:** E9, the matched-capacity
-  Euclidean-vs-hyperbolic realization test. The biological claim is Layer IIa,
-  and E9 is the only direct IIa intervention; it is designed and unrun.
+- **Open, empirical — occupancy, not force:** Paper II's figure on an
+  independent representation (growth class \(\times\) tree defect). The
+  biological claim is Layer IIa occupancy. Corollary 4.3 already excludes
+  the polynomial row at finite rate; E9 is optional.
 
 ## Center of gravity — a stopping rule
 
@@ -222,8 +236,10 @@ inside Paper II's domain. In order of immediacy:
    Do not report \(\eta\). Redesign before rerunning.
 3. **E4 rehearsal — public data.** Time-stamped serially sampled viruses as
    the pipeline rehearsal, labelled as such.
-4. **E9 — the decisive test.** Matched-capacity Euclidean vs hyperbolic.
-   Needs GPU-scale embedding; highest IIa value.
+4. **E9 — optional illustration.** Matched-*capacity* Euclidean vs
+   hyperbolic, never matched parameter count. Finite-sample shadow of
+   Corollary 4.3; not the test that forces the host.
 
 The next unit of effort belongs to item 1, not to another converse, and
-not to a new domain.
+not to a new domain. Cutting Paper I TeX is a manuscript act
+([`PAPER_I_OUTLINE.md`](PAPER_I_OUTLINE.md)), not a new theorem.

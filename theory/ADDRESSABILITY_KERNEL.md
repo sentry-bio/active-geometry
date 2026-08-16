@@ -18,8 +18,9 @@ them.
     data: is it hyperbolic/tree-like, and at what dimension? This is the
     **better-supported** biological claim — seed-stable embeddings, curvature
     as a fixed design parameter, tree-defect near zero, \(n=2\) as an
-    embeddability floor. The decisive test is whether a hyperbolic host beats a
-    Euclidean one *at matched capacity* (E9).
+    embeddability floor. Occupancy of exponential room is a measurement of a
+    process, not a bake-off that forces the host. E9 is a finite-sample
+    shadow of Corollary 4.3 at matched packing.
 
   - **Layer IIb — saturation.** *Whether* a given process fills its budget,
     giving the state-equation equality \(\bar\kappa^*=(h_{\mathrm{eff}}\ln2)^2\).
@@ -35,7 +36,8 @@ calibrate capacity or curvature.
 A warning that the sublayer split makes sharp: **isotropy is asserted, never
 measured.** In the meter it is the command-line flag
 `assume_isotropic_hyperbolic` — the entire IIa premise reduced to a switch. No
-result licenses that switch; E9 is what would.
+result licenses that switch. A3 and occupancy are the remaining IIa
+questions; E9 does not grant isotropy.
 
 ---
 
@@ -128,8 +130,20 @@ asymptotic rates yields
 
 Hence \(\beta\le c\,h_{\mathrm{cap}}\).
 
-This is the kernel's only prohibition. In particular, positive retained growth
-at finite radial rate requires positive exponential host capacity.
+This is the kernel's only prohibition. Written with the quantifiers flipped
+it is a trichotomy, not only a ceiling:
+
+- \(\beta>0\) and \(c<\infty\) \(\Rightarrow\) \(h_{\mathrm{cap}}>0\)
+  (exponential packing);
+- \(h_{\mathrm{cap}}=0\) at fixed dimension \(\Rightarrow\) either
+  \(\beta=0\) (forgetting) or \(c=\infty\) (address radius superlinear,
+  and exponential in Euclidean degree \(n\));
+- every finite-\(R\) census is a packing count on a compact ball; the
+  displayed rates are the \(R\to\infty\) limit.
+
+Finite rate is a condition of the first reading, not a standing hypothesis
+on every representation. Processes that overwrite rather than retain sit
+outside the bound.
 
 ## 3. The general block-capacity identity
 

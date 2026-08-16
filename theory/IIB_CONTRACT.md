@@ -26,7 +26,9 @@ illegal until the host clock is a process metric.
 
 ## The gate (all four)
 
-1. **Host of the process.** E9 passed, or \(\eta\) is unlabeled rehearsal.
+1. **Host of the process.** Exponential growth class on the process
+   metric (Corollary 4.3 / growth-class gate), or \(\eta\) is unlabeled
+   rehearsal. E9 is not this gate.
 2. **Growth class exponential** on that same metric. Otherwise
    \(h_{\mathrm{pack}}=0\) by Corollary 4.3 and \(\eta\) is undefined.
 3. **Independent clocks.** \(\beta\) from a process clock that is not the

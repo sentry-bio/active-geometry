@@ -57,7 +57,24 @@ entropy \(h_{\mathrm{pack}}\),
 
 This is curvature-free. It is a counting theorem: an
 \(\varepsilon\)-faithful finite-rate representation cannot retain more
-histories than its metric balls can separate.
+histories than its metric balls can separate. Finite rate is a
+*condition* of that ceiling, not a standing property of every
+representation. The same count is a trichotomy (Corollary 4.3):
+
+- retain exponential novelty at finite radial rate \(\Rightarrow\) the
+  host must have exponential packing;
+- stay in a polynomial host at fixed dimension \(\Rightarrow\) either
+  forget (\(\beta=0\)) or let the address radius grow exponentially;
+- every finite-depth census lives on a compact ball; the rate statement
+  is the \(R\to\infty\) limit of those counts, with an \(O(1/R)\)
+  remainder.
+
+Raising Euclidean dimension raises the polynomial budget; the exclusion
+is at fixed dimension. A matched-*parameter* bake-off is therefore not a
+test of the limit. Processes that overwrite rather than accrete sit
+outside the bound: a constraint that governed every process would
+govern none. The limit is a depth theorem — one split does not need
+exponential room; a retained stack of splits does.
 
 For a proper host \(M\), the ceiling is operational, not merely a converse:
 
@@ -224,21 +241,26 @@ is [`IIB_CONTRACT.md`](IIB_CONTRACT.md).
 - \(n=2\) is not back-solved from curvature;
 - a coordinate chart is not a filled atlas or an information clock;
 - selection does not imply saturation until a biological capacity cost is
-  identified.
+  identified;
+- E9 is not a fifth piece: it is a finite-sample shadow of the limit, not
+  the argument that forces the host.
 
 ## Stop here
 
 The four-piece spine is closed at the block and weighted-clock supremum level.
 Inside the Heintze class, Theorem 7.1 converts the old genericity conjecture
 into A3 \(\Rightarrow\) real hyperbolic space. A3 itself is asserted, not
-measured. Equal-edge synchronization, host-class selection (E9), and
-biological saturation remain open. The next work is measurement, not another
-layer:
+measured. Equal-edge synchronization and biological saturation remain open.
+E9 is a finite-sample shadow of Corollary 4.3 at matched packing — not the
+test that forces the host, and not a pillar of Paper I
+([`PAPER_I_OUTLINE.md`](PAPER_I_OUTLINE.md)). The next work is measurement,
+not another layer:
 
 1. land and reproduce the balloon simulation;
 2. test block witness count and quartet resolvability on an independently
-   referenced deep alignment;
-3. run the matched-capacity Euclidean-versus-hyperbolic intervention (E9);
+   referenced deep alignment (occupancy of the figure, not force);
+3. optionally, the matched-*capacity* Euclidean-versus-hyperbolic
+   illustration (E9), never a matched-parameter count;
 4. test the saturation drive separately (E5) only if the Layer IIb question is
    being pursued — and only after the embedder recovers exponential fan-out
    ([`experiments/E5_DESIGN_FLAW.md`](../experiments/E5_DESIGN_FLAW.md)).

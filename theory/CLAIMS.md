@@ -36,7 +36,7 @@ Status vocabulary:
 | L1.2 | Finiteness holds in every proper metric host | THEOREM (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`hasFinitePacking_of_properSpace`) |
 | L1.3 | Block address capacity \(=\) metric packing number (finite radius) | IDENTITY (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`exists_optimal_blockCode`, `card_le_packingCount`) |
 | L1.4 | Asymptotic block identity \(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\) | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §4 (Theorem 4.2) |
-| L1.5 | Polynomial-growth exclusion (Corollary 4.3) | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §4 |
+| L1.5 | Polynomial-growth exclusion / trichotomy (Corollary 4.3): exponential room, exponential addresses, or forgetting | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §4 |
 | L1.6 | Constrained-capacity ladder: relational ≤ causal ≤ persistent ≤ block | THEOREM (ordering) / OPEN (rung values) | `theory/ADDRESSABILITY_KERNEL.md` §3 |
 | L1.7 | Slack decomposition: block slack = relational tax + utilization slack | THEOREM (definitional) | `theory/MATHEMATICAL_SPINE.md` §5 |
 | L1.8 | Weighted relational capacity of \(\mathbb H_\kappa^n\) is \(c(n-1)\sqrt\kappa\) | THEOREM (paper; cited lower bound) | `theory/RELATIONAL_CAPACITY_THEOREM.md`; `theory/MATHEMATICAL_SPINE.md` §4 (Theorem 4.4) |
@@ -51,8 +51,10 @@ Status vocabulary:
 
 ## Layer IIa — curvature realization (host class)
 
-*Which geometry hosts the data. The better-supported biological claim. Its
-premise — isotropy — is asserted, not measured; the decisive test is E9.*
+*Which geometry hosts the data. The better-supported biological claim is
+occupancy of exponential tree-like room. Isotropy is asserted, not
+measured. E9 is a finite-sample shadow of Corollary 4.3, not a forcing
+test.*
 
 | # | Claim | Status | Backing artifact |
 |---|---|---|---|
@@ -60,8 +62,8 @@ premise — isotropy — is asserted, not measured; the decisive test is E9.*
 | L2a.2 | Curvature floor \(\kappa\ge(\beta/(c(n-1)))^2\) (realization + bound, no saturation) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`isotropic_curvature_at_least_floor`) |
 | L2a.3 | Inside the Heintze class, axiom A3 (full \(O(d)\) directional symmetry as host automorphisms) forces real \(\mathbb H^{d+1}\) | THEOREM (paper sketch; conditional on A3) | `theory/MATHEMATICAL_SPINE.md` §7 (Theorem 7.1) |
 | L2a.4 | \(n=2\) is an embeddability floor for branching trees, not a fitted constant | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §6, §7 |
-| L2a.5 | Isotropy is an asserted premise (`--assume-isotropic-hyperbolic`), not a measurement | HONESTY ITEM | `tools/addressability_meter.py`; test E9 |
-| L2a.6 | Axiom A3 holds of a real generator (no privileged directional structure) | HONESTY ITEM / EMPIRICAL, open | `theory/MATHEMATICAL_SPINE.md` §7; sector-wise \(h_{\mathrm{pack}}\) after E9 |
+| L2a.5 | Isotropy is an asserted premise (`--assume-isotropic-hyperbolic`), not a measurement | HONESTY ITEM | `tools/addressability_meter.py` |
+| L2a.6 | Axiom A3 holds of a real generator (no privileged directional structure) | HONESTY ITEM / EMPIRICAL, open | `theory/MATHEMATICAL_SPINE.md` §7; sector-wise \(h_{\mathrm{pack}}\) |
 
 ## Layer IIb — saturation
 
@@ -105,7 +107,7 @@ saturation (IIb). This table is the allocation of record; see
 |---|---|---|---|
 | E1 meter certification | I | run (M2/M4 pass, M3 magnitude fails, gate passes on full-span synthetics) | instruments legal |
 | E8 boundary mapping | I | designed | premises load-bearing |
-| E9 matched-capacity Euclidean vs hyperbolic (*E-alpha*) | IIa | **designed, unrun — highest value** | is hyperbolic forced |
+| E9 matched-capacity Euclidean vs hyperbolic (*E-alpha*) | I shadow | designed, optional | is Corollary 4.3 visible at finite depth, matched packing (not "is hyperbolic forced") |
 | E2 equal-edge numerical achievability | IIa refinement | run (endpoint obstruction) | stronger synchronization subclass; Theorem 4.4 already settles host capacity |
 | E7 reticulation intervention | IIa | designed | \(\delta\perp h_{\mathrm{pack}}\) in vivo |
 | E3 barcoded lineages | IIb | designed | \(\eta\le1\) with a given tree |
@@ -113,10 +115,10 @@ saturation (IIb). This table is the allocation of record; see
 | E5 trained hierarchy | IIb | rehearsal stopped: embedder lacks exponential fan-out ([`experiments/E5_DESIGN_FLAW.md`](../experiments/E5_DESIGN_FLAW.md)) | saturation cross-domain |
 | E6 radius concentration | IIa+IIb | designed | necessary shell consequence of near-capacity hyperbolic coding |
 
-Balance: IIa (host class) is comparatively well-supported by existing evidence
-yet under-tested by intervention — E9, the decisive one, is unrun. IIb
-(saturation) is heavily tested and currently fails its independent kill lines.
-Closing E9 is the program's highest-leverage empirical step.
+Balance: IIa (occupancy) is comparatively well-supported by existing evidence
+and is Paper II's figure. E9 is not the program's highest-leverage step; it
+is an optional shadow of a theorem. IIb (saturation) is heavily tested and
+currently fails its independent kill lines.
 
 ## What is explicitly not claimed
 
@@ -127,7 +129,8 @@ Closing E9 is the program's highest-leverage empirical step.
   ([`IIB_CONTRACT.md`](IIB_CONTRACT.md)). Former Conjecture 7.1 is
   Theorem 7.1, conditional on axiom A3; whether A3 holds of a real generator
   is empirical (L2a.6).
-- The hyperbolic host class (IIa) is not yet *forced* by evidence: isotropy is
-  asserted, and E9 has not been run.
+- The hyperbolic host class (IIa) is occupancy of exponential tree-like
+  room, not a bake-off: isotropy is asserted; Corollary 4.3 already
+  excludes polynomial hosts at finite rate; E9 does not force \(\mathbb H^2\).
 - Lean certifies algebra from definitions; it certifies neither that biology
   saturates nor that axiom A3 holds, and it does not check Theorem 7.1.

@@ -78,9 +78,10 @@ host-utilization saturation (\(\eta\to 1\)).
 
 **Three holds, stated up front.**
 
-1. **Occupancy, not force.** E9 (matched-capacity Euclidean vs hyperbolic)
-   is unrun. §3 says the process sits in the top row. It does not say
-   hyperbolic geometry is forced.
+1. **Occupancy, not force.** Corollary 4.3 already excludes the bottom
+   row at finite radial rate. §3 says the process sits in the top row. It
+   does not say hyperbolic geometry is forced, and it does not wait on E9.
+   E9 is an optional matched-packing illustration of the same corollary.
 2. **Test B is unrun.** Misspecification without reticulation has not been
    run. Until it has, a non-recovering floor on real data cannot be called
    mixing rather than a wrong substitution model. The mixing *mechanism* is
@@ -94,8 +95,10 @@ host-utilization saturation (\(\eta\to 1\)).
 
 Cite once, in this order, because it is the derivation:
 
-The bound: retained novelty cannot outgrow addressable room; polynomial
-hosts cannot retain exponential novelty at finite rate. The ladder:
+The bound: retained novelty cannot outgrow addressable room; the same
+count is a trichotomy — exponential packing, exponentially growing
+addresses, or forgetting. Polynomial hosts cannot retain exponential
+novelty at finite rate and fixed dimension. The ladder:
 distinguishable endpoints (block) are not preserved genealogy (relational);
 in a weighted hyperbolic host the supremum relational tax is zero at
 exponential order, and that identity does not transfer to an arbitrary
@@ -121,7 +124,7 @@ does not fill the chart and does not saturate it.
    donor's tree; packing need not fall — a real exit.
 3. Independent of sequence distance at depth, the process still looks
    exponentially room-rich against a Euclidean null (KEGG; occupancy of the
-   top row, not E9). Independent substitution entropy sits inside a
+   top row). Independent substitution entropy sits inside a
    nucleotide alphabet (\(1.76\)–\(2.17\) bits): the encoding is a tape, not
    a manifold.
 4. Mixing is the mixed cell: HGT-enriched functions need extra angle; Atlas
@@ -183,8 +186,8 @@ representation that is not the tape should still show exponential room.
 - **§3.2 Process geometry.** Native functional orthology (KEGG, 1,935
   genomes, three domains, no geometric model): \(\delta\)-ratio \(0.32\) vs
   a dimension-matched Euclidean null; distances monotone across ranks.
-  Occupancy of the top row. Candidate for E9, not a matched-capacity run.
-  Name the gap once.
+  Occupancy of the top row. Dimension-matched Euclidean null, as in Paper
+  I's demonstration protocol — not a matched-capacity forcing test.
 - **§3.3 Encoding capacity, as a finding.** Independent volume-growth \(h\)
   on real GTDB/Li patristic matrices: fungi \(1.84\), archaea \(1.76\),
   bacteria \(2.17\) bits — inside a nucleotide ceiling. Published
@@ -194,10 +197,10 @@ representation that is not the tape should still show exponential room.
   here as the left branch of the throughline made quantitative.
 - **§3.4** Synthetic E9-shaped pilot (stress \(0.143\) vs \(0.322\)): the
   test can discriminate. Not biology.
-- **§3.5** Not a \(\kappa\), not A3, not saturation, not E9. Polar split of
-  an imposed embedding is definitional; that trap is why E9 exists.
-  Growth-class gate and Euclidean null belong in §6 as the instruments that
-  make the top/bottom row well-posed.
+- **§3.5** Not a \(\kappa\), not A3, not saturation, not a host-forcing
+  bake-off. Polar split of an imposed embedding is definitional; occupancy
+  is read from a representation metric and a growth-class gate. That trap
+  is why E9, if run, matches packing rather than parameter count.
 
 ## §4 The mixed cell
 
@@ -316,7 +319,7 @@ Instruments that make the figure well-posed. Not biology saturating.
 - **InfoNCE degeneracy.** One clause, no reconstructed-loss table.
 
 A3 / sector-wise packing remains Paper I's empirical remainder, downstream
-of E9. Structured HGT (a preferred donor) is the biological *candidate* for
+of occupancy. Structured HGT (a preferred donor) is the biological *candidate* for
 an A3 pinch — a reading, not a theorem. One sentence here or in §7, not a
 competing spine.
 
@@ -337,18 +340,22 @@ contradiction (not). Reticulation is a second tree competing for the same
 tape, not noise in a first tree.
 
 **Claimed (I/IIa).** Occupancy of exponential room on an independent
-functional representation (candidate, not E9); two encoding failures on
+functional representation; two encoding failures on
 ground truth; two HGT scars in real data, consistent with the mixed cell
 rather than with poverty; independent \(h\) inside the alphabet; sequence-
 \(\kappa\) not a well-posed coordinate.
 
-**Not claimed.** That E9 is done; that a real-data floor is mixing rather
+**Not claimed.** That hyperbolic geometry is forced by a bake-off; that a
+real-data floor is mixing rather
 than misspecification; that “genealogy is expensive” is a measurement; A3;
 saturation; a filled atlas; CCS as host-class proof; any \(\kappa\)
-constant; that hyperbolic geometry is forced.
+constant.
 
-**Falsifiability.** (i) E9 matched-capacity fails on independent real data
-\(\to\) host class fails (occupancy was not force); (ii) HGT instruments
+**Falsifiability.** (i) A process that retains exponential novelty at
+certified finite \(c\) sits in certified polynomial room \(\to\) the
+premises of the limit are not instantiated there (E8; the theorem is
+untouched). Extra Euclidean \(d\) at unmatched packing is not that kill.
+(ii) HGT instruments
 disagree in sign once recA is re-derived without back-solving \(\to\) mixed
 cell fails; (iii) \(L\)-recovery on a known-HGT alignment climbs to 1
 \(\to\) the floor prediction fails for that system; (iv) Test B floors
@@ -374,7 +381,7 @@ No fifth piece. No new figure. Biology had been plotting a different one.
 
 | Program piece | What this paper does with it |
 |---|---|
-| Limit | Independent \(h\) respects the alphabet. Growth-class gate and Euclidean null discriminate hosts. No \(\eta\). |
+| Limit | Independent \(h\) respects the alphabet. Growth-class gate and Euclidean null discriminate hosts. Trichotomy: room, addresses, or forgetting. No \(\eta\). |
 | Ladder | Process versus encoding is the biological content of block \(\neq\) relational. Identity stays cheap on the tape; paths do not. |
 | Classifier | Poverty versus mixing is how to read an encoding, not the title claim. \(\delta\perp h_{\mathrm{pack}}\) is certified. COG and Atlas are the mixed cell. |
 | Chart | Polar \(\mathbb H^2\) is the candidate geometry *of descent*, frozen, seed-stable up to \(O(2)\). Not a filled atlas. Extra dimension in mixed clades is extra angle, not a refutation of \(n=2\) as embeddability. |
@@ -383,14 +390,14 @@ No fifth piece. No new figure. Biology had been plotting a different one.
 ## Sequencing
 
 1. Reproduce A/C in-repo, or cite as reported-not-reproduced.
-2. Write §3 from KEGG plus independent \(h\), with the E9 gap named.
+2. Write §3 from KEGG plus independent \(h\). Occupancy is the claim.
 3. Write §4 from the two admissible HGT instruments; recA stays out until
    quartets, or is dropped.
 4. Write §5 from the shared-input table, v1/v2, and the IIb kill. Do not
    ledger those numbers as EMPIRICAL done on the throughline.
 5. Test B before any real-data floor is called mixing.
-6. E9 and the sector test are follow-ups. They are what this paper makes
-   well-posed, not prerequisites for telling it.
+6. E9 (matched packing, never matched parameters) and the sector test are
+   optional follow-ups. They are not prerequisites for telling this paper.
 
 Archival objects that can be reused later, not in this draft: protein
 IQ-TREE trees (`.treefile`, `.mldist`, `.splits.nex`) as quartet objects

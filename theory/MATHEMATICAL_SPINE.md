@@ -37,9 +37,12 @@ dimension, but it does not calibrate capacity or curvature. Sections 11–13
 (measurement, falsification, minimal statement) span all layers.
 
 A consequence the split makes sharp: **isotropy is asserted, never measured.**
-The decisive IIa test — does a hyperbolic host beat a Euclidean one at matched
-capacity — is E9 of [`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md), and it
-is distinct from the polynomial-exclusion (Layer I) Euclidean control in E5.
+Corollary 4.3 already excludes polynomial hosts at finite radial rate and
+fixed dimension; that is Layer I, not a realization test. E9 of
+[`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md) is a finite-sample
+shadow of that corollary at matched packing capacity, distinct from E5's
+Euclidean control and not the argument that forces \(\mathbb H^2\). A3
+remains the named symmetry axiom for Theorem 7.1.
 
 All logarithms in this document are natural unless explicitly written
 `log₂`.
@@ -372,19 +375,45 @@ bound uses Aleksander Skenderi, "Free semigroups of large critical exponent,"
 [10.1112/topo.70087](https://doi.org/10.1112/topo.70087), especially Theorem
 3.1, Proposition 3.2(4), Theorem 1.1 (5.1), and equation (6.5).
 
-### Corollary 4.3 — Polynomial-growth exclusion
+### Corollary 4.3 — Polynomial-growth exclusion (the trichotomy)
 
 If \(\beta>0\) and \(c<\infty\), then \(h_{\mathrm{pack}}>0\). Consequently, no
 polynomial-growth host can represent retained exponential novelty faithfully
 at finite radial rate.
 
+The same packing count, with the quantifiers flipped, is the content of the
+limit, not a second theorem:
+
+1. **Exponential room.** Retain novelty at finite address cost \(\Rightarrow\)
+   \(h_{\mathrm{pack}}>0\).
+2. **Exponential addresses.** In a host whose packing grows as a Euclidean
+   (or Bishop–Gromov, \(\operatorname{Ric}\ge 0\)) polynomial of degree
+   \(n\), faithfulness forces
+   \(r(R)\ge\varepsilon\,e^{\beta R/n}(1-o(1))\). Raising \(n\) raises the
+   polynomial budget; the exclusion is at *fixed* dimension.
+3. **Forgetting.** If the process overwrites rather than accretes,
+   \(\beta=0\) and a polynomial host is legal. That exemption is the
+   bound's edge, not a counterexample.
+
+Every finite-depth census is a packing number on a compact ball of a proper
+host (Theorem 4.2). The displayed rates are the \(R\to\infty\) limit of
+those counts; the remainder is \(O(1/R)\). Manning's identity is a
+dynamical reading of volume entropy on compact manifolds and is not used.
+In exponential-growth hosts the leading packing *rate* is robust in
+\(\varepsilon\); resolution enters the intercept.
+
 This is the coordinate-free content of the theory:
 
-> Remembering while creating requires an exponential-growth host.
+> Remembering while creating requires an exponential-growth host — or
+> exponentially growing addresses, or forgetting.
 
 Positive packing or volume entropy does **not**, by itself, imply constant
 negative sectional curvature or Gromov hyperbolicity. Hyperbolic space is a
 canonical realization only after additional symmetry assumptions are imposed.
+A matched-parameter Euclidean bake-off (extra \(d\), extra polynomial
+budget) is not a test of this corollary. A matched-*packing* comparison at
+fixed dimension is its finite-sample shadow (E9), optional, and not
+load-bearing for Layer I.
 
 ---
 
@@ -741,8 +770,10 @@ implies isotropy implies real \(\mathbb H^{d+1}\). That implication is a
 theorem. It does not prove that a real generator satisfies A3, that a real
 host is homogeneous, or that an embedding cannot add a preferred axis the
 process did not have. Those remain honesty items. The former conjecture's
-empirical remainder is whether packing rate depends on angle, askable only
-after E9 has distinguished an exponential host from a Euclidean one.
+empirical remainder is whether packing rate depends on angle, askable once
+growth class is exponential and a sector-wise \(h_{\mathrm{pack}}\) is
+defined. Distinguishing exponential from Euclidean occupancy is Corollary
+4.3 plus the growth-class gate, not E9 as a forcing test.
 
 ---
 
