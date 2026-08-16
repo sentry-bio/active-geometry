@@ -1,27 +1,12 @@
 #!/usr/bin/env python3
 """E5 small-scale: description-length pressure in a trained hierarchy.
 
-Layer IIb rehearsal, labeled as such. This asks whether utilization is
-*speakable* with present instruments (growth-class gate + uncertified
-occupancy slope). It does not ask whether genomes saturate.
+STOPPED. The current objective does not produce an exponential-capacity
+representation of the tree (no Sarkar angular fan-out). Do not report η.
+See experiments/E5_DESIGN_FLAW.md.
 
-Firewall: β is read from the generator (tag `generator`), never from the
-embedding. Packing and defect are read from the learned metric
-(tag `representation_metric`). η is refused unless growth class is
-exponential; even then the magnitude is uncertified.
-
-Arms (pre-registered together)
-------------------------------
-1. tree + Poincaré + tree-distance matching (λ = 1)
-2. same, λ ∈ {0.1, 1, 10}
-3. tree + Poincaré + shuffled targets (no description-length pressure)
-4. 2-D grid + Poincaré + distance matching (no hierarchy)
-5. tree + Euclidean R² + tree-distance matching (polynomial-exclusion)
-
-Usage
------
-    python3 experiments/e5_trained_hierarchy.py
-    python3 experiments/e5_trained_hierarchy.py --quick
+This file is retained as the first rehearsal runner. It is not a certified
+IIb instrument.
 """
 
 from __future__ import annotations

@@ -38,16 +38,14 @@ illegal until the host clock is a process metric.
 
 ## Legal now
 
-- **E5 at small scale**, labeled IIb. Hierarchical generator vs co-equal
-  negative controls (no description-length pressure; no hierarchy).
-  Firewall: \(\beta\) from the generator, packing from the representation.
-  This asks whether utilization is *speakable* with present instruments,
-  not whether genomes saturate.
-  Runner: `experiments/e5_trained_hierarchy.py`. First rehearsal
-  (`experiments/e5_small_scale.json`):
-  **KILLED_baked_in_artifact** — shuffled targets still called exponential;
-  \(\lambda\) sweep flat; occupancy is reading a radial tree layout, not a
-  drive. η is not speakable. Not a genomic result.
+- **E5 at small scale**, labeled IIb. **Stopped.** The current designs do
+  not produce an exponential-capacity representation of the tree, so
+  \(\eta\) would not measure utilization. Report:
+  [`experiments/E5_DESIGN_FLAW.md`](../experiments/E5_DESIGN_FLAW.md).
+  At \(\beta_{\mathrm{rate}}=0\) the growth-class gate reads polynomial;
+  embedded vs tree Spearman \(0.635\); radius can track depth without
+  exponential fan-out. Redesign (Sarkar sector layout and/or pairwise
+  log-distance regression) before any \(\eta\). Not a genomic result.
 - Runtime provenance tags on the meter (refuse \(\eta\) on tag collision).
 
 ## Legal after the gate

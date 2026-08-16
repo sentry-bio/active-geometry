@@ -334,6 +334,15 @@ Not an intervention and not spectrum-controlled — run it first as a
 
 ## E5 — Description-length pressure in a trained hierarchy (adversarial)
 
+**Status — stopped (design flaw).** The present embedders do not recover
+exponential ball-growth of the generator tree. At zero pressure the
+growth-class gate reads polynomial; a Sarkar \(\mathbb H^2\) layout would
+already be exponential. \(\eta\) from this instrument is not a
+utilization measurement. See
+[`experiments/E5_DESIGN_FLAW.md`](../experiments/E5_DESIGN_FLAW.md).
+Do not retune. Redesign the objective (Sarkar sector subdivision and/or
+full pairwise log-distance regression) before rerunning the arms below.
+
 **Question.** Is saturation cross-domain — does a knob that *is* description
 length, in a non-biological host, drive \(\eta\to 1\)?
 

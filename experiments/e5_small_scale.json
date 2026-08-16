@@ -1398,6 +1398,18 @@
       "eta_mean": 0.9305466311219289,
       "exponential_fraction": 1.0
     },
-    "claim": "IIb instrument rehearsal. Not genomic saturation. Not a state-equation measurement."
+    "claim": "IIb instrument rehearsal. Not genomic saturation. Not a state-equation measurement.",
+    "superseded_mechanism_note": "Refuse eta. The precise cause is missing angular fan-out, not a reportable bake-in saturation. See design_flaw and E5_DESIGN_FLAW.md."
+  },
+  "design_flaw": {
+    "status": "stopped",
+    "report": "experiments/E5_DESIGN_FLAW.md",
+    "do_not_report_eta": true,
+    "diagnosis": "Embedding does not recover exponential fan-out. At beta_rate=0 growth-class is polynomial. Spearman(embedded, tree)=0.635; radius-depth=0.83; span 337x; origin ball-growth not exponential. Loss never enforces Sarkar sector subdivision. Not a tuning problem.",
+    "redesign": [
+      "Sarkar-style sector initialization/layout (E1/E2/E9)",
+      "full pairwise log-distance regression onto the generator metric"
+    ],
+    "prior_verdict_kept_as_refusal": "KILLED_baked_in_artifact"
   }
 }

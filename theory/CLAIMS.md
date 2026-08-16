@@ -110,7 +110,7 @@ saturation (IIb). This table is the allocation of record; see
 | E7 reticulation intervention | IIa | designed | \(\delta\perp h_{\mathrm{pack}}\) in vivo |
 | E3 barcoded lineages | IIb | designed | \(\eta\le1\) with a given tree |
 | E4 mutation-rate intervention | IIb | designed | saturation as a response |
-| E5 trained hierarchy | IIb | designed (small-scale runnable) | saturation cross-domain |
+| E5 trained hierarchy | IIb | rehearsal stopped: embedder lacks exponential fan-out ([`experiments/E5_DESIGN_FLAW.md`](../experiments/E5_DESIGN_FLAW.md)) | saturation cross-domain |
 | E6 radius concentration | IIa+IIb | designed | necessary shell consequence of near-capacity hyperbolic coding |
 
 Balance: IIa (host class) is comparatively well-supported by existing evidence

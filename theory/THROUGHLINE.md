@@ -240,7 +240,8 @@ layer:
    referenced deep alignment;
 3. run the matched-capacity Euclidean-versus-hyperbolic intervention (E9);
 4. test the saturation drive separately (E5) only if the Layer IIb question is
-   being pursued.
+   being pursued — and only after the embedder recovers exponential fan-out
+   ([`experiments/E5_DESIGN_FLAW.md`](../experiments/E5_DESIGN_FLAW.md)).
 
 The detailed proof and claim status remain in
 [`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md) and
