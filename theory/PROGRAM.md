@@ -36,7 +36,10 @@ in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the tests
 
 - **Layer IIb — saturation.** *Whether* a process fills its budget, giving the
   state-equation equality. The **harder, less-supported** claim; every
-  independent test to date sits below its kill line.
+  independent test of the *retired plot* (sequence-\(\kappa\) vs tree-derived
+  \(h\)) sits below its kill line. The well-posed bet is
+  [`IIB_CONTRACT.md`](IIB_CONTRACT.md): \(\eta\) on the process after E9,
+  mixed cell out. It is a sequel, not a chapter of Paper II.
 
 The four-point (Buneman ≡ Gromov) classifier is an independent bridge to IIa:
 it decides tree-ness and measures reticulation, but calibrates nothing.
@@ -212,7 +215,9 @@ inside Paper II's domain. In order of immediacy:
    vacuous by construction; that is an instrument result, not a placement
    of biology.
 2. **E5 at small scale — runnable now.** Trained-hierarchy saturation with
-   co-equal negative controls (Layer IIb, labelled as such).
+   co-equal negative controls (Layer IIb, labelled as such). This is the
+   near-term item of [`IIB_CONTRACT.md`](IIB_CONTRACT.md): whether
+   utilization is speakable, not whether genomes saturate.
 3. **E4 rehearsal — public data.** Time-stamped serially sampled viruses as
    the pipeline rehearsal, labelled as such.
 4. **E9 — the decisive test.** Matched-capacity Euclidean vs hyperbolic.

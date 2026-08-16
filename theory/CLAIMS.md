@@ -123,7 +123,8 @@ Closing E9 is the program's highest-leverage empirical step.
 - No absolute curvature \(\kappa\) is a certified measurement (M3 magnitude is
   uncertified; embedding non-identifiability is documented).
 - No zero-free-parameter cross-domain law is established; the state equation is
-  a Layer IIb ideal awaiting saturation evidence. Former Conjecture 7.1 is
+  a Layer IIb ideal awaiting saturation evidence
+  ([`IIB_CONTRACT.md`](IIB_CONTRACT.md)). Former Conjecture 7.1 is
   Theorem 7.1, conditional on axiom A3; whether A3 holds of a real generator
   is empirical (L2a.6).
 - The hyperbolic host class (IIa) is not yet *forced* by evidence: isotropy is

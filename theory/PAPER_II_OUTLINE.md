@@ -378,7 +378,7 @@ No fifth piece. No new figure. Biology had been plotting a different one.
 | Ladder | Process versus encoding is the biological content of block \(\neq\) relational. Identity stays cheap on the tape; paths do not. |
 | Classifier | Poverty versus mixing is how to read an encoding, not the title claim. \(\delta\perp h_{\mathrm{pack}}\) is certified. COG and Atlas are the mixed cell. |
 | Chart | Polar \(\mathbb H^2\) is the candidate geometry *of descent*, frozen, seed-stable up to \(O(2)\). Not a filled atlas. Extra dimension in mixed clades is extra angle, not a refutation of \(n=2\) as embeddability. |
-| IIb | Named, open, failed on independent \(h\). Detached. |
+| IIb | Named, open; the retired plot failed. Well-posed bet: [`IIB_CONTRACT.md`](IIB_CONTRACT.md). Detached. |
 
 ## Sequencing
 

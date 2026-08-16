@@ -211,7 +211,8 @@ This variational result makes \(\eta_{\mathrm{block}}=1\) the optimum
 **conditional on that objective**. Whether evolution supplies such a cost is
 empirical. The state equation and radial concentration belong here,
 downstream of both a verified hyperbolic host and measured near-capacity
-utilization. Nothing above depends on nature saturating.
+utilization. Nothing above depends on nature saturating. The sequel contract
+is [`IIB_CONTRACT.md`](IIB_CONTRACT.md).
 
 ## What is not part of the throughline
 
