@@ -83,9 +83,10 @@ stands whether or not the biology saturates.
   state-equation/saturation claim as an *honestly ledgered open bet*, not a
   headline. The honest figure is the growth-class × tree-defect phase
   diagram on an independent representation, not \(\kappa\). The working
-  outline is [`PAPER_II_OUTLINE.md`](PAPER_II_OUTLINE.md): host class and
-  reticulation, derived from the ladder and the A/C mechanism (poverty vs
-  mixing), with curvature bounded and A3 unrun.
+  outline is [`PAPER_II_OUTLINE.md`](PAPER_II_OUTLINE.md): one distinction
+  (poverty vs mixing), measured on ground truth and in data; curvature
+  diagnosed as what you get if you average the two; A3 and saturation
+  unrun.
 - **Backed by.** The empirical pipelines under `validation/`, `experiments/`,
   `model/`, and `figures/`; the shared meter; the E-series protocol.
 - **Claim it makes about nature.** Real and falsifiable, and currently mixed:

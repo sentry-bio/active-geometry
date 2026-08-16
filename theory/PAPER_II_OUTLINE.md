@@ -1,279 +1,239 @@
-# Paper II outline (v4) — *Evolution as Active Geometry*
+# Paper II outline (v5) — *Evolution as Active Geometry*
 
-Draft for review, not a manuscript. Derived from the v3 outline, the
-program map ([`PROGRAM.md`](PROGRAM.md), [`THROUGHLINE.md`](THROUGHLINE.md)),
-and the synthetic A/C simulations (reported locally; code not yet in this
-repository). Paper I carries the machinery. This paper cites it and tests
-what it licenses on life.
+Draft for review, not a manuscript. Paper I carries the machinery. This
+paper cites it. The v4 outline derived host class and reticulation from
+the ladder. v5 is the same derivation, said once.
 
-**The one-line change from v3.** v3 already leads with host class and
-reticulation rather than curvature. v4 makes those two questions *derived*:
-they are the two axes of Paper I's empirical figure (growth class × tree
-defect) applied to a representation that is not the inferred tree. The
-simulations do not place a clade. They license the instruments and stop a
-misreading: multiple-hit saturation is resolvability poverty; horizontal
-transfer is a structural floor. Paper II's biology is organized around that
-distinction, not around \(\kappa\).
+**The one distinction.** A record is not the thing recorded. It can fail
+its original in exactly two ways:
 
-**Inclusion rule.** A result enters the spine only if it is dimensionless
-(a ratio, a correlation, a comparative statement, a null-rejection) **and**
-it answers host class or tree defect on an independent representation. A
-simulation licenses a prediction and an instrument, not a biological
-finding. Absolute curvature, back-solved \(n\), and state-equation
-explanations stay in §5, flagged. Channel saturation (\(p\to 0.75\)) is
-never reported as host-utilization saturation (\(\eta\to 1\)).
+- **Poverty.** The record goes quiet. Splits become unreadable because the
+  tape has been overwritten too many times. Recoverable: Test A rises
+  through \(L=400{,}000\) with no flattening; decided-quartet accuracy
+  extrapolates to an asymptote at or above 1. Nothing is lost in
+  principle; you need more tape.
+- **Mixing.** The record goes wrong. A second genealogy is written on the
+  same tape. Not recoverable: Test C is flat across a \(16\times\) increase
+  in \(L\). The transferred block resolves to the donor's topology at
+  \(98.7\%\) — the fidelity an untouched block shows for the recipient.
+  Zero undecidable quartets at any transfer rate. It does not get
+  ambiguous. It gets confidently misdirected.
+
+Those are not two findings. They are one dichotomy, and they organize the
+paper:
+
+- **§2** — the two failure modes, on ground truth
+- **§3** — a representation that escapes poverty (functional, not sequence)
+  still looks room-rich
+- **§4** — mixing leaves a scar in real data
+- **§5** — failure to distinguish poverty from mixing is why \(\kappa\)
+  never stabilized
+
+**Inclusion rule.** A result enters the spine only if it measures this
+distinction (quiet vs wrong; recovers with \(L\) vs floors; packing vs
+splits) on ground truth or on an independent biological representation.
+Simulations license the dichotomy; they do not place a clade. Absolute
+curvature, back-solved \(n\), and the state equation do not enter the
+headline. Channel saturation (\(p\to 0.75\)) is never reported as
+host-utilization saturation (\(\eta\to 1\)).
+
+**Two holds, stated up front.**
+
+1. The dichotomy is verified only in simulation. Test B (misspecification
+   alone, no reticulation) is unrun. Until it runs, a non-recovering floor
+   on real data cannot be attributed to mixing rather than to a wrong
+   substitution model. That is the gate on the biological application.
+2. “Genealogy is the expensive thing” is interpretation, not measurement.
+   What is measured: one failure recovers and one does not, on synthetic
+   data with exact ground truth, plus two independent HGT signatures in
+   real data. The framing is a reading of those facts, and is labeled as
+   one.
 
 ---
 
 ## Title (proposed)
 
-*Evolution as Active Geometry: Host Class and Reticulation in the Tree of Life*
+*Evolution as Active Geometry: When the Record Fails the Tree*
 
-No state equation, no curvature value, no atlas, no clock.
+No state equation, no curvature value, no atlas, no clock. Host class and
+reticulation remain the two live tests; they are now named as the two
+ways a record fails.
 
-## What Paper I licenses (do not re-prove)
+## What Paper I licenses (one paragraph, not a section)
 
-Cite once, in this order, because it is the derivation of the paper:
-
-1. **Limit.** \(\beta\le c\,h_{\mathrm{pack}}\). Polynomial hosts cannot
-   retain exponential novelty at finite rate (Corollary 4.3).
-2. **Ladder.** Block capacity (distinguishable endpoints) is not relational
-   capacity (preserved genealogy). Slack splits into tax \(\Gamma\) and
-   utilization. In a weighted hyperbolic host, \(\Gamma=0\) as a supremum
-   (Theorem 4.4). On a sequence metric that need not hold.
-3. **Classifier.** Quartets decide tree-ness, not curvature (Theorem 6.1).
-   Undecidable \(\neq\) confidently wrong. \(\delta\) is orthogonal to packing.
-4. **Chart.** Given isotropy, space-form plus packing select
-   \(\mathbb H_\kappa^n\). Theorem 7.1: inside the Heintze class, axiom A3
-   (full \(O(d)\) directional symmetry) forces real hyperbolic space. \(n=2\)
-   is embeddability, not a fit. Polar radius/angle are encoder choices.
-
-This paper tests (1)–(3) on biological representations. It does not claim
-(4)'s A3, does not fill the chart, and does not saturate it.
-
-The honest figure is the phase diagram already in
-[`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md):
-
-| | tree-like \(\delta\approx 0\) | reticulate \(\delta>0\) |
-|---|---|---|
-| **exponential room** | hyperbolic-tree candidate | mixed / HGT-rich host |
-| **polynomial room** | path-like | networked and capacity-limited |
-
-Only the upper-left cell invites the chart. Sequence distances at depth can
-land in the upper-right cell for two different reasons. The simulations
-tell them apart. That is the biological application.
+The bound: retained novelty cannot outgrow addressable room. The ladder:
+distinguishable endpoints (block) are not preserved genealogy (relational).
+The classifier: quartets decide tree-ness; undecidable \(\neq\) confidently
+wrong; \(\delta\) is orthogonal to packing. The chart: given A3, real
+\(\mathbb H^{d+1}\) inside the Heintze class; \(n=2\) is embeddability.
+This paper tests the ladder on biological records. It does not fill the
+chart and does not saturate it.
 
 ## Abstract — beats
 
-1. Paper I forces a room-rich host for any process that retains a
-   distinguishable genealogy. This paper asks the two questions that figure
-   actually contains: does a *representation* of life (not the inferred tree
-   read as its own metric) supply exponential room, and does reticulation
-   register as a structural defect rather than as noise.
-2. Native functional geometry (KEGG orthology, no geometric model) is
-   negatively curved against a dimension-matched Euclidean null — a
-   real-data *candidate* for the host-class test, not a run of the
-   matched-capacity protocol.
-3. Reticulation has a synthetic mechanism and a biological signature.
-   Synthetically: JC multiple hits make quartets *undecidable* and recover
-   with more sites; HGT makes quartets *confident and partly wrong* and does
-   not recover with sites, while block distinguishability stays high. In
-   data: HGT-enriched functions need extra predictive dimension; deployed
-   placement failures are HGT-enriched. Excess dimension is a readout of
-   extra angular room, not a back-solved \(n\).
-4. No curvature constant is claimed. Two estimators of packing rate on the
-   same trees disagree by \(\sim 2.8\times\); reported as an open instrument
-   question (ladder-rung mismatch), not as anisotropy and not as
-   saturation.
-5. Whether the host is isotropic is axiom A3, empirical, unrun. The test is
-   sector-wise packing after host class is known.
+1. A genome is a record of a genealogy, not the genealogy. Paper I's
+   ladder says identity and origin are different capacities. This paper
+   asks how the record fails the original.
+2. On ground truth, it fails in two ways. Poverty: quartets go quiet and
+   recover with more sites. Mixing: quartets go confidently wrong and do
+   not recover; block distinguishability stays high; a transferred block
+   is the donor's tree.
+3. A functional representation that is not the sequence tape still looks
+   room-rich against a Euclidean null (KEGG; E9 candidate, not E9).
+4. Mixing leaves a scar: HGT-enriched functions need extra dimension;
+   deployed placement failures are \(7.7\times\) HGT-enriched.
+5. Years of unstable \(\kappa\) are what you get if you average quiet
+   records with wrong records. No curvature constant is claimed.
 
 ## §1 Introduction
 
-- One paragraph: remembering while creating costs room. Cite Paper I. This
-  paper does not prove the bound.
-- Second paragraph: a finite-alphabet *record* of a tree is not the tree.
-  Endpoints can stay distinct while splits go quiet (channel poverty) or
-  while a second tree is written on the same tape (transfer). That is the
-  ladder, and it is why host class and reticulation are different sections.
-- Third: no curvature of life is claimed. Roadmap: §2 derivation from
-  simulation (instruments, not clades); §3 host class; §4 reticulation;
-  §5 curvature bounded; §6 A3; §7 controls; §8 scope.
+- A record is not the thing recorded. Cite Paper I for the ladder, not
+  for a curvature of life.
+- The record can fail quietly or wrongly. Those demand opposite
+  responses — more data versus a different model of the object.
+- Roadmap: §2 the dichotomy on ground truth; §3 escaping poverty; §4 the
+  mixing scar; §5 why \(\kappa\) never settled; §6 controls; §7
+  discussion.
 
-## §2 What the simulations license (not a biological result)
+## §2 The two failure modes, on ground truth
 
-New relative to v3. Short. Grounds the application without smuggling
-synthetic numbers into the spine.
+Not a biological result. The license.
 
-- **§2.1 Two failures of relational capacity, one packing.** On Yule trees
-  with exact genealogy, JC69 keeps almost all tips distinguishable while
-  quartet resolvability collapses with depth. Infinite-sites, matched on
-  event count, does not collapse. So the binding constraint on a
-  four-letter tape is relational, not block. Mutual exhaustion did not
-  appear at realistic \(L\) vs \(N\).
-- **§2.2 The \(L\)-recovery test.** Decided-quartet accuracy under multiple
-  hits *rises* toward 1 as \(L\) grows to \(4\times 10^5\) (Test A):
-  information dilution, an instrument limit, not a host-class failure.
-  Under HGT at non-saturating depth (Test C), decided accuracy *floors*
-  under a \(16\times\) increase in \(L\); every quartet is computable; a
-  growing fraction is wrong; block witness count drifts up. The transferred
-  block agrees with the donor topology, not the recipient. That is
-  structural \(\delta\), orthogonal to packing — Paper I's E7 prediction,
-  instantiated.
-- **§2.3 What this applies to biology.** Do not read host class off
-  saturated marker-gene distances (they can look non-tree because they are
-  poor). Do not call channel saturation \(\eta\to 1\). Do use \(L\)-recovery,
-  or an independent representation, to tell poverty from mixing. The
-  biological sections below are those two tests, as far as present data
-  allow. Status: reported local simulations; reproduce in-repo before citing
-  numerical tables in a submitted draft.
+- **§2.1 Poverty (Test A).** JC69, exact Yule genealogy. Block witness
+  count stays near the ceiling. Decided-quartet accuracy rises with \(L\)
+  at \(D=2\) and \(D=3\) through \(400{,}000\) sites, no flattening.
+  Undecidable fraction shrinks on a \(\ln L\) schedule. Infinite-sites
+  at matched event count does not collapse. Mechanism: site reuse, not
+  “more mutations.”
+- **§2.2 Mixing (Test C).** Non-saturating depth, HGT rate swept. Block
+  witness count drifts *up* (\(247\to 254\)). Undecidable fraction is
+  identically zero. Decided accuracy floors under \(16\times L\).
+  Transferred block vs donor topology \(98.7\%\); vs recipient \(52.3\%\).
+- **§2.3 The diagnostic.** \(L\)-recovery: if decided accuracy climbs,
+  the record is poor; if it sits, the record is mixed — *provided* Test B
+  has ruled out misspecification. Status: reported local simulations;
+  reproduce in-repo before citing tables in a submitted draft.
 
-## §3 Is the native representation room-constrained? (Layer IIa)
+## §3 A representation that escapes poverty still looks room-rich
 
-v3's §2, now after the derivation.
+Host class, derived: if the failure mode in §2.1 is *the tape*, a
+non-tape representation should still show exponential room.
 
-- **§3.1 Three geometries.** Imposed, learned, native. Only native distances
-  test host class. Sequence-native at large \(D\) is the left branch of the
-  throughline and may be poor (§2.2); functional-native (KEGG) is the
-  better E9-shaped input because it is not the inferred tree and not JC
-  distance.
-- **§3.2 Native functional geometry.** KEGG orthology, 1,935 genomes, three
-  domains, no geometric model. \(\delta\)-ratio \(0.32\) vs
-  dimension-matched Euclidean null; distances monotone across ranks. State
-  as a first real-data *candidate* for E9, and name the gap: not
-  matched-capacity, not the certified meter protocol.
-- **§3.3 Synthetic E9-shaped pilot.** Hyperbolic vs Euclidean, matched
-  dimension, same optimizer: stress \(0.143\) vs \(0.322\). Methods
-  validation that the test can discriminate, not biology.
-- **§3.4 What this does not establish.** Not a \(\kappa\), not A3, not E9
-  proper, not saturation. Polar split of an imposed embedding is
-  definitional (Euclidean control separated as well or better in the
-  Line A polar attempt); that trap is why E9 exists.
+- **§3.1** Sequence-native distances at depth are the poor record. Do not
+  read host class off them.
+- **§3.2** Native functional geometry (KEGG, 1,935 genomes, three
+  domains, no geometric model): \(\delta\)-ratio \(0.32\) vs
+  dimension-matched Euclidean null. Candidate for E9, not a
+  matched-capacity run. Name the gap.
+- **§3.3** Synthetic E9-shaped pilot (stress \(0.143\) vs \(0.322\)):
+  the test can discriminate. Not biology.
+- **§3.4** Not a \(\kappa\), not A3, not saturation. Polar split of an
+  imposed embedding is definitional; that trap is why E9 exists.
 
-## §4 Reticulation as structural defect, not noise (classifier)
+## §4 Mixing leaves a scar in real data
 
-v3's §3, re-derived from §2.2 rather than from back-solved \(n\).
+Classifier, derived: if §2.2 is a second tree on the same tape, real HGT
+should show extra angular room and operational failure, without packing
+having to fall.
 
-- **§4.1 The prediction, from Paper I plus the simulation.** A second tree
-  on the same tape should: keep block distinguishability; drive quartet
-  defect that does **not** recover with more characters; optionally demand
-  extra angular dimension. Packing rate need not fall (E7:
-  \(\delta\perp h_{\mathrm{pack}}\)). Excess PCA dimension is a *readout*
-  of extra angular room, not the definition of reticulation and not a
+- **§4.1** Prediction: block distinguishability holds; defect does not
+  recover with more characters; extra dimension is a readout, not a
   fitted \(n\).
-- **§4.2 Primary biological evidence (admissible now).**
-  - COG predictive-dimensionality elbow: V/W/B/X need full dimension;
-    HGT-enriched; mean elbow \(k=57.7\) vs \(129\) at the tail. No
-    \(\kappa\), no state equation.
-  - Atlas placement failures \(7.7\times\) HGT-enriched; zero core-metabolic
-    pathway failures. Operational, independent.
-- **§4.3 recA — hold out until re-derived.** \(n_{\mathrm{backsolved}}=3.02\)
-  is inadmissible (n=2 seam). Blocking task: stress vs embedding dimension
-  with no \(\kappa\) or \(h_{\mathrm{eff}}\). Until then, two-of-three
-  instruments.
-- **§4.4 Derived next measurement (not required for v3 submission).** The
-  \(L\)-recovery test on a real deep alignment with an independent reference
-  topology, plus a misspecification control (Test B, unrun). That would be
-  E7's synthetic instrument applied in vivo. Do not pad the paper with a
-  rushed version. Name it as the clean follow-up.
-- **§4.5 Synthesis.** Strongest finding because it needs no curvature
-  number: mixing registers as extra angular room and as operational
-  failure, consistent with a relational floor, not with channel poverty.
+- **§4.2** Admissible now: COG elbows (V/W/B/X, HGT-enriched);
+  Atlas placement failures \(7.7\times\) HGT-enriched, zero core-metabolic
+  pathway failures.
+- **§4.3** recA \(n=3.02\) held out until re-derived without back-solving.
+- **§4.4** Next measurement, not this draft: \(L\)-recovery on a real
+  deep alignment, after Test B.
 
-## §5 Curvature, honestly bounded (Layer IIb, open)
+## §5 Why \(\kappa\) never stabilized
 
-v3's §4. Keep the blanket rule. Add the two-saturations sentence.
+The archival payoff. Not a curvature section in disguise.
 
-- **§5.1** No certified \(\kappa\). Every reported value carries isotropy
-  premise and estimator identity.
-- **§5.2** Viral relative curvature tracks depth (\(\rho=0.84\)), not
-  mutation rate (\(\rho=0.12\)). The \(r=0.996\) entropy correlation is
-  secondary and is **not** the state equation (would need A3 and
-  \(\eta=1\)).
-- **§5.3** Cross-alphabet ratio \(3.1\times\) as comparative, not as two
-  certified absolutes.
-- **§5.4** Estimator gap \(2.84\times\) (ball-growth vs stress-fit) as open
-  instrument question. Named hypothesis: ladder-rung mismatch (packing
-  occupancy \(\neq\) weighted-clock relational code). Do **not** offer this
-  as A3 failure; that would confound instrument with host. Both remain
-  untested; say so.
-- **§5.5** Explicit non-claim: no saturation, no \(\eta\to 1\). Independent
-  IIb kill lines (domain \(r=0.35\), protein \(-0.11\), viral
-  \(0.06\)–\(0.19\)) stay in this section as the open bet, not a buried
-  negative. Under a hyperbolic-host assumption those gaps are utilization;
-  on a sequence metric they may be tax. This paper does not average them
-  into a \(\kappa\).
+- Years of distance-matrix \(\kappa\) mixed poor records with mixed
+  records. Those demand opposite responses. Averaging them is a
+  reasonable account of non-convergence.
+- Two estimators on the same trees still disagree by \(\sim 2.8\times\)
+  (ball-growth vs stress-fit). Named as an open instrument question
+  (ladder-rung mismatch). Not offered as anisotropy, not as saturation,
+  not as the state equation.
+- Comparative leftovers, if kept at all, stay here and stay comparative:
+  viral relative curvature tracks depth not mutation rate; cross-alphabet
+  ratio as a ratio. No certified absolute \(\kappa\).
+- IIb kill lines belong here as the open bet this paper does not take.
+  Explicit non-claim: no \(\eta\to 1\).
 
-## §6 The open axiom (A3)
+## §6 Controls
 
-v3's §5, tightened.
+Estimator tests.
 
-- **§6.1** Cite Theorem 7.1. Do not re-derive Heintze. Geometry alone does
-  not select the isotropic member; A3 does, as a theorem, inside the
-  Heintze class.
-- **§6.2** Translate A3 into biology without a kitchen sink. The simulation
-  that actually violated directional exchangeability is **structured HGT**
-  (a preferred donor). Substitution-spectrum biases (ti/tv, CpG) are
-  *channel* properties and may look like Test A, not like a Heintze pinch.
-  Do not lump them with A3 until a sector test says so.
-- **§6.3** Decisive test, unrun, downstream of E9: sector-wise
-  \(h_{\mathrm{pack}}\) vs shuffle-angle null. Companion note or v4. Not a
-  rushed figure here.
+- Euclidean null; synthetic \(\kappa\) recovery as meter recovery, not
+  biology saturating; destroyed-structure Procrustes; gauge control
+  (\(6\times\) swing at fixed \(h_{\mathrm{eff}}\)).
+- Minimal encoder: imposed \(\mathbb H^2\), residual \(0.020\), gauge
+  \(O(2)\). Stability inside the imposed model, not host-class selection.
 
-## §7 Controls
+A3 / sector-wise packing remains Paper I's empirical remainder,
+downstream of E9. One sentence here or in §7, not a competing spine.
 
-Estimator tests, not curvature claims.
+## §7 Discussion — the throughline
 
-- Euclidean null: \(\kappa=0\) on polynomial random trees, 5/5.
-- Synthetic recovery of known \(\kappa_{\mathrm{true}}=(\ln b)^2\) to
-  \(1.08\%\) — report as meter recovery, not as biology saturating.
-- Destroyed structure: Procrustes \(0.94\to <0.3\).
-- Minimal encoder: imposed \(\mathbb H^2\), \(\kappa\) frozen, residual
-  \(0.020\), leftover gauge \(O(2)\). Reproducibility **within the imposed
-  model**, not host-class selection (that is E9 / §3).
-- Gauge control: branching factor fixed, \(\mu\) swept, measured rate
-  swings \(6\times\), invariant \(\mathrm{rate}\times\delta\times\ln 2
-  \approx \ln b\). Validates `process_time_gauge`. Any rate in this paper
-  without a named clock is not comparable across conditions.
+Rewrite of v4's scope list. Same claims. One argument.
 
-## §8 Discussion and scope
+**The reading, labeled as interpretation.** Life keeps two things in one
+place: what a thing is (a distinguishable address) and where it came from
+(a genealogy). Paper I's ladder says these are different capacities. The
+evidence says they degrade independently. Block capacity is robust:
+genomes stay distinguishable through saturation and through transfer;
+Test C's witness count even rises, because mixing makes sequences more
+distinct from their vertical neighbors, not less. Relational capacity is
+fragile in two separable ways. A phylogeny is not a record read off the
+genome. It is a reconstruction of a physical quantity with a measurable
+ceiling, hit either by erosion (fixable) or by structural contradiction
+(not). Reticulation is a second tree competing for the same tape, not
+noise in a first tree.
 
-- **Claimed.** On independent representations: native functional geometry
-  prefers a negatively curved host against a Euclidean null (candidate, not
-  E9); reticulation registers as extra angular room and as HGT-enriched
-  operational failure, consistent with a relational floor.
-- **Licensed but not claimed as biology.** The A/C mechanism: poverty vs
-  mixing, diagnosed by \(L\)-recovery.
-- **Not claimed.** A curvature constant; A3; saturation; a filled atlas; that
-  sequence space at depth is the host; that CCS Procrustes selects the host.
-- **Falsifiability.** (i) matched-capacity E9 fails on real independent
-  data → host class fails; (ii) HGT instruments disagree in sign once recA
-  is re-derived without back-solving → reticulation prediction fails;
-  (iii) sector test finds no angular dependence under known directional
-  bias → A3-as-stated needs revision; (iv) \(L\)-recovery on a known-HGT
-  alignment climbs to 1 → the floor prediction fails for that system.
+**Claimed (I/IIa).** The dichotomy on ground truth; a non-tape
+representation still looking room-rich against a Euclidean null
+(candidate); two HGT scars in real data, consistent with mixing not
+poverty.
+
+**Not claimed.** That Test B is done; that a real-data floor is mixing
+rather than misspecification; that “genealogy is expensive” is a
+measurement; A3; saturation; a filled atlas; CCS as host-class proof; any
+\(\kappa\) constant.
+
+**Falsifiability.** (i) E9 matched-capacity fails on independent real
+data → host class fails; (ii) HGT instruments disagree in sign once recA
+is re-derived → mixing scar fails; (iii) \(L\)-recovery on a known-HGT
+alignment climbs to 1 → the floor prediction fails for that system;
+(iv) Test B floors without HGT → the diagnostic does not yet distinguish
+mixing from a wrong model.
+
+**Close, not with “biology is active geometry.”** That is the IIb claim
+this paper brackets. Close with:
+
+> Life's record keeps identity cheaply and genealogy expensively. When
+> the record fails its original, it fails in one of two ways — quietly,
+> which more data repairs, or wrongly, which it does not. The distinction
+> is measurable, and it is what a geometry of hierarchy is for.
+
+That is Layer I/IIa, it is what the evidence supports, and it leaves the
+state equation unearned.
 
 ## Sequencing
 
-1. Reproduce A/C in-repo, or cite them only as “reported, not reproduced
-   here,” before any submitted numerical table from them.
+1. Reproduce A/C in-repo, or cite as reported-not-reproduced.
 2. Re-derive recA without back-solving, or drop it.
-3. Write §4 and §5 from existing admissible material.
-4. Do not wait on E9 or the sector test to submit a v3-shaped paper; do
-   wait on (1)–(2) for honesty. Matched-capacity E9 on GTDB/KEGG remains
-   the highest-leverage follow-up, not a prerequisite for the two
-   comparative claims.
-5. Reconcile viral and protein tables to one provenance (still blocking
-   for §5).
+3. Write §4 from the two admissible HGT instruments.
+4. Test B before any real-data floor is called mixing.
+5. E9 and the sector test are follow-ups, not prerequisites for the
+   dichotomy paper.
 
-## Removed from v3 / added here
+## Relative to v4
 
-| Change | Reason |
-|---|---|
-| New §2 on simulations | Application to biology is derived from the ladder, not hung on KEGG/HGT after the fact. |
-| Reticulation prediction restated as \(\delta\)-floor \(\perp\) packing | Matches E7 and Test C; excess dimension is a readout. |
-| Channel poverty vs mixing named | Prevents saturated 16S from being reported as reticulation or as \(\eta\). |
-| A3 candidates restricted; HGT primary | Test C is the mechanism; ti/tv is a different rung. |
-| Estimator gap *not* offered as anisotropy | Would confound L2a.6 with I.3. |
-| Encoder control demoted to imposed-model stability | Throughline / CCS seam. |
-| IIb kill lines placed in §5 | Honest open bet, not omitted. |
+v4 had the right pieces and too many spines. v5 keeps every claim and
+lets the poverty/mixing cut do the organizing. §5 is no longer a
+curvature attic; it is the diagnosis of the archive. §7 is the
+throughline instead of a not-claimed list (the list remains, inside the
+argument).
