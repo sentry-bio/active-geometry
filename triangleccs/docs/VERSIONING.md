@@ -23,6 +23,11 @@ a genomic LM), when available.
 
 ## Atlas / map
 
-The map (129D LM, Voronoi retrieval, UI) lives outside this repo. It *emits*
-`Address` via registration. Extra dimensions beyond the 2D chart are operational
-resolution of the map, not more of the certified tree. See `docs/ENCODER.md`.
+The map (v10.9, 129D LM, Voronoi retrieval, UI) lives outside this repo. It
+*emits* registered **angular** `Address` via a published transform. Extra
+dimensions beyond the 2D chart are operational resolution of the map, not
+more of the certified tree. The map's radial head and live κ are not read.
+Radius stays ADVISORY on the chart; κ stays CONVENTION on the Form.
+
+Conformance is sextant θ vs registered map θ on a shared aligned reference
+set, not codec↔atlas agreement between two nets. See `docs/ENCODER.md`.

@@ -60,6 +60,48 @@ The MDL-relevant encoder is therefore the sextant in
 on every `Address`. A 129-dimensional language model may register onto that
 chart. It must not author it.
 
+## What the sextant reads
+
+The sextant reads sequences. It does not read them the way a genomic encoder
+does.
+
+It consumes **aligned** bases, turns them into a named pairwise metric
+(Hamming / JC69 in v0), and places that metric on the frozen polar chart by
+hyperbolic law of cosines. That is a reading: the sequences move the needle.
+It is a **compass reading**, not a survey of the coastline.
+
+It will not, and should not:
+
+- embed unaligned windows, short reads, or metagenomic queries;
+- serve 10⁵ genomes as a nearest-neighbour index;
+- invent angles that a contrastive loss prefers to the distances;
+- author κ, n, or radius.
+
+Those jobs belong to the **map** (v10.9 and kin). The map registers onto the
+chart; the sextant is the non-neural reference that measures the map's
+distortion against distance-faithful placement. Two nets trained on the same
+tree agreeing was always a soft form of independence. A JC sextant cannot
+share a network's biases because it is not a network.
+
+The gating requirement for that measurement is a **shared reference set**:
+marker-gene alignments the sextant can place, tokenized windows the map can
+embed, overlapping on real genomes. Until that set exists, a v10.9 registration transform cannot be fit or
+conformance-checked. That gap is operational, not a reason to teach the
+sextant to "read" like the map.
+
+Fine-scale disagreement is expected and is the point. A leaf-contrastive map
+over-separates sibling genera; the sextant preserves JC distances. Coarse
+backbone θ should agree (conformance gate). Tip residual is the map's
+characterized distortion, now measured against a distance-faithful ruler
+instead of another net. Drop the map's radial head and ignore its live κ:
+radius stays advisory on the chart; κ stays CONVENTION on the Form.
+
+CONSTITUTION clause 2 still applies: the sequence metric places points; it
+does not supervise topology. Quartets ask whether the received metric is
+still a tree. The balloon says that at depth it often is not. So the sextant
+is not "the true tree reader" either. It is the incorruptible *placement* of
+a named tape metric onto the datum.
+
 ## What this does not claim
 
 - That neighbor-joining or JC is the true process.
