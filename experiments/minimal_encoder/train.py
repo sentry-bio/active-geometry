@@ -3,9 +3,10 @@
 E11: Pure 2D Coordinate System (Layer IIa instrument)
 
 WHAT THIS TESTS: Whether a polar H^2 chart — kappa frozen, no classification
-heads, no ODE — is seed-stable up to SO(2). That is host-class evidence
-(embeddability floor n=2: radial depth + angular divergence), not a
-saturation measurement and not a derivation of kappa from the genetic code.
+heads, no ODE — is seed-stable up to O(2). That is reproducibility within
+the imposed model (H^2, frozen kappa, taxonomy quartets, radial target),
+not a host-class selection test and not a derivation of kappa from the
+genetic code. Radius-as-depth and angle-as-divergence are modeling choices.
 
 ARCHITECTURE:
   Token embedding -> mean pool -> MLP -> exp_map -> H^2(kappa frozen)
@@ -33,9 +34,11 @@ ANCHOR SELECTION:
 
 SEED STABILITY TEST:
   Train N seeds. Procrustes-align the resulting coordinate sets.
-  If the polar chart is determined by the data, residual after alignment
-  is small compared with ball radius; the leftover gauge is a global
-  rotation. This does not certify a filled atlas of life.
+  If the polar chart is determined by the data inside this imposed model,
+  residual after alignment is small compared with ball radius; the leftover
+  gauge is global O(2) (rotation and reflection) unless orientation is
+  fixed. This does not compare host classes and does not certify a filled
+  atlas of life.
 
 USAGE:
   python train.py \\

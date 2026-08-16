@@ -1,22 +1,26 @@
 # Active Geometry
 
-**The Geometric State Equation of the Tree of Life**
+**The Addressability Limit**
 
 [![Lean 4](https://img.shields.io/badge/Lean-4-blue)](theory/lean/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![Preprint](https://img.shields.io/badge/bioRxiv-2026.03.09.710612-red.svg)](https://www.biorxiv.org/content/10.64898/2026.03.09.710612v2)
 
-> A process that retains exponentially many distinguishable histories cannot
-> represent them faithfully at finite address rate in a polynomial-growth
-> host. Its information-growth rate obeys the coordinate-free limit
-> **β ≤ c·h_vol**. Under capacity saturation and an isotropic hyperbolic
-> realization, normalized curvature **κ̄ = c²κ** satisfies
-> **κ̄ = (h·ln 2/(n−1))²**. For a genuinely branching tree in the chosen
-> smooth hyperbolic embedding class, the minimal ambient dimension is
-> **n = 2**; path trees remain one-dimensional.
+> Remembering while creating costs room. Retained-history growth obeys the
+> coordinate-free limit **β ≤ c·h_pack**, and block capacity reaches that
+> ceiling exactly. Distinguishable endpoints need not preserve their
+> genealogy; in a real hyperbolic host, however, genealogy has zero
+> exponential-order tax.
 
-The minimal dependency structure is in
+The one-page dependency graph is
+[`theory/THROUGHLINE.md`](theory/THROUGHLINE.md): **limit → ladder → quartet
+classifier → polar chart**. It joins the mathematical balloon (addresses
+without genealogy) to the surviving canonical-coordinate-system construction
+(\(\mathbb H^2\) as depth plus divergence), without requiring nature to
+saturate.
+
+The formal kernel is in
 [`theory/ADDRESSABILITY_KERNEL.md`](theory/ADDRESSABILITY_KERNEL.md); the full
 proof, units, scope, and falsification criteria are in
 [`theory/MATHEMATICAL_SPINE.md`](theory/MATHEMATICAL_SPINE.md). The inequality
@@ -50,6 +54,10 @@ Geometry: The Geometric State Equation of the Tree of Life*](https://www.biorxiv
 ---
 
 ## The Two Findings
+
+Those \(\kappa\) and \(n\) rows below are the preprint's reported figure.
+They are not certified measurements, and they are not the throughline
+([`theory/THROUGHLINE.md`](theory/THROUGHLINE.md)).
 
 The paper reports two results of different character:
 

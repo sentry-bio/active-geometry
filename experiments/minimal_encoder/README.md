@@ -15,20 +15,24 @@ host by fitting curvature.
   - radial ordering from genome size (a depth proxy, **not** accumulated
     information and not a clock)
 
-This is the embeddability floor \(n=2\): one radial coordinate for
-process depth, one angular coordinate for divergence. Path trees remain
-one-dimensional. The quartet loss is Theorem 6.1 used as a training
-signal — classification, not curvature calibration.
+\(\mathbb H^2\) is the embeddability floor for genuinely branching trees
+in the stated class. Interpreting radius as process depth and angle as
+divergence is a modeling choice, not a consequence of the capacity
+theorem. Path trees remain one-dimensional. The quartet loss is Theorem
+6.1 used as a training signal — classification, not curvature
+calibration.
 
 ## What a positive result supports
 
 Five independent seeds yield mean Procrustes residual of 0.020 across 268
-organisms. The sole undetermined degree of freedom is a global
-\(\mathrm{SO}(2)\) rotation.
+organisms. The leftover gauge is global \(O(2)\) (rotation and
+reflection), unless an orientation convention is imposed.
 
-That is seed-stable **host-class** evidence: the same polar chart, up to
-gauge. It does not certify saturation, an absolute \(\kappa\), or a
-filled atlas of life. Genome-size radius stays advisory (E6). The two
+That is seed-stable reproducibility **within the imposed model**:
+\(\mathbb H^2\), frozen \(\kappa\), taxonomy quartets, and the radial
+target are supplied by construction. It does not compare host classes
+(that is E9). It does not certify saturation, an absolute \(\kappa\), or
+a filled atlas of life. Genome-size radius stays advisory (E6). The two
 axes are a better independence split than reading both from an inferred
 tree, and still not a representation metric independent of taxonomy.
 

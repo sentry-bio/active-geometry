@@ -1,9 +1,10 @@
 # Active Geometry — the program, whole
 
-This is the map of the whole artefact: the layered theory, the two manuscripts
-it supports, the seams that join them, and the machinery that makes the whole
-self-verifying. It is deliberately short; each part points to the document that
-carries the detail.
+This is the administrative map of the whole artefact: the layered theory, the
+two manuscripts it supports, the seams that join them, and the machinery that
+makes the whole self-verifying. The shorter conceptual front door is
+[`THROUGHLINE.md`](THROUGHLINE.md): limit, ladder, quartet classifier, chart.
+Each part below points to the document that carries the detail.
 
 ## The one idea
 
@@ -96,12 +97,14 @@ future test, not part of the current artefact.
 - **Kernel seam.** Paper II *cites* Paper I for the bound and block identity; it
   never re-derives them. The inequality is the license; the biology is an
   instance.
-- **The genealogy seam.** Paper I proves that relational fidelity costs no
-  exponential-order capacity in a real hyperbolic host under a local weighted
-  process clock. Paper II therefore tests utilization and host class, not an
-  assumed universal "price of genealogy." A measured \(\eta<1\) under a
-  hyperbolic assumption is utilization slack, not tax. E2's equal-edge
-  endpoint obstruction is a stronger synchronization issue, not host capacity.
+- **The genealogy seam.** Paper I proves that the *supremum* relational
+  capacity of a real hyperbolic host under a local weighted process clock
+  equals block capacity. Paper II therefore tests utilization and host
+  class, not an assumed universal "price of genealogy." A measured
+  \(\eta_{\mathrm{block}}<1\) is utilization slack, not tax, **only under
+  a hyperbolic-host assumption**. On a finite-alphabet sequence metric at
+  depth the same gap can be relational tax. E2's equal-edge endpoint
+  obstruction is a stronger synchronization issue, not host capacity.
 - **The clock seam.** Radial concentration is a *corollary* of IIa+IIb, not
   a load-bearing claim. If a hyperbolic host is near capacity, histories
   concentrate on the outer clock shell. E6 tests that consequence only after
@@ -120,15 +123,19 @@ future test, not part of the current artefact.
 - **The CCS instrument seam.** The Poincaré encoder remnant
   (`experiments/minimal_encoder/`, `model/`) is a Layer IIa *instrument*,
   not a Layer IIb measurement and not Paper II's claim. Polar
-  \(\mathbb H^2\) is the embeddability floor (radial depth + angular
-  divergence); frozen \(\kappa\) is the right response to InfoNCE
-  degeneracy, while \(\kappa=5/4\) from genetic-code entropy is not a
-  theorem; taxonomy quartets train topology and do not calibrate
-  curvature; seed-stable Procrustes (unique up to \(\mathrm{SO}(2)\)) is
-  host-class evidence. The two training axes — NCBI ranks for quartets,
-  genome size for radius — are a primitive independence split, better
-  than patristic-for-both, still not a representation metric independent
-  of the tree of life. Radius-as-information, a filled atlas, and a
+  \(\mathbb H^2\) is the embeddability floor; interpreting radius as
+  depth and angle as divergence is an encoder modeling choice, not a
+  capacity-theorem coordinate system. Frozen \(\kappa\) is the right
+  response to InfoNCE degeneracy, while \(\kappa=5/4\) from genetic-code
+  entropy is not a theorem; taxonomy quartets train topology and do not
+  calibrate curvature. Seed-stable Procrustes (unique up to \(O(2)\),
+  unless orientation is fixed) is reproducibility **within the imposed
+  model** — \(\mathbb H^2\), curvature, and both training axes are
+  supplied by construction — not a host-class selection test (that is
+  E9). The two training axes — NCBI ranks for quartets, genome size for
+  radius — are a primitive independence split, better than
+  patristic-for-both, still not a representation metric independent of
+  the tree of life. Radius-as-information, a filled atlas, and a
   self-calibrating clock remain IIb and stay out.
 - **The instrument seam.** Both papers cite the same certified instruments
   (`tools/addressability_meter.py`: M2, M4, the growth-class gate). The gate
@@ -175,11 +182,14 @@ The artefact checks itself, and CI should run all four:
 
 ## Center of gravity — a stopping rule
 
-The theory is the inequality, the block identity, the balloon (room versus
-room that genealogy fits), and the split between host class and saturation.
-That spine is **closed**. Radial concentration is a corollary of IIa+IIb.
-The growth-class gate's short-window refusal is an instrument limit. Neither
-is a new foundation, and neither is a reason to keep proving.
+The theory is the four-piece dependency graph in
+[`THROUGHLINE.md`](THROUGHLINE.md): limit, constrained-capacity ladder,
+quartet classifier, and polar hyperbolic chart. The balloon is the separation
+between room and room that genealogy fits; the coordinate-system construction
+is the candidate host where Theorem 4.4 closes that separation. That spine is
+**closed**. Radial concentration is a corollary of IIa+IIb. The growth-class
+gate's short-window refusal is an instrument limit. Neither is a new
+foundation, and neither is a reason to keep proving.
 
 **No new theorems until a measurement has run.** The empirical queue stays
 inside Paper II's domain. In order of immediacy:

@@ -1,7 +1,8 @@
 # Claim & Artifact Registry
 
-The whole-program map — layers, the two manuscripts, and their seams — is
-[`PROGRAM.md`](PROGRAM.md). This file is the ledger it refers to.
+The minimal dependency graph is [`THROUGHLINE.md`](THROUGHLINE.md). The
+whole-program administrative map — layers, manuscripts, and seams — is
+[`PROGRAM.md`](PROGRAM.md). This file is the ledger they refer to.
 
 A single machine-checkable ledger of the program's load-bearing claims, each
 tagged by status and bound to the artifact that backs it. This exists so that
