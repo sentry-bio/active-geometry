@@ -30,6 +30,11 @@ from typing import Iterable, Iterator, Sequence
 
 import numpy as np
 
+try:
+    from tools.growth_class_gate import analyze_distances
+except ImportError:  # script invocation from tools/
+    from growth_class_gate import analyze_distances
+
 SCHEMA_VERSION = "1.0"
 
 
@@ -451,9 +456,16 @@ def analyze(
             "finite_ball_occupancy_slope"
         ]
     )
+    reference_index = int(growth["reference_center"]["index"])  # type: ignore[index]
+    growth_class = analyze_distances(matrix[reference_index])
     if host_entropy is not None and promote_occupancy_slope:
         raise ValueError(
             "supply host_entropy or promote the occupancy slope, not both"
+        )
+    if promote_occupancy_slope and not growth_class["measurable"]:
+        raise ValueError(
+            "refusing to promote the occupancy slope: the sample is not "
+            f"growth-class measurable ({growth_class['reason']})"
         )
     entropy_for_state = occupancy_slope if promote_occupancy_slope else host_entropy
     entropy_source = None
@@ -461,7 +473,8 @@ def analyze(
         entropy_source = "explicit independent input"
     elif promote_occupancy_slope:
         entropy_source = (
-            "finite occupancy slope promoted by explicit user assumption; "
+            "finite occupancy slope promoted by explicit user assumption "
+            "after a measurable growth-class window; "
             "not independently established packing entropy"
         )
     return {
@@ -474,6 +487,7 @@ def analyze(
             "validation": validation,
         },
         "growth": growth,
+        "growth_class": growth_class,
         "quartet": measure_quartet_defect(
             matrix,
             max_quartets=max_quartets,

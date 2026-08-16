@@ -36,3 +36,4 @@
 import ActiveGeometry.Addressability
 import ActiveGeometry.Packing
 import ActiveGeometry.KappaCurvature
+import ActiveGeometry.Measurability

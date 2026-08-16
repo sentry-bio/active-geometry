@@ -18,8 +18,9 @@ them.
     data: is it hyperbolic/tree-like, and at what dimension? This is the
     **better-supported** biological claim — seed-stable embeddings, curvature
     as a fixed design parameter, tree-defect near zero, \(n=2\) as an
-    embeddability floor. The decisive test is whether a hyperbolic host beats a
-    Euclidean one *at matched capacity* (E9).
+    embeddability floor. Occupancy of exponential room is a measurement of a
+    process, not a bake-off that forces the host. E9 is a finite-sample
+    shadow of Corollary 4.3 at matched packing.
 
   - **Layer IIb — saturation.** *Whether* a given process fills its budget,
     giving the state-equation equality \(\bar\kappa^*=(h_{\mathrm{eff}}\ln2)^2\).
@@ -35,7 +36,8 @@ calibrate capacity or curvature.
 A warning that the sublayer split makes sharp: **isotropy is asserted, never
 measured.** In the meter it is the command-line flag
 `assume_isotropic_hyperbolic` — the entire IIa premise reduced to a switch. No
-result licenses that switch; E9 is what would.
+result licenses that switch. A3 and occupancy are the remaining IIa
+questions; E9 does not grant isotropy.
 
 ---
 
@@ -128,8 +130,20 @@ asymptotic rates yields
 
 Hence \(\beta\le c\,h_{\mathrm{cap}}\).
 
-This is the kernel's only prohibition. In particular, positive retained growth
-at finite radial rate requires positive exponential host capacity.
+This is the kernel's only prohibition. Written with the quantifiers flipped
+it is a trichotomy, not only a ceiling:
+
+- \(\beta>0\) and \(c<\infty\) \(\Rightarrow\) \(h_{\mathrm{cap}}>0\)
+  (exponential packing);
+- \(h_{\mathrm{cap}}=0\) at fixed dimension \(\Rightarrow\) either
+  \(\beta=0\) (forgetting) or \(c=\infty\) (address radius superlinear,
+  and exponential in Euclidean degree \(n\));
+- every finite-\(R\) census is a packing count on a compact ball; the
+  displayed rates are the \(R\to\infty\) limit.
+
+Finite rate is a condition of the first reading, not a standing hypothesis
+on every representation. Processes that overwrite rather than retain sit
+outside the bound.
 
 ## 3. The general block-capacity identity
 
@@ -207,26 +221,43 @@ C_{\mathrm{relational}}\le C_{\mathrm{causal}}\le C_{\mathrm{persistent}}
 }
 \]
 
-Only the top rung is a theorem (the block identity above). The relational rung
-is the open problem below. The middle rungs are, at present, definitions. This
-is the honest state: the ladder is the right organizing frame, not a set of
-established results, and Active Geometry is most generally a **constrained
-capacity theory** — geometry supplies addresses; the admissibility class
-decides which addresses are usable.
+The top rung is always a theorem (the block identity above). The middle rungs
+are, at present, definitions. The relational rung depends on the host: it can
+be strictly below block capacity in general, but Theorem 4.4 proves equality
+for real hyperbolic space under a local weighted process clock. Active Geometry
+is therefore a **constrained capacity theory** — geometry supplies addresses;
+the admissibility class decides which addresses are usable — with a complete
+relational coding theorem in its canonical host.
 
-### The open theorem
+### The relational capacity theorem
 
-The kernel has exactly one open mathematical problem, posed precisely as
-Conjecture 4.4 of [`MATHEMATICAL_SPINE.md`](MATHEMATICAL_SPINE.md): the
-relational tree capacity of \(\mathbb H_\kappa^n\) equals \(c(n-1)\sqrt\kappa\).
-The converse half is Theorem 4.1. The achievability half — **subcritical**:
-every rate strictly below \(c(n-1)\sqrt\kappa\) is realized by a
-depth-uniform relational code — is open. Because the capacity is a supremum,
-failure at the exact saturating endpoint does *not* refute the conjecture; it
-may only show the endpoint is unattained. A proof would be a coding theorem for
-genealogy; a genuine subcritical obstruction would make the gap below
-\(c(n-1)\sqrt\kappa\) a new host invariant. Neither outcome disturbs the
-inequality or the block identity.
+The problem formerly called Conjecture 4.4 is settled, after correcting a
+false clocking condition.
+
+The old exact unit-edge statement was false: if \(c<\varepsilon\), the first
+child must be both within \(c\) and at least \(\varepsilon\) from the root.
+With a local weighted clock — positive edge durations, path-additive process
+time, and a radial budget \(d(o,f(v))\le c\,\tau(v)+A_0\) — the full identity
+holds:
+
+\[
+\boxed{
+C_{\mathrm{rel}}^{\mathrm{wt}}
+(\mathbb H_\kappa^n,c;\varepsilon)
+=c(n-1)\sqrt\kappa.
+}
+\]
+
+The upper bound is the packing theorem. The lower bound uses Skenderi's 2026
+Bishop--Jones theorem: free semigroup orbit trees have critical exponents
+arbitrarily close to the ambient hyperbolic exponent and are
+quasi-isometrically embedded. Weighting each generator by its geometric
+displacement divided by \(c\) gives the process clock and the radial bound.
+
+Thus genealogy has **zero exponential-order tax** in real hyperbolic space;
+the proof does not require or establish endpoint attainment. The proof and the exact boundary of the
+stronger equal-edge problem are in
+[`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md).
 
 The theorems do not decide whether nature instantiates the premises or fills
 the budget. The ranked experimental protocol is
@@ -280,23 +311,48 @@ B-\beta
 \underbrace{\frac{\beta}{C_{\mathrm{rel}}}}_{\text{utilization}} .
 \]
 
-The distinction is load-bearing for measurement: an observed
-\(\eta_{\mathrm{block}}<1\) need not mean a system is inefficient or fails to
-saturate. It may be relationally optimal while paying an unavoidable price of
-genealogy \(\Gamma\). "Does it saturate?" is properly the question of
-utilization \(\beta/C_{\mathrm{rel}}\), not of \(\eta_{\mathrm{block}}\).
+The distinction is load-bearing in general hosts. In the weighted hyperbolic
+class, Theorem 4.4 proves \(C_{\rm rel}^{\rm wt}=B\), so
+\(\Gamma=0\): relation preservation does not reduce exponential capacity.
+There the block ratio is the utilization ratio. Outside that class or under
+the stronger equal-edge synchronization constraint, an observed
+\(\eta_{\rm block}<1\) may still mix relational tax with under-utilization.
+
+### Near capacity forces radial concentration
+
+In \(\mathbb H_\kappa^n\), the same packing count applied to the smaller ball
+of histories satisfying
+\(d(o,f(v))\le(1-\delta)c\tau(v)+A_0\) gives
+
+\[
+\frac{|E_\delta(R)|}{|T_R^\tau|}
+\le
+C e^{-(h\delta c-\Delta_{\rm cap})R},
+\qquad
+h=(n-1)\sqrt\kappa,
+\]
+
+for an eventual lower growth bound \(ch-\Delta_{\rm cap}\); a limsup gives the
+same conclusion along a realizing sequence with an arbitrary exponent margin.
+Here \(\Delta_{\rm cap}=ch-\beta=ch(1-\eta)\) is additive deficit, not
+dimensionless efficiency. At exact capacity,
+\(d(o,f(v))/(c\tau(v))\to1\) in probability under uniform counting on clock
+balls, along that sequence (or eventually if the growth limit exists). With
+fixed positive deficit, only a one-sided band follows. This is Theorem 5.2 of
+the spine: the clock--radius identity is a **conditional consequence of
+IIa+IIb**, not an unconditional biological law.
 
 ---
 
 # Layer II — The curvature realization
 
-Two sublayers, different evidence. **IIa (host class):** §5 realization and the
-genericity conjecture — *which* geometry hosts the data (hyperbolic? what
-dimension?); the better-supported biological claim. **IIb (saturation):** the
-*claim* that a process fills its budget — the coordinate-free condition \(\eta=1\)
-is defined in §4, and combined with the IIa realization it yields the §6
-equality; the harder, less-supported claim. The state equation needs both
-sublayers.
+Two sublayers, different evidence. **IIa (host class):** §5 realization and
+Theorem 7.1 — *which* geometry hosts the data (hyperbolic? what dimension?),
+conditional on axiom A3; the better-supported biological claim. **IIb
+(saturation):** the *claim* that a process fills its budget — the
+coordinate-free condition \(\eta=1\) is defined in §4, and combined with the
+IIa realization it yields the §6 equality; the harder, less-supported claim.
+The state equation needs both sublayers.
 
 ## 5. Isotropic hyperbolic realization
 
@@ -331,24 +387,21 @@ Writing \(\beta=h_{\mathrm{eff}}\ln2\) merely converts bits to nats.
 
 ### Why curvature, and not just "some exponential host"
 
-Layer I is deliberately curvature-free, which raises the question of why
-Layer II is about curvature at all rather than an arbitrary exponential-growth
-space. The answer is a **genericity claim**, stated as a conjecture beside the
-capacity one (Conjecture 7.1 of the spine): among hosts that are homogeneous
-and isotropic, the requirement of exponential capacity plus relational
-(genealogy-preserving) fidelity is met by the negatively curved space forms and
-essentially only them. Under those symmetry hypotheses the space-form
-classification leaves \(\mathbb H_\kappa^n\), so hyperbolic geometry is not an
-extra assumption bolted onto capacity — it is the *generic realization* of the
-relational-exponential class.
+Layer I is deliberately curvature-free. Given homogeneity *and isotropy*,
+the space-form classification plus polynomial exclusion already select
+\(\mathbb H_\kappa^n\); that half is not a conjecture. Among homogeneous
+negatively curved hosts, constant-curvature hyperbolic space is the
+symmetric special case, not the generic one (Heintze). Theorem 7.1 of the
+spine closes the remainder *inside that class*: axiom A3 (full \(O(d)\)
+directional symmetry, realized as Heintze automorphisms) forces abelian
+\(N\) and scalar contraction, hence real \(\mathbb H^{d+1}\). A3 is
+asserted about the generator, not measured; the meter still treats
+isotropy as a switch (`--assume-isotropic-hyperbolic`).
 
-Two caveats keep this honest. The word "generic" is clean only under
-homogeneity and isotropy; real systems are neither exactly, so for them
-hyperbolic is the *natural* host, not a forced one. And real hierarchies
-reticulate, so they sit only *near* the tree-relational class, with the
-four-point defect \(\delta\) measuring the distance. Curvature is the right host
-for the tree part; reticulation is measured residual, not a failure of the
-host.
+Real systems are neither exactly homogeneous nor isotropic, so hyperbolic
+is the *natural* chart for an A3 generator, not a forced one.
+Reticulation sits near the tree class, with four-point defect \(\delta\)
+measuring the distance.
 
 ## 6. Unit-invariant equality
 
@@ -428,13 +481,15 @@ The kernel does not prove:
 - that an ambient dimension is selected by optimization;
 - that a non-negative mismatch function generates attracting dynamics;
 - that tree thinness measures curvature magnitude;
-- **the relational capacity conjecture** (subcritical achievability in
-  \(\mathbb H_\kappa^n\)) — open;
-- **the curvature-genericity conjecture** (hyperbolic hosts are the generic
-  homogeneous realization of the relational-exponential class) — open.
+- **axiom A3** (the generator's directional symmetry is full \(O(d)\),
+  realized as Heintze automorphisms) — asserted, not measured; Theorem 7.1
+  is conditional on it.
 
-The last two are the program's named open problems, one per layer. They are
-conjectures, not theorems, and are labelled as such wherever they appear.
+Axiom A3 is empirical, not a remaining geometric conjecture. The former
+relational-capacity conjecture is now Theorem 4.4. Theorem 7.1 is a paper
+sketch conditional on A3, not a Lean theorem. The stronger exact unit-edge
+synchronization problem remains unresolved for \(c\ge\varepsilon\), but it is
+no longer the definition of host capacity.
 
 The full status ledger — every claim tagged THEOREM / IDENTITY / OPEN /
 CONVENTION / INSTRUMENT / EMPIRICAL and bound to its artifact — is

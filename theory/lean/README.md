@@ -14,9 +14,15 @@ The theory has two layers (see
 universal and curvature-free: the addressability bound, the block-capacity
 identity, and the constrained-capacity ladder. **Layer II** is the curvature
 realization: saturation and isotropic-hyperbolic hypotheses give the state
-equation. Lean formalizes Layer I in full and the algebraic skeleton of
-Layer II; it does not formalize the two open conjectures (relational capacity,
-curvature genericity).
+equation. Lean formalizes the packing/block portion of Layer I and the
+algebraic skeleton of Layer II. The growth-class identities in
+`Measurability.lean` are instrument mathematics for the occupancy gate
+(see [`../MEASURABILITY.md`](../MEASURABILITY.md)), not a third layer.
+The weighted relational-capacity lower bound
+is a paper proof depending on Skenderi's 2026 Bishop--Jones semigroup theorem
+(see
+[`../RELATIONAL_CAPACITY_THEOREM.md`](../RELATIONAL_CAPACITY_THEOREM.md)).
+Lean also does not formalize Theorem 7.1 (Heintze isotropy) or axiom A3.
 
 The principal coordinate-free statement is the Layer I addressability bound
 
@@ -63,10 +69,23 @@ Neither saturation nor isotropy is part of `Addressable`.
 
 ```text
 ActiveGeometry/
+├── Measurability.lean     # growth-class gate identities (instrument)
 ├── Packing.lean           # metric packing count and asymptotic limit
 ├── Addressability.lean    # scale-aware bound and normalized equality
 └── KappaCurvature.lean    # derived normalized algebra and ceilings
 ```
+
+### `Measurability.lean`
+
+| Declaration | Meaning |
+|---|---|
+| `midpoint_exponent_eq` | endpoint-matched log-gap at \(\sqrt{r}\) (Lemma 1.2) |
+| `spanInformation_eq_logGap_logMean` | maximum gap is \(\Delta(r,d)\) at the logarithmic mean |
+| `logGapDeriv_logMean` | formal derivative vanishes at that mean |
+| `spanInformation_pos` | \(\Delta(r,d)>0\) for \(r>1\), \(d>0\) |
+
+Lean does not formalize Hellinger distance, Le Cam's lemma, or the
+Poisson-increment model.
 
 ### `Packing.lean`
 
@@ -76,6 +95,7 @@ axiomatize a capacity envelope. Formalized results include:
 | Declaration | Meaning |
 |---|---|
 | `card_le_packingCount` | every finite separated subset of a ball is bounded by its exact packing number |
+| `subball_fraction_le_packing_fraction` | the fraction of codewords in any smaller sub-ball is bounded by its packing fraction (finite-radius radial concentration) |
 | `exists_optimal_blockCode` | an exact finite packing code exists whenever the ball packing number is finite |
 | `exists_optimal_blockCode_of_properSpace` | exact finite-block achievability in every proper metric host |
 | `represented_card_le_packingCount` | retained represented histories obey that bound at every depth |

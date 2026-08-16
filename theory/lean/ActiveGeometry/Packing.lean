@@ -107,6 +107,36 @@ theorem card_le_packingCount
     hfinite hρ
   simpa [packingCount] using ENat.toNat_le_toNat henat htop
 
+/-- Finite-radius concentration converse. If `t` is any subcollection of a
+    nonempty separated codebook `s` and `t` lies in a smaller ball, then the
+    fraction of codewords in `t` is bounded by that smaller ball's exact
+    packing count divided by the full codebook count.
+
+    Applying this with `t` the radially deficient histories is the
+    machine-checked counting step of the radial-concentration theorem. The
+    exponential packing envelope and asymptotic rate comparison remain
+    paper-level inputs. -/
+theorem subball_fraction_le_packing_fraction
+    (o : M) (ε : ℝ≥0) (ρ : ℝ) (s t : Finset M)
+    (hρ : 0 ≤ ρ) (hfinite : HasFinitePacking o ε)
+    (hs_nonempty : s.Nonempty) (hts : t ⊆ s)
+    (hsep : Metric.IsSeparated ε (s : Set M))
+    (hcontained : (t : Set M) ⊆ Metric.closedBall o ρ) :
+    (t.card : ℝ) / (s.card : ℝ) ≤
+      (packingCount o ε ρ : ℝ) / (s.card : ℝ) := by
+  have htsep : Metric.IsSeparated ε (t : Set M) :=
+    hsep.mono (by
+      intro x hx
+      exact_mod_cast hts (by exact_mod_cast hx))
+  have hcard :=
+    card_le_packingCount o ε ρ t hρ hfinite htsep hcontained
+  have hcard_real :
+      (t.card : ℝ) ≤ (packingCount o ε ρ : ℝ) := by
+    exact_mod_cast hcard
+  have hs_pos : 0 < (s.card : ℝ) := by
+    exact_mod_cast Finset.card_pos.mpr hs_nonempty
+  exact (div_le_div_iff_of_pos_right hs_pos).2 hcard_real
+
 /-- Finite-block achievability: whenever the ball has finite packing number,
     there is an actual finite codebook whose cardinality equals it. Together
     with `card_le_packingCount`, this identifies operational block-address
