@@ -77,23 +77,24 @@ stands whether or not the biology saturates.
   Layer IIa (host class) and the open Layer IIb bet (saturation). It does
   not carry a coordinate-system atlas, a self-calibrating information clock,
   or a claim that selection fills packing capacity.
-- **Carries.** The **Layer IIa** claim as its defensible spine — that a
-  *representation* of phylogenetic data (not the inferred tree read as its
-  own metric) is hosted by hyperbolic tree geometry — and the **Layer IIb**
-  state-equation/saturation claim as an *honestly ledgered open bet*, not a
-  headline. The honest figure is the growth-class × tree-defect phase
-  diagram on an independent representation, not \(\kappa\). The working
-  outline is [`PAPER_II_OUTLINE.md`](PAPER_II_OUTLINE.md): one distinction
-  (poverty vs mixing), measured on ground truth and in data; curvature
-  diagnosed as what you get if you average the two; A3 and saturation
-  unrun.
+- **Carries.** The **Layer IIa** claim as occupancy of the program's figure —
+  growth class \(\times\) tree defect, on a representation that is not the
+  inferred tree — and the **Layer IIb** state-equation/saturation claim as
+  an *honestly ledgered open bet*, not a headline. The working outline is
+  [`PAPER_II_OUTLINE.md`](PAPER_II_OUTLINE.md): descent occupies exponential
+  room; genomes encode it; sequence metrics lose the tree by erasure or by
+  reticulation; sequence-\(\kappa\) was a plot of the encoding. A3 and
+  saturation unrun. E9 unrun: occupancy, not force.
 - **Backed by.** The empirical pipelines under `validation/`, `experiments/`,
   `model/`, and `figures/`; the shared meter; the E-series protocol.
 - **Claim it makes about nature.** Real and falsifiable, and currently mixed:
-  host class comparatively supported but its decisive test (E9) unrun;
-  saturation tested and failing its independent kill lines. In the intended
-  hyperbolic host those failures are utilization, not relational tax
-  (Theorem 4.4). Paper II must state this split rather than average over it.
+  the process occupies the top row of the figure on independent functional
+  geometry, but the decisive host-class test (E9) is unrun; mixing scars are
+  two independent HGT instruments, with Test B still the gate on calling a
+  real-data floor mixing; saturation tested and failing its independent kill
+  lines. In the intended hyperbolic host those failures are utilization, not
+  relational tax (Theorem 4.4). Paper II must state this split rather than
+  average over it.
 
 A prospective **Paper III — *Language as Active Geometry*** (convergent
 alphabets) would fill a non-biological substrate row; it is a pre-registered
@@ -205,9 +206,11 @@ inside Paper II's domain. In order of immediacy:
 1. **The phase diagram on an independent representation.** Growth class
    (refusing windows the gate cannot speak on) and tree defect, from a
    metric that is not the inferred tree. No \(\eta\) precision, no
-   \(\kappa\). A first pass on tree-patristic matrices refused 11/24
-   windows and made \(\delta\) vacuous by construction; that is an
-   instrument result, not a placement of biology.
+   \(\kappa\). This is Paper II's figure
+   ([`PAPER_II_OUTLINE.md`](PAPER_II_OUTLINE.md)). A first pass on
+   tree-patristic matrices refused 11/24 windows and made \(\delta\)
+   vacuous by construction; that is an instrument result, not a placement
+   of biology.
 2. **E5 at small scale — runnable now.** Trained-hierarchy saturation with
    co-equal negative controls (Layer IIb, labelled as such).
 3. **E4 rehearsal — public data.** Time-stamped serially sampled viruses as
