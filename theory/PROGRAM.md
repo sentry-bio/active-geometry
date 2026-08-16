@@ -82,7 +82,10 @@ stands whether or not the biology saturates.
   own metric) is hosted by hyperbolic tree geometry — and the **Layer IIb**
   state-equation/saturation claim as an *honestly ledgered open bet*, not a
   headline. The honest figure is the growth-class × tree-defect phase
-  diagram on an independent representation, not \(\kappa\).
+  diagram on an independent representation, not \(\kappa\). The working
+  outline is [`PAPER_II_OUTLINE.md`](PAPER_II_OUTLINE.md): host class and
+  reticulation, derived from the ladder and the A/C mechanism (poverty vs
+  mixing), with curvature bounded and A3 unrun.
 - **Backed by.** The empirical pipelines under `validation/`, `experiments/`,
   `model/`, and `figures/`; the shared meter; the E-series protocol.
 - **Claim it makes about nature.** Real and falsifiable, and currently mixed:
