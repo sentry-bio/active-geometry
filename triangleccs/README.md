@@ -16,7 +16,8 @@ received metric is still a tree; polar \(\mathbb H^2\) is the candidate chart
 in which those two uses of capacity can coincide. This package freezes that
 chart as a WGS84-like datum. The encoder that belongs here is a **sextant**
 (distances onto the chart), not a genomic language model — see
-[`docs/ENCODER.md`](docs/ENCODER.md).
+[`docs/ENCODER.md`](docs/ENCODER.md). How a map (v10.9) registers over a
+long horizon is [`docs/MAP.md`](docs/MAP.md).
 
 ## Install
 

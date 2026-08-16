@@ -79,7 +79,8 @@ It will not, and should not:
 
 Those jobs belong to the **map** (v10.9 and kin). The map registers onto the
 chart; the sextant is the non-neural reference that measures the map's
-distortion against distance-faithful placement. Two nets trained on the same
+distortion against distance-faithful placement. The long-horizon interface
+(epochs, query path, scale, governance) is `docs/MAP.md`. Two nets trained on the same
 tree agreeing was always a soft form of independence. A JC sextant cannot
 share a network's biases because it is not a network.
 

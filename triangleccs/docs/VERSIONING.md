@@ -31,3 +31,5 @@ Radius stays ADVISORY on the chart; κ stays CONVENTION on the Form.
 
 Conformance is sextant θ vs registered map θ on a shared aligned reference
 set, not codec↔atlas agreement between two nets. See `docs/ENCODER.md`.
+The long-horizon contract — who queries, how Form and transform epochs
+diverge, what scale the witness panel is — is `docs/MAP.md`.
