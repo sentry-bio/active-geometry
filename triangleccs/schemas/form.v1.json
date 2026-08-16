@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentry.bio/schemas/triangleccs/form.v1.json",
+  "title": "TriangleCCS Form v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "kappa",
+    "dim",
+    "tokenizer_id",
+    "prime_meridian",
+    "chirality_anchor",
+    "epsilon",
+    "radial_proxy",
+    "certified_axis",
+    "advisory_axis",
+    "form_hash"
+  ],
+  "properties": {
+    "version": { "type": "string", "pattern": "^triangleccs-" },
+    "kappa": { "type": "number", "exclusiveMinimum": 0 },
+    "dim": { "const": 2 },
+    "tokenizer_id": { "type": "string", "minLength": 1 },
+    "prime_meridian": { "type": "string", "minLength": 1 },
+    "chirality_anchor": { "type": "string", "minLength": 1 },
+    "epsilon": { "type": "number", "exclusiveMinimum": 0 },
+    "radial_proxy": { "type": "string", "minLength": 1 },
+    "certified_axis": { "const": "theta" },
+    "advisory_axis": { "const": "radius" },
+    "form_hash": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+    "kappa_status": { "const": "CONVENTION" },
+    "dim_status": { "const": "CONVENTION" }
+  }
+}

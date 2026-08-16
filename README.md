@@ -50,6 +50,11 @@ Geometry: The Geometric State Equation of the Tree of Life*](https://www.biorxiv
 - **Encoder-free methods**: §4.2 κ-sweep tree embedding has no neural
   network — any reviewer can reproduce κ = 3–16 on GTDB/Li2021 trees
   with standard MDS + L-BFGS.
+- **TriangleCCS**: the geodetic decoder datum that inhabits the throughline
+  (packing, Yule/JC69 balloon, quartets, polar \(\mathbb H^2\)). A genomic
+  language model may register onto that chart; it does not define it. See
+  [`triangleccs/`](triangleccs/) and
+  [`triangleccs/docs/ENCODER.md`](triangleccs/docs/ENCODER.md).
 
 ---
 

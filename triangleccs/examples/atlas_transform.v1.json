@@ -1,0 +1,17 @@
+{
+  "form_version": "triangleccs-1.0",
+  "form_hash": "6e0a5b1d45fb4988",
+  "map_id": "synthetic-fixture-8d",
+  "backbone_basis": [
+    [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  ],
+  "tangent_mean": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+  "certified": false,
+  "inheritance": "independent",
+  "packing_metric": "poincare",
+  "r_kind": "geodesic_from_origin",
+  "prime_meridian": "GCF_000005845.2",
+  "chirality_anchor": "GCF_000091665.1",
+  "note": "Complete v1 transform fixture for the registration API. Not the live Atlas 129D map. κ remains CONVENTION; r remains ADVISORY."
+}

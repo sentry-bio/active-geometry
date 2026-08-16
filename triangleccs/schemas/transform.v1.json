@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentry.bio/schemas/triangleccs/transform.v1.json",
+  "title": "TriangleCCS Transform v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "form_version",
+    "map_id",
+    "backbone_basis",
+    "tangent_mean",
+    "certified"
+  ],
+  "properties": {
+    "form_version": { "type": "string" },
+    "map_id": { "type": "string" },
+    "backbone_basis": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "array",
+        "items": { "type": "number" }
+      }
+    },
+    "tangent_mean": {
+      "type": "array",
+      "items": { "type": "number" }
+    },
+    "certified": { "type": "boolean" },
+    "inheritance": {
+      "type": "string",
+      "enum": ["independent", "warm_start"],
+      "description": "warm_start is CIRCULAR and cannot alone satisfy the freeze-gate"
+    }
+  }
+}

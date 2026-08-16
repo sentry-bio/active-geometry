@@ -4,7 +4,7 @@
 # Targets for training, validation, and figure generation
 # =============================================================================
 
-.PHONY: help install test verify-lean train-all-seeds analyze-convergence \
+.PHONY: help install test test-triangleccs verify-lean train-all-seeds analyze-convergence \
         viral-validation tree-validation figures fetch-data clean validate-all
 
 # Default target
@@ -15,6 +15,7 @@ help:
 	@echo "Setup:"
 	@echo "  make install           Install Python dependencies"
 	@echo "  make test              Run smoke tests"
+	@echo "  make test-triangleccs  Run TriangleCCS datum tests"
 	@echo ""
 	@echo "Theory Verification:"
 	@echo "  make verify-lean       Compile Lean 4 proofs"
@@ -57,6 +58,11 @@ test:
 		m = BiosphereCodec(100, 64, 1, 16); \
 		l, _ = m(torch.randint(0, 99, (2, 32))); \
 		print(f'✅ Model test passed (loss={l.item():.2f})')"
+
+test-triangleccs:
+	@echo "🧭 Running TriangleCCS tests..."
+	cd triangleccs && python -m pytest -q
+
 
 # =============================================================================
 # Theory Verification
