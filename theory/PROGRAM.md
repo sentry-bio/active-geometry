@@ -217,7 +217,12 @@ inside Paper II's domain. In order of immediacy:
 2. **E5 at small scale — runnable now.** Trained-hierarchy saturation with
    co-equal negative controls (Layer IIb, labelled as such). This is the
    near-term item of [`IIB_CONTRACT.md`](IIB_CONTRACT.md): whether
-   utilization is speakable, not whether genomes saturate.
+   utilization is speakable, not whether genomes saturate. First rehearsal
+   (`experiments/e5_trained_hierarchy.py`,
+   [`experiments/e5_small_scale.json`](../experiments/e5_small_scale.json)):
+   **KILLED_baked_in_artifact** — occupancy read a radial tree layout;
+   shuffled control still exponential; \(\lambda\) sweep flat. η is not
+   speakable. Not a genomic result.
 3. **E4 rehearsal — public data.** Time-stamped serially sampled viruses as
    the pipeline rehearsal, labelled as such.
 4. **E9 — the decisive test.** Matched-capacity Euclidean vs hyperbolic.

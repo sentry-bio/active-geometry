@@ -43,6 +43,11 @@ illegal until the host clock is a process metric.
   Firewall: \(\beta\) from the generator, packing from the representation.
   This asks whether utilization is *speakable* with present instruments,
   not whether genomes saturate.
+  Runner: `experiments/e5_trained_hierarchy.py`. First rehearsal
+  (`experiments/e5_small_scale.json`):
+  **KILLED_baked_in_artifact** — shuffled targets still called exponential;
+  \(\lambda\) sweep flat; occupancy is reading a radial tree layout, not a
+  drive. η is not speakable. Not a genomic result.
 - Runtime provenance tags on the meter (refuse \(\eta\) on tag collision).
 
 ## Legal after the gate
