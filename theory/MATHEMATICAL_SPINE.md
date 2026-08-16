@@ -19,12 +19,10 @@ relational tax and a utilization term. No curvature, tree, or biology appears.
 layer splits into two sublayers with very different evidential standing.
 
 - **Layer IIa — host class (realization).** *Which* geometry hosts the data:
-  the space-form argument and **isotropic realization** (§7), the
-  **curvature-genericity conjecture** (§7) now narrowed to isotropy as
-  exchangeability of the generator (constant-curvature hyperbolic is forced
-  *given* isotropy; it is not generic among homogeneous negative curvature),
-  and \(n=2\) as an embeddability floor. This is the **better-supported**
-  biological claim.
+  the space-form argument and **isotropic realization** (§7), **Theorem 7.1**
+  (Heintze isotropy conditional on axiom A3: full \(O(d)\) directional
+  symmetry), and \(n=2\) as an embeddability floor. This is the
+  **better-supported** biological claim. A3 itself is asserted, not measured.
 - **Layer IIb — saturation.** *Whether* a process fills its budget: the
   **capacity-saturation hypothesis** (\(\eta=1\), §5) which, combined with the
   IIa realization, yields the **state equation** (§8). This is the **harder,
@@ -602,7 +600,7 @@ combination of these—not folded into the tree equality by definition.
 
 # Layer II — The curvature realization
 
-*Layer IIa (host class) is §7 (realization, genericity conjecture) with the
+*Layer IIa (host class) is §7 (realization, Theorem 7.1) with the
 \(n=2\) floor of §6. Layer IIb (saturation) is the equality of §8, conditional
 on the coordinate-free saturation of §5. §§9–10 refine scope and dynamics.*
 
@@ -668,48 +666,83 @@ ambient dimension \(n=2\),
 \left(\frac{h_{\mathrm{eff}}\ln2}{c}\right)^2.
 \]
 
-### Conjecture 7.1 — Curvature genericity
+### Theorem 7.1 — Heintze isotropy (conditional on A3)
 
 Layer I is curvature-free, so it is fair to ask why Layer II is about
 hyperbolic space rather than an arbitrary exponential-growth host. Most of
-that question is already settled. What remains open is narrower than the
-former wording, and it is not a claim that geometry alone hands over
-\(\mathbb H_\kappa^n\).
+that question is already settled. Geometry alone does not hand over
+\(\mathbb H_\kappa^n\) among homogeneous negatively curved hosts. One named
+axiom about the generator does.
 
 **Already forced, given isotropy.** Among complete, homogeneous, isotropic,
 simply connected, unbounded Riemannian hosts, the space-form classification
 leaves constant-curvature models. The sphere is excluded by bounded diameter.
 Euclidean space is excluded by polynomial packing (Corollary 4.3). Positive
 volume entropy and relational realizability of branching trees therefore
-select \(\mathbb H_\kappa^n\). No genericity argument is required in this
-class. Theorem 4.4 then says that, in this host, genealogy has zero
-exponential-order tax as a weighted-clock supremum.
+select \(\mathbb H_\kappa^n\). Theorem 4.4 then says that, in this host,
+genealogy has zero exponential-order tax as a weighted-clock supremum.
 
-**What the old conjecture asked too much of.** Drop isotropy, keep
-homogeneity and negative curvature, and constant-curvature hyperbolic space
-is no longer typical. Heintze's classification of homogeneous manifolds of
-negative curvature identifies them with solvable groups \(N\rtimes\mathbb R\);
-the generic member has non-abelian \(N\) or a non-scalar contraction, hence
-pinched, anisotropic curvature. Real hyperbolic space is the symmetric
-special case (\(N\) abelian, contraction a scalar). Read literally,
-"hyperbolic is the generic homogeneous realization" is not what that
-classification supports.
+**Geometry will not do the rest.** Drop isotropy, keep homogeneity and
+negative curvature. Heintze's classification identifies such manifolds with
+solvable groups \(N\rtimes\mathbb R\); the generic member has non-abelian
+\(N\) or a non-scalar contraction, hence pinched, anisotropic curvature.
+Real hyperbolic space is the symmetric special case (\(N\) abelian,
+contraction a scalar). The former wording of Conjecture 7.1 — hyperbolic as
+the generic homogeneous realization — is not what that classification
+supports, and is retired.
 
-**Conjecture (narrowed).** Among homogeneous negatively curved hosts
-compatible with a single scalar growth rate \(\beta\), *isotropy* — and
-therefore constant-curvature \(\mathbb H_\kappa^n\) — is selected by
-**exchangeability of the generator**: no branch direction is privileged a
-priori. Anisotropy would encode a preferred axis the process did not
-supply. Structured, non-exchangeable mixing should pinch for real, with
-sector-dependent packing rate, not merely as a curvature band.
+**Axiom A3 (no privileged directional structure).** The abstract branching
+process carries no distinguished structure on its space of directions beyond
+a real inner product: its symmetry group is the full orthogonal group
+\(O(d)\), not a proper subgroup (not \(U(n)\), not \(Sp(n)\), not a
+distinguished orientation). A faithful host is required to realize this
+symmetry as basepoint-fixing isometries that are automorphisms of the
+Heintze data \((N,A)\).
 
-This is a process claim, not a theorem of homogeneous geometry. It is
-testable (angular-sector \(h_{\mathrm{pack}}\); a shuffle-angle null). It
-does not follow from the packing bound, from Theorem 4.4, or from
-saturation. Real hosts are neither exactly homogeneous nor isotropic, so
-even if the conjecture holds, hyperbolic remains the *natural* chart for an
-exchangeable tree source, not a forced one. Reticulation is measured
-residual \(\delta\) (§6), not a failure of the host.
+A3 is an axiom of the same kind as the isotropy switch already in the meter.
+It is not implied by the packing bound, Theorem 4.4, or saturation. Those
+are silent on *which* Heintze host is realized.
+
+**Theorem 7.1.** Let \(M=N\rtimes\mathbb R\) be a Heintze host (homogeneous,
+simply connected, negative curvature). Suppose the point-isotropy
+representation, under A3, contains the full irreducible standard
+representation of \(O(d)\) on \(\mathfrak n\cong T_oN\), \(d=\dim\mathfrak n
+\ge 1\). Then \(N\) is abelian and the derivation \(A\) is a scalar multiple
+of the identity: \(M\) is real hyperbolic space \(\mathbb H^{d+1}\).
+
+*Proof sketch.* Left-invariant Heintze data are a nilpotent Lie algebra
+\(\mathfrak n\), an inner product, and a derivation \(A\) whose eigenvalues
+have positive real part. Basepoint isometries that are automorphisms of this
+data act orthogonally on \(\mathfrak n\) and preserve the bracket and \(A\).
+
+A Lie bracket is an \(O(d)\)-equivariant map \(\Lambda^2\mathfrak n\to
+\mathfrak n\). Under \(O(d)\), \(\Lambda^2\mathfrak n\) is the irreducible
+adjoint representation (or zero if \(d=1\)). By Schur, a nonzero equivariant
+map into the standard representation \(\mathfrak n\) can exist only if that
+representation appears in \(\Lambda^2\mathfrak n\). Dimensions match only at
+\(d=3\). For \(d=1,2\) and \(d\ge 4\) there is no such map, so the bracket
+vanishes and \(N\) is abelian. At \(d=3\) the unique \(SO(3)\)-equivariant
+candidate is the cross product, which is not \(O(3)\)-equivariant
+(orientation-reversing elements change its sign). Thus there is no nonzero
+\(O(d)\)-equivariant bracket for any \(d\ge 1\): \(N\) is abelian.
+
+With \(N\) abelian, \(A\in\mathrm{End}(\mathfrak n)\). Equivariance is
+commutation with the irreducible real standard representation of \(O(d)\).
+Schur's lemma forces \(A\) to be a real scalar. Abelian \(N\) and scalar
+\(A\) are Heintze's characterizing data for real hyperbolic space. \(\square\)
+
+The argument excludes complex and quaternionic hyperbolic space because A3
+forbids \(U(n)\) and \(Sp(n)\) as the process symmetry. If one assumed only
+\(SO(d)\), the \(d=3\) cross-product would survive; full \(O(d)\) is load-
+bearing.
+
+**What this closes, and what it does not.** Inside the Heintze class, A3
+implies isotropy implies real \(\mathbb H^{d+1}\). That implication is a
+theorem. It does not prove that a real generator satisfies A3, that a real
+host is homogeneous, or that an embedding cannot add a preferred axis the
+process did not have. Those remain honesty items. The former conjecture's
+empirical remainder is whether packing rate depends on angle, askable only
+after E9 has distinguished an exponential host from a Euclidean one.
 
 ---
 

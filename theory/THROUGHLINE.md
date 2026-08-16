@@ -228,9 +228,9 @@ utilization. Nothing above depends on nature saturating.
 ## Stop here
 
 The four-piece spine is closed at the block and weighted-clock supremum level.
-Curvature genericity is narrowed rather than closed: given isotropy,
-\(\mathbb H_\kappa^n\) is forced; whether isotropy comes from exchangeable
-branching remains open. Equal-edge synchronization, host-class selection, and
+Inside the Heintze class, Theorem 7.1 converts the old genericity conjecture
+into A3 \(\Rightarrow\) real hyperbolic space. A3 itself is asserted, not
+measured. Equal-edge synchronization, host-class selection (E9), and
 biological saturation remain open. The next work is measurement, not another
 layer:
 

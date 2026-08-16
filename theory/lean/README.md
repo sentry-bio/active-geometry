@@ -22,8 +22,7 @@ The weighted relational-capacity lower bound
 is a paper proof depending on Skenderi's 2026 Bishop--Jones semigroup theorem
 (see
 [`../RELATIONAL_CAPACITY_THEOREM.md`](../RELATIONAL_CAPACITY_THEOREM.md)).
-Lean also does not formalize the remaining open curvature-genericity
-conjecture (isotropy from exchangeable branching).
+Lean also does not formalize Theorem 7.1 (Heintze isotropy) or axiom A3.
 
 The principal coordinate-free statement is the Layer I addressability bound
 

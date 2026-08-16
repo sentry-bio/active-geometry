@@ -30,10 +30,9 @@ in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the tests
 
 - **Layer IIa — host class (realization).** *Which* geometry hosts the data:
   hyperbolic, at what dimension, and is that *forced*. The space-form argument
-  (given isotropy), the curvature-genericity conjecture now narrowed to
-  isotropy as exchangeability of the generator, \(n=2\) as an embeddability
-  floor. The **better-supported** biological claim — but its premise,
-  isotropy, is asserted, not measured. Decisive test: E9.
+  (given isotropy), Theorem 7.1 (Heintze isotropy given axiom A3), \(n=2\) as
+  an embeddability floor. The **better-supported** biological claim — but A3
+  is asserted, not measured. Decisive host-class test: E9.
 
 - **Layer IIb — saturation.** *Whether* a process fills its budget, giving the
   state-equation equality. The **harder, less-supported** claim; every
@@ -58,16 +57,19 @@ stands whether or not the biology saturates.
   argument.
 - **Carries.** All of Layer I (bound, block identity, ladder, slack), the
   relational-capacity coding theorem (genealogy has zero exponential tax in
-  \(\mathbb H_\kappa^n\)), the Layer IIa realization theorems and remaining
-  curvature-genericity conjecture, and \(n=2\) as embeddability. Presents the
+  \(\mathbb H_\kappa^n\)), the Layer IIa realization theorems including
+  Theorem 7.1 (Heintze isotropy, conditional on axiom A3), and \(n=2\) as
+  embeddability. Presents the
   state equation as a *conditional* Layer IIb ideal, not a law.
 - **Backed by.** The Lean development under `theory/lean/` (bound and block
   identity fully checked; Layer II algebra checked), the cited Bishop--Jones
   lower bound in `theory/RELATIONAL_CAPACITY_THEOREM.md`, and the
   packing/quartet mathematics of the spine.
 - **Claim it makes about nature.** None that can fail — it is a converse plus an
-  achievable form plus a realization geometry. Its risk is entirely
-  mathematical (the curvature-genericity conjecture).
+  achievable form plus a realization geometry. Its remaining mathematical
+  risk is the paper sketch of Theorem 7.1 (not Lean-checked) and the
+  equal-edge synchronization refinement. Axiom A3 is not a Paper I claim
+  about nature.
 
 ### Paper II — *Evolution as Active Geometry*
 
@@ -170,11 +172,10 @@ The artefact checks itself, and CI should run all four:
 - **Finished, paper-level mathematics:** weighted/radial relational capacity of
   \(\mathbb H_\kappa^n\) equals its volume entropy (Skenderi lower bound plus
   the packing converse). The former unit-edge conjecture is refuted as stated.
-- **Open, mathematics:** the curvature-genericity conjecture, narrowed to
-  whether isotropy follows from exchangeable branching (space-form + packing
-  already force \(\mathbb H_\kappa^n\) given isotropy), plus the stronger
-  equal-edge synchronization refinement for \(c\ge\varepsilon\) (not the
-  definition of host capacity).
+- **Open, mathematics:** the equal-edge synchronization refinement for
+  \(c\ge\varepsilon\) (not the definition of host capacity). Theorem 7.1 is a
+  paper sketch, not Lean. Axiom A3 is empirical (L2a.6), not a remaining
+  geometric conjecture.
 - **Open, instrument:** a certified M3 magnitude estimator and a runtime
   independence firewall. The growth-class gate refuses short radial
   windows; that is a property of the instrument, recorded in

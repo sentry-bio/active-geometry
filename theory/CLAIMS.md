@@ -58,9 +58,10 @@ premise — isotropy — is asserted, not measured; the decisive test is E9.*
 |---|---|---|---|
 | L2a.1 | Isotropic hyperbolic host has \(h_{\mathrm{vol}}=(n-1)\sqrt\kappa\) | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §7 |
 | L2a.2 | Curvature floor \(\kappa\ge(\beta/(c(n-1)))^2\) (realization + bound, no saturation) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`isotropic_curvature_at_least_floor`) |
-| L2a.3 | Curvature genericity, narrowed: given isotropy, space-form + packing force \(\mathbb H_\kappa^n\); remaining open is whether isotropy is selected by exchangeable branching (constant curvature is not generic among homogeneous negative curvature) | OPEN (process claim; not a homogeneous-geometry theorem) | `theory/MATHEMATICAL_SPINE.md` §7 (Conjecture 7.1) |
+| L2a.3 | Inside the Heintze class, axiom A3 (full \(O(d)\) directional symmetry as host automorphisms) forces real \(\mathbb H^{d+1}\) | THEOREM (paper sketch; conditional on A3) | `theory/MATHEMATICAL_SPINE.md` §7 (Theorem 7.1) |
 | L2a.4 | \(n=2\) is an embeddability floor for branching trees, not a fitted constant | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §6, §7 |
 | L2a.5 | Isotropy is an asserted premise (`--assume-isotropic-hyperbolic`), not a measurement | HONESTY ITEM | `tools/addressability_meter.py`; test E9 |
+| L2a.6 | Axiom A3 holds of a real generator (no privileged directional structure) | HONESTY ITEM / EMPIRICAL, open | `theory/MATHEMATICAL_SPINE.md` §7; sector-wise \(h_{\mathrm{pack}}\) after E9 |
 
 ## Layer IIb — saturation
 
@@ -122,10 +123,10 @@ Closing E9 is the program's highest-leverage empirical step.
 - No absolute curvature \(\kappa\) is a certified measurement (M3 magnitude is
   uncertified; embedding non-identifiability is documented).
 - No zero-free-parameter cross-domain law is established; the state equation is
-  a Layer IIb ideal awaiting saturation evidence. The remaining mathematical
-  conjecture is whether isotropy follows from exchangeable branching
-  (Conjecture 7.1, narrowed).
+  a Layer IIb ideal awaiting saturation evidence. Former Conjecture 7.1 is
+  Theorem 7.1, conditional on axiom A3; whether A3 holds of a real generator
+  is empirical (L2a.6).
 - The hyperbolic host class (IIa) is not yet *forced* by evidence: isotropy is
   asserted, and E9 has not been run.
 - Lean certifies algebra from definitions; it certifies neither that biology
-  saturates nor either open conjecture.
+  saturates nor that axiom A3 holds, and it does not check Theorem 7.1.

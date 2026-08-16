@@ -332,13 +332,13 @@ IIa+IIb**, not an unconditional biological law.
 
 # Layer II — The curvature realization
 
-Two sublayers, different evidence. **IIa (host class):** §5 realization and the
-genericity conjecture — *which* geometry hosts the data (hyperbolic? what
-dimension?); the better-supported biological claim. **IIb (saturation):** the
-*claim* that a process fills its budget — the coordinate-free condition \(\eta=1\)
-is defined in §4, and combined with the IIa realization it yields the §6
-equality; the harder, less-supported claim. The state equation needs both
-sublayers.
+Two sublayers, different evidence. **IIa (host class):** §5 realization and
+Theorem 7.1 — *which* geometry hosts the data (hyperbolic? what dimension?),
+conditional on axiom A3; the better-supported biological claim. **IIb
+(saturation):** the *claim* that a process fills its budget — the
+coordinate-free condition \(\eta=1\) is defined in §4, and combined with the
+IIa realization it yields the §6 equality; the harder, less-supported claim.
+The state equation needs both sublayers.
 
 ## 5. Isotropic hyperbolic realization
 
@@ -375,16 +375,17 @@ Writing \(\beta=h_{\mathrm{eff}}\ln2\) merely converts bits to nats.
 
 Layer I is deliberately curvature-free. Given homogeneity *and isotropy*,
 the space-form classification plus polynomial exclusion already select
-\(\mathbb H_\kappa^n\); that half is not a conjecture. What remains open is
-Conjecture 7.1 of the spine, now narrowed: among homogeneous negatively
-curved hosts, constant-curvature hyperbolic space is the symmetric special
-case, not the generic one (Heintze). Isotropy — hence \(\mathbb H_\kappa^n\)
-— is conjectured to be selected by **exchangeability of the generator**, not
-by homogeneous geometry alone. The meter still treats isotropy as an
-asserted switch (`--assume-isotropic-hyperbolic`).
+\(\mathbb H_\kappa^n\); that half is not a conjecture. Among homogeneous
+negatively curved hosts, constant-curvature hyperbolic space is the
+symmetric special case, not the generic one (Heintze). Theorem 7.1 of the
+spine closes the remainder *inside that class*: axiom A3 (full \(O(d)\)
+directional symmetry, realized as Heintze automorphisms) forces abelian
+\(N\) and scalar contraction, hence real \(\mathbb H^{d+1}\). A3 is
+asserted about the generator, not measured; the meter still treats
+isotropy as a switch (`--assume-isotropic-hyperbolic`).
 
 Real systems are neither exactly homogeneous nor isotropic, so hyperbolic
-is the *natural* chart for an exchangeable tree source, not a forced one.
+is the *natural* chart for an A3 generator, not a forced one.
 Reticulation sits near the tree class, with four-point defect \(\delta\)
 measuring the distance.
 
@@ -466,16 +467,15 @@ The kernel does not prove:
 - that an ambient dimension is selected by optimization;
 - that a non-negative mismatch function generates attracting dynamics;
 - that tree thinness measures curvature magnitude;
-- **the curvature-genericity conjecture** (isotropy — hence
-  \(\mathbb H_\kappa^n\) — from exchangeable branching, not from homogeneous
-  geometry alone; Heintze: constant curvature is not generic among
-  homogeneous negative curvature) — open.
+- **axiom A3** (the generator's directional symmetry is full \(O(d)\),
+  realized as Heintze automorphisms) — asserted, not measured; Theorem 7.1
+  is conditional on it.
 
-The last item is the program's remaining open mathematical conjecture. The
-former relational-capacity conjecture is now Theorem 4.4. Its lower bound is a
-paper proof depending on Skenderi's Bishop--Jones theorem, not a Lean theorem.
-The stronger exact unit-edge synchronization problem remains unresolved for
-\(c\ge\varepsilon\), but it is no longer the definition of host capacity.
+Axiom A3 is empirical, not a remaining geometric conjecture. The former
+relational-capacity conjecture is now Theorem 4.4. Theorem 7.1 is a paper
+sketch conditional on A3, not a Lean theorem. The stronger exact unit-edge
+synchronization problem remains unresolved for \(c\ge\varepsilon\), but it is
+no longer the definition of host capacity.
 
 The full status ledger — every claim tagged THEOREM / IDENTITY / OPEN /
 CONVENTION / INSTRUMENT / EMPIRICAL and bound to its artifact — is
