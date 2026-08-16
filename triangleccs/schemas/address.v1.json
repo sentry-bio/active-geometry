@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentry.bio/schemas/triangleccs/address.v1.json",
+  "title": "TriangleCCS Address v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "theta",
+    "theta_status",
+    "r",
+    "r_proxy",
+    "form_version",
+    "form_hash",
+    "tags"
+  ],
+  "properties": {
+    "theta": { "type": "number" },
+    "theta_status": { "enum": ["candidate", "certified"] },
+    "r": { "type": "number", "minimum": 0 },
+    "r_proxy": { "type": "string" },
+    "delta": { "type": ["number", "null"] },
+    "resolvable": { "type": ["number", "null"] },
+    "block_sep": { "type": ["number", "null"] },
+    "residual": { "type": ["number", "null"] },
+    "form_version": { "type": "string" },
+    "form_hash": { "type": "string" },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          "THEOREM",
+          "CONVENTION",
+          "INSTRUMENT",
+          "EMPIRICAL",
+          "CANDIDATE",
+          "ADVISORY",
+          "CIRCULAR",
+          "OVERLAY"
+        ]
+      }
+    }
+  }
+}

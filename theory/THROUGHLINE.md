@@ -180,9 +180,10 @@ the formal asymptotic capacities:
 - the observed resolution boundary follows \(D^*\propto\log L\)
   (\(R^2=0.9962\)) within the reported Yule/JC69 sweep.
 
-This result animates the balloon already present in the mathematics. It does
-not establish a regime in a real clade, and it remains a reported local result
-until its code and outputs are part of the reproducible repository.
+The on-tree Yule/JC69 instrument now lives in
+[`triangleccs/triangleccs/tape/balloon.py`](../triangleccs/triangleccs/tape/balloon.py)
+(with an event-matched infinite-sites control and a \(D^*=a+b\ln L\) fitter).
+It still does not establish a regime in a real clade.
 
 It also separates two uses of “saturation” at the level of the reported finite
 witnesses:
@@ -232,7 +233,8 @@ Curvature genericity, equal-edge synchronization, host-class selection, and
 biological saturation remain open. The next work is measurement, not another
 layer:
 
-1. land and reproduce the balloon simulation;
+1. land and reproduce the balloon simulation
+   ([`triangleccs/`](../triangleccs/) — synthetic Yule/JC69 instrument; not a clade);
 2. test block witness count and quartet resolvability on an independently
    referenced deep alignment;
 3. run the matched-capacity Euclidean-versus-hyperbolic intervention (E9);
