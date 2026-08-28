@@ -96,7 +96,7 @@ theorem rateMismatchSq_eq_scaled_sqrtMismatch (β c κval n : ℝ)
   have hfactor :
       (c * (n - 1)) * (sqrt κval - β / (c * (n - 1))) =
         c * (n - 1) * sqrt κval - β := by
-    field_simp [hscale]
+    rw [mul_sub, mul_div_cancel₀ β hscale]
   calc
     (β - c * ((n - 1) * sqrt κval)) ^ 2
         = (c * (n - 1) * sqrt κval - β) ^ 2 := by ring
