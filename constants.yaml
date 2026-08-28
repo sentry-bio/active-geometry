@@ -1,69 +1,72 @@
 # =============================================================================
 # Active Geometry: Canonical Constants
 # =============================================================================
-# Single source of truth for the values reported in the paper
-# (Fenn & Fenn 2026, bioRxiv 10.64898/2026.03.09.710612v2).
-# All scripts, figures, and validation notebooks read from this file.
-# Update values here and nowhere else.
+# Numerical values used by scripts, figures, and validation notebooks.
+# The mathematical program is in theory/; this file does not define it.
+# Paper identity lives in theory/PROGRAM.md. Update numbers here and
+# nowhere else.
 # =============================================================================
 
 metadata:
   paper_doi: "10.64898/2026.03.09.710612v2"
   repo: "https://github.com/sentry-bio/active-geometry"
   version: "2.0.0"
-  last_updated: "2026-04-17"
+  last_updated: "2026-08-28"
   license: "MIT"
   authors: ["Fenn, R.", "Fenn, A."]
 
 # -----------------------------------------------------------------------------
-# The Hyperbolic Trilogy
+# Two manuscripts (this repository)
 # -----------------------------------------------------------------------------
-# This repository is Paper I (genomic substrate) of a three-paper program.
-# Paper II is the theoretical core with Lean 4 proofs; Paper III is the
-# linguistic substrate validation. All three share the state equation and
-# the universal invariant n = 2.
+# Paper I is the packing limit (metric geometry). Paper II is the biology
+# instance. The public bioRxiv preprint is the biology paper, not Paper I.
+# The Zenodo "Geometric State Equation" record is the retired public face
+# of what is now Paper I; it does not derive the addressability bound.
 # -----------------------------------------------------------------------------
-trilogy:
+manuscripts:
   paper_i:
-    title: "Evolution as Active Geometry: The Geometric State Equation of the Tree of Life"
+    title: "The Addressability Limit: A Packing Bound for Information-Generating Hierarchies"
+    venue: "private manuscript (replaces Zenodo 10.5281/zenodo.19381557 before arXiv)"
+    arxiv: "primary math.MG; secondary cs.IT"
+    domain: "metric geometry + information theory"
+    role: "Layer I bound, block identity, ladder, trichotomy; Lean kernel"
+    contract: "theory/PAPER_I_OUTLINE.md"
+  paper_ii:
+    title: "Evolution as Active Geometry"
     venue: "bioRxiv"
     doi: "10.64898/2026.03.09.710612"
-    substrate: "genomic (DNA, RNA, protein)"
-    repo: "github.com/sentry-bio/active-geometry"
-    role: "this repository"
-  paper_ii:
-    title: "A Geometric State Equation for Information-Generating Hierarchies"
-    venue: "Zenodo"
-    doi: "10.5281/zenodo.19381558"
-    substrate: "theoretical core (cross-substrate derivation + Lean 4 proofs)"
-    role: "companion — derives the addressability bound and its optimal isotropic equality case"
+    domain: "evolutionary biology / phylogenetics"
+    role: "biology instance of Layer IIa occupancy; Layer IIb saturation is an open bet"
+    contract: "theory/PAPER_II_OUTLINE.md"
   paper_iii:
-    title: "Convergent Alphabets: Why Every Information Hierarchy Looks the Same"
-    venue: "in preparation"
-    substrate: "linguistic (phonemes, sound change)"
+    title: "Language as Active Geometry"
+    venue: "prospective; not part of the current artefact"
+    domain: "linguistic substrate"
     repo: "github.com/sentry-bio/convergent-alphabets"
-    role: "companion — independent substrate validation"
+    role: "future non-biological row, not a third kernel"
 
-trilogy_crossrefs:
-  shared_formula:
+crossrefs:
+  packing_bound:
+    value: "beta <= c * h_pack"
+    authoritative: "theory/ADDRESSABILITY_KERNEL.md; theory/MATHEMATICAL_SPINE.md; theory/lean/ActiveGeometry/Packing.lean (convergent_rate_addressability_limit)"
+  saturation_face:
     value: "kappa_bar = c^2 * kappa = (h * ln2 / (n - 1))^2"
-    authoritative: "theory/ADDRESSABILITY_KERNEL.md; theory/MATHEMATICAL_SPINE.md; theory/lean/ActiveGeometry/Packing.lean; theory/lean/ActiveGeometry/Addressability.lean"
-  shared_invariant:
+    note: "conditional on CapacitySaturated and hcap_eq_spaceForm; not a second primitive"
+    authoritative: "theory/lean/ActiveGeometry/StateEquation.lean (normalized_state_equation)"
+  embeddability_floor:
     value: "n = 2 for genuinely branching tree metrics in the chosen smooth hyperbolic embedding class"
-    authoritative: "tree embeddability and empirical quartet/dimension tests; path trees remain one-dimensional"
-  shared_lower_anchor:
+    authoritative: "tree embeddability; path trees remain one-dimensional"
+  substrate_lower_anchor:
     value: "h_three_letter = log2(3) ≈ 1.585 bits"
-    authoritative: "theory/lean/ActiveGeometry/KappaCurvature.lean, theorem h_three_letter_bounds"
-    note: "Same number measured independently in DNA (this repo) and in phonemes (convergent-alphabets)"
+    authoritative: "definition: log2(3); substrate constant, not the addressability kernel"
 
 # -----------------------------------------------------------------------------
-# Universal invariant: n = 2
+# Embeddability floor n = 2 (Paper I geometry; reported biology is Paper II)
 # -----------------------------------------------------------------------------
-# The deepest result of the paper: across 13-fold variation in curvature,
-# 10^6 variation in timescale, 10^4 variation in mutation rate, and two
-# molecular alphabets (4-letter DNA/RNA, 20-letter protein), the back-solved
-# embedding dimension is invariant. Two coordinates exhaust descent with
-# modification: temporal depth (radius) and phenotypic direction (angle).
+# In the stated smooth hyperbolic embedding class, genuinely branching trees
+# have minimal ambient dimension 2. Reported n near 2 in biological systems
+# is occupancy evidence, not a derivation of the floor from saturation.
+# Back-solving n from (h, c, kappa) tests saturation, not dimension.
 # -----------------------------------------------------------------------------
 dimension:
   n_universal: 2.00
@@ -94,17 +97,17 @@ state_equation:
   normalized_formula: "kappa_bar = c^2 * kappa = (h * ln(2) / (n - 1))^2"
   normalized_formula_latex: "\\bar{\\kappa}=c^2\\kappa=\\left(\\frac{h\\ln 2}{n-1}\\right)^2"
   at_n2: "kappa_bar = (h * ln(2))^2"
-  equality_condition: "capacity saturation: beta = c * h_vol"
+  equality_condition: "capacity saturation: beta = c * h_pack, plus a space-form identification of h_pack"
   radial_gauge: "c = radial distance per generative step; raw-kappa formula assumes c = 1"
   derivation: "Metric packing bound; capacity saturation; isotropic space-form realization"
   source: "theory/MATHEMATICAL_SPINE.md"
   compact_kernel: "theory/ADDRESSABILITY_KERNEL.md"
-  adjustable_parameters: 0
+  adjustable_parameters: "none on the equality face once saturation, c, and n are supplied; saturation itself is empirical and open"
   calibration_quantities: ["c (radial units per generative step)", "n (ambient dimension from embeddability)"]
   lean_verification:
     - "theory/lean/ActiveGeometry/Packing.lean"
-    - "theory/lean/ActiveGeometry/Addressability.lean"
-    - "theory/lean/ActiveGeometry/KappaCurvature.lean"
+    - "theory/lean/ActiveGeometry/Capacity.lean"
+    - "theory/lean/ActiveGeometry/StateEquation.lean"
 
 # -----------------------------------------------------------------------------
 # Entropy rate h (bits per substitution event)
@@ -144,7 +147,7 @@ curvature:
   # State-equation prediction at inter-domain scale (h ∈ [1.58, 1.65])
   kappa_predicted_range: [1.20, 1.31]
   kappa_predicted_central: 1.25  # h = 1.61
-  # Upper bound from four-letter alphabet ceiling (Lean: kappa_bounded_by_alphabet)
+  # Upper bound from four-letter alphabet ceiling (substrate constant, not Lean kernel)
   kappa_alphabet_ceiling: 1.921  # 4 * (ln 2)^2
   # Training value used for the five-seed reference encoder (fixed, not learned)
   kappa_trained_encoder: 1.0

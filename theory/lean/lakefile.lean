@@ -12,4 +12,4 @@ require mathlib from git
 
 @[default_target]
 lean_lib «ActiveGeometry» where
-  globs := #[.submodules `ActiveGeometry]
+  globs := #[.andSubmodules `ActiveGeometry]

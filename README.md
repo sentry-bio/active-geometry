@@ -1,22 +1,26 @@
 # Active Geometry
 
-**The Geometric State Equation of the Tree of Life**
+**The Addressability Limit**
 
 [![Lean 4](https://img.shields.io/badge/Lean-4-blue)](theory/lean/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![Preprint](https://img.shields.io/badge/bioRxiv-2026.03.09.710612-red.svg)](https://www.biorxiv.org/content/10.64898/2026.03.09.710612v2)
 
-> A process that retains exponentially many distinguishable histories cannot
-> represent them faithfully at finite address rate in a polynomial-growth
-> host. Its information-growth rate obeys the coordinate-free limit
-> **β ≤ c·h_vol**. Under capacity saturation and an isotropic hyperbolic
-> realization, normalized curvature **κ̄ = c²κ** satisfies
-> **κ̄ = (h·ln 2/(n−1))²**. For a genuinely branching tree in the chosen
-> smooth hyperbolic embedding class, the minimal ambient dimension is
-> **n = 2**; path trees remain one-dimensional.
+> Remembering while creating costs room. Retained-history growth obeys the
+> coordinate-free limit **β ≤ c·h_pack**, and block capacity reaches that
+> ceiling exactly. Distinguishable endpoints need not preserve their
+> genealogy; in a real hyperbolic host, however, the weighted-clock
+> relational *supremum* has zero exponential-order tax.
 
-The minimal dependency structure is in
+The one-page dependency graph is
+[`theory/THROUGHLINE.md`](theory/THROUGHLINE.md): **limit → ladder → quartet
+classifier → polar chart**. It joins the mathematical balloon (addresses
+without genealogy) to the surviving canonical-coordinate-system construction
+(\(\mathbb H^2\) as depth plus divergence), without requiring nature to
+saturate.
+
+The formal kernel is in
 [`theory/ADDRESSABILITY_KERNEL.md`](theory/ADDRESSABILITY_KERNEL.md); the full
 proof, units, scope, and falsification criteria are in
 [`theory/MATHEMATICAL_SPINE.md`](theory/MATHEMATICAL_SPINE.md). The inequality
@@ -51,6 +55,10 @@ Geometry: The Geometric State Equation of the Tree of Life*](https://www.biorxiv
 
 ## The Two Findings
 
+Those \(\kappa\) and \(n\) rows below are the preprint's reported figure.
+They are not certified measurements, and they are not the throughline
+([`theory/THROUGHLINE.md`](theory/THROUGHLINE.md)).
+
 The paper reports two results of different character:
 
 **1. Topological classification — tree-like descent has minimal ambient n=2.**
@@ -80,8 +88,10 @@ achieves equality. Cross-alphabet measurements reported by the paper include
 `h_protein = 2.85` bits predicting normalized `κ̄_protein = 3.90`, with measured
 raw `κ_protein = 3.80 ± 0.60` under the paper's radial convention.
 
-Viral curvature-entropy correlation: **Pearson r = 0.996**, explaining
-99.3% of variance with zero free parameters.
+Viral curvature-entropy correlation reported in Paper II:
+**Pearson r = 0.996**, explaining 99.3% of variance after the radial
+calibration and dimension are supplied. This is not evidence that
+capacity saturation holds.
 
 ---
 
@@ -106,10 +116,9 @@ cd theory/lean && lake build
 ```
 
 Compiles the metric packing theorem and scale-aware addressability algebra,
-including `faithful_representation_addressable`,
+including `convergent_rate_addressability_limit`,
 `curvature_at_least_floor`, `normalized_state_equation`,
-`normalized_curvature_scale_invariant`, and the existing alphabet-capacity
-bounds. Zero sorries. See
+and `normalized_curvature_scale_invariant`. Zero sorries. See
 [theory/lean/README.md](theory/lean/README.md) for scope and inventory.
 
 ### Docker (one-command, reproducible)
@@ -149,8 +158,9 @@ active-geometry/
 │   └── lean/                  # Lean 4 algebraic formalization
 │       └── ActiveGeometry/
 │           ├── Packing.lean
-│           ├── Addressability.lean
-│           └── KappaCurvature.lean
+│           ├── Capacity.lean
+│           ├── StateEquation.lean
+│           └── Measurability.lean
 │
 ├── model/                     # BiosphereCodec reference encoder
 │   ├── biosphere_codec.py

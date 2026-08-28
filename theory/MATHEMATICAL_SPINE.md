@@ -8,22 +8,26 @@ the full definitions, proof, scope, and measurement consequences.
 
 The theory is organized in **two layers** that must not be conflated.
 
-**Layer I — the universal capacity theory (curvature-free), §§1–5.** Three
-independent quantities; a **packing theorem** that forces the capacity
-inequality \(\beta\le c\,h_{\mathrm{pack}}\); the exact **block identity**
-\(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\); a **constrained-capacity ladder**
-with block as its universal ceiling; and the decomposition of slack into a
-relational tax and a utilization term. No curvature, tree, or biology appears.
+**Layer I — the universal capacity theory (curvature-free), §§1–5 except
+Theorem 4.4.** Three independent quantities; a **packing theorem** that
+forces \(\beta\le c\,h_{\mathrm{pack}}\); the exact **block identity**
+\(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\); a **constrained-capacity
+ladder** of nested admissibility classes with block as its universal
+ceiling; and the decomposition of slack into a relational tax and a
+utilization term. No curvature, tree, or biology appears.
+
+**Theorem 4.4** sits in §4 because that is where the ladder asks the
+question, but it is **not** Layer I universal: it is the weighted
+relational identity in \(\mathbb H_\kappa^n\).
 
 **Layer II — the curvature realization (where real systems live), §§7–10.** This
 layer splits into two sublayers with very different evidential standing.
 
 - **Layer IIa — host class (realization).** *Which* geometry hosts the data:
-  the space-form argument and **isotropic realization** (§7), the
-  **curvature-genericity conjecture** (§7) that explains why hyperbolic — not an
-  arbitrary exponential host — is the natural realization for the relational,
-  exponentially branching class, and \(n=2\) as an embeddability floor. This is
-  the **better-supported** biological claim.
+  the space-form argument and **isotropic realization** (§7), **Theorem 7.1**
+  (Heintze isotropy conditional on axiom A3: full \(O(d)\) directional
+  symmetry), and \(n=2\) as an embeddability floor. This is the
+  **better-supported** biological claim. A3 itself is asserted, not measured.
 - **Layer IIb — saturation.** *Whether* a process fills its budget: the
   **capacity-saturation hypothesis** (\(\eta=1\), §5) which, combined with the
   IIa realization, yields the **state equation** (§8). This is the **harder,
@@ -38,9 +42,12 @@ dimension, but it does not calibrate capacity or curvature. Sections 11–13
 (measurement, falsification, minimal statement) span all layers.
 
 A consequence the split makes sharp: **isotropy is asserted, never measured.**
-The decisive IIa test — does a hyperbolic host beat a Euclidean one at matched
-capacity — is E9 of [`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md), and it
-is distinct from the polynomial-exclusion (Layer I) Euclidean control in E5.
+Corollary 4.3 already excludes polynomial hosts at finite radial rate and
+fixed dimension; that is Layer I, not a realization test. E9 of
+[`DECISIVE_EXPERIMENTS.md`](DECISIVE_EXPERIMENTS.md) is a finite-sample
+shadow of that corollary at matched packing capacity, distinct from E5's
+Euclidean control and not the argument that forces \(\mathbb H^2\). A3
+remains the named symmetry axiom for Theorem 7.1.
 
 All logarithms in this document are natural unless explicitly written
 `log₂`.
@@ -51,20 +58,24 @@ All logarithms in this document are natural unless explicitly written
 
 ## 1. Information-generating histories
 
-Let \(\mathcal H_R\) be the histories retained through generative depth \(R\).
-Assume their exponential growth rate exists:
+Let \(\mathcal H_R\) be the histories retained through generative depth \(R\),
+and write \(N(R):=|\mathcal H_R|\). The paper's standing definition is the
+limsup rate
 
 \[
-N(R):=|\mathcal H_R|
-      =\exp\!\bigl(\beta R+o(R)\bigr),
-\qquad
 \beta:=
-\lim_{R\to\infty}\frac{\log N(R)}{R}.
+\limsup_{R\to\infty}\frac{\log N(R)}{R}
+\quad\text{(nats per generative step).}
 \]
 
-The quantity \(\beta\) is the production rate of distinguishable retained
-history, in nats per generative step. Define the effective retained-information
-rate by
+If the ordinary limit exists, it equals this limsup; Lean
+`convergent_rate_addressability_limit` checks that case (`Tendsto`). The
+word **retained** is load-bearing in this definition. A process that
+overwrites its past need not have \(N(R)\) growing with \(R\), even if its
+instantaneous state changes rapidly. The packing bound itself is proved
+for a faithful census at each depth and does not use nested codebooks.
+
+Define the effective retained-information rate by
 
 \[
 h_{\mathrm{eff}}:=\frac{\beta}{\ln2}
@@ -76,10 +87,6 @@ estimator is a valid empirical estimator of \(h_{\mathrm{eff}}\) only when a
 typical-set or coding argument shows that it measures the exponential growth
 of retained distinguishable histories. Alphabet entropy alone does not
 establish this.
-
-The word **retained** is load-bearing. A process that overwrites its past need
-not have \(N(R)\) growing with \(R\), even if its instantaneous state changes
-rapidly.
 
 ### Resolution
 
@@ -95,21 +102,28 @@ is controlled by its small-scale packing dimension.
 
 ## 2. Representations and their radial rate
 
-Let \((M,d,o)\) be a pointed metric space. A representation
+Let \((M,d,o)\) be a pointed metric space. At each depth, a representation
+supplies an address map
 
 \[
-f:\bigcup_R\mathcal H_R\longrightarrow M
+f_R:\mathcal H_R\longrightarrow M.
 \]
 
-is **\(\varepsilon\)-faithful at finite radial rate** when:
+It is **\(\varepsilon\)-faithful at finite radial rate** when:
 
-1. \(d(f(x),f(y))\ge\varepsilon\) for distinct retained histories \(x,y\);
-2. \(f(\mathcal H_R)\subseteq B(o,r(R))\);
-3. the radial conversion rate is finite:
+1. \(f_R\) is injective;
+2. \(d(f_R(x),f_R(y))\ge\varepsilon\) for distinct \(x,y\in\mathcal H_R\);
+3. \(f_R(\mathcal H_R)\subseteq B(o,r(R))\);
+4. the radial conversion rate is finite:
 
    \[
    c:=\limsup_{R\to\infty}\frac{r(R)}R<\infty.
    \]
+
+Retention is a property of the source censuses,
+\(\mathcal H_R\subseteq\mathcal H_{R+1}\), not a requirement that
+\(f_{R+1}\) leave prior addresses fixed. A single nested address family is
+the stronger **persistent** rung of the capacity ladder.
 
 The units of \(c\) are geometric length per generative step. It converts the
 process clock into the host's radial ruler. It cannot be silently omitted when
@@ -158,6 +172,12 @@ condition below rather than using an unspecified notion of bounded geometry.
 
 ## 4. The addressability theorem
 
+Three results must remain distinct. Theorem 4.1 is the universal packing
+**converse** for a given faithful representation. Theorem 4.2 is exact
+finite-block **achievability**, with a codebook that may be redesigned at
+each radius. Theorem 4.4 is a host-specific **relational supremum** in real
+hyperbolic space. Only the first is the Addressability Limit.
+
 ### Theorem 4.1 — Addressability bound
 
 If a hierarchy of growth rate \(\beta\) admits an \(\varepsilon\)-faithful
@@ -180,8 +200,9 @@ finite-entropy hypothesis is used only for the non-trivial rate comparison.
 
 #### Proof
 
-The represented histories form an \(\varepsilon\)-separated subset of
-\(B(o,r(R))\), so
+Injectivity gives
+\(|f_R(\mathcal H_R)|=|\mathcal H_R|=N(R)\). The image is an
+\(\varepsilon\)-separated subset of \(B(o,r(R))\), so
 
 \[
 N(R)\le P(B(o,r(R)),\varepsilon).
@@ -213,11 +234,11 @@ radii
 
 Take the upper limit and then let \(\delta\downarrow0\). \(\square\)
 
-The finite-depth packing count and the convergent finite-rate case are
-machine-checked in
+The finite-depth packing count and the convergent finite-rate corollary are
+machine-checked as `convergent_rate_addressability_limit` in
 [`lean/ActiveGeometry/Packing.lean`](lean/ActiveGeometry/Packing.lean), using
-Mathlib's exact `Metric.packingNumber`. The limsup statement above is retained
-as the more general paper theorem.
+Mathlib's exact `Metric.packingNumber`. The displayed limsup theorem is the
+paper's Addressability Limit.
 
 ### Theorem 4.2 — General block-addressability identity
 
@@ -317,94 +338,106 @@ A reticulate source can use every available address, and a perfect tree can
 use very few. Any theorem turning \(\delta\) into a quantitative capacity gap
 must add a particular source class, host class, and distortion criterion.
 
-### Conjecture 4.4 — Relational tree capacity of hyperbolic hosts
+### Theorem 4.4 — Relational capacity of hyperbolic hosts
 
-This is the program's open theorem, stated with the precision of its proved
-statements so that it can be settled by proof or by counterexample.
+This theorem is **not** curvature-free Layer I. It is the host-class
+closure of the ladder's relational rung in real hyperbolic space: a
+weighted-clock supremum, not endpoint attainment, and not a statement
+about an arbitrary metric host.
 
-Fix a host \(\mathbb H_\kappa^n\) with base point \(o\), \(\kappa>0\),
-\(n\ge2\); a resolution \(\varepsilon>0\); a radial rate \(c>0\); and a
-distortion \(D\ge1\) with additive slack \(K\ge0\).
+The problem formerly stated here as Conjecture 4.4 is now settled. The exact
+unit-edge formulation was false as quantified: if \(c<\varepsilon\), a child
+of the root would have to lie both within distance \(c\) and at least
+\(\varepsilon\) from it. The only admissible tree is then the root, so its
+capacity is zero rather than \(c(n-1)\sqrt\kappa\).
 
-Let \(T\) be a rooted, locally finite tree with unit edge lengths, tree metric
-\(d_T\), and level sets \(T_R\) (vertices at depth \(\le R\)). A map
-\(f:V(T)\to\mathbb H_\kappa^n\) is a **\((D,K)\)-relational code at rate
-\(c\)** when:
-
-1. \(f(\mathrm{root})=o\);
-2. \(f(T_R)\subseteq B(o,cR)\) for all \(R\);
-3. distinct vertices satisfy \(d(f(u),f(v))\ge\varepsilon\);
-4. for all \(u,v\in V(T)\):
-
-   \[
-   \frac{c}{D}\,d_T(u,v)-K
-   \;\le\;
-   d(f(u),f(v))
-   \;\le\;
-   c\,D\,d_T(u,v)+K.
-   \]
-
-Define the relational capacity as a **supremum**
+The error was not geometric; it was clocking. It forced every source-tree edge
+to cost exactly one unit while allowing no startup slack, even though the
+general addressability theorem permits an independently calibrated process
+clock. Give each tree edge \(e\) a positive duration \(a(e)\), let
+\(\tau(v)\) be elapsed path time, and use the weighted path metric \(d_\tau\).
+A weighted relational code is \(\varepsilon\)-separated, quasi-isometric for
+\(d_\tau\), and obeys
 
 \[
-C_{\rm rel}(\kappa,n,c;\varepsilon)
-:=
-\sup_{D\ge1,\;K\ge0}\;
-\sup_{(T,f)}\;
-\limsup_{R\to\infty}\frac{\log|T_R|}{R},
+d(o,f(v))\le c\,\tau(v)+A_0
 \]
 
-the outer supremum over admissible distortion classes, the inner over trees
-admitting a \((D,K)\)-relational code at rate \(c\).
-
-**Conjecture (subcritical form).** For every rate strictly below the bound
-there is a depth-uniform relational code:
+for a depth-independent \(A_0\). Define \(C_{\rm rel}^{\rm wt}\) from the
+growth of \(\{v:\tau(v)\le R\}\). Then, for every \(\kappa>0\), \(n\ge2\),
+\(c>0\), and \(\varepsilon>0\),
 
 \[
 \boxed{
-\text{for all }\beta<c(n-1)\sqrt\kappa,\ \exists\,(D,K)\text{ and }(T,f)
-\text{ with growth }\ge\beta,\ (D,K)\text{ bounded in }R,
+C_{\rm rel}^{\rm wt}(\mathbb H_\kappa^n,c;\varepsilon)
+=c(n-1)\sqrt\kappa .
 }
 \]
 
-equivalently \(C_{\rm rel}(\kappa,n,c;\varepsilon)=c(n-1)\sqrt\kappa\).
+The upper bound is Theorem 4.1. For the lower bound, choose an
+\(\varepsilon\)-separated finite-index subgroup of a cocompact hyperbolic
+lattice. Skenderi's 2026 Bishop--Jones theorem supplies free subsemigroups with
+critical exponent arbitrarily close to the lattice exponent
+\((n-1)\sqrt\kappa\), and its orbit tree is quasi-isometrically embedded.
+Assign generator \(s\) the edge duration
+\(a_s=d(o,so)/c\). The triangle inequality gives the radial budget exactly,
+and Skenderi's partition-sum inequality gives weighted growth arbitrarily
+close to \(c(n-1)\sqrt\kappa\).
 
-The upper bound is Theorem 4.1 applied to conditions 2 and 3: a relational code
-is in particular a faithful representation at radial rate \(c\), so
-\(C_{\rm rel}\le c\,h_{\rm vol}=c(n-1)\sqrt\kappa\). The open half is the
-subcritical achievability above.
+Thus preserving genealogy has **zero relational tax at exponential order** in
+real hyperbolic space. The proof does not require or establish endpoint
+attainment. The stronger
+equal-edge, exact finite-depth problem remains false for \(c<\varepsilon\) and
+unresolved for \(c\ge\varepsilon\); E2 probes that synchronization constraint,
+not host capacity.
 
-**Because the capacity is a supremum, the endpoint need not be attained.**
-Failure of a construction at the exact saturating rate \(\beta=c(n-1)\sqrt\kappa\)
-is *not* a refutation: it may only show that the boundary rate is unrealizable
-while every rate below it is fine — the ordinary situation for a capacity. A
-refutation requires a *subcritical* obstruction: some \(\beta_0<c(n-1)\sqrt\kappa\)
-above which distortion must grow with depth. Only that would place \(C_{\rm rel}\)
-strictly below the bound and make the gap \(c(n-1)\sqrt\kappa-C_{\rm rel}\) a new
-host invariant.
+The complete definitions, counterexample, proof, citation dependencies, and
+formal boundary are in
+[`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md). The lower
+bound uses Aleksander Skenderi, "Free semigroups of large critical exponent,"
+*Journal of Topology* (2026), DOI
+[10.1112/topo.70087](https://doi.org/10.1112/topo.70087), especially Theorem
+3.1, Proposition 3.2(4), Theorem 1.1 (5.1), and equation (6.5).
 
-The natural language for settling it is boundary geometry: a regular tree's
-boundary is a Cantor ultrametric, \(\partial\mathbb H^2\) carries a visual
-metric, a relational code is a quasisymmetric boundary embedding, and the growth
-rate is a Hausdorff dimension / critical exponent. Patterson–Sullivan theory
-already identifies critical exponent with limit-set dimension for
-convex-cocompact free groups, which is closer to the conjecture than finite
-Sarkar layouts. In every case the block identity (Theorem 4.2) and the converse
-(Theorem 4.1) are unaffected.
-
-### Corollary 4.3 — Polynomial-growth exclusion
+### Corollary 4.3 — Polynomial-growth exclusion (the trichotomy)
 
 If \(\beta>0\) and \(c<\infty\), then \(h_{\mathrm{pack}}>0\). Consequently, no
 polynomial-growth host can represent retained exponential novelty faithfully
 at finite radial rate.
 
+The same packing count, with the quantifiers flipped, is the content of the
+limit, not a second theorem:
+
+1. **Exponential room.** Retain novelty at finite address cost \(\Rightarrow\)
+   \(h_{\mathrm{pack}}>0\).
+2. **Exponential addresses.** In a host whose packing grows as a Euclidean
+   (or Bishop–Gromov, \(\operatorname{Ric}\ge 0\)) polynomial of degree
+   \(n\), faithfulness forces
+   \(r(R)\ge\varepsilon\,e^{\beta R/n}(1-o(1))\). Raising \(n\) raises the
+   polynomial budget; the exclusion is at *fixed* dimension.
+3. **Forgetting.** If the process overwrites rather than accretes,
+   \(\beta=0\) and a polynomial host is legal. That exemption is the
+   bound's edge, not a counterexample.
+
+Every finite-depth census is a packing number on a compact ball of a proper
+host (Theorem 4.2). The displayed rates are the \(R\to\infty\) limit of
+those counts; the remainder is \(O(1/R)\). Manning's identity is a
+dynamical reading of volume entropy on compact manifolds and is not used.
+In exponential-growth hosts the leading packing *rate* is robust in
+\(\varepsilon\); resolution enters the intercept.
+
 This is the coordinate-free content of the theory:
 
-> Remembering while creating requires an exponential-growth host.
+> Remembering while creating requires an exponential-growth host — or
+> exponentially growing addresses, or forgetting.
 
 Positive packing or volume entropy does **not**, by itself, imply constant
 negative sectional curvature or Gromov hyperbolicity. Hyperbolic space is a
 canonical realization only after additional symmetry assumptions are imposed.
+A matched-parameter Euclidean bake-off (extra \(d\), extra polynomial
+budget) is not a test of this corollary. A matched-*packing* comparison at
+fixed dimension is its finite-sample shadow (E9), optional, and not
+load-bearing for Layer I.
 
 ---
 
@@ -460,15 +493,23 @@ and the block efficiency factors as
 \underbrace{\frac{\beta}{C_{\rm rel}}}_{\text{utilization}} .
 \]
 
-The relational tax \(\Gamma\) is the unavoidable price of preserving genealogy
-— the gap of Conjecture 4.4, zero iff that conjecture holds with equality. The
-utilization term is what "saturation" should mean for a relationally
-constrained process. **Consequence for measurement:** an observed
-\(\eta_{\mathrm{block}}<1\) does not by itself indicate an inefficient or
-unsaturated system; it may be relationally optimal (\(\beta=C_{\rm rel}\)) while
-paying \(\Gamma>0\). The saturation question is properly posed on utilization
-\(\beta/C_{\rm rel}\), which requires an estimate of \(C_{\rm rel}\), not of
-\(B\) alone.
+The relational tax \(\Gamma\) is the possible price of preserving genealogy in
+a general host or under a stronger synchronization constraint. Theorem 4.4
+proves that it is **zero at exponential order in real hyperbolic space** when
+the process has a local weighted clock:
+
+\[
+C_{\rm rel}^{\rm wt}
+=c(n-1)\sqrt\kappa
+=B.
+\]
+
+Thus in the intended hyperbolic realization, relation preservation itself does
+not reduce asymptotic capacity; only endpoint attainment and equal-edge
+synchronization may cost. The utilization term remains what "saturation"
+means for a particular physical process. In hosts outside Theorem 4.4's class,
+an observed \(\eta_{\rm block}<1\) can still mix relational tax and utilization,
+so the decomposition remains the correct audit.
 
 ### Proposition 5.1 — Exponential saturation
 
@@ -488,6 +529,51 @@ then
 Conversely, equality of these exponential rates says that the represented
 histories fill the available address space at exponential order, though
 subexponential inefficiency may remain.
+
+### Theorem 5.2 — Radial concentration converse
+
+Let a weighted relational code in \(\mathbb H_\kappa^n\) have
+\(h=(n-1)\sqrt\kappa\), radial rate \(c\), offset \(A_0\), and growth at least
+\(ch-\Delta_{\rm cap}\), in the finite form
+\(|T_R^\tau|\ge B^{-1}e^{(ch-\Delta_{\rm cap})R}\). Here
+\(\Delta_{\rm cap}\) is an additive rate deficit, not the dimensionless
+efficiency \(\eta=\beta/(ch)\). For \(0<\delta<1\), let \(E_\delta(R)\) be
+histories through time \(R\) satisfying
+
+\[
+d(o,f(v))\le(1-\delta)c\tau(v)+A_0.
+\]
+
+The smaller-ball packing count gives
+
+\[
+\boxed{
+\frac{|E_\delta(R)|}{|T_R^\tau|}
+\le C e^{-(h\delta c-\Delta_{\rm cap})R}
+}
+\]
+
+whenever the stated growth lower bound holds, with
+\(C=C(\varepsilon,n,\kappa,A_0,B)\). For a limsup growth rate, the estimate
+holds along a realizing sequence with an arbitrary exponent margin
+\(\xi>0\); if the growth limit exists, it holds eventually. No
+shell-regularity assumption is needed.
+
+At exact capacity (\(\Delta_{\rm cap}=0\)),
+
+\[
+\frac{d(o,f(v))}{c\tau(v)}\to1
+\]
+
+in probability under uniform counting on \(T_R^\tau\), along the realizing
+sequence (or eventually when the growth limit exists). For fixed
+\(\Delta_{\rm cap}>0\), the quantified conclusion is only that every band
+strictly below \(1-\Delta_{\rm cap}/(hc)=\eta\) has vanishing mass. Thus
+“radius is accumulated information” is a necessary consequence of
+**near-capacity hyperbolic coding**, not an unconditional prediction about
+nature. The finite-radius sub-ball count is Lean-checked; the proof,
+sharpness-construction sketch, and limsup qualifications are in
+[`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md) §5.
 
 ### Variational interpretation
 
@@ -567,7 +653,7 @@ combination of these—not folded into the tree equality by definition.
 
 # Layer II — The curvature realization
 
-*Layer IIa (host class) is §7 (realization, genericity conjecture) with the
+*Layer IIa (host class) is §7 (realization, Theorem 7.1) with the
 \(n=2\) floor of §6. Layer IIb (saturation) is the equality of §8, conditional
 on the coordinate-free saturation of §5. §§9–10 refine scope and dynamics.*
 
@@ -633,34 +719,85 @@ ambient dimension \(n=2\),
 \left(\frac{h_{\mathrm{eff}}\ln2}{c}\right)^2.
 \]
 
-### Conjecture 7.1 — Curvature genericity
+### Theorem 7.1 — Heintze isotropy (conditional on A3)
 
-Layer I is curvature-free, so it is fair to ask why Layer II is about curvature
-rather than an arbitrary exponential-growth host. The answer is a genericity
-claim, and it is the second of the program's two open problems (the first being
-Conjecture 4.4).
+Layer I is curvature-free, so it is fair to ask why Layer II is about
+hyperbolic space rather than an arbitrary exponential-growth host. Most of
+that question is already settled. Geometry alone does not hand over
+\(\mathbb H_\kappa^n\) among homogeneous negatively curved hosts. One named
+axiom about the generator does.
 
-**Conjecture.** Among hosts that are complete, homogeneous, and isotropic, the
-requirement of positive volume entropy (exponential capacity) together with
-relational — genealogy-preserving — realizability of branching trees is met by
-the negatively curved space forms \(\mathbb H_\kappa^n\) and, up to the usual
-equivalences, only them.
+**Already forced, given isotropy.** Among complete, homogeneous, isotropic,
+simply connected, unbounded Riemannian hosts, the space-form classification
+leaves constant-curvature models. The sphere is excluded by bounded diameter.
+Euclidean space is excluded by polynomial packing (Corollary 4.3). Positive
+volume entropy and relational realizability of branching trees therefore
+select \(\mathbb H_\kappa^n\). Theorem 4.4 then says that, in this host,
+genealogy has zero exponential-order tax as a weighted-clock supremum.
 
-What is already classical is the enabling half: under homogeneity and isotropy
-the space-form classification leaves the constant-curvature models, and among
-these only the negatively curved ones have positive volume entropy. What is
-conjectural is that *relational realizability of trees* selects within this
-class rather than being an extra, independent stipulation — i.e. that
-hyperbolic geometry is the **generic realization** of the relational-exponential
-class, not an assumption bolted onto capacity.
+**Geometry will not do the rest.** Drop isotropy, keep homogeneity and
+negative curvature. Heintze's classification identifies such manifolds with
+solvable groups \(N\rtimes\mathbb R\); the generic member has non-abelian
+\(N\) or a non-scalar contraction, hence pinched, anisotropic curvature.
+Real hyperbolic space is the symmetric special case (\(N\) abelian,
+contraction a scalar). The former wording of Conjecture 7.1 — hyperbolic as
+the generic homogeneous realization — is not what that classification
+supports, and is retired.
 
-Two honesty caveats travel with it. "Generic" is clean only under homogeneity
-and isotropy; real hosts are neither exactly, so for them hyperbolic is the
-*natural* host, not a forced one. And real hierarchies reticulate, so they lie
-only *near* the tree-relational class, with the four-point defect \(\delta\)
-(§6) measuring the distance. Curvature is the correct host for the tree part;
-reticulation is measured residual. This is the precise sense in which, for the
-systems the program studies, biology and curvature go together.
+**Axiom A3 (no privileged directional structure).** The abstract branching
+process carries no distinguished structure on its space of directions beyond
+a real inner product: its symmetry group is the full orthogonal group
+\(O(d)\), not a proper subgroup (not \(U(n)\), not \(Sp(n)\), not a
+distinguished orientation). A faithful host is required to realize this
+symmetry as basepoint-fixing isometries that are automorphisms of the
+Heintze data \((N,A)\).
+
+A3 is an axiom of the same kind as the isotropy switch already in the meter.
+It is not implied by the packing bound, Theorem 4.4, or saturation. Those
+are silent on *which* Heintze host is realized.
+
+**Theorem 7.1.** Let \(M=N\rtimes\mathbb R\) be a Heintze host (homogeneous,
+simply connected, negative curvature). Suppose the point-isotropy
+representation, under A3, contains the full irreducible standard
+representation of \(O(d)\) on \(\mathfrak n\cong T_oN\), \(d=\dim\mathfrak n
+\ge 1\). Then \(N\) is abelian and the derivation \(A\) is a scalar multiple
+of the identity: \(M\) is real hyperbolic space \(\mathbb H^{d+1}\).
+
+*Proof sketch.* Left-invariant Heintze data are a nilpotent Lie algebra
+\(\mathfrak n\), an inner product, and a derivation \(A\) whose eigenvalues
+have positive real part. Basepoint isometries that are automorphisms of this
+data act orthogonally on \(\mathfrak n\) and preserve the bracket and \(A\).
+
+A Lie bracket is an \(O(d)\)-equivariant map \(\Lambda^2\mathfrak n\to
+\mathfrak n\). Under \(O(d)\), \(\Lambda^2\mathfrak n\) is the irreducible
+adjoint representation (or zero if \(d=1\)). By Schur, a nonzero equivariant
+map into the standard representation \(\mathfrak n\) can exist only if that
+representation appears in \(\Lambda^2\mathfrak n\). Dimensions match only at
+\(d=3\). For \(d=1,2\) and \(d\ge 4\) there is no such map, so the bracket
+vanishes and \(N\) is abelian. At \(d=3\) the unique \(SO(3)\)-equivariant
+candidate is the cross product, which is not \(O(3)\)-equivariant
+(orientation-reversing elements change its sign). Thus there is no nonzero
+\(O(d)\)-equivariant bracket for any \(d\ge 1\): \(N\) is abelian.
+
+With \(N\) abelian, \(A\in\mathrm{End}(\mathfrak n)\). Equivariance is
+commutation with the irreducible real standard representation of \(O(d)\).
+Schur's lemma forces \(A\) to be a real scalar. Abelian \(N\) and scalar
+\(A\) are Heintze's characterizing data for real hyperbolic space. \(\square\)
+
+The argument excludes complex and quaternionic hyperbolic space because A3
+forbids \(U(n)\) and \(Sp(n)\) as the process symmetry. If one assumed only
+\(SO(d)\), the \(d=3\) cross-product would survive; full \(O(d)\) is load-
+bearing.
+
+**What this closes, and what it does not.** Inside the Heintze class, A3
+implies isotropy implies real \(\mathbb H^{d+1}\). That implication is a
+theorem. It does not prove that a real generator satisfies A3, that a real
+host is homogeneous, or that an embedding cannot add a preferred axis the
+process did not have. Those remain honesty items. The former conjecture's
+empirical remainder is whether packing rate depends on angle, askable once
+growth class is exponential and a sector-wise \(h_{\mathrm{pack}}\) is
+defined. Distinguishing exponential from Euclidean occupancy is Corollary
+4.3 plus the growth-class gate, not E9 as a forcing test.
 
 ---
 
@@ -774,7 +911,8 @@ Until such a dynamics is supplied, the correct claims are:
 
 ## 11. Measurement protocol
 
-Every test must estimate the two sides independently.
+Every test must estimate the two sides independently. The growth-class
+gate refuses short radial windows; see [`MEASURABILITY.md`](MEASURABILITY.md).
 
 ### Generator side
 
@@ -872,18 +1010,17 @@ address radius is allowed to grow superlinearly without cost.
 \boxed{
 \text{retained exponential novelty}
 \Longrightarrow
-\beta\le c\,h_{\mathrm{cap}}
+\beta\le c\,h_{\mathrm{pack}}
 }
 \]
 
-with \(h_{\mathrm{cap}}=h_{\mathrm{pack}}\) at the fixed operational
-resolution. Separately imposing
+at the fixed operational resolution. Separately imposing
 
 \[
 \boxed{
-\beta=c\,h_{\mathrm{cap}}
+\beta=c\,h_{\mathrm{pack}}
 \quad\text{and}\quad
-h_{\mathrm{cap}}=(n-1)\sqrt\kappa
+h_{\mathrm{pack}}=(n-1)\sqrt\kappa
 \Longrightarrow
 c^2\kappa=
 \left(

@@ -1,38 +1,50 @@
 /-
-  Active Geometry: Main Entry Point
-  ==================================
+  Active Geometry: public entry point
+  ===================================
 
-  The theory is organized in two layers (see theory/ADDRESSABILITY_KERNEL.md).
+  Cite `Packing.convergent_rate_addressability_limit` (re-exported below).
+  It is the ordinary-limit corollary of the paper's Addressability Limit. In
+  every proper metric host, a finite source census with an injective,
+  `ε`-separated address map, radii tending to infinity, and convergent history
+  growth `β`, radial rate `c`, and host packing growth `h_pack` satisfies
 
-  Layer I (universal, curvature-free): the addressability bound
+      β ≤ c · h_pack.
 
-    β ≤ c · h_cap,
+  What this library machine-checks:
 
-  where β is retained-information growth in nats per generative step,
-  c converts generative steps to radial distance, and h_cap is host packing
-  entropy (or volume entropy under additional hypotheses). At finite block
-  length, operational address capacity equals the exact metric packing number
-  in every proper metric host (the block identity); nested, causal, and
-  relation-preserving achievability are stronger rungs of a constrained-capacity
-  ladder whose top is the block identity.
+  * the packing converse, as ordinary finite limits (`Tendsto`);
+  * the finite-block identity `A_block = packing number` in proper spaces;
+  * the real algebra of the bound (efficiency, curvature floor, gauge);
+  * the equality-case face, *given* saturation and a space-form identification
+    of `h_cap`.
 
-  Layer II (curvature realization): capacity saturation by a given process and
-  isotropic realization are separate predicates. For β > 0, c > 0, n > 1,
-  and κ ≥ 0, an isotropic hyperbolic host implies
+  What this library does not machine-check:
 
-    κ ≥ (β / (c · (n - 1)))².
+  * the paper's limsup generalization of the packing theorem;
+  * Theorem 4.4 (Skenderi / weighted relational capacity of `ℍⁿ_κ`);
+  * Theorem 7.1 (Heintze isotropy / axiom A3);
+  * packing entropy = volume entropy under bounded geometry;
+  * nested, causal, or relation-preserving achievability;
+  * a dynamics toward saturation, or occupancy of any biological host.
 
-  Capacity saturation gives equality. For β = h · ln 2 and normalized
-  sectional-curvature magnitude κ̄ = c²κ:
+  File cut:
 
-    κ̄ = (h · ln 2 / (n - 1))².
+  * `Packing`          — metric kernel; convergent-rate addressability limit
+  * `Capacity`         — algebra of the bound (floor, gauge, `η`)
+  * `StateEquation`    — optional face: saturation + space-form chart
+  * `Measurability`    — growth-class instrument, not a theory layer
 
-  The familiar raw-curvature-magnitude formula uses the process-time gauge
-  c = 1.
-  See theory/MATHEMATICAL_SPINE.md for hypotheses, proofs, scope, and
-  the independent role of the four-point tree condition.
+  There is no DNA, alphabet, or biosphere-curvature namespace in this library.
+  See `theory/ADDRESSABILITY_KERNEL.md` for the paper boundary.
 -/
 
-import ActiveGeometry.Addressability
+import ActiveGeometry.Capacity
 import ActiveGeometry.Packing
-import ActiveGeometry.KappaCurvature
+import ActiveGeometry.StateEquation
+import ActiveGeometry.Measurability
+
+namespace ActiveGeometry
+
+export Packing (convergent_rate_addressability_limit)
+
+end ActiveGeometry

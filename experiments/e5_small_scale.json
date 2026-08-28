@@ -1,0 +1,1415 @@
+{
+  "preregistration": {
+    "experiment": "E5_small_scale",
+    "layer": "IIb",
+    "schema_version": "e5.small.1",
+    "claim": "speakability of utilization, not genomic saturation",
+    "tree": {
+      "branching": 2,
+      "depth": 6,
+      "n": 127
+    },
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "kappa_poincare": 1.0,
+    "lambda_sweep": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "beta_nats_generator": 0.6931471805599453,
+    "decision_rule": {
+      "predict": "arm1 exponential; arm3 weaker or fail; arm4/euclidean polynomial or \u03b7 refused",
+      "kill_baked_in": "arm3 and arm4 also exponential",
+      "kill_polynomial": "euclidean tree arm exponential with reportable \u03b7",
+      "not_speakable": "growth class does not separate arms"
+    }
+  },
+  "runs": [
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=26",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.744903202523609,
+          "exponential": {
+            "slope": 0.7310174510444486,
+            "intercept": 0.1578857824573778,
+            "adjusted_r_squared": 0.9653954208244381
+          },
+          "polynomial": {
+            "degree": 2.1962647559414408,
+            "intercept": 0.18599405080440715,
+            "adjusted_r_squared": 0.8994827669136596
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.0659126539107785
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=26",
+          "span_ratio": 4.744903202523609,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5867466194893196,
+          "midpoint_ratio": 1.781135478017895,
+          "lecam_risk_lower_bound": 0.008515780167286269,
+          "critical_n": 26.14215090093537
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.731017451044448,
+      "radial_rate_c": 1.0142105571532487,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.009447979427188547,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.731017451044448,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7414056163125373,
+        "efficiency_eta": 0.9349095357644973,
+        "addressability_slack": 0.04825843575259203,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare",
+      "lambda": 0.1,
+      "seed": 0,
+      "stress": 0.011601176274472547,
+      "shuffled_targets": false,
+      "mse": 0.11601176274472547
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.008 < \u03b1=0.05, and N=63 \u2265 N*=26",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.755161573229588,
+          "exponential": {
+            "slope": 0.7306404700392298,
+            "intercept": 0.15933051495048978,
+            "adjusted_r_squared": 0.9657591539837018
+          },
+          "polynomial": {
+            "degree": 2.1943968758335983,
+            "intercept": 0.18865015211312353,
+            "adjusted_r_squared": 0.8995496421882351
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.06620951179546675
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.008 < \u03b1=0.05, and N=63 \u2265 N*=26",
+          "span_ratio": 4.755161573229588,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5883241913852411,
+          "midpoint_ratio": 1.7838567052606633,
+          "lecam_risk_lower_bound": 0.008433279534916571,
+          "critical_n": 26.002140240795814
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.73064047003923,
+      "radial_rate_c": 1.0145908558132322,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.009468308017398112,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.73064047003923,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7413011397888847,
+        "efficiency_eta": 0.9350412988132554,
+        "addressability_slack": 0.04815395922893939,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare",
+      "lambda": 1.0,
+      "seed": 0,
+      "stress": 0.10951489431624598,
+      "shuffled_targets": false,
+      "mse": 0.10951489431624598
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=26",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.731210426832057,
+          "exponential": {
+            "slope": 0.7311234273492531,
+            "intercept": 0.15762583437203143,
+            "adjusted_r_squared": 0.9657723017401888
+          },
+          "polynomial": {
+            "degree": 2.197662064709498,
+            "intercept": 0.18414938362518626,
+            "adjusted_r_squared": 0.9000861225627903
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.0656861791773985
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=26",
+          "span_ratio": 4.731210426832057,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5846385693561479,
+          "midpoint_ratio": 1.7775053078417433,
+          "lecam_risk_lower_bound": 0.008627272108181594,
+          "critical_n": 26.331013975207114
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.7311234273492528,
+      "radial_rate_c": 1.0132938876518296,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.009313510862374976,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.7311234273492528,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7408429000520544,
+        "efficiency_eta": 0.9356196577050845,
+        "addressability_slack": 0.047695719492109157,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare",
+      "lambda": 10.0,
+      "seed": 0,
+      "stress": 1.1966103123699667,
+      "shuffled_targets": false,
+      "mse": 0.11966103123699667
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.000 < \u03b1=0.05, and N=63 \u2265 N*=6",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 9.560670126328878,
+          "exponential": {
+            "slope": 0.6057296399813825,
+            "intercept": 0.9786057710080491,
+            "adjusted_r_squared": 0.9547917771184743
+          },
+          "polynomial": {
+            "degree": 1.32552084176963,
+            "intercept": 1.6441368645957009,
+            "adjusted_r_squared": 0.8829973851529511
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.07179439196552317
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.000 < \u03b1=0.05, and N=63 \u2265 N*=6",
+          "span_ratio": 9.560670126328878,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 1.1931499717684426,
+          "midpoint_ratio": 3.17153988830334,
+          "lecam_risk_lower_bound": 0.00019397027118139842,
+          "critical_n": 6.321970119462229
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.6057296399813829,
+      "radial_rate_c": 0.9585239553745377,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.026075207117112677,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.6057296399813829,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.5806063704025498,
+        "efficiency_eta": 1.1938332334854815,
+        "addressability_slack": -0.11254081015739548,
+        "bound_satisfied": false,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare_shuffled",
+      "lambda": 1.0,
+      "seed": 0,
+      "stress": 7.3128627834855315,
+      "shuffled_targets": true,
+      "mse": 7.3128627834855315
+    },
+    {
+      "n": 64,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": false,
+        "verdict": "unmeasurable",
+        "reason": "Le Cam lower bound 0.111 \u2265 \u03b1=0.05 at r=3.175, N=32, d*=2.0",
+        "growth_class": null,
+        "gate": {
+          "shells": 30,
+          "span_ratio": 3.175179449313196,
+          "exponential": {
+            "slope": 0.8065369794075523,
+            "intercept": 0.464654669299365,
+            "adjusted_r_squared": 0.9247357492778034
+          },
+          "polynomial": {
+            "degree": 2.0720370565665123,
+            "intercept": 0.6756765960593188,
+            "adjusted_r_squared": 0.9723461075302515
+          },
+          "winner": "polynomial",
+          "adjusted_r_squared_margin": 0.04761035825244808
+        },
+        "measurability": {
+          "verdict": "unmeasurable",
+          "reason": "Le Cam lower bound 0.111 \u2265 \u03b1=0.05 at r=3.175, N=32, d*=2.0",
+          "span_ratio": 3.175179449313196,
+          "n_win": 32,
+          "shells": 30,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.3277073508633188,
+          "midpoint_ratio": 1.3836647680136493,
+          "lecam_risk_lower_bound": 0.11084901847596107,
+          "critical_n": 83.80504101786664
+        }
+      },
+      "gate_winner_advisory": "polynomial",
+      "occupancy_slope": 0.8065369794075522,
+      "radial_rate_c": 0.5050774839839787,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.02702627032750387,
+      "state": {
+        "dimension": 2.0,
+        "equality_axes_supplied": false,
+        "missing_for_equality_test": [
+          "process_rate",
+          "radial_rate_c",
+          "host_entropy"
+        ],
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "refused"
+      },
+      "provenance": {
+        "beta": null,
+        "packing": "representation_metric"
+      },
+      "arm": "grid_poincare",
+      "lambda": 1.0,
+      "seed": 0,
+      "stress": 3.8000727731806876,
+      "shuffled_targets": false,
+      "mse": 3.8000727731806876
+    },
+    {
+      "n": 127,
+      "host": "euclidean",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.669470690213707,
+          "exponential": {
+            "slope": 0.6315071676772314,
+            "intercept": 0.48878238324127027,
+            "adjusted_r_squared": 0.9242381215439442
+          },
+          "polynomial": {
+            "degree": 2.103991721142696,
+            "intercept": 0.2592377644852683,
+            "adjusted_r_squared": 0.9127989429488161
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.011439178595128108
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+          "span_ratio": 4.669470690213707,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5751004706469939,
+          "midpoint_ratio": 1.7611671530312287,
+          "lecam_risk_lower_bound": 0.009150078177718401,
+          "critical_n": 27.211661719677494
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.631507167677231,
+      "radial_rate_c": 1.1795167441113457,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.058692572057166076,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.631507167677231,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7448732783016252,
+        "efficiency_eta": 0.9305571843580966,
+        "addressability_slack": 0.05172609774167991,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_euclidean",
+      "lambda": 1.0,
+      "seed": 0,
+      "stress": 4.08610205727834,
+      "shuffled_targets": false,
+      "mse": 4.08610205727834
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.008 < \u03b1=0.05, and N=63 \u2265 N*=26",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.754233619457512,
+          "exponential": {
+            "slope": 0.7299389373899404,
+            "intercept": 0.16168420076222423,
+            "adjusted_r_squared": 0.9648924812242102
+          },
+          "polynomial": {
+            "degree": 2.1910012539784045,
+            "intercept": 0.1931024455672903,
+            "adjusted_r_squared": 0.8985104768916353
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.0663820043325749
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.008 < \u03b1=0.05, and N=63 \u2265 N*=26",
+          "span_ratio": 4.754233619457512,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5881815483341488,
+          "midpoint_ratio": 1.7836104926578153,
+          "lecam_risk_lower_bound": 0.008440706508820506,
+          "critical_n": 26.014753606097987
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.7299389373899403,
+      "radial_rate_c": 1.0158255614375826,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.009968325564251057,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.7299389373899403,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7414906308892886,
+        "efficiency_eta": 0.9348023450122845,
+        "addressability_slack": 0.048343450329343285,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare",
+      "lambda": 0.1,
+      "seed": 1,
+      "stress": 0.010440535587741315,
+      "shuffled_targets": false,
+      "mse": 0.10440535587741315
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=26",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.737987527391264,
+          "exponential": {
+            "slope": 0.7306699190478912,
+            "intercept": 0.15944601478534376,
+            "adjusted_r_squared": 0.9656835453005778
+          },
+          "polynomial": {
+            "degree": 2.1950845735644666,
+            "intercept": 0.18784702390275645,
+            "adjusted_r_squared": 0.8998140322406138
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.06586951305996391
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=26",
+          "span_ratio": 4.737987527391264,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5856822594229963,
+          "midpoint_ratio": 1.779301723494569,
+          "lecam_risk_lower_bound": 0.008571893145636944,
+          "critical_n": 26.237253471962934
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.730669919047891,
+      "radial_rate_c": 1.014823859411806,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.009936960705040644,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.730669919047891,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7415012672042927,
+        "efficiency_eta": 0.9347889359290532,
+        "addressability_slack": 0.04835408664434737,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare",
+      "lambda": 1.0,
+      "seed": 1,
+      "stress": 0.10758876012835329,
+      "shuffled_targets": false,
+      "mse": 0.10758876012835329
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.008 < \u03b1=0.05, and N=63 \u2265 N*=26",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.752975788345128,
+          "exponential": {
+            "slope": 0.7307872562919934,
+            "intercept": 0.1592336944399657,
+            "adjusted_r_squared": 0.9652612024326689
+          },
+          "polynomial": {
+            "degree": 2.192048106141102,
+            "intercept": 0.1923429313752903,
+            "adjusted_r_squared": 0.8985509005395094
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.06671030189315952
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.008 < \u03b1=0.05, and N=63 \u2265 N*=26",
+          "span_ratio": 4.752975788345128,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5879881777999263,
+          "midpoint_ratio": 1.7832767717287716,
+          "lecam_risk_lower_bound": 0.008450785051190346,
+          "critical_n": 26.031867263058007
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.7307872562919938,
+      "radial_rate_c": 1.0156437857096376,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.009979691696980049,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.7307872562919938,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7422195355287599,
+        "efficiency_eta": 0.9338843123633829,
+        "addressability_slack": 0.04907235496881457,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare",
+      "lambda": 10.0,
+      "seed": 1,
+      "stress": 1.0231192242972558,
+      "shuffled_targets": false,
+      "mse": 0.10231192242972557
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.000 < \u03b1=0.05, and N=63 \u2265 N*=7",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 9.278479335992223,
+          "exponential": {
+            "slope": 0.6022516340837636,
+            "intercept": 0.9949008848354203,
+            "adjusted_r_squared": 0.951714316419356
+          },
+          "polynomial": {
+            "degree": 1.283027394311304,
+            "intercept": 1.7028140283735889,
+            "adjusted_r_squared": 0.8710884618743342
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.0806258545450218
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.000 < \u03b1=0.05, and N=63 \u2265 N*=7",
+          "span_ratio": 9.278479335992223,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 1.1635714253986165,
+          "midpoint_ratio": 3.08492916570911,
+          "lecam_risk_lower_bound": 0.00023336002767088138,
+          "critical_n": 6.647470436355583
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.6022516340837634,
+      "radial_rate_c": 0.9577404172996069,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.025882588115366284,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.6022516340837634,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.5768007313467537,
+        "efficiency_eta": 1.2017099543919405,
+        "addressability_slack": -0.1163464492131916,
+        "bound_satisfied": false,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare_shuffled",
+      "lambda": 1.0,
+      "seed": 1,
+      "stress": 7.294354821236058,
+      "shuffled_targets": true,
+      "mse": 7.294354821236058
+    },
+    {
+      "n": 64,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": false,
+        "verdict": "unmeasurable",
+        "reason": "Le Cam lower bound 0.095 \u2265 \u03b1=0.05 at r=3.436, N=32, d*=2.0",
+        "growth_class": null,
+        "gate": {
+          "shells": 30,
+          "span_ratio": 3.4363698021167446,
+          "exponential": {
+            "slope": 0.71902909617665,
+            "intercept": 0.4029097030566096,
+            "adjusted_r_squared": 0.9493392718633085
+          },
+          "polynomial": {
+            "degree": 2.054191558033436,
+            "intercept": 0.4014519521950417,
+            "adjusted_r_squared": 0.9779944143254178
+          },
+          "winner": "polynomial",
+          "adjusted_r_squared_margin": 0.028655142462109318
+        },
+        "measurability": {
+          "verdict": "unmeasurable",
+          "reason": "Le Cam lower bound 0.095 \u2265 \u03b1=0.05 at r=3.436, N=32, d*=2.0",
+          "span_ratio": 3.4363698021167446,
+          "n_win": 32,
+          "shells": 30,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.37314662656898445,
+          "midpoint_ratio": 1.4467154562851023,
+          "lecam_risk_lower_bound": 0.09506132371445242,
+          "critical_n": 64.6373391391769
+        }
+      },
+      "gate_winner_advisory": "polynomial",
+      "occupancy_slope": 0.7190290961766498,
+      "radial_rate_c": 0.5682630300081821,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.02765754142205623,
+      "state": {
+        "dimension": 2.0,
+        "equality_axes_supplied": false,
+        "missing_for_equality_test": [
+          "process_rate",
+          "radial_rate_c",
+          "host_entropy"
+        ],
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "refused"
+      },
+      "provenance": {
+        "beta": null,
+        "packing": "representation_metric"
+      },
+      "arm": "grid_poincare",
+      "lambda": 1.0,
+      "seed": 1,
+      "stress": 3.740156408448372,
+      "shuffled_targets": false,
+      "mse": 3.740156408448372
+    },
+    {
+      "n": 127,
+      "host": "euclidean",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.66688480134416,
+          "exponential": {
+            "slope": 0.6314832877304227,
+            "intercept": 0.4889121209234705,
+            "adjusted_r_squared": 0.9242830423102235
+          },
+          "polynomial": {
+            "degree": 2.1043190411694397,
+            "intercept": 0.2587896607620575,
+            "adjusted_r_squared": 0.9129528255589374
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.011330216751286093
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+          "span_ratio": 4.66688480134416,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5746997967737256,
+          "midpoint_ratio": 1.7604839302945063,
+          "lecam_risk_lower_bound": 0.009172714043140406,
+          "critical_n": 27.24961824126402
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.6314832877304228,
+      "radial_rate_c": 1.179461702242976,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.05380925050226859,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.6314832877304228,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7448103534845155,
+        "efficiency_eta": 0.9306358018751087,
+        "addressability_slack": 0.05166317292457023,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_euclidean",
+      "lambda": 1.0,
+      "seed": 1,
+      "stress": 4.086104320593642,
+      "shuffled_targets": false,
+      "mse": 4.086104320593642
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.69684890643767,
+          "exponential": {
+            "slope": 0.7330856538983681,
+            "intercept": 0.14986961836305865,
+            "adjusted_r_squared": 0.9676654085614629
+          },
+          "polynomial": {
+            "degree": 2.2089573866619285,
+            "intercept": 0.16820316265289573,
+            "adjusted_r_squared": 0.9028863444776674
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.06477906408379552
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+          "span_ratio": 4.69684890643767,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5793367840893402,
+          "midpoint_ratio": 1.7684061462694567,
+          "lecam_risk_lower_bound": 0.008914109940368564,
+          "critical_n": 26.815154340479573
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.733085653898368,
+      "radial_rate_c": 1.0130460237141814,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.009964718840847531,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.733085653898368,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7426495067236523,
+        "efficiency_eta": 0.9333436221050002,
+        "addressability_slack": 0.04950232616370698,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare",
+      "lambda": 0.1,
+      "seed": 2,
+      "stress": 0.010292717395071196,
+      "shuffled_targets": false,
+      "mse": 0.10292717395071195
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.690382337933575,
+          "exponential": {
+            "slope": 0.7328397589563713,
+            "intercept": 0.15054151274327401,
+            "adjusted_r_squared": 0.967523350228737
+          },
+          "polynomial": {
+            "degree": 2.2097258340843,
+            "intercept": 0.16685964677157109,
+            "adjusted_r_squared": 0.903149848315864
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.06437350191287305
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+          "span_ratio": 4.690382337933575,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5783371545482158,
+          "midpoint_ratio": 1.7666954614047137,
+          "lecam_risk_lower_bound": 0.008969241233717395,
+          "critical_n": 26.907932008389878
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.732839758956371,
+      "radial_rate_c": 1.0129416255969113,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.009996220282161582,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.732839758956371,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.742323896739315,
+        "efficiency_eta": 0.9337530202174815,
+        "addressability_slack": 0.049176716179369695,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare",
+      "lambda": 1.0,
+      "seed": 2,
+      "stress": 0.0965266365864122,
+      "shuffled_targets": false,
+      "mse": 0.0965266365864122
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.6902291386041846,
+          "exponential": {
+            "slope": 0.7320253116947003,
+            "intercept": 0.1533402523901149,
+            "adjusted_r_squared": 0.966903144642003
+          },
+          "polynomial": {
+            "degree": 2.2082388414661347,
+            "intercept": 0.1685911010573998,
+            "adjusted_r_squared": 0.9028692411509184
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.06403390349108462
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+          "span_ratio": 4.6902291386041846,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5783134651365583,
+          "midpoint_ratio": 1.7666549401847926,
+          "lecam_risk_lower_bound": 0.00897055183524692,
+          "critical_n": 26.910136508793858
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.7320253116947,
+      "radial_rate_c": 1.0134562722302132,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.009912816397017476,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.7320253116947,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7418756435682705,
+        "efficiency_eta": 0.9343172087791544,
+        "addressability_slack": 0.04872846300832523,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare",
+      "lambda": 10.0,
+      "seed": 2,
+      "stress": 1.0498783195628025,
+      "shuffled_targets": false,
+      "mse": 0.10498783195628025
+    },
+    {
+      "n": 127,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.000 < \u03b1=0.05, and N=63 \u2265 N*=4",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 12.336271468306654,
+          "exponential": {
+            "slope": 0.6025533223321857,
+            "intercept": 0.9921375320701075,
+            "adjusted_r_squared": 0.9553995044112225
+          },
+          "polynomial": {
+            "degree": 1.196106291841661,
+            "intercept": 1.8161485962970194,
+            "adjusted_r_squared": 0.8481305788878614
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.10726892552336109
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.000 < \u03b1=0.05, and N=63 \u2265 N*=4",
+          "span_ratio": 12.336271468306654,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 1.4566986373692066,
+          "midpoint_ratio": 4.050751192582907,
+          "lecam_risk_lower_bound": 3.76410291156315e-05,
+          "critical_n": 4.241339932933409
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.602553322332186,
+      "radial_rate_c": 0.9552127468070933,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.02597580116027228,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.602553322332186,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.5755666141226672,
+        "efficiency_eta": 1.2042866343394596,
+        "addressability_slack": -0.1175805664372781,
+        "bound_satisfied": false,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_poincare_shuffled",
+      "lambda": 1.0,
+      "seed": 2,
+      "stress": 7.334524669563617,
+      "shuffled_targets": true,
+      "mse": 7.334524669563617
+    },
+    {
+      "n": 64,
+      "host": "poincare",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=30 \u2265 6, Le Cam bound 0.035 < \u03b1=0.05, and N=32 \u2265 N*=19",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 30,
+          "span_ratio": 5.367372074992973,
+          "exponential": {
+            "slope": 0.6079477796861427,
+            "intercept": 0.6613675997763306,
+            "adjusted_r_squared": 0.9878824287834729
+          },
+          "polynomial": {
+            "degree": 1.5695984722997676,
+            "intercept": 0.9031928387571168,
+            "adjusted_r_squared": 0.9622221982748775
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.02566023050859534
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=30 \u2265 6, Le Cam bound 0.035 < \u03b1=0.05, and N=32 \u2265 N*=19",
+          "span_ratio": 5.367372074992973,
+          "n_win": 32,
+          "shells": 30,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.679828862534072,
+          "midpoint_ratio": 1.9485728157572224,
+          "lecam_risk_lower_bound": 0.03464601157723157,
+          "critical_n": 19.473468469125972
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.6079477796861432,
+      "radial_rate_c": 0.6351850029339017,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.025914951644802398,
+      "state": {
+        "dimension": 2.0,
+        "host_entropy_nats_per_distance": 0.6079477796861432,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.3861593122236019,
+        "equality_axes_supplied": false,
+        "missing_for_equality_test": [
+          "process_rate"
+        ],
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "refused"
+      },
+      "provenance": {
+        "beta": null,
+        "packing": "representation_metric"
+      },
+      "arm": "grid_poincare",
+      "lambda": 1.0,
+      "seed": 2,
+      "stress": 3.7519148285094337,
+      "shuffled_targets": false,
+      "mse": 3.7519148285094337
+    },
+    {
+      "n": 127,
+      "host": "euclidean",
+      "growth_class": {
+        "measurable": true,
+        "verdict": "measurable",
+        "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+        "growth_class": "exponential",
+        "gate": {
+          "shells": 32,
+          "span_ratio": 4.667809003458449,
+          "exponential": {
+            "slope": 0.6315626268635742,
+            "intercept": 0.48852489979599617,
+            "adjusted_r_squared": 0.9242471350388579
+          },
+          "polynomial": {
+            "degree": 2.1043608099499918,
+            "intercept": 0.25867348169292254,
+            "adjusted_r_squared": 0.9128408256085954
+          },
+          "winner": "exponential",
+          "adjusted_r_squared_margin": 0.011406309430262551
+        },
+        "measurability": {
+          "verdict": "measurable",
+          "reason": "k=32 \u2265 6, Le Cam bound 0.009 < \u03b1=0.05, and N=63 \u2265 N*=27",
+          "span_ratio": 4.667809003458449,
+          "n_win": 63,
+          "shells": 32,
+          "d_star": 2.0,
+          "alpha": 0.05,
+          "k_min": 6,
+          "delta": 0.5748430093973156,
+          "midpoint_ratio": 1.760728105510493,
+          "lecam_risk_lower_bound": 0.009164616954895621,
+          "critical_n": 27.236042349634317
+        }
+      },
+      "gate_winner_advisory": "exponential",
+      "occupancy_slope": 0.6315626268635733,
+      "radial_rate_c": 1.1795529525060424,
+      "quartet_exact_fraction": 0.0,
+      "quartet_delta_q50": 0.05903958114682069,
+      "state": {
+        "dimension": 2.0,
+        "beta_nats_per_step": 0.6931471805599453,
+        "host_entropy_nats_per_distance": 0.6315626268635733,
+        "host_entropy_source": "uncertified occupancy slope after exponential growth-class gate; not independently established packing entropy",
+        "capacity_nats_per_step": 0.7449615612093999,
+        "efficiency_eta": 0.9304469071325813,
+        "addressability_slack": 0.05181438064945465,
+        "bound_satisfied": true,
+        "equality_axes_supplied": true,
+        "isotropic_hyperbolic_assumption": false,
+        "eta_status": "uncertified_magnitude"
+      },
+      "provenance": {
+        "beta": "generator",
+        "packing": "representation_metric"
+      },
+      "arm": "tree_euclidean",
+      "lambda": 1.0,
+      "seed": 2,
+      "stress": 4.086101655646772,
+      "shuffled_targets": false,
+      "mse": 4.086101655646772
+    }
+  ],
+  "decision": {
+    "verdict": "KILLED_baked_in_artifact",
+    "note": "Shuffled-target control (same tree, no correspondence) is still called exponential. Occupancy is reading the radial tree layout, not description-length drive. \u03b7 is not speakable.",
+    "lambda_sweep_flat": true,
+    "arm1_tree_poincare": {
+      "n": 3,
+      "measurable_fraction": 1.0,
+      "growth_class_calls": [
+        "exponential",
+        "exponential",
+        "exponential"
+      ],
+      "gate_winner_advisory": [
+        "exponential",
+        "exponential",
+        "exponential"
+      ],
+      "eta_uncertified": [
+        0.9350412988132554,
+        0.9347889359290532,
+        0.9337530202174815
+      ],
+      "eta_mean": 0.9345277516532633,
+      "exponential_fraction": 1.0
+    },
+    "arm2_lambda_sweep": {
+      "0.1": {
+        "n": 3,
+        "measurable_fraction": 1.0,
+        "growth_class_calls": [
+          "exponential",
+          "exponential",
+          "exponential"
+        ],
+        "gate_winner_advisory": [
+          "exponential",
+          "exponential",
+          "exponential"
+        ],
+        "eta_uncertified": [
+          0.9349095357644973,
+          0.9348023450122845,
+          0.9333436221050002
+        ],
+        "eta_mean": 0.9343518342939273,
+        "exponential_fraction": 1.0
+      },
+      "1.0": {
+        "n": 3,
+        "measurable_fraction": 1.0,
+        "growth_class_calls": [
+          "exponential",
+          "exponential",
+          "exponential"
+        ],
+        "gate_winner_advisory": [
+          "exponential",
+          "exponential",
+          "exponential"
+        ],
+        "eta_uncertified": [
+          0.9350412988132554,
+          0.9347889359290532,
+          0.9337530202174815
+        ],
+        "eta_mean": 0.9345277516532633,
+        "exponential_fraction": 1.0
+      },
+      "10.0": {
+        "n": 3,
+        "measurable_fraction": 1.0,
+        "growth_class_calls": [
+          "exponential",
+          "exponential",
+          "exponential"
+        ],
+        "gate_winner_advisory": [
+          "exponential",
+          "exponential",
+          "exponential"
+        ],
+        "eta_uncertified": [
+          0.9356196577050845,
+          0.9338843123633829,
+          0.9343172087791544
+        ],
+        "eta_mean": 0.9346070596158739,
+        "exponential_fraction": 1.0
+      }
+    },
+    "arm3_shuffled": {
+      "n": 3,
+      "measurable_fraction": 1.0,
+      "growth_class_calls": [
+        "exponential",
+        "exponential",
+        "exponential"
+      ],
+      "gate_winner_advisory": [
+        "exponential",
+        "exponential",
+        "exponential"
+      ],
+      "eta_uncertified": [
+        1.1938332334854815,
+        1.2017099543919405,
+        1.2042866343394596
+      ],
+      "eta_mean": 1.199943274072294,
+      "exponential_fraction": 1.0
+    },
+    "arm4_grid": {
+      "n": 3,
+      "measurable_fraction": 0.3333333333333333,
+      "growth_class_calls": [
+        null,
+        null,
+        "exponential"
+      ],
+      "gate_winner_advisory": [
+        "polynomial",
+        "polynomial",
+        "exponential"
+      ],
+      "eta_uncertified": [],
+      "eta_mean": null,
+      "exponential_fraction": 0.3333333333333333
+    },
+    "arm5_euclidean_tree": {
+      "n": 3,
+      "measurable_fraction": 1.0,
+      "growth_class_calls": [
+        "exponential",
+        "exponential",
+        "exponential"
+      ],
+      "gate_winner_advisory": [
+        "exponential",
+        "exponential",
+        "exponential"
+      ],
+      "eta_uncertified": [
+        0.9305571843580966,
+        0.9306358018751087,
+        0.9304469071325813
+      ],
+      "eta_mean": 0.9305466311219289,
+      "exponential_fraction": 1.0
+    },
+    "claim": "IIb instrument rehearsal. Not genomic saturation. Not a state-equation measurement.",
+    "superseded_mechanism_note": "Refuse eta. The precise cause is missing angular fan-out, not a reportable bake-in saturation. See design_flaw and E5_DESIGN_FLAW.md."
+  },
+  "design_flaw": {
+    "status": "stopped",
+    "report": "experiments/E5_DESIGN_FLAW.md",
+    "do_not_report_eta": true,
+    "diagnosis": "Embedding does not recover exponential fan-out. At beta_rate=0 growth-class is polynomial. Spearman(embedded, tree)=0.635; radius-depth=0.83; span 337x; origin ball-growth not exponential. Loss never enforces Sarkar sector subdivision. Not a tuning problem.",
+    "redesign": [
+      "Sarkar-style sector initialization/layout (E1/E2/E9)",
+      "full pairwise log-distance regression onto the generator metric"
+    ],
+    "prior_verdict_kept_as_refusal": "KILLED_baked_in_artifact"
+  }
+}
