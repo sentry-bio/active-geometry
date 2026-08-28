@@ -514,11 +514,12 @@ addressability_limit :
   Addressable β c hpack
 ```
 
-from independent ordinary limits (`Tendsto`) for represented-history growth,
-radial rate, and exact ball-packing growth, with packing-number finiteness
-discharged in every proper metric host. The limsup formulation in the full
-spine is the more general paper theorem; the Lean theorem deliberately uses
-ordinary finite limits to keep the formal kernel minimal. Theorem 4.4
+from an explicit premise that the radii tend to infinity and independent
+ordinary limits (`Tendsto`) for represented-history growth, radial rate, and
+exact ball-packing growth, with packing-number finiteness discharged in every
+proper metric host. The limsup formulation in the full spine is the more
+general paper theorem; the Lean theorem deliberately uses ordinary finite
+limits to keep the formal kernel minimal. Theorem 4.4
 (Skenderi) and Theorem 7.1 (Heintze / A3) are not this theorem and are not Lean.
 
 The same file proves finite-block achievability:

@@ -5,8 +5,8 @@
   Cite `Packing.addressability_limit` (re-exported below as
   `addressability_limit`). That is the convergent-rate packing theorem in
   every proper metric host: a faithful finite-resolution representation with
-  convergent represented growth `β`, radial rate `c`, and host packing growth
-  `h_pack` satisfies
+  radii tending to infinity and convergent represented growth `β`, radial
+  rate `c`, and host packing growth `h_pack` satisfies
 
       β ≤ c · h_pack.
 

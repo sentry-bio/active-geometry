@@ -66,24 +66,24 @@ private lemma sqrt_idealNormalizedCurvature
   unfold idealNormalizedCurvature
   exact sqrt_sq (div_pos (bitsToNats_pos h hh) (by linarith)).le
 
-/-- On positive curvature magnitudes, the square-root mismatch vanishes
+/-- On non-negative curvature magnitudes, the square-root mismatch vanishes
     exactly at equality. -/
 theorem sqrtCurvatureMismatch_zero_iff (κval κstar : ℝ)
-    (hκpos : 0 < κval) (hκspos : 0 < κstar) :
+    (hκ : 0 ≤ κval) (hκstar : 0 ≤ κstar) :
     sqrtCurvatureMismatch κval κstar = 0 ↔ κval = κstar := by
   unfold sqrtCurvatureMismatch
   constructor
   · intro hV
     have := sq_eq_zero_iff.mp hV
-    calc κval = (sqrt κval) ^ 2 := (sq_sqrt hκpos.le).symm
+    calc κval = (sqrt κval) ^ 2 := (sq_sqrt hκ).symm
       _ = (sqrt κstar) ^ 2 := by rw [show sqrt κval = sqrt κstar by linarith]
-      _ = κstar := sq_sqrt hκspos.le
+      _ = κstar := sq_sqrt hκstar
   · intro heq; rw [heq, sub_self]; ring
 
 /-- The squared rate gap and the square-root curvature mismatch are the same
     object up to the dimensional factor `(n-1)²`. -/
 theorem rateMismatchSq_eq_scaled_sqrtMismatch (h κval n : ℝ)
-    (hh : 0 < h) (_hκ : 0 < κval) (hn : 1 < n) :
+    (hh : 0 < h) (hn : 1 < n) :
     rateMismatchSq h κval n =
       (n - 1) ^ 2 * sqrtCurvatureMismatch κval (idealNormalizedCurvature h n) := by
   have hn1 : n - 1 ≠ 0 := sub_ne_zero.mpr (ne_of_gt hn)
@@ -107,13 +107,13 @@ private lemma idealNormalizedCurvature_pos
 /-- The squared rate gap vanishes exactly at the equality-case curvature.
     A corollary of the scaling identity, not an independent computation. -/
 theorem rateMismatchSq_zero_iff (h κval n : ℝ)
-    (hh : 0 < h) (hκpos : 0 < κval) (hn : 1 < n) :
+    (hh : 0 < h) (hκ : 0 ≤ κval) (hn : 1 < n) :
     rateMismatchSq h κval n = 0 ↔ κval = idealNormalizedCurvature h n := by
   have hcrit_pos := idealNormalizedCurvature_pos h n hh hn
   have hfac : (n - 1) ^ 2 ≠ 0 := pow_ne_zero 2 (sub_ne_zero.mpr (ne_of_gt hn))
-  rw [rateMismatchSq_eq_scaled_sqrtMismatch h κval n hh hκpos hn, mul_eq_zero,
+  rw [rateMismatchSq_eq_scaled_sqrtMismatch h κval n hh hn, mul_eq_zero,
     sqrtCurvatureMismatch_zero_iff κval (idealNormalizedCurvature h n)
-      hκpos hcrit_pos]
+      hκ hcrit_pos.le]
   simp [hfac]
 
 /-- At process-time gauge `c = 1`, the space-form entropy of the equality-case

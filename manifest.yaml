@@ -71,7 +71,7 @@ formal_verification:
     equality, or DNA/alphabet entropy ceilings.
 
   core_theorems:
-    - {name: "addressability_limit", statement: "in a proper metric host, independent represented-growth, radial-rate, and exact packing-rate limits imply beta <= c*h_pack"}
+    - {name: "addressability_limit", statement: "in a proper metric host, diverging radii and independent represented-growth, radial-rate, and exact packing-rate limits imply beta <= c*h_pack"}
     - {name: "addressability_limit_of_hasFinitePacking", statement: "the same implication with packing finiteness as an explicit hypothesis"}
     - {name: "hasFinitePacking_of_properSpace", statement: "in a proper metric space the packing-finiteness hypothesis is a theorem, not an assumption"}
     - {name: "addressability_forces_positive_entropy", statement: "beta > 0, c > 0, and beta <= c*h_cap imply h_cap > 0"}
@@ -87,7 +87,7 @@ formal_verification:
 
   mismatch_diagnostics:
     - {name: "rateMismatchSq_eq_scaled_sqrtMismatch", statement: "rateMismatchSq = (n-1)^2 * sqrtCurvatureMismatch; the two gap diagnostics are one object"}
-    - {name: "sqrtCurvatureMismatch_zero_iff", statement: "On positive curvature magnitudes, the square-root mismatch vanishes iff the curvatures are equal; no dynamics is claimed"}
+    - {name: "sqrtCurvatureMismatch_zero_iff", statement: "On non-negative curvature magnitudes, the square-root mismatch vanishes iff the curvatures are equal; no dynamics is claimed"}
     - {name: "rateMismatchSq_zero_iff", statement: "rateMismatchSq = 0 iff kappa equals the equality-case value; a corollary of the scaling identity"}
     - {name: "rateMismatch_zero_at_face", statement: "at gauge c=1, space-form entropy of the equality-case curvature recovers the information rate"}
 

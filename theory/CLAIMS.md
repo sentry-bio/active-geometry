@@ -32,7 +32,7 @@ Status vocabulary:
 
 | # | Claim | Status | Backing artifact |
 |---|---|---|---|
-| L1.1 | \(\beta\le c\,h_{\mathrm{pack}}\) for faithful finite-rate representations (convergent rates, proper host) | THEOREM (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`addressability_limit`) |
+| L1.1 | \(\beta\le c\,h_{\mathrm{pack}}\) for faithful finite-rate representations (diverging radii, convergent rates, proper host) | THEOREM (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`addressability_limit`) |
 | L1.2 | Finiteness holds in every proper metric host | THEOREM (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`hasFinitePacking_of_properSpace`) |
 | L1.3 | Block address capacity \(=\) metric packing number (finite radius) | IDENTITY (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`exists_optimal_blockCode`, `card_le_packingCount`) |
 | L1.4 | Asymptotic block identity \(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\) | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §4 (Theorem 4.2) |

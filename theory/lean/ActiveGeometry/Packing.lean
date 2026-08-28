@@ -6,7 +6,8 @@
   theorem that mathematicians should cite:
 
       addressability_limit :
-        FaithfulRepresentation → (three rates converge) → Addressable β c h_pack
+        FaithfulRepresentation → r(R) → ∞ →
+          (three rates converge) → Addressable β c h_pack
 
   in every proper metric host, with packing-number finiteness discharged.
 
@@ -23,8 +24,9 @@
   it exists. Thus operational finite-block address capacity and metric packing
   capacity are identical in every proper metric host.
 
-  If the following three *ordinary* limits exist (Lean `Tendsto`; the paper's
-  limsup statement is strictly more general):
+  If the radii tend to infinity and the following three *ordinary* limits
+  exist (Lean `Tendsto`; the paper's limsup statement is strictly more
+  general):
 
       log represented-count / R  → β,
       r(R) / R                    → c,
@@ -211,8 +213,6 @@ structure FaithfulRepresentation (o : M) (ε : ℝ≥0) where
   points_nonempty : ∀ R, (points R).Nonempty
   separated : ∀ R, Metric.IsSeparated ε (points R : Set M)
   contained : ∀ R, (points R : Set M) ⊆ Metric.closedBall o (radius R)
-  radius_pos : ∀ R, 0 < radius R
-  radius_tendsto : Tendsto radius atTop atTop
 
 /-- Represented-history growth observed at depth `R`. -/
 noncomputable def representedRate
@@ -228,21 +228,25 @@ noncomputable def radialRate
     exact packing count of their containing ball. -/
 theorem represented_card_le_packingCount
     (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
-    (hfinite : HasFinitePacking o ε) (R : ℕ) :
+    (hfinite : HasFinitePacking o ε) (R : ℕ) (hρ : 0 ≤ rep.radius R) :
     (rep.points R).card ≤ packingCount o ε (rep.radius R) :=
   card_le_packingCount o ε (rep.radius R) (rep.points R)
-    (rep.radius_pos R).le hfinite (rep.separated R) (rep.contained R)
+    hρ hfinite (rep.separated R) (rep.contained R)
 
 /-- The finite-depth count inequality becomes a pointwise inequality between
     normalized logarithmic rates away from the irrelevant depth `R = 0`. -/
 theorem representedRate_le_capacity_eventually
     (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
-    (hfinite : HasFinitePacking o ε) :
+    (hfinite : HasFinitePacking o ε)
+    (hradius : Tendsto rep.radius atTop atTop) :
     ∀ᶠ R in atTop,
       representedRate rep R ≤
         radialRate rep R * packingRate o ε (rep.radius R) := by
-  filter_upwards [eventually_gt_atTop 0] with R hR
-  have hcount := represented_card_le_packingCount o ε rep hfinite R
+  have hradius_pos : ∀ᶠ R in atTop, 0 < rep.radius R :=
+    hradius (eventually_gt_atTop 0)
+  filter_upwards [eventually_gt_atTop 0, hradius_pos] with R hR hr
+  have hcount :=
+    represented_card_le_packingCount o ε rep hfinite R hr.le
   have hcard_pos : 0 < ((rep.points R).card : ℝ) := by
     exact_mod_cast Finset.card_pos.mpr (rep.points_nonempty R)
   have hcount_real :
@@ -254,7 +258,6 @@ theorem representedRate_le_capacity_eventually
         Real.log (packingCount o ε (rep.radius R) : ℝ) :=
     Real.log_le_log hcard_pos hcount_real
   have hR_real : 0 < (R : ℝ) := by exact_mod_cast hR
-  have hr := rep.radius_pos R
   unfold representedRate radialRate packingRate
   calc
     Real.log ((rep.points R).card : ℝ) / (R : ℝ)
@@ -267,7 +270,8 @@ theorem representedRate_le_capacity_eventually
 /-- Convergent-rate addressability limit, with packing finiteness as an
     explicit hypothesis. The three rate hypotheses are independent:
     represented-history growth, radial calibration, and host packing growth
-    are not defined from one another.
+    are not defined from one another. Radius divergence is stated separately
+    because it is an asymptotic sampling premise, not part of faithfulness.
 
     The paper's theorem uses limsup; this declaration uses ordinary finite
     limits (`Tendsto`). -/
@@ -275,22 +279,24 @@ theorem addressability_limit_of_hasFinitePacking
     (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
     (hfinite : HasFinitePacking o ε)
     (β c hpack : ℝ)
+    (hradius : Tendsto rep.radius atTop atTop)
     (hdemand : Tendsto (representedRate rep) atTop (𝓝 β))
     (hradial : Tendsto (radialRate rep) atTop (𝓝 c))
     (hpacking : Tendsto (packingRate o ε) atTop (𝓝 hpack)) :
     Capacity.Addressable β c hpack := by
   have hsampled :
       Tendsto (fun R ↦ packingRate o ε (rep.radius R)) atTop (𝓝 hpack) := by
-    simpa [Function.comp_def] using hpacking.comp rep.radius_tendsto
+    simpa [Function.comp_def] using hpacking.comp hradius
   apply le_of_tendsto_of_tendsto hdemand (hradial.mul hsampled)
-  exact representedRate_le_capacity_eventually o ε rep hfinite
+  exact representedRate_le_capacity_eventually o ε rep hfinite hradius
 
 /-- The addressability limit in a proper metric host.
 
-    If a faithful finite-resolution representation has convergent represented
-    growth `β`, convergent radial rate `c`, and the host has convergent
-    packing growth `h_pack`, then `β ≤ c · h_pack`. Finiteness of packing
-    numbers is a theorem for this host class, not an extra assumption.
+    If a faithful finite-resolution representation has radii tending to
+    infinity, convergent represented growth `β`, convergent radial rate `c`,
+    and the host has convergent packing growth `h_pack`, then
+    `β ≤ c · h_pack`. Finiteness of packing numbers is a theorem for this
+    host class, not an extra assumption.
 
     Cite this declaration. The paper's limsup formulation is the more general
     theorem; Theorem 4.4 (weighted relational capacity of `ℍⁿ_κ`) and
@@ -298,13 +304,14 @@ theorem addressability_limit_of_hasFinitePacking
 theorem addressability_limit
     [ProperSpace M] (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
     (β c hpack : ℝ)
+    (hradius : Tendsto rep.radius atTop atTop)
     (hdemand : Tendsto (representedRate rep) atTop (𝓝 β))
     (hradial : Tendsto (radialRate rep) atTop (𝓝 c))
     (hpacking : Tendsto (packingRate o ε) atTop (𝓝 hpack)) :
     Capacity.Addressable β c hpack :=
   addressability_limit_of_hasFinitePacking o ε rep
     (hasFinitePacking_of_properSpace o rep.resolution_pos.ne') β c hpack
-    hdemand hradial hpacking
+    hradius hdemand hradial hpacking
 
 /-- A zero-capacity host cannot carry positive represented growth under the
     hypotheses of the packing theorem. -/
@@ -312,13 +319,14 @@ theorem no_positive_growth_at_zero_capacity
     (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
     (hfinite : HasFinitePacking o ε)
     (β c : ℝ) (hβ : 0 < β)
+    (hradius : Tendsto rep.radius atTop atTop)
     (hdemand : Tendsto (representedRate rep) atTop (𝓝 β))
     (hradial : Tendsto (radialRate rep) atTop (𝓝 c))
     (hpacking : Tendsto (packingRate o ε) atTop (𝓝 0)) :
     False := by
   have hbound :=
     addressability_limit_of_hasFinitePacking
-      o ε rep hfinite β c 0 hdemand hradial hpacking
+      o ε rep hfinite β c 0 hradius hdemand hradial hpacking
   unfold Capacity.Addressable at hbound
   nlinarith
 
