@@ -32,7 +32,7 @@ Status vocabulary:
 
 | # | Claim | Status | Backing artifact |
 |---|---|---|---|
-| L1.1 | \(\beta\le c\,h_{\mathrm{pack}}\) for faithful finite-rate representations | THEOREM (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`faithful_representation_addressable`) |
+| L1.1 | \(\beta\le c\,h_{\mathrm{pack}}\) for faithful finite-rate representations (convergent rates, proper host) | THEOREM (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`addressability_limit`) |
 | L1.2 | Finiteness holds in every proper metric host | THEOREM (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`hasFinitePacking_of_properSpace`) |
 | L1.3 | Block address capacity \(=\) metric packing number (finite radius) | IDENTITY (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`exists_optimal_blockCode`, `card_le_packingCount`) |
 | L1.4 | Asymptotic block identity \(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\) | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §4 (Theorem 4.2) |
@@ -59,7 +59,7 @@ test.*
 | # | Claim | Status | Backing artifact |
 |---|---|---|---|
 | L2a.1 | Isotropic hyperbolic host has \(h_{\mathrm{vol}}=(n-1)\sqrt\kappa\) | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §7 |
-| L2a.2 | Curvature floor \(\kappa\ge(\beta/(c(n-1)))^2\) (realization + bound, no saturation) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`isotropic_curvature_at_least_floor`) |
+| L2a.2 | Curvature floor \(\kappa\ge(\beta/(c(n-1)))^2\) (space-form identification + bound, no saturation) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Capacity.lean` (`addressable_spaceForm_floor`) |
 | L2a.3 | Inside the Heintze class, axiom A3 (full \(O(d)\) directional symmetry as host automorphisms) forces real \(\mathbb H^{d+1}\) | THEOREM (paper sketch; conditional on A3) | `theory/MATHEMATICAL_SPINE.md` §7 (Theorem 7.1) |
 | L2a.4 | \(n=2\) is an embeddability floor for branching trees, not a fitted constant | THEOREM (cited) | `theory/MATHEMATICAL_SPINE.md` §6, §7 |
 | L2a.5 | Isotropy is an asserted premise (`--assume-isotropic-hyperbolic`), not a measurement | HONESTY ITEM | `tools/addressability_meter.py` |
@@ -73,8 +73,8 @@ harder, less-supported claim; independent tests currently fail their kill lines.
 | # | Claim | Status | Backing artifact |
 |---|---|---|---|
 | L2b.1 | Saturation condition \(\eta=1\) (coordinate-free) | DEFINITION | `theory/MATHEMATICAL_SPINE.md` §5 |
-| L2b.2 | State equation \(\bar\kappa^*=(h_{\mathrm{eff}}\ln2/(n-1))^2\) under saturation + isotropy | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_state_equation`) |
-| L2b.3 | \(\bar\kappa=c^2\kappa\) is the unit-invariant curvature; raw formula needs gauge \(c=1\) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Addressability.lean` (`normalized_curvature_scale_invariant`, `process_time_gauge`) |
+| L2b.2 | State equation \(\bar\kappa^*=(h_{\mathrm{eff}}\ln2/(n-1))^2\) under saturation + space-form identification | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/StateEquation.lean` (`normalized_state_equation`) |
+| L2b.3 | \(\bar\kappa=c^2\kappa\) is the unit-invariant curvature; raw formula needs gauge \(c=1\) | THEOREM (Lean algebra) | `theory/lean/ActiveGeometry/Capacity.lean` (`normalized_curvature_scale_invariant`, `process_time_gauge`) |
 | L2b.4 | Some hierarchy actually saturates | EMPIRICAL, open (independent tests currently fail) | `theory/DECISIVE_EXPERIMENTS.md` E3, E4 |
 | L2b.5 | Near-capacity hyperbolic codes concentrate clock-relative radius; additive-deficit tradeoff \(e^{-(h\delta c-\Delta_{\rm cap})R}\), \(\Delta_{\rm cap}=ch(1-\eta)\) | THEOREM (finite count Lean; asymptotic paper with limsup qualification) | `theory/RELATIONAL_CAPACITY_THEOREM.md` §5; `theory/lean/ActiveGeometry/Packing.lean` (`subball_fraction_le_packing_fraction`) |
 

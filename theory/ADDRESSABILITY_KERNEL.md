@@ -510,36 +510,41 @@ count using Mathlib's canonical `Metric.packingNumber`. In the convergent-rate
 case it proves
 
 ```text
-faithful_representation_addressable :
+addressability_limit :
   Addressable β c hpack
 ```
 
-from independent limits for represented-history growth, radial rate, and exact
-ball-packing growth. The limsup formulation in the full spine is the more
-general paper theorem; the Lean theorem deliberately uses ordinary finite
-limits to keep the formal kernel minimal.
+from independent ordinary limits (`Tendsto`) for represented-history growth,
+radial rate, and exact ball-packing growth, with packing-number finiteness
+discharged in every proper metric host. The limsup formulation in the full
+spine is the more general paper theorem; the Lean theorem deliberately uses
+ordinary finite limits to keep the formal kernel minimal. Theorem 4.4
+(Skenderi) and Theorem 7.1 (Heintze / A3) are not this theorem and are not Lean.
 
-The same file now proves finite-block achievability:
+The same file proves finite-block achievability:
 `exists_optimal_blockCode` constructs a separated finite codebook whose
 cardinality equals the exact packing count, and
 `exists_optimal_blockCode_of_properSpace` discharges local finiteness. Together
 with `card_le_packingCount`, these declarations machine-check the finite-radius
-operational-geometric identity. Lean does not yet formalize its asymptotic
+operational-geometric identity. Lean does not formalize the asymptotic
 limsup corollary or achievability for nested, causal, or relation-preserving
 code families.
 
 The finiteness side condition `HasFinitePacking` is not an extra assumption for
 the intended host class: `hasFinitePacking_of_properSpace` proves it for every
 proper metric space (ℝⁿ, hyperbolic space, and every complete Riemannian
-manifold via Hopf–Rinow). Retention is recorded structurally, and represented
-counts are proved nondecreasing in depth.
+manifold via Hopf–Rinow). Faithfulness (separation in a growing ball) is the
+input to the bound; retention (`points_monotone`) is a separate structure, and
+represented counts of a retained representation are proved nondecreasing in
+depth.
 
-`lean/ActiveGeometry/Addressability.lean` then formalizes the algebra
-downstream. Its central predicates mirror the dependency structure:
+`lean/ActiveGeometry/Capacity.lean` then formalizes the algebra downstream.
+Its central predicates mirror the dependency structure:
 
 - `Addressable β c hcap`;
 - `CapacitySaturated β c hcap`;
-- `IsotropicHyperbolic hcap n κ`.
+- `hcap_eq_spaceForm hcap n κ` (rate identification with \((n-1)\sqrt\kappa\),
+  not a theorem that the host is \(\mathbb H^n_\kappa\)).
 
-The theorem `normalized_state_equation` requires the latter two predicates
-explicitly. It does not derive them.
+The theorem `normalized_state_equation` in `StateEquation.lean` requires the
+latter two predicates explicitly. It does not derive them.

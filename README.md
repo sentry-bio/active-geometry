@@ -114,10 +114,9 @@ cd theory/lean && lake build
 ```
 
 Compiles the metric packing theorem and scale-aware addressability algebra,
-including `faithful_representation_addressable`,
+including `addressability_limit`,
 `curvature_at_least_floor`, `normalized_state_equation`,
-`normalized_curvature_scale_invariant`, and the existing alphabet-capacity
-bounds. Zero sorries. See
+and `normalized_curvature_scale_invariant`. Zero sorries. See
 [theory/lean/README.md](theory/lean/README.md) for scope and inventory.
 
 ### Docker (one-command, reproducible)
@@ -157,8 +156,9 @@ active-geometry/
 │   └── lean/                  # Lean 4 algebraic formalization
 │       └── ActiveGeometry/
 │           ├── Packing.lean
-│           ├── Addressability.lean
-│           └── KappaCurvature.lean
+│           ├── Capacity.lean
+│           ├── StateEquation.lean
+│           └── Measurability.lean
 │
 ├── model/                     # BiosphereCodec reference encoder
 │   ├── biosphere_codec.py

@@ -51,53 +51,45 @@ formal_verification:
   mathematical_spine: "theory/MATHEMATICAL_SPINE.md"
   lean_files:
     - "theory/lean/ActiveGeometry/Packing.lean"
-    - "theory/lean/ActiveGeometry/Addressability.lean"
-    - "theory/lean/ActiveGeometry/KappaCurvature.lean"
+    - "theory/lean/ActiveGeometry/Capacity.lean"
+    - "theory/lean/ActiveGeometry/StateEquation.lean"
+    - "theory/lean/ActiveGeometry/Measurability.lean"
   status: "MACHINE-CHECKED"
   sorries: 0
   axioms_used: ["propext", "Classical.choice", "Quot.sound"]
 
   scope_note: |
     Lean proves the finite-depth metric packing count and the convergent-rate
-    addressability theorem using Mathlib's exact Metric.packingNumber. It keeps
-    the next logical levels explicit: CapacitySaturated is a separate
-    hypothesis, and IsotropicHyperbolic is a separate realization. It checks
-    their algebraic consequences, including the curvature floor, normalized
-    scale invariance, and conditional equality. It does not formalize the full
-    limsup extension, classical space-form/tree-embedding theorems, capacity
-    saturation as a physical law, or a dynamics toward equality.
+    addressability theorem (addressability_limit) using Mathlib's exact
+    Metric.packingNumber. It keeps the next logical levels explicit:
+    CapacitySaturated is a separate hypothesis, and hcap_eq_spaceForm is a
+    rate identification with (n-1)√κ, not a theorem that the host is H^n.
+    It checks their algebraic consequences, including the curvature floor,
+    normalized scale invariance, and the equality-case face. It does not
+    formalize the limsup extension, Theorem 4.4 (Skenderi), Theorem 7.1
+    (Heintze/A3), capacity saturation as a physical law, a dynamics toward
+    equality, or DNA/alphabet entropy ceilings.
 
   core_theorems:
-    - {name: "faithful_representation_addressable", statement: "independent represented-growth, radial-rate, and exact packing-rate limits imply beta <= c*h_pack"}
+    - {name: "addressability_limit", statement: "in a proper metric host, independent represented-growth, radial-rate, and exact packing-rate limits imply beta <= c*h_pack"}
+    - {name: "addressability_limit_of_hasFinitePacking", statement: "the same implication with packing finiteness as an explicit hypothesis"}
     - {name: "hasFinitePacking_of_properSpace", statement: "in a proper metric space the packing-finiteness hypothesis is a theorem, not an assumption"}
     - {name: "addressability_forces_positive_entropy", statement: "beta > 0, c > 0, and beta <= c*h_cap imply h_cap > 0"}
     - {name: "efficiency_le_one", statement: "for c,h_cap > 0 and beta <= c*h_cap, eta = beta/(c*h_cap) <= 1"}
-    - {name: "curvature_at_least_floor", statement: "for beta,c > 0, n > 1, kappa >= 0, isotropic addressability implies kappa >= (beta/(c(n-1)))^2"}
-    - {name: "isotropic_curvature_at_least_floor", statement: "Addressable plus IsotropicHyperbolic implies the curvature floor"}
+    - {name: "curvature_at_least_floor", statement: "for beta,c > 0, n > 1, kappa >= 0, space-form addressability implies kappa >= (beta/(c(n-1)))^2"}
+    - {name: "addressable_spaceForm_floor", statement: "Addressable plus hcap_eq_spaceForm implies the curvature floor"}
     - {name: "saturated_curvature_eq_floor", statement: "for c > 0, n > 1, and kappa >= 0, capacity saturation fixes raw curvature magnitude once c and n are fixed"}
-    - {name: "normalized_state_equation", statement: "CapacitySaturated plus IsotropicHyperbolic implies the normalized state equation"}
+    - {name: "normalized_state_equation", statement: "CapacitySaturated plus hcap_eq_spaceForm implies the normalized state equation"}
     - {name: "normalized_floor_eq_ideal", statement: "c^2*kappa_floor = (h*ln2/(n-1))^2"}
     - {name: "normalized_curvature_scale_invariant", statement: "c^2*kappa is invariant under radial rescaling"}
-    - {name: "kappa_n2", statement: "normalized kappa_bar(h, 2) = (h * log 2)^2"}
-    - {name: "kappa_pos", statement: "h > 0 => kappa(h, 2) > 0"}
-    - {name: "kappa_unique", statement: "unique positive solution to the state equation"}
-    - {name: "kappa_mono_h", statement: "h1 < h2 => kappa(h1, 2) < kappa(h2, 2)"}
-    - {name: "kappa_mono_n", statement: "n1 < n2 => kappa(h, n2) < kappa(h, n1)"}
-    - {name: "kappa_max_at_n2", statement: "n > 2 => kappa(h, n) < kappa(h, 2)"}
-    - {name: "growth_rate_match", statement: "r * sqrt(kappa(h,2)) = h * r * ln 2"}
+    - {name: "idealNormalizedCurvature_two", statement: "normalized kappa_bar(h, 2) = (h * log 2)^2"}
+    - {name: "idealNormalizedCurvature_anti_n", statement: "n1 < n2 => kappa_bar(h, n2) < kappa_bar(h, n1); algebraic, not a selection of n=2"}
 
-  entropy_decomposition:
-    - {name: "H_raw_eq_two", statement: "H_raw = log2(4) = 2 (4-letter channel capacity)"}
-    - {name: "h_three_letter_bounds", statement: "1.5 < log2(3) < 1.7"}
-    - {name: "entropy_rate_decomposition_bounds", statement: "0 < h_eff <= H_raw"}
-    - {name: "kappa_bounded_by_alphabet", statement: "kappa(h_eff, 2) <= 4 * (ln 2)^2 ~= 1.921 (DNA)"}
-    - {name: "kappa_bounded_by_alphabet_general", statement: "kappa(h_eff, 2) <= (log alpha)^2 for any alpha > 1"}
-
-  mismatch_potentials:
-    - {name: "potential_eq_scaled_mismatch", statement: "U(h,kappa,n) = (n-1)^2 * V(kappa, kappa_critical); the potential and mismatch are one object"}
-    - {name: "mismatch_zero_iff", statement: "On positive curvature magnitudes, V(kappa,kappa*) = 0 iff kappa = kappa*; no dynamics is claimed"}
-    - {name: "potential_zero_iff", statement: "U(h,kappa,n) = 0 iff kappa = kappa_critical; a corollary of the scaling identity"}
-    - {name: "residual_zero_at_critical", statement: "the rate-matching residual vanishes at the ideal equality value"}
+  mismatch_diagnostics:
+    - {name: "rateMismatchSq_eq_scaled_sqrtMismatch", statement: "rateMismatchSq = (n-1)^2 * sqrtCurvatureMismatch; the two gap diagnostics are one object"}
+    - {name: "sqrtCurvatureMismatch_zero_iff", statement: "On positive curvature magnitudes, the square-root mismatch vanishes iff the curvatures are equal; no dynamics is claimed"}
+    - {name: "rateMismatchSq_zero_iff", statement: "rateMismatchSq = 0 iff kappa equals the equality-case value; a corollary of the scaling identity"}
+    - {name: "rateMismatch_zero_at_face", statement: "at gauge c=1, space-form entropy of the equality-case curvature recovers the information rate"}
 
 # =============================================================================
 # Results with Verification Protocols
