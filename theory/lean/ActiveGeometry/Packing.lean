@@ -335,7 +335,12 @@ theorem no_positive_growth_at_zero_capacity
 /-- A faithful representation that *retains* histories: every point present
     at depth `R` is still present at depth `R+1`. Retention is the
     load-bearing meaning of the word "retained" in `β`; the packing bound
-    itself does not need it. -/
+    itself does not need it.
+
+    This is a strong fixed-address model of retention (nested codebooks), not
+    a theorem that every process retaining abstract histories must keep their
+    representing points fixed. More general retention would require a source
+    type and explicit maps between depths. -/
 structure RetainedRepresentation (o : M) (ε : ℝ≥0)
     extends FaithfulRepresentation o ε where
   points_monotone : ∀ R, points R ⊆ points (R + 1)

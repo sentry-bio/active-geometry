@@ -102,7 +102,7 @@ axiomatize a capacity envelope. Formalized results include:
 | `addressability_limit_of_hasFinitePacking` | diverging radii and three independent ordinary limits prove `Addressable β c hpack` |
 | `addressability_limit` | the same theorem with packing finiteness discharged in a proper host |
 | `no_positive_growth_at_zero_capacity` | zero packing capacity excludes positive represented growth |
-| `RetainedRepresentation` | faithful representation plus `points_monotone` |
+| `RetainedRepresentation` | strong fixed-address retention: faithful representation plus nested codebooks (`points_monotone`) |
 | `represented_card_mono` | retention makes represented counts nondecreasing in depth |
 
 The formal theorem uses ordinary finite limits for represented growth, radial
