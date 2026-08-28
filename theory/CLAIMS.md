@@ -32,14 +32,21 @@ Status vocabulary:
 
 | # | Claim | Status | Backing artifact |
 |---|---|---|---|
-| L1.1 | \(\beta\le c\,h_{\mathrm{pack}}\) for faithful finite-rate representations (diverging radii, convergent rates, proper host) | THEOREM (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`addressability_limit`) |
+| L1.1 | \(\beta\le c\,h_{\mathrm{pack}}\) for finite source censuses with injective, \(\varepsilon\)-separated address maps (diverging radii, convergent rates, proper host) | THEOREM (Lean convergent-rate corollary; limsup in paper) | `theory/lean/ActiveGeometry/Packing.lean` (`convergent_rate_addressability_limit`) |
 | L1.2 | Finiteness holds in every proper metric host | THEOREM (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`hasFinitePacking_of_properSpace`) |
 | L1.3 | Block address capacity \(=\) metric packing number (finite radius) | IDENTITY (Lean) | `theory/lean/ActiveGeometry/Packing.lean` (`exists_optimal_blockCode`, `card_le_packingCount`) |
 | L1.4 | Asymptotic block identity \(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\) | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §4 (Theorem 4.2) |
 | L1.5 | Polynomial-growth exclusion / trichotomy (Corollary 4.3): exponential room, exponential addresses, or forgetting | THEOREM (paper) | `theory/MATHEMATICAL_SPINE.md` §4 |
-| L1.6 | Constrained-capacity ladder: relational ≤ causal ≤ persistent ≤ block | THEOREM (ordering) / OPEN (rung values) | `theory/ADDRESSABILITY_KERNEL.md` §3 |
+| L1.6 | Constrained-capacity ladder: nested admissibility classes satisfy relational ≤ causal ≤ persistent ≤ block | DEFINITION (nested classes) / OPEN (rung values except the block ceiling) | `theory/ADDRESSABILITY_KERNEL.md` §3 |
 | L1.7 | Slack decomposition: block slack = relational tax + utilization slack | THEOREM (definitional) | `theory/MATHEMATICAL_SPINE.md` §5 |
-| L1.8 | Weighted relational capacity of \(\mathbb H_\kappa^n\) is \(c(n-1)\sqrt\kappa\) | THEOREM (paper; cited lower bound) | `theory/RELATIONAL_CAPACITY_THEOREM.md`; `theory/MATHEMATICAL_SPINE.md` §4 (Theorem 4.4) |
+
+## Host-class closure of the relational rung
+
+*Not curvature-free Layer I. This is the weighted relational identity in a real hyperbolic host; it closes the ladder's bottom rung in that host class.*
+
+| # | Claim | Status | Backing artifact |
+|---|---|---|---|
+| L1.8 | Weighted relational capacity of \(\mathbb H_\kappa^n\) is \(c(n-1)\sqrt\kappa\) (supremum, not endpoint attainment) | THEOREM (paper; cited lower bound; host-specific) | `theory/RELATIONAL_CAPACITY_THEOREM.md`; `theory/MATHEMATICAL_SPINE.md` §4 (Theorem 4.4) |
 | L1.9 | Exact unit-edge formulation of former Conjecture 4.4 | REFUTED for \(c<\varepsilon\); open for \(c\ge\varepsilon\) | `theory/RELATIONAL_CAPACITY_THEOREM.md` §1, §5 |
 
 ## Bridge — four-point classifier

@@ -8,12 +8,17 @@ the full definitions, proof, scope, and measurement consequences.
 
 The theory is organized in **two layers** that must not be conflated.
 
-**Layer I — the universal capacity theory (curvature-free), §§1–5.** Three
-independent quantities; a **packing theorem** that forces the capacity
-inequality \(\beta\le c\,h_{\mathrm{pack}}\); the exact **block identity**
-\(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\); a **constrained-capacity ladder**
-with block as its universal ceiling; and the decomposition of slack into a
-relational tax and a utilization term. No curvature, tree, or biology appears.
+**Layer I — the universal capacity theory (curvature-free), §§1–5 except
+Theorem 4.4.** Three independent quantities; a **packing theorem** that
+forces \(\beta\le c\,h_{\mathrm{pack}}\); the exact **block identity**
+\(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\); a **constrained-capacity
+ladder** of nested admissibility classes with block as its universal
+ceiling; and the decomposition of slack into a relational tax and a
+utilization term. No curvature, tree, or biology appears.
+
+**Theorem 4.4** sits in §4 because that is where the ladder asks the
+question, but it is **not** Layer I universal: it is the weighted
+relational identity in \(\mathbb H_\kappa^n\).
 
 **Layer II — the curvature realization (where real systems live), §§7–10.** This
 layer splits into two sublayers with very different evidential standing.
@@ -53,20 +58,24 @@ All logarithms in this document are natural unless explicitly written
 
 ## 1. Information-generating histories
 
-Let \(\mathcal H_R\) be the histories retained through generative depth \(R\).
-Assume their exponential growth rate exists:
+Let \(\mathcal H_R\) be the histories retained through generative depth \(R\),
+and write \(N(R):=|\mathcal H_R|\). The paper's standing definition is the
+limsup rate
 
 \[
-N(R):=|\mathcal H_R|
-      =\exp\!\bigl(\beta R+o(R)\bigr),
-\qquad
 \beta:=
-\lim_{R\to\infty}\frac{\log N(R)}{R}.
+\limsup_{R\to\infty}\frac{\log N(R)}{R}
+\quad\text{(nats per generative step).}
 \]
 
-The quantity \(\beta\) is the production rate of distinguishable retained
-history, in nats per generative step. Define the effective retained-information
-rate by
+If the ordinary limit exists, it equals this limsup; Lean
+`convergent_rate_addressability_limit` checks that case (`Tendsto`). The
+word **retained** is load-bearing in this definition. A process that
+overwrites its past need not have \(N(R)\) growing with \(R\), even if its
+instantaneous state changes rapidly. The packing bound itself is proved
+for a faithful census at each depth and does not use nested codebooks.
+
+Define the effective retained-information rate by
 
 \[
 h_{\mathrm{eff}}:=\frac{\beta}{\ln2}
@@ -78,10 +87,6 @@ estimator is a valid empirical estimator of \(h_{\mathrm{eff}}\) only when a
 typical-set or coding argument shows that it measures the exponential growth
 of retained distinguishable histories. Alphabet entropy alone does not
 establish this.
-
-The word **retained** is load-bearing. A process that overwrites its past need
-not have \(N(R)\) growing with \(R\), even if its instantaneous state changes
-rapidly.
 
 ### Resolution
 
@@ -97,21 +102,28 @@ is controlled by its small-scale packing dimension.
 
 ## 2. Representations and their radial rate
 
-Let \((M,d,o)\) be a pointed metric space. A representation
+Let \((M,d,o)\) be a pointed metric space. At each depth, a representation
+supplies an address map
 
 \[
-f:\bigcup_R\mathcal H_R\longrightarrow M
+f_R:\mathcal H_R\longrightarrow M.
 \]
 
-is **\(\varepsilon\)-faithful at finite radial rate** when:
+It is **\(\varepsilon\)-faithful at finite radial rate** when:
 
-1. \(d(f(x),f(y))\ge\varepsilon\) for distinct retained histories \(x,y\);
-2. \(f(\mathcal H_R)\subseteq B(o,r(R))\);
-3. the radial conversion rate is finite:
+1. \(f_R\) is injective;
+2. \(d(f_R(x),f_R(y))\ge\varepsilon\) for distinct \(x,y\in\mathcal H_R\);
+3. \(f_R(\mathcal H_R)\subseteq B(o,r(R))\);
+4. the radial conversion rate is finite:
 
    \[
    c:=\limsup_{R\to\infty}\frac{r(R)}R<\infty.
    \]
+
+Retention is a property of the source censuses,
+\(\mathcal H_R\subseteq\mathcal H_{R+1}\), not a requirement that
+\(f_{R+1}\) leave prior addresses fixed. A single nested address family is
+the stronger **persistent** rung of the capacity ladder.
 
 The units of \(c\) are geometric length per generative step. It converts the
 process clock into the host's radial ruler. It cannot be silently omitted when
@@ -160,6 +172,12 @@ condition below rather than using an unspecified notion of bounded geometry.
 
 ## 4. The addressability theorem
 
+Three results must remain distinct. Theorem 4.1 is the universal packing
+**converse** for a given faithful representation. Theorem 4.2 is exact
+finite-block **achievability**, with a codebook that may be redesigned at
+each radius. Theorem 4.4 is a host-specific **relational supremum** in real
+hyperbolic space. Only the first is the Addressability Limit.
+
 ### Theorem 4.1 — Addressability bound
 
 If a hierarchy of growth rate \(\beta\) admits an \(\varepsilon\)-faithful
@@ -182,8 +200,9 @@ finite-entropy hypothesis is used only for the non-trivial rate comparison.
 
 #### Proof
 
-The represented histories form an \(\varepsilon\)-separated subset of
-\(B(o,r(R))\), so
+Injectivity gives
+\(|f_R(\mathcal H_R)|=|\mathcal H_R|=N(R)\). The image is an
+\(\varepsilon\)-separated subset of \(B(o,r(R))\), so
 
 \[
 N(R)\le P(B(o,r(R)),\varepsilon).
@@ -215,11 +234,11 @@ radii
 
 Take the upper limit and then let \(\delta\downarrow0\). \(\square\)
 
-The finite-depth packing count and the convergent finite-rate case are
-machine-checked as `addressability_limit` in
+The finite-depth packing count and the convergent finite-rate corollary are
+machine-checked as `convergent_rate_addressability_limit` in
 [`lean/ActiveGeometry/Packing.lean`](lean/ActiveGeometry/Packing.lean), using
-Mathlib's exact `Metric.packingNumber`. The limsup statement above is retained
-as the more general paper theorem.
+Mathlib's exact `Metric.packingNumber`. The displayed limsup theorem is the
+paper's Addressability Limit.
 
 ### Theorem 4.2 — General block-addressability identity
 
@@ -320,6 +339,11 @@ use very few. Any theorem turning \(\delta\) into a quantitative capacity gap
 must add a particular source class, host class, and distortion criterion.
 
 ### Theorem 4.4 — Relational capacity of hyperbolic hosts
+
+This theorem is **not** curvature-free Layer I. It is the host-class
+closure of the ladder's relational rung in real hyperbolic space: a
+weighted-clock supremum, not endpoint attainment, and not a statement
+about an arbitrary metric host.
 
 The problem formerly stated here as Conjecture 4.4 is now settled. The exact
 unit-edge formulation was false as quantified: if \(c<\varepsilon\), a child
@@ -986,18 +1010,17 @@ address radius is allowed to grow superlinearly without cost.
 \boxed{
 \text{retained exponential novelty}
 \Longrightarrow
-\beta\le c\,h_{\mathrm{cap}}
+\beta\le c\,h_{\mathrm{pack}}
 }
 \]
 
-with \(h_{\mathrm{cap}}=h_{\mathrm{pack}}\) at the fixed operational
-resolution. Separately imposing
+at the fixed operational resolution. Separately imposing
 
 \[
 \boxed{
-\beta=c\,h_{\mathrm{cap}}
+\beta=c\,h_{\mathrm{pack}}
 \quad\text{and}\quad
-h_{\mathrm{cap}}=(n-1)\sqrt\kappa
+h_{\mathrm{pack}}=(n-1)\sqrt\kappa
 \Longrightarrow
 c^2\kappa=
 \left(

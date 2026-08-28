@@ -3,19 +3,21 @@
   ========================
 
   This file is the geometric kernel. It proves the convergent-rate packing
-  theorem that mathematicians should cite:
+  theorem that mathematicians should cite for the ordinary-limit case:
 
-      addressability_limit :
+      convergent_rate_addressability_limit :
         FaithfulRepresentation → r(R) → ∞ →
           (three rates converge) → Addressable β c h_pack
 
   in every proper metric host, with packing-number finiteness discharged.
 
-  A faithful representation supplies, at every generative depth `R`:
+  A faithful representation supplies a source type of histories and, at
+  every generative depth `R`:
 
-  * a finite, nonempty set of represented histories;
-  * fixed-resolution separation between distinct represented histories;
-  * containment in a ball of radius `r(R)`.
+  * a finite, nonempty census of source histories;
+  * an address map from those histories into the metric host;
+  * injectivity and fixed-resolution separation of their addresses;
+  * containment of the addresses in a ball of radius `r(R)`.
 
   Mathlib's `Metric.packingNumber` is the maximal cardinality, in extended
   naturals, of a separated subset of a metric set. Hence the represented count
@@ -38,7 +40,7 @@
 
   The conclusion is `Capacity.Addressable`. No curvature, isotropy,
   saturation, dimension, alphabet, or physical dynamics enters this proof.
-  Retention (`points_monotone`) is recorded on a separate structure; the
+  Retention (`histories_monotone`) is recorded on a separate structure; the
   bound does not use it. The block-achievability theorem does not claim that
   optimal codebooks across depths are nested, causal, or preserve a source
   hierarchy's relational metric.
@@ -196,71 +198,92 @@ theorem exists_optimal_blockCode_of_properSpace
   exists_optimal_blockCode o ε ρ hρ
     (hasFinitePacking_of_properSpace o hε)
 
-/-! ### Faithful representations -/
+/-! ### Histories and faithful address maps -/
 
-/-- A finite represented hierarchy at fixed metric resolution. Histories are
-    represented by the points themselves; separation is the faithfulness
-    condition, and containment records the addressing radius.
+/-- A finite history census with a depth-dependent address map into the host.
+    Faithfulness has two parts: no two histories in the census share an
+    address, and distinct addresses remain separated at resolution `ε`.
+    Containment records the radial budget.
 
     This structure does *not* require retention. The packing bound is a fact
     about each depth's census; a process that overwrites rather than accretes
     is still subject to the count, but its growth rate is then not a rate of
     retained history. -/
-structure FaithfulRepresentation (o : M) (ε : ℝ≥0) where
-  points : ℕ → Finset M
+structure FaithfulRepresentation (H : Type*) (o : M) (ε : ℝ≥0) where
+  histories : ℕ → Finset H
+  address : ℕ → H → M
   radius : ℕ → ℝ
   resolution_pos : 0 < ε
-  points_nonempty : ∀ R, (points R).Nonempty
-  separated : ∀ R, Metric.IsSeparated ε (points R : Set M)
-  contained : ∀ R, (points R : Set M) ⊆ Metric.closedBall o (radius R)
+  histories_nonempty : ∀ R, (histories R).Nonempty
+  address_injective : ∀ R, Set.InjOn (address R) (histories R : Set H)
+  separated :
+    ∀ R, Metric.IsSeparated ε (address R '' (histories R : Set H))
+  contained :
+    ∀ R, address R '' (histories R : Set H) ⊆ Metric.closedBall o (radius R)
 
-/-- Represented-history growth observed at depth `R`. -/
-noncomputable def representedRate
-    {o : M} {ε : ℝ≥0} (rep : FaithfulRepresentation o ε) (R : ℕ) : ℝ :=
-  Real.log ((rep.points R).card : ℝ) / (R : ℝ)
+/-- Source-history growth observed at depth `R`. It is a retained-history
+    rate only when the source censuses are nested, as in
+    `RetainedRepresentation`. -/
+noncomputable def historyRate
+    {H : Type*} {o : M} {ε : ℝ≥0}
+    (rep : FaithfulRepresentation H o ε) (R : ℕ) : ℝ :=
+  Real.log ((rep.histories R).card : ℝ) / (R : ℝ)
 
 /-- Radial distance used per generative step at depth `R`. -/
 noncomputable def radialRate
-    {o : M} {ε : ℝ≥0} (rep : FaithfulRepresentation o ε) (R : ℕ) : ℝ :=
+    {H : Type*} {o : M} {ε : ℝ≥0}
+    (rep : FaithfulRepresentation H o ε) (R : ℕ) : ℝ :=
   rep.radius R / (R : ℝ)
 
-/-- Finite-depth addressability: represented histories cannot outnumber the
-    exact packing count of their containing ball. -/
-theorem represented_card_le_packingCount
-    (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
+/-- Finite-depth addressability: faithfully addressed source histories cannot
+    outnumber the exact packing count of their containing ball. -/
+theorem history_card_le_packingCount
+    {H : Type*} (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation H o ε)
     (hfinite : HasFinitePacking o ε) (R : ℕ) (hρ : 0 ≤ rep.radius R) :
-    (rep.points R).card ≤ packingCount o ε (rep.radius R) :=
-  card_le_packingCount o ε (rep.radius R) (rep.points R)
-    hρ hfinite (rep.separated R) (rep.contained R)
+    (rep.histories R).card ≤ packingCount o ε (rep.radius R) := by
+  have henat :
+      (((rep.histories R).card : ℕ) : ℕ∞) ≤
+        Metric.packingNumber ε (Metric.closedBall o (rep.radius R)) := by
+    calc
+      (((rep.histories R).card : ℕ) : ℕ∞)
+          = (rep.histories R : Set H).encard := by simp
+      _ = (rep.address R '' (rep.histories R : Set H)).encard :=
+        (rep.address_injective R).encard_image.symm
+      _ ≤ Metric.packingNumber ε (Metric.closedBall o (rep.radius R)) :=
+        (rep.separated R).encard_le_packingNumber (rep.contained R)
+  have htop :
+      Metric.packingNumber ε (Metric.closedBall o (rep.radius R)) ≠ ⊤ :=
+    hfinite hρ
+  simpa [packingCount] using ENat.toNat_le_toNat henat htop
 
 /-- The finite-depth count inequality becomes a pointwise inequality between
     normalized logarithmic rates away from the irrelevant depth `R = 0`. -/
-theorem representedRate_le_capacity_eventually
-    (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
+theorem historyRate_le_capacity_eventually
+    {H : Type*} (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation H o ε)
     (hfinite : HasFinitePacking o ε)
     (hradius : Tendsto rep.radius atTop atTop) :
     ∀ᶠ R in atTop,
-      representedRate rep R ≤
+      historyRate rep R ≤
         radialRate rep R * packingRate o ε (rep.radius R) := by
   have hradius_pos : ∀ᶠ R in atTop, 0 < rep.radius R :=
     hradius (eventually_gt_atTop 0)
   filter_upwards [eventually_gt_atTop 0, hradius_pos] with R hR hr
   have hcount :=
-    represented_card_le_packingCount o ε rep hfinite R hr.le
-  have hcard_pos : 0 < ((rep.points R).card : ℝ) := by
-    exact_mod_cast Finset.card_pos.mpr (rep.points_nonempty R)
+    history_card_le_packingCount o ε rep hfinite R hr.le
+  have hcard_pos : 0 < ((rep.histories R).card : ℝ) := by
+    exact_mod_cast Finset.card_pos.mpr (rep.histories_nonempty R)
   have hcount_real :
-      ((rep.points R).card : ℝ) ≤
+      ((rep.histories R).card : ℝ) ≤
         (packingCount o ε (rep.radius R) : ℝ) := by
     exact_mod_cast hcount
   have hlog :
-      Real.log ((rep.points R).card : ℝ) ≤
+      Real.log ((rep.histories R).card : ℝ) ≤
         Real.log (packingCount o ε (rep.radius R) : ℝ) :=
     Real.log_le_log hcard_pos hcount_real
   have hR_real : 0 < (R : ℝ) := by exact_mod_cast hR
-  unfold representedRate radialRate packingRate
+  unfold historyRate radialRate packingRate
   calc
-    Real.log ((rep.points R).card : ℝ) / (R : ℝ)
+    Real.log ((rep.histories R).card : ℝ) / (R : ℝ)
         ≤ Real.log (packingCount o ε (rep.radius R) : ℝ) / (R : ℝ) :=
       (div_le_div_iff_of_pos_right hR_real).2 hlog
     _ = (rep.radius R / (R : ℝ)) *
@@ -269,18 +292,18 @@ theorem representedRate_le_capacity_eventually
 
 /-- Convergent-rate addressability limit, with packing finiteness as an
     explicit hypothesis. The three rate hypotheses are independent:
-    represented-history growth, radial calibration, and host packing growth
+    source-history growth, radial calibration, and host packing growth
     are not defined from one another. Radius divergence is stated separately
     because it is an asymptotic sampling premise, not part of faithfulness.
 
     The paper's theorem uses limsup; this declaration uses ordinary finite
     limits (`Tendsto`). -/
-theorem addressability_limit_of_hasFinitePacking
-    (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
+theorem convergent_rate_addressability_limit_of_hasFinitePacking
+    {H : Type*} (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation H o ε)
     (hfinite : HasFinitePacking o ε)
     (β c hpack : ℝ)
     (hradius : Tendsto rep.radius atTop atTop)
-    (hdemand : Tendsto (representedRate rep) atTop (𝓝 β))
+    (hdemand : Tendsto (historyRate rep) atTop (𝓝 β))
     (hradial : Tendsto (radialRate rep) atTop (𝓝 c))
     (hpacking : Tendsto (packingRate o ε) atTop (𝓝 hpack)) :
     Capacity.Addressable β c hpack := by
@@ -288,67 +311,65 @@ theorem addressability_limit_of_hasFinitePacking
       Tendsto (fun R ↦ packingRate o ε (rep.radius R)) atTop (𝓝 hpack) := by
     simpa [Function.comp_def] using hpacking.comp hradius
   apply le_of_tendsto_of_tendsto hdemand (hradial.mul hsampled)
-  exact representedRate_le_capacity_eventually o ε rep hfinite hradius
+  exact historyRate_le_capacity_eventually o ε rep hfinite hradius
 
-/-- The addressability limit in a proper metric host.
+/-- The convergent-rate corollary of the Addressability Limit in a proper
+    metric host.
 
     If a faithful finite-resolution representation has radii tending to
-    infinity, convergent represented growth `β`, convergent radial rate `c`,
+    infinity, convergent source-history growth `β`, convergent radial rate `c`,
     and the host has convergent packing growth `h_pack`, then
     `β ≤ c · h_pack`. Finiteness of packing numbers is a theorem for this
     host class, not an extra assumption.
 
-    Cite this declaration. The paper's limsup formulation is the more general
-    theorem; Theorem 4.4 (weighted relational capacity of `ℍⁿ_κ`) and
-    Theorem 7.1 (Heintze / A3) are not this theorem and are not Lean. -/
-theorem addressability_limit
-    [ProperSpace M] (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
+    Cite this declaration for the Lean-checked ordinary-limit case. The
+    paper's limsup formulation is the Addressability Limit. Theorem 4.4
+    (weighted relational capacity of `ℍⁿ_κ`) and Theorem 7.1 (Heintze / A3)
+    are not this theorem and are not Lean. -/
+theorem convergent_rate_addressability_limit
+    {H : Type*} [ProperSpace M]
+    (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation H o ε)
     (β c hpack : ℝ)
     (hradius : Tendsto rep.radius atTop atTop)
-    (hdemand : Tendsto (representedRate rep) atTop (𝓝 β))
+    (hdemand : Tendsto (historyRate rep) atTop (𝓝 β))
     (hradial : Tendsto (radialRate rep) atTop (𝓝 c))
     (hpacking : Tendsto (packingRate o ε) atTop (𝓝 hpack)) :
     Capacity.Addressable β c hpack :=
-  addressability_limit_of_hasFinitePacking o ε rep
+  convergent_rate_addressability_limit_of_hasFinitePacking o ε rep
     (hasFinitePacking_of_properSpace o rep.resolution_pos.ne') β c hpack
     hradius hdemand hradial hpacking
 
-/-- A zero-capacity host cannot carry positive represented growth under the
+/-- A zero-capacity host cannot carry positive source-history growth under the
     hypotheses of the packing theorem. -/
 theorem no_positive_growth_at_zero_capacity
-    (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation o ε)
+    {H : Type*} (o : M) (ε : ℝ≥0) (rep : FaithfulRepresentation H o ε)
     (hfinite : HasFinitePacking o ε)
     (β c : ℝ) (hβ : 0 < β)
     (hradius : Tendsto rep.radius atTop atTop)
-    (hdemand : Tendsto (representedRate rep) atTop (𝓝 β))
+    (hdemand : Tendsto (historyRate rep) atTop (𝓝 β))
     (hradial : Tendsto (radialRate rep) atTop (𝓝 c))
     (hpacking : Tendsto (packingRate o ε) atTop (𝓝 0)) :
     False := by
   have hbound :=
-    addressability_limit_of_hasFinitePacking
+    convergent_rate_addressability_limit_of_hasFinitePacking
       o ε rep hfinite β c 0 hradius hdemand hradial hpacking
   unfold Capacity.Addressable at hbound
   nlinarith
 
-/-! ### Retention -/
+/-! ### Retention in the source -/
 
-/-- A faithful representation that *retains* histories: every point present
-    at depth `R` is still present at depth `R+1`. Retention is the
-    load-bearing meaning of the word "retained" in `β`; the packing bound
-    itself does not need it.
+/-- A faithful representation whose source census retains prior histories.
+    Addresses may change with depth; retention constrains histories, not host
+    coordinates. The packing bound itself needs only faithfulness at each
+    depth. -/
+structure RetainedRepresentation (H : Type*) (o : M) (ε : ℝ≥0)
+    extends FaithfulRepresentation H o ε where
+  histories_monotone : ∀ R, histories R ⊆ histories (R + 1)
 
-    This is a strong fixed-address model of retention (nested codebooks), not
-    a theorem that every process retaining abstract histories must keep their
-    representing points fixed. More general retention would require a source
-    type and explicit maps between depths. -/
-structure RetainedRepresentation (o : M) (ε : ℝ≥0)
-    extends FaithfulRepresentation o ε where
-  points_monotone : ∀ R, points R ⊆ points (R + 1)
-
-/-- Retention makes represented counts nondecreasing in depth. -/
-theorem represented_card_mono {o : M} {ε : ℝ≥0}
-    (rep : RetainedRepresentation o ε) (R : ℕ) :
-    (rep.points R).card ≤ (rep.points (R + 1)).card :=
-  Finset.card_le_card (rep.points_monotone R)
+/-- Retention makes source-history counts nondecreasing in depth. -/
+theorem history_card_mono {H : Type*} {o : M} {ε : ℝ≥0}
+    (rep : RetainedRepresentation H o ε) (R : ℕ) :
+    (rep.histories R).card ≤ (rep.histories (R + 1)).card :=
+  Finset.card_le_card (rep.histories_monotone R)
 
 end ActiveGeometry.Packing

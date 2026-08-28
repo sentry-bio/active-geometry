@@ -2,11 +2,11 @@
   Active Geometry: public entry point
   ===================================
 
-  Cite `Packing.addressability_limit` (re-exported below as
-  `addressability_limit`). That is the convergent-rate packing theorem in
-  every proper metric host: a faithful finite-resolution representation with
-  radii tending to infinity and convergent represented growth `β`, radial
-  rate `c`, and host packing growth `h_pack` satisfies
+  Cite `Packing.convergent_rate_addressability_limit` (re-exported below).
+  It is the ordinary-limit corollary of the paper's Addressability Limit. In
+  every proper metric host, a finite source census with an injective,
+  `ε`-separated address map, radii tending to infinity, and convergent history
+  growth `β`, radial rate `c`, and host packing growth `h_pack` satisfies
 
       β ≤ c · h_pack.
 
@@ -29,7 +29,7 @@
 
   File cut:
 
-  * `Packing`          — metric kernel; `addressability_limit`
+  * `Packing`          — metric kernel; convergent-rate addressability limit
   * `Capacity`         — algebra of the bound (floor, gauge, `η`)
   * `StateEquation`    — optional face: saturation + space-form chart
   * `Measurability`    — growth-class instrument, not a theory layer
@@ -45,6 +45,6 @@ import ActiveGeometry.Measurability
 
 namespace ActiveGeometry
 
-export Packing (addressability_limit)
+export Packing (convergent_rate_addressability_limit)
 
 end ActiveGeometry

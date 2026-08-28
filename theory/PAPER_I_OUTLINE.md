@@ -129,7 +129,10 @@ supplies them. It does not place a clade, fit a \(\kappa\), or run E9.
 
 ## Status
 
-Mathematics: Layer I proved; block identity Lean-checked; Theorem 4.4
-paper-level with cited lower bound; Theorem 7.1 a paper sketch
-conditional on A3. The spine is closed. Cutting TeX is the next
-manuscript act, not another theorem.
+Mathematics: the packing bound and finite-block identity are proved (the
+convergent-rate bound and finite-radius identity are Lean-checked). The
+capacity ladder is a hierarchy of definitions; its rung values remain open
+except for block capacity and the host-specific weighted relational
+supremum of Theorem 4.4, whose lower bound is paper-level and cited.
+Theorem 7.1 remains a paper sketch conditional on A3. Cutting TeX requires
+no stronger claim than this boundary.

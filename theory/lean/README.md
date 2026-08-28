@@ -7,12 +7,13 @@ dependency structure is
 metric packing argument and its hypotheses are in
 [`../MATHEMATICAL_SPINE.md`](../MATHEMATICAL_SPINE.md).
 
-The declaration mathematicians should cite is
-`ActiveGeometry.addressability_limit`
-(`Packing.addressability_limit`): in every proper metric host, a faithful
-finite-resolution representation whose radii tend to infinity and whose
-represented growth, radial rate, and packing growth converge satisfies
-\(\beta\le c\,h_{\mathrm{pack}}\).
+The Lean declaration mathematicians should cite is
+`ActiveGeometry.convergent_rate_addressability_limit`
+(`Packing.convergent_rate_addressability_limit`). It is the ordinary-limit
+corollary of the paper's limsup Addressability Limit. In every proper metric
+host, a finite source census with an injective, fixed-resolution separated
+address map, radii tending to infinity, and convergent history growth, radial
+rate, and packing growth satisfies \(\beta\le c\,h_{\mathrm{pack}}\).
 
 ## Mathematical hierarchy
 
@@ -78,7 +79,7 @@ a theorem that the host is \(\mathbb H^n_\kappa\).
 
 ```text
 ActiveGeometry/
-├── Packing.lean         # metric kernel; addressability_limit
+├── Packing.lean         # metric kernel; convergent-rate limit
 ├── Capacity.lean        # algebra of the bound (floor, gauge, η)
 ├── StateEquation.lean   # optional face: saturation + space-form chart
 └── Measurability.lean   # growth-class gate identities (instrument)
@@ -96,14 +97,14 @@ axiomatize a capacity envelope. Formalized results include:
 | `exists_optimal_blockCode` | an exact finite packing code exists whenever the ball packing number is finite |
 | `exists_optimal_blockCode_of_properSpace` | exact finite-block achievability in every proper metric host |
 | `hasFinitePacking_of_properSpace` | in any proper metric space the finiteness hypothesis is a theorem |
-| `FaithfulRepresentation` | finite separated census in a ball; no retention or asymptotic premise |
-| `represented_card_le_packingCount` | represented histories obey the packing bound at every depth |
-| `representedRate_le_capacity_eventually` | finite counts induce the normalized rate inequality |
-| `addressability_limit_of_hasFinitePacking` | diverging radii and three independent ordinary limits prove `Addressable β c hpack` |
-| `addressability_limit` | the same theorem with packing finiteness discharged in a proper host |
+| `FaithfulRepresentation` | finite source census and explicit address map; injective and separated on that census |
+| `history_card_le_packingCount` | faithfully addressed source histories obey the packing bound at every depth |
+| `historyRate_le_capacity_eventually` | finite source counts induce the normalized rate inequality |
+| `convergent_rate_addressability_limit_of_hasFinitePacking` | diverging radii and three ordinary limits prove `Addressable β c hpack` |
+| `convergent_rate_addressability_limit` | the same theorem with packing finiteness discharged in a proper host |
 | `no_positive_growth_at_zero_capacity` | zero packing capacity excludes positive represented growth |
-| `RetainedRepresentation` | strong fixed-address retention: faithful representation plus nested codebooks (`points_monotone`) |
-| `represented_card_mono` | retention makes represented counts nondecreasing in depth |
+| `RetainedRepresentation` | faithful representation plus nested source censuses (`histories_monotone`); addresses may change |
+| `history_card_mono` | retention makes source-history counts nondecreasing in depth |
 
 The formal theorem uses ordinary finite limits for represented growth, radial
 rate, and packing growth. The full spine's limsup version is a more general

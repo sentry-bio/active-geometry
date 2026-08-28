@@ -13,7 +13,8 @@
   stability without an explicit dynamics and a proof that the diagnostic
   decreases along trajectories.
 
-  Cite `Packing.addressability_limit` for the bound. Cite
+  Cite `Packing.convergent_rate_addressability_limit` for the Lean-checked
+  ordinary-limit bound. Cite
   `normalized_state_equation` only when saturation and a space-form
   identification have been supplied independently.
 -/

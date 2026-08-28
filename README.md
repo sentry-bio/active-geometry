@@ -10,8 +10,8 @@
 > Remembering while creating costs room. Retained-history growth obeys the
 > coordinate-free limit **β ≤ c·h_pack**, and block capacity reaches that
 > ceiling exactly. Distinguishable endpoints need not preserve their
-> genealogy; in a real hyperbolic host, however, genealogy has zero
-> exponential-order tax.
+> genealogy; in a real hyperbolic host, however, the weighted-clock
+> relational *supremum* has zero exponential-order tax.
 
 The one-page dependency graph is
 [`theory/THROUGHLINE.md`](theory/THROUGHLINE.md): **limit → ladder → quartet
@@ -88,8 +88,10 @@ achieves equality. Cross-alphabet measurements reported by the paper include
 `h_protein = 2.85` bits predicting normalized `κ̄_protein = 3.90`, with measured
 raw `κ_protein = 3.80 ± 0.60` under the paper's radial convention.
 
-Viral curvature-entropy correlation: **Pearson r = 0.996**, explaining
-99.3% of variance with zero free parameters.
+Viral curvature-entropy correlation reported in Paper II:
+**Pearson r = 0.996**, explaining 99.3% of variance after the radial
+calibration and dimension are supplied. This is not evidence that
+capacity saturation holds.
 
 ---
 
@@ -114,7 +116,7 @@ cd theory/lean && lake build
 ```
 
 Compiles the metric packing theorem and scale-aware addressability algebra,
-including `addressability_limit`,
+including `convergent_rate_addressability_limit`,
 `curvature_at_least_floor`, `normalized_state_equation`,
 and `normalized_curvature_scale_invariant`. Zero sorries. See
 [theory/lean/README.md](theory/lean/README.md) for scope and inventory.

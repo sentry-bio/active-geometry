@@ -25,8 +25,15 @@ in [`RELATIONAL_CAPACITY_THEOREM.md`](RELATIONAL_CAPACITY_THEOREM.md); the tests
 
 - **Layer I — universal capacity theory (curvature-free).** The bound
   \(\beta\le c\,h_{\mathrm{pack}}\); the exact block identity
-  \(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\); the constrained-capacity ladder;
-  the slack decomposition. Proven and machine-checked. Mentions no curvature.
+  \(C_{\mathrm{block}}=c\,h_{\mathrm{pack}}\); the constrained-capacity
+  ladder as nested admissibility classes; the slack decomposition; the
+  trichotomy. Proven as packing geometry. Mentions no curvature.
+
+- **Host-class closure of the relational rung.** Theorem 4.4: in
+  \(\mathbb H_\kappa^n\), under a local weighted process clock, the
+  supremum relational capacity equals block capacity. This is a hyperbolic
+  host theorem, not a Layer I universal result. It is stated next to the
+  ladder because that is where the question arises.
 
 - **Layer IIa — host class (realization).** *Which* geometry hosts the data:
   hyperbolic, at what dimension, given named symmetry. The space-form argument
@@ -68,12 +75,14 @@ publication contract is [`PAPER_I_OUTLINE.md`](PAPER_I_OUTLINE.md).
 - **arXiv.** Primary `math.MG`; secondary `cs.IT`. Not `q-bio.*`, not
   `cs.LG`, not `cond-mat.stat-mech`. Cross-list `math.DG` only if the
   Heintze section stays long in the submitted TeX.
-- **Carries.** All of Layer I (bound, trichotomy, block identity, ladder,
-  slack), the relational-capacity coding theorem (genealogy has zero
-  exponential tax in \(\mathbb H_\kappa^n\)), the Layer IIa realization
-  theorems including Theorem 7.1 (Heintze isotropy, conditional on axiom
-  A3), and \(n=2\) as embeddability. Presents the state equation as a
-  *conditional* Layer IIb ideal, not a law, and not in the title.
+- **Carries.** All of Layer I (bound, trichotomy, block identity, ladder
+  as nested classes, slack), the relational-capacity coding theorem as a
+  *host-class* identity (genealogy has zero exponential-order tax in
+  \(\mathbb H_\kappa^n\) under a weighted clock; supremum, not
+  attainment), the Layer IIa realization theorems including Theorem 7.1
+  (Heintze isotropy, conditional on axiom A3), and \(n=2\) as
+  embeddability. Presents the state equation as a *conditional* Layer IIb
+  face, not a law, and not in the title.
 - **Backed by.** The Lean development under `theory/lean/` (bound and block
   identity fully checked; Layer II algebra checked), the cited Bishop--Jones
   lower bound in `theory/RELATIONAL_CAPACITY_THEOREM.md`, and the

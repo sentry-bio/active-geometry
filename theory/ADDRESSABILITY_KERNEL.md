@@ -33,6 +33,13 @@ theorem is an independent classifier attached to IIa: it can motivate a
 hyperbolic host class or a minimal embedding dimension, but it does not
 calibrate capacity or curvature.
 
+**Symbols.** \(h_{\mathrm{pack}}\) is the rate defined from metric packing.
+Lean's `Capacity.Addressable` names its generic third argument `hcap`; the
+packing theorem fills that slot with `hpack`. \(h_{\mathrm{vol}}\) is a
+separate volume rate and is identified with packing only under additional
+hypotheses. The paper theorem uses limsup. Lean checks the ordinary-limit
+corollary as `convergent_rate_addressability_limit`.
+
 A warning that the sublayer split makes sharp: **isotropy is asserted, never
 measured.** In the meter it is the command-line flag
 `assume_isotropic_hyperbolic` — the entire IIa premise reduced to a switch. No
@@ -45,14 +52,25 @@ questions; E9 does not grant isotropy.
 
 ## 1. Independent quantities
 
-Let \(R\) denote generative depth and let \(N(R)\) be the number of retained,
-operationally distinguishable histories through depth \(R\). Define
+Let \(R\) denote generative depth and let \(N(R)\) be the number of
+operationally distinguishable histories in the finite source census at depth
+\(R\). When the censuses are nested, these are retained histories. Define
 
 \[
 \beta:=\limsup_{R\to\infty}\frac{\log N(R)}{R}
 \quad
 \text{[nats / generative step]}.
 \]
+
+Formally, at depth \(R\) let \(\mathcal H_R\) be a finite source census and
+let \(f_R:\mathcal H\to M\) be its address map. Faithfulness means that
+\(f_R\) is injective on \(\mathcal H_R\) and that
+\(f_R(\mathcal H_R)\) is \(\varepsilon\)-separated. Retention is the
+additional source condition
+\(\mathcal H_R\subseteq\mathcal H_{R+1}\); addresses may change with depth.
+The packing inequality needs faithfulness at each depth, not retention.
+Retention is what licenses interpreting \(\beta\) as accumulated memory
+rather than growth of unrelated censuses.
 
 Let \((M,d,o)\) be the representation space. At a fixed resolution
 \(\varepsilon>0\), let
@@ -67,7 +85,7 @@ be the maximum number of \(\varepsilon\)-separated points in the radius-\(\rho\)
 ball. Define the host-capacity rate
 
 \[
-h_{\mathrm{cap}}
+h_{\mathrm{pack}}
 :=
 \limsup_{\rho\to\infty}
 \frac{\log P(\rho,\varepsilon)}{\rho}
@@ -84,7 +102,7 @@ c:=\limsup_{R\to\infty}\frac{r(R)}{R}
 \text{[radial distance / generative step]}.
 \]
 
-The three quantities \(\beta\), \(c\), and \(h_{\mathrm{cap}}\) are logically
+The three quantities \(\beta\), \(c\), and \(h_{\mathrm{pack}}\) are logically
 independent. No one of them is defined by either of the others.
 
 ## 2. The unconditional limit
@@ -93,57 +111,55 @@ independent. No one of them is defined by either of the others.
 
 Assume:
 
-1. distinct retained histories remain at least \(\varepsilon\) apart;
-2. their images through depth \(R\) lie in \(B(o,r(R))\);
-3. \(0<c<\infty\);
-4. \(h_{\mathrm{cap}}<\infty\);
-5. the radii enter the asymptotic regime, \(r(R)\to\infty\).
+1. the address map is injective on the depth-\(R\) source census;
+2. distinct addressed histories remain at least \(\varepsilon\) apart;
+3. their images through depth \(R\) lie in \(B(o,r(R))\);
+4. \(0<c<\infty\);
+5. \(h_{\mathrm{pack}}<\infty\);
+6. the radii enter the asymptotic regime, \(r(R)\to\infty\).
 
 Then
 
 \[
-\boxed{\beta\le c\,h_{\mathrm{cap}}.}
+\boxed{\beta\le c\,h_{\mathrm{pack}}.}
 \]
 
 ### Proof
 
-Faithfulness gives the finite-depth counting inequality
+The injective, separated address map gives the finite-depth counting inequality
 
 \[
 N(R)\le P(r(R),\varepsilon).
 \]
 
-Taking logarithms, dividing by \(R\), and applying the definitions of the two
-asymptotic rates yields
+For every \(\delta>0\), eventually
+\(r(R)\le(c+\delta)R\). Since \(r(R)\to\infty\), the limsup definition of
+\(h_{\mathrm{pack}}\) also gives, eventually,
 
 \[
-\limsup_{R\to\infty}\frac{\log N(R)}R
+\frac{\log N(R)}R
 \le
-\left(
-\limsup_{R\to\infty}\frac{r(R)}R
-\right)
-\left(
-\limsup_{\rho\to\infty}
-\frac{\log P(\rho,\varepsilon)}{\rho}
-\right).
+(c+\delta)(h_{\mathrm{pack}}+\delta).
 \]
 
-Hence \(\beta\le c\,h_{\mathrm{cap}}\).
+Taking the upper limit and then \(\delta\downarrow0\) gives
+\(\beta\le c\,h_{\mathrm{pack}}\).
 
 This is the kernel's only prohibition. Written with the quantifiers flipped
 it is a trichotomy, not only a ceiling:
 
-- \(\beta>0\) and \(c<\infty\) \(\Rightarrow\) \(h_{\mathrm{cap}}>0\)
+- \(\beta>0\) and \(c<\infty\) \(\Rightarrow\) \(h_{\mathrm{pack}}>0\)
   (exponential packing);
-- \(h_{\mathrm{cap}}=0\) at fixed dimension \(\Rightarrow\) either
+- \(h_{\mathrm{pack}}=0\) at fixed dimension \(\Rightarrow\) either
   \(\beta=0\) (forgetting) or \(c=\infty\) (address radius superlinear,
   and exponential in Euclidean degree \(n\));
 - every finite-\(R\) census is a packing count on a compact ball; the
   displayed rates are the \(R\to\infty\) limit.
 
 Finite rate is a condition of the first reading, not a standing hypothesis
-on every representation. Processes that overwrite rather than retain sit
-outside the bound.
+on every representation. A process that overwrites is still subject to the
+finite-depth packing count; what it lacks is the nested source census needed
+to call its growth rate retained memory.
 
 ## 3. The general block-capacity identity
 
@@ -181,7 +197,7 @@ C_{\mathrm{block}}(c,\varepsilon)
 :=
 \limsup_{R\to\infty}
 \frac{\log A_{\mathrm{block}}(cR,\varepsilon)}{R}
-=c\,h_{\mathrm{cap}}.
+=c\,h_{\mathrm{pack}}.
 }
 \]
 
@@ -217,7 +233,7 @@ rate achievable in host \(M\) under class \(\mathcal A\),
 \[
 \boxed{
 C_{\mathrm{relational}}\le C_{\mathrm{causal}}\le C_{\mathrm{persistent}}
-\le C_{\mathrm{block}}=c\,h_{\mathrm{cap}}.
+\le C_{\mathrm{block}}=c\,h_{\mathrm{pack}}.
 }
 \]
 
@@ -229,7 +245,11 @@ is therefore a **constrained capacity theory** — geometry supplies addresses;
 the admissibility class decides which addresses are usable — with a complete
 relational coding theorem in its canonical host.
 
-### The relational capacity theorem
+### Host-class closure of the relational rung
+
+This is not part of the curvature-free limit. It answers a stronger
+achievability question after the host has been fixed to real hyperbolic
+space.
 
 The problem formerly called Conjecture 4.4 is settled, after correcting a
 false clocking condition.
@@ -268,7 +288,7 @@ the budget. The ranked experimental protocol is
 Define
 
 \[
-\eta:=\frac{\beta}{c\,h_{\mathrm{cap}}}
+\eta:=\frac{\beta}{c\,h_{\mathrm{pack}}}
 \]
 
 when the denominator is positive. The theorem gives \(\eta\le1\).
@@ -276,7 +296,7 @@ when the denominator is positive. The theorem gives \(\eta\le1\).
 Capacity saturation is the separate condition
 
 \[
-\boxed{\beta=c\,h_{\mathrm{cap}}}
+\boxed{\beta=c\,h_{\mathrm{pack}}}
 \qquad(\eta=1).
 \]
 
@@ -295,7 +315,7 @@ lossless addressability. Neither mechanism follows from the inequality alone.
 
 When a process is represented under a relational class, the block slack splits
 into two physically distinct terms. With block capacity
-\(B:=c\,h_{\mathrm{cap}}\) and relational capacity \(C_{\mathrm{rel}}\),
+\(B:=c\,h_{\mathrm{pack}}\) and relational capacity \(C_{\mathrm{rel}}\),
 
 \[
 \boxed{
@@ -362,7 +382,7 @@ assumption that the host is the constant-curvature space
 \(\kappa\ge0\). Its volume entropy is
 
 \[
-h_{\mathrm{cap}}=h_{\mathrm{vol}}=(n-1)\sqrt\kappa.
+h_{\mathrm{pack}}=h_{\mathrm{vol}}=(n-1)\sqrt\kappa.
 \]
 
 The addressability theorem then gives the curvature floor
@@ -448,7 +468,7 @@ chosen.
 \\[2mm]
 \Downarrow
 \\[2mm]
-\beta\le c\,h_{\mathrm{cap}}
+\beta\le c\,h_{\mathrm{pack}}
 \\[4mm]
 \begin{array}{cc}
 \text{capacity saturation}
@@ -510,16 +530,17 @@ count using Mathlib's canonical `Metric.packingNumber`. In the convergent-rate
 case it proves
 
 ```text
-addressability_limit :
+convergent_rate_addressability_limit :
   Addressable β c hpack
 ```
 
-from an explicit premise that the radii tend to infinity and independent
-ordinary limits (`Tendsto`) for represented-history growth, radial rate, and
-exact ball-packing growth, with packing-number finiteness discharged in every
-proper metric host. The limsup formulation in the full spine is the more
-general paper theorem; the Lean theorem deliberately uses ordinary finite
-limits to keep the formal kernel minimal. Theorem 4.4
+for a finite source census and explicit address map that is injective and
+separated on that census, from an explicit premise that the radii tend to
+infinity and independent ordinary limits (`Tendsto`) for source-history
+growth, radial rate, and exact ball-packing growth. Packing-number finiteness
+is discharged in every proper metric host. The limsup Addressability Limit in
+the full spine is the more general paper theorem; the Lean declaration is
+named for its ordinary-limit scope. Theorem 4.4
 (Skenderi) and Theorem 7.1 (Heintze / A3) are not this theorem and are not Lean.
 
 The same file proves finite-block achievability:
@@ -534,10 +555,10 @@ code families.
 The finiteness side condition `HasFinitePacking` is not an extra assumption for
 the intended host class: `hasFinitePacking_of_properSpace` proves it for every
 proper metric space (ℝⁿ, hyperbolic space, and every complete Riemannian
-manifold via Hopf–Rinow). Faithfulness (separation in a growing ball) is the
-input to the bound; retention (`points_monotone`) is a separate structure, and
-represented counts of a retained representation are proved nondecreasing in
-depth.
+manifold via Hopf–Rinow). Faithfulness (injective, separated addressing in a
+growing ball) is the input to the bound; retention
+(`histories_monotone`) is a separate source condition. Addresses may change
+with depth, while retained source counts are proved nondecreasing.
 
 `lean/ActiveGeometry/Capacity.lean` then formalizes the algebra downstream.
 Its central predicates mirror the dependency structure:

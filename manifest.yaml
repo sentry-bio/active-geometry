@@ -1,17 +1,24 @@
 # =============================================================================
 # Active Geometry: Paper Manifest
 # =============================================================================
-# Machine-readable specification of claims, measurements, and verification
-# for Fenn & Fenn 2026, "Evolution as Active Geometry" (bioRxiv Paper I,
-# doi:10.64898/2026.03.09.710612).
+# Machine-readable specification of claims, measurements, and verification.
+# Paper I is the packing limit. Paper II is the biology instance. The public
+# bioRxiv preprint is Paper II, not the mathematical kernel.
 # =============================================================================
 
 paper:
-  title: "Evolution as Active Geometry"
-  subtitle: "The Geometric State Equation of the Tree of Life"
+  title: "The Addressability Limit"
+  subtitle: "A Packing Bound for Information-Generating Hierarchies"
   version: "2.0"
-  doi: "10.64898/2026.03.09.710612"
-  bibref: "Fenn & Fenn 2026, bioRxiv"
+  biology_preprint:
+    title: "Evolution as Active Geometry"
+    doi: "10.64898/2026.03.09.710612"
+    bibref: "Fenn & Fenn 2026, bioRxiv"
+    role: "Paper II public face; not the source of the packing theorem"
+  contracts:
+    paper_i: "theory/PAPER_I_OUTLINE.md"
+    paper_ii: "theory/PAPER_II_OUTLINE.md"
+    program: "theory/PROGRAM.md"
 
   authors:
     - {name: "Rohit Fenn", affiliation: "Sentry Bio"}
@@ -23,9 +30,10 @@ paper:
       beta and represents them faithfully at finite radial rate c must use a
       host whose packing entropy obeys beta <= c * h_pack. For Riemannian hosts
       with uniform fixed-ball volume bounds, h_pack = h_vol. Polynomial-growth
-      hosts are therefore excluded. Under capacity saturation and an isotropic
-      hyperbolic realization, normalized curvature kappa_bar = c^2 * kappa
-      obeys kappa_bar = (h * ln 2 / (n-1))^2.
+      hosts are therefore excluded at fixed dimension. The state-equation
+      equality kappa_bar = (h * ln 2 / (n-1))^2 is the face of that region
+      after capacity saturation and a space-form identification; it is not
+      a second primitive.
 
     universal_invariant: |
       Genuinely branching tree metrics have minimal smooth hyperbolic ambient
@@ -36,11 +44,12 @@ paper:
       dependent on rate, radial calibration, and scale.
 
   abstract:
-    universal_invariant: "reported n = 2.00 +/- 0.05; theoretical status is a pure-tree embeddability prediction"
-    state_equation: "kappa = (h * ln 2 / (n-1))^2, zero free parameters"
-    inter_domain_kappa: "kappa in [1.28, 1.34] (telescope on 3-domain encoder)"
-    intra_domain_kappa: "kappa = 3.0 (fungi), 12.7 (archaea), 16.4 (bacteria)"
-    cross_alphabet_prediction: "3.1x jump DNA -> protein at Pearson r = 0.996 (15 viral families)"
+    packing_limit: "beta <= c * h_pack (Lean: convergent_rate_addressability_limit)"
+    embeddability_floor: "n = 2 for genuinely branching trees in the stated smooth hyperbolic class"
+    state_equation: "kappa_bar = (h * ln 2 / (n-1))^2 only under saturation plus space-form identification"
+    inter_domain_kappa: "kappa in [1.28, 1.34] (telescope on 3-domain encoder; Paper II measurement, not a packing proof)"
+    intra_domain_kappa: "kappa = 3.0 (fungi), 12.7 (archaea), 16.4 (bacteria); Paper II, encoder-free tree embedding"
+    cross_alphabet_prediction: "3.1x jump DNA -> protein at Pearson r = 0.996 (15 viral families); Paper II, not certified as eta"
     encoder_convergence: "Procrustes r = 0.94 +/- 0.02 across 5 seeds at fixed kappa = 1.0"
 
 # =============================================================================
@@ -59,9 +68,11 @@ formal_verification:
   axioms_used: ["propext", "Classical.choice", "Quot.sound"]
 
   scope_note: |
-    Lean proves the finite-depth metric packing count and the convergent-rate
-    addressability theorem (addressability_limit) using Mathlib's exact
-    Metric.packingNumber. It keeps the next logical levels explicit:
+    Lean proves the finite-depth metric packing count and the ordinary-limit
+    corollary (convergent_rate_addressability_limit) using Mathlib's exact
+    Metric.packingNumber. Its representation contains finite source histories
+    and an explicit injective, separated address map. It keeps the next
+    logical levels explicit:
     CapacitySaturated is a separate hypothesis, and hcap_eq_spaceForm is a
     rate identification with (n-1)√κ, not a theorem that the host is H^n.
     It checks their algebraic consequences, including the curvature floor,
@@ -71,8 +82,8 @@ formal_verification:
     equality, or DNA/alphabet entropy ceilings.
 
   core_theorems:
-    - {name: "addressability_limit", statement: "in a proper metric host, diverging radii and independent represented-growth, radial-rate, and exact packing-rate limits imply beta <= c*h_pack"}
-    - {name: "addressability_limit_of_hasFinitePacking", statement: "the same implication with packing finiteness as an explicit hypothesis"}
+    - {name: "convergent_rate_addressability_limit", statement: "in a proper metric host, finite source censuses with injective separated address maps, diverging radii, and independent history-growth, radial-rate, and exact packing-rate limits imply beta <= c*h_pack"}
+    - {name: "convergent_rate_addressability_limit_of_hasFinitePacking", statement: "the same ordinary-limit implication with packing finiteness as an explicit hypothesis"}
     - {name: "hasFinitePacking_of_properSpace", statement: "in a proper metric space the packing-finiteness hypothesis is a theorem, not an assumption"}
     - {name: "addressability_forces_positive_entropy", statement: "beta > 0, c > 0, and beta <= c*h_cap imply h_cap > 0"}
     - {name: "efficiency_le_one", statement: "for c,h_cap > 0 and beta <= c*h_cap, eta = beta/(c*h_cap) <= 1"}

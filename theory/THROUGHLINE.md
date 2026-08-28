@@ -55,9 +55,10 @@ entropy \(h_{\mathrm{pack}}\),
 \boxed{\beta\le c\,h_{\mathrm{pack}}.}
 \]
 
-This is curvature-free. It is a counting theorem: an
-\(\varepsilon\)-faithful finite-rate representation cannot retain more
-histories than its metric balls can separate. Finite rate is a
+This is curvature-free. At depth \(R\), an explicit address map sends a
+finite source census \(\mathcal H_R\) injectively to an
+\(\varepsilon\)-separated subset of a radius-\(r(R)\) ball. It therefore
+cannot address more histories than that ball can separate. Finite rate is a
 *condition* of that ceiling, not a standing property of every
 representation. The same count is a trichotomy (Corollary 4.3):
 
@@ -71,9 +72,9 @@ representation. The same count is a trichotomy (Corollary 4.3):
 
 Raising Euclidean dimension raises the polynomial budget; the exclusion
 is at fixed dimension. A matched-*parameter* bake-off is therefore not a
-test of the limit. Processes that overwrite rather than accrete sit
-outside the bound: a constraint that governed every process would
-govern none. The limit is a depth theorem — one split does not need
+test of the limit. An overwriting process still obeys the finite-depth
+count, but without nested source censuses its \(\beta\) is not a rate of
+retained memory. The limit is a depth theorem — one split does not need
 exponential room; a retained stack of splits does.
 
 For a proper host \(M\), the ceiling is operational, not merely a converse:
@@ -88,6 +89,12 @@ C_{\mathrm{block}}(M,o;c,\varepsilon)
 Each finite-radius block optimum is attained. Codes may be redesigned at every
 depth; the identity does not establish one nested, causal, or relational
 capacity-achieving code. It completes the theory of endpoint addressability.
+
+Keep the three closures separate: the limit is the converse for a given
+representation; the block identity is unconstrained finite-radius
+achievability; the weighted hyperbolic result is a host-specific relational
+supremum. The latter two strengthen different sides of the limit and are not
+alternate statements of it.
 
 ## 2. Ladder — addresses are not genealogy
 
