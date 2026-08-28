@@ -86,10 +86,10 @@ formal_verification:
     - {name: "idealNormalizedCurvature_anti_n", statement: "n1 < n2 => kappa_bar(h, n2) < kappa_bar(h, n1); algebraic, not a selection of n=2"}
 
   mismatch_diagnostics:
-    - {name: "rateMismatchSq_eq_scaled_sqrtMismatch", statement: "rateMismatchSq = (n-1)^2 * sqrtCurvatureMismatch; the two gap diagnostics are one object"}
+    - {name: "rateMismatchSq_eq_scaled_sqrtMismatch", statement: "rateMismatchSq = (c*(n-1))^2 * sqrtCurvatureMismatch; the two scale-aware gap diagnostics are one object"}
     - {name: "sqrtCurvatureMismatch_zero_iff", statement: "On non-negative curvature magnitudes, the square-root mismatch vanishes iff the curvatures are equal; no dynamics is claimed"}
     - {name: "rateMismatchSq_zero_iff", statement: "rateMismatchSq = 0 iff kappa equals the equality-case value; a corollary of the scaling identity"}
-    - {name: "rateMismatch_zero_at_face", statement: "at gauge c=1, space-form entropy of the equality-case curvature recovers the information rate"}
+    - {name: "rateMismatch_zero_at_floor", statement: "space-form capacity at the curvature floor equals demand"}
 
 # =============================================================================
 # Results with Verification Protocols

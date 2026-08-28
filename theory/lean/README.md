@@ -145,9 +145,9 @@ The optional equality-case face. Formalized results include:
 | Declaration | Meaning |
 |---|---|
 | `normalized_state_equation` | saturation plus `hcap_eq_spaceForm` yields the normalized equality |
-| `rateMismatchSq_eq_scaled_sqrtMismatch` | the two gap diagnostics are one object up to \((n-1)^2\) |
+| `rateMismatchSq_eq_scaled_sqrtMismatch` | the two gap diagnostics are one object up to \((c(n-1))^2\) |
 | `rateMismatchSq_zero_iff` | the squared rate gap vanishes exactly on the face |
-| `rateMismatch_zero_at_face` | at gauge \(c=1\), space-form entropy recovers the information rate |
+| `rateMismatch_zero_at_floor` | space-form capacity at the curvature floor equals demand |
 
 These diagnostics are not a Lyapunov theorem and not an evolution law.
 
