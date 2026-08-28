@@ -33,12 +33,12 @@ theorem normalized_state_equation
     (hc : 0 < c) (hn : 1 < n) (hκ : 0 ≤ κval)
     (hsaturated : CapacitySaturated (bitsToNats h) c hcap)
     (hform : hcap_eq_spaceForm hcap n κval) :
-    normalizedCurvature c κval = idealNormalizedCurvature h n := by
+    normalizedCurvature c κval = normalizedCurvatureAtSaturation h n := by
   have hkappa : κval = curvatureFloor (bitsToNats h) c n :=
     saturated_spaceForm_eq_floor
       (bitsToNats h) c hcap n κval hc hn hκ hsaturated hform
   rw [hkappa]
-  exact normalized_floor_eq_ideal h c n hc.ne' (ne_of_gt hn)
+  exact normalized_floor_eq_saturation h c n hc.ne' (ne_of_gt hn)
 
 /-- Signed gap between demand and space-form capacity.
     It vanishes exactly on the equality-case face

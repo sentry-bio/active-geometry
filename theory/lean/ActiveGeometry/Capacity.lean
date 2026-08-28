@@ -57,8 +57,8 @@ noncomputable def spaceFormEntropy (n κval : ℝ) : ℝ :=
 def hcap_eq_spaceForm (hcap n κval : ℝ) : Prop :=
   hcap = spaceFormEntropy n κval
 
-/-- The least isotropic sectional-curvature magnitude permitted by
-    addressability on the positive physical domain. -/
+/-- The least space-form curvature magnitude permitted by addressability on
+    the positive physical domain. -/
 noncomputable def curvatureFloor (β c n : ℝ) : ℝ :=
   (β / (c * (n - 1))) ^ 2
 
@@ -66,9 +66,9 @@ noncomputable def curvatureFloor (β c n : ℝ) : ℝ :=
     invariant under a common rescaling of radial distance and curvature. -/
 def normalizedCurvature (c κval : ℝ) : ℝ := c ^ 2 * κval
 
-/-- The familiar equality-case expression is *normalized* curvature, not raw
-    sectional curvature, unless the process-time gauge `c = 1` is chosen. -/
-noncomputable def idealNormalizedCurvature (h n : ℝ) : ℝ :=
+/-- The normalized curvature value on the saturation face. It is not raw
+    sectional curvature unless the process-time gauge `c = 1` is chosen. -/
+noncomputable def normalizedCurvatureAtSaturation (h n : ℝ) : ℝ :=
   (bitsToNats h / (n - 1)) ^ 2
 
 /-- A positive bit rate gives a positive information-growth rate in nats. -/
@@ -186,11 +186,11 @@ theorem floor_saturates_capacity
 
 /-- Multiplying the raw curvature-magnitude floor by `c²` removes radial-unit
     dependence and recovers the normalized equality-case expression. -/
-theorem normalized_floor_eq_ideal
+theorem normalized_floor_eq_saturation
     (h c n : ℝ) (hc : c ≠ 0) (hn : n ≠ 1) :
     normalizedCurvature c (curvatureFloor (bitsToNats h) c n) =
-      idealNormalizedCurvature h n := by
-  unfold normalizedCurvature curvatureFloor idealNormalizedCurvature
+      normalizedCurvatureAtSaturation h n := by
+  unfold normalizedCurvature curvatureFloor normalizedCurvatureAtSaturation
   have hn0 : n - 1 ≠ 0 := sub_ne_zero.mpr hn
   field_simp [hc, hn0]
 
@@ -199,8 +199,8 @@ theorem normalized_floor_eq_ideal
 theorem process_time_gauge
     (h n : ℝ) :
     curvatureFloor (bitsToNats h) 1 n =
-      idealNormalizedCurvature h n := by
-  simp [curvatureFloor, idealNormalizedCurvature]
+      normalizedCurvatureAtSaturation h n := by
+  simp [curvatureFloor, normalizedCurvatureAtSaturation]
 
 /-- Normalized curvature magnitude is invariant when radial distance is
     rescaled by a nonzero factor `a` and raw curvature magnitude by `a⁻²`. -/
@@ -212,50 +212,55 @@ theorem normalized_curvature_scale_invariant
   field_simp [ha]
 
 /-- At ambient dimension 2, the equality-case formula is `(h ln 2)²`. -/
-theorem idealNormalizedCurvature_two (h : ℝ) :
-    idealNormalizedCurvature h 2 = (bitsToNats h) ^ 2 := by
-  simp [idealNormalizedCurvature]; ring
+theorem normalizedCurvatureAtSaturation_two (h : ℝ) :
+    normalizedCurvatureAtSaturation h 2 = (bitsToNats h) ^ 2 := by
+  simp [normalizedCurvatureAtSaturation]; ring
 
-theorem idealNormalizedCurvature_two_pos (h : ℝ) (hh : 0 < h) :
-    0 < idealNormalizedCurvature h 2 := by
-  rw [idealNormalizedCurvature_two]
+theorem normalizedCurvatureAtSaturation_two_pos (h : ℝ) (hh : 0 < h) :
+    0 < normalizedCurvatureAtSaturation h 2 := by
+  rw [normalizedCurvatureAtSaturation_two]
   exact sq_pos_of_pos (bitsToNats_pos h hh)
 
 /-- The equality-case formula is strictly increasing in the bit rate. -/
-theorem idealNormalizedCurvature_mono_h
+theorem normalizedCurvatureAtSaturation_mono_h
     (h₁ h₂ : ℝ) (h1pos : 0 < h₁) (hlt : h₁ < h₂) :
-    idealNormalizedCurvature h₁ 2 < idealNormalizedCurvature h₂ 2 := by
-  simp only [idealNormalizedCurvature_two, bitsToNats]
+    normalizedCurvatureAtSaturation h₁ 2 <
+      normalizedCurvatureAtSaturation h₂ 2 := by
+  simp only [normalizedCurvatureAtSaturation_two, bitsToNats]
   exact sq_lt_sq' (by nlinarith [log2_pos]) (by nlinarith [log2_pos])
 
 /-- The equality-case formula is strictly decreasing in ambient dimension.
     This is algebraic monotonicity, not a selection principle for `n = 2`. -/
-theorem idealNormalizedCurvature_anti_n
+theorem normalizedCurvatureAtSaturation_anti_n
     (h n₁ n₂ : ℝ) (hh : 0 < h)
     (hn1 : 1 < n₁) (hn2 : 1 < n₂) (hlt : n₁ < n₂) :
-    idealNormalizedCurvature h n₂ < idealNormalizedCurvature h n₁ := by
-  unfold idealNormalizedCurvature bitsToNats
+    normalizedCurvatureAtSaturation h n₂ <
+      normalizedCurvatureAtSaturation h n₁ := by
+  unfold normalizedCurvatureAtSaturation bitsToNats
   have hnum := mul_pos hh log2_pos
   have hd1 : n₁ - 1 > 0 := sub_pos.mpr hn1
   have hd2 : n₂ - 1 > 0 := sub_pos.mpr hn2
   exact sq_lt_sq' (by nlinarith [div_pos hnum hd2, div_pos hnum hd1])
     (div_lt_div_of_pos_left hnum hd1 (by linarith))
 
-theorem idealNormalizedCurvature_lt_of_dim_gt_two
+theorem normalizedCurvatureAtSaturation_lt_of_dim_gt_two
     (h n : ℝ) (hh : 0 < h) (hn : 2 < n) :
-    idealNormalizedCurvature h n < idealNormalizedCurvature h 2 :=
-  idealNormalizedCurvature_anti_n h 2 n hh (by norm_num) (by linarith) hn
+    normalizedCurvatureAtSaturation h n <
+      normalizedCurvatureAtSaturation h 2 :=
+  normalizedCurvatureAtSaturation_anti_n
+    h 2 n hh (by norm_num) (by linarith) hn
 
 /-- Scaling the bit rate scales the equality-case curvature by the square. -/
-theorem idealNormalizedCurvature_mul_h (h a : ℝ) :
-    idealNormalizedCurvature (a * h) 2 =
-      a ^ 2 * idealNormalizedCurvature h 2 := by
-  simp [idealNormalizedCurvature_two, bitsToNats]; ring
+theorem normalizedCurvatureAtSaturation_mul_h (h a : ℝ) :
+    normalizedCurvatureAtSaturation (a * h) 2 =
+      a ^ 2 * normalizedCurvatureAtSaturation h 2 := by
+  simp [normalizedCurvatureAtSaturation_two, bitsToNats]; ring
 
 /-- At `n = 2`, radius times space-form entropy of the equality-case
     curvature recovers radius times the information rate. -/
-theorem radial_infoRate_of_ideal_two (h r : ℝ) (hh : 0 < h) :
-    r * sqrt (idealNormalizedCurvature h 2) = r * bitsToNats h := by
-  rw [idealNormalizedCurvature_two, sqrt_sq (bitsToNats_pos h hh).le]
+theorem radial_infoRate_at_saturation_two (h r : ℝ) (hh : 0 < h) :
+    r * sqrt (normalizedCurvatureAtSaturation h 2) = r * bitsToNats h := by
+  rw [normalizedCurvatureAtSaturation_two,
+    sqrt_sq (bitsToNats_pos h hh).le]
 
 end ActiveGeometry.Capacity

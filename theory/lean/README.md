@@ -133,10 +133,10 @@ Formalized results include:
 | `saturated_curvature_eq_floor` | saturation fixes raw curvature once \(c,n\) are fixed |
 | `saturated_spaceForm_eq_floor` | composes saturation with a space-form identification |
 | `floor_saturates_capacity` | the curvature floor realizes equality |
-| `normalized_floor_eq_ideal` | multiplying by \(c^2\) removes radial-unit dependence |
+| `normalized_floor_eq_saturation` | multiplying by \(c^2\) gives the saturation-face value |
 | `process_time_gauge` | \(c=1\) recovers the familiar formula |
 | `normalized_curvature_scale_invariant` | \(c^2\kappa\) is invariant under radial rescaling |
-| `idealNormalizedCurvature_anti_n` | algebraic decrease in ambient dimension; not a selection of \(n=2\) |
+| `normalizedCurvatureAtSaturation_anti_n` | saturation-face value decreases algebraically with dimension; not a selection of \(n=2\) |
 
 ### `StateEquation.lean`
 

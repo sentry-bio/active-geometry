@@ -80,10 +80,10 @@ formal_verification:
     - {name: "addressable_spaceForm_floor", statement: "Addressable plus hcap_eq_spaceForm implies the curvature floor"}
     - {name: "saturated_curvature_eq_floor", statement: "for c > 0, n > 1, and kappa >= 0, capacity saturation fixes raw curvature magnitude once c and n are fixed"}
     - {name: "normalized_state_equation", statement: "CapacitySaturated plus hcap_eq_spaceForm implies the normalized state equation"}
-    - {name: "normalized_floor_eq_ideal", statement: "c^2*kappa_floor = (h*ln2/(n-1))^2"}
+    - {name: "normalized_floor_eq_saturation", statement: "c^2*kappa_floor = (h*ln2/(n-1))^2, the saturation-face value"}
     - {name: "normalized_curvature_scale_invariant", statement: "c^2*kappa is invariant under radial rescaling"}
-    - {name: "idealNormalizedCurvature_two", statement: "normalized kappa_bar(h, 2) = (h * log 2)^2"}
-    - {name: "idealNormalizedCurvature_anti_n", statement: "n1 < n2 => kappa_bar(h, n2) < kappa_bar(h, n1); algebraic, not a selection of n=2"}
+    - {name: "normalizedCurvatureAtSaturation_two", statement: "the saturation-face normalized curvature at n=2 is (h * log 2)^2"}
+    - {name: "normalizedCurvatureAtSaturation_anti_n", statement: "n1 < n2 => the saturation-face value decreases; algebraic, not a selection of n=2"}
 
   mismatch_diagnostics:
     - {name: "rateMismatchSq_eq_scaled_sqrtMismatch", statement: "rateMismatchSq = (c*(n-1))^2 * sqrtCurvatureMismatch; the two scale-aware gap diagnostics are one object"}
