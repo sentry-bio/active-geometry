@@ -26,6 +26,7 @@ pip install -e ".[dev]"
 pytest
 python examples/register_atlas.py
 python examples/run_balloon.py
+python experiments/map_query/run_benchmark.py
 python tools/check_doc_artifacts.py
 ```
 

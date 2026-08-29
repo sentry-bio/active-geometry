@@ -62,6 +62,11 @@ alignment are the balloon (v6 Test A): endpoints remain distinct, quartets
 go quiet. Corroboration is coarse θ, not global distances. Extra dimensions
 stay off the chart.
 
+An operational probe of the live query path (v15.5 serving of the v10.9
+map epoch) lives in `experiments/map_query/`. It records map behaviour
+through Form tags; it is not a freeze-gate run and not a shared aligned
+panel.
+
 ## Governance
 
 The datum is a commons. The atlas may be corporate. Independent stewardship
