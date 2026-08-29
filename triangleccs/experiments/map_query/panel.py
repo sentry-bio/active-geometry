@@ -8,6 +8,8 @@ It is not that alignment, and it is not a freeze-gate witness panel.
 from __future__ import annotations
 
 import random
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -181,7 +183,30 @@ PANEL: list[dict[str, str]] = [
 ]
 
 
+def fetch_fasta(path: Path = FASTA) -> None:
+    """Fetch the accession panel from NCBI when the local cache is absent."""
+    accessions = [item["accession"] for item in PANEL]
+    url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?" + urllib.parse.urlencode(
+        {
+            "db": "nuccore",
+            "id": ",".join(accessions),
+            "rettype": "fasta",
+            "retmode": "text",
+        }
+    )
+    request = urllib.request.Request(
+        url,
+        headers={"User-Agent": "triangleccs-map-query/1.0 (research@sentry.bio)"},
+    )
+    with urllib.request.urlopen(request, timeout=60) as response:
+        data = response.read()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+
+
 def parse_fasta(path: Path = FASTA) -> dict[str, str]:
+    if not path.exists():
+        fetch_fasta(path)
     out: dict[str, str] = {}
     acc = None
     chunks: list[str] = []

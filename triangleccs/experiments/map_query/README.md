@@ -54,7 +54,9 @@ python experiments/map_query/run_benchmark.py
 ```
 
 Optional: `BIOSPHERE_API_KEY` (otherwise the public query-panel key is
-discovered from `query-panel.js`). Results: `results/latest.json`.
+discovered from `query-panel.js`). The accession panel is fetched from NCBI
+on first run and cached as ignored `sequences.fasta`. Results are generated
+locally at `results/latest.json` and are not committed.
 
 ## Honesty
 
